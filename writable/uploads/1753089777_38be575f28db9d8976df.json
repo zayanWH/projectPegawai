@@ -1,0 +1,36 @@
+{
+   "name": "__MSG_name__",
+   "description": "__MSG_description__",
+   "manifest_version": 2,
+   "version": "0.0.1",
+   "default_locale": "en",
+   "icons": {
+     "128": "icon.png"
+   },
+
+ "theme": {
+   "colors": {
+    "bookmark_text": [248,248,248],
+    "tab_text": [248,248,248],
+    "omnibox_text": [248,248,248],
+    "ntp_text": [248,248,248],
+    "tab_background_text": [155,155,155],
+    "omnibox_background": [32,32,32],
+    "ntp_background": [32,32,32],
+    "toolbar": [25,25,25],
+    "background_tab_inactive": [28,28,28],
+    "background_tab_incognito": [25,25,25],
+    "background_tab_incognito_inactive": [28,28,28],
+    "ntp_header": [25,25,25],
+    "background_tab": [25,25,25],
+    "frame_inactive": [85,85,85],
+    "frame_incognito": [85,85,85],
+    "frame_incognito_inactive": [85,85,85],
+    "frame": [85,85,85],
+    "ntp_link": [8,96,242]
+  },
+  "tints": {
+    "buttons": [0,0,0.90]
+  }
+ }
+}

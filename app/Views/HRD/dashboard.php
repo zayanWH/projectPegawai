@@ -7,32 +7,9 @@
             <h1 class="text-2xl font-semibold text-gray-800">Dashboard</h1>
         </div>
         <div class="flex items-center space-x-4">
-            <div class="relative">
-                <input type="text"
-                       placeholder="Masukkan file dokumen..."
-                       class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                <svg class="absolute right-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
-            </div>
             <img src="<?= base_url('images/logo.png') ?>" alt="Logo USSI" class="h-10 w-auto rounded-lg">
         </div>
     </div>
-</div>
-
-<div class="relative inline-block text-left mb-6">
-  <button id="dropdownButton" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium flex items-center space-x-2">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-    </svg>
-    <span>Baru</span>
-  </button>
-
-  <div id="dropdownMenu" class="absolute z-10 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
-    <a href="#" id="openCreateFolder" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">📁 Buat Folder</a>
-    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">⬆️ Upload File</a>
-    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">📂 Upload Folder</a>
-  </div>
 </div>
 
 <div id="modalCreateFolder" class="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-sm hidden">
@@ -94,9 +71,9 @@
                 </svg>
             </div>
             <div class="ml-4">
-                <p class="text-sm text-gray-600">Total Folder</p>
-                <p class="text-2xl font-semibold text-gray-800">10</p>
-            </div>
+    <p class="text-sm text-gray-600">Total Folder</p>
+    <p class="text-2xl font-semibold text-gray-800"><?= esc($totalFolders) ?></p>
+</div>
         </div>
     </div>
 
@@ -112,7 +89,7 @@
             </div>
             <div class="ml-4">
                 <p class="text-sm text-gray-600">Total File</p>
-                <p class="text-2xl font-semibold text-gray-800">100</p>
+                <p class="text-2xl font-semibold text-gray-800"><?= esc($totalFiles) ?></p>
             </div>
         </div>
     </div>
@@ -128,9 +105,9 @@
                 </svg>
             </div>
             <div class="ml-4">
-                <p class="text-sm text-gray-600">File HRD</p>
-                <p class="text-2xl font-semibold text-gray-800">100</p>
-            </div>
+    <p class="text-sm text-gray-600">File HRD</p>
+    <p class="text-2xl font-semibold text-gray-800"><?= esc($totalHrdFiles) ?></p>
+</div>
         </div>
     </div>
 
@@ -143,7 +120,7 @@
             </div>
             <div class="ml-4">
                 <p class="text-sm text-gray-600">Total User</p>
-                <p class="text-2xl font-semibold text-gray-800">250</p>
+    <p class="text-2xl font-semibold text-gray-800"><?= esc($totalUser) ?></p>
             </div>
         </div>
     </div>
@@ -163,41 +140,73 @@
         <table class="w-full">
             <thead class="bg-blue-600">
                 <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Nama File</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Folder</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Pengunggah</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Nama Dokumen</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Kategori/Folder Induk</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Pengunggah/Pemilik</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Tanggal Diunggah</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Tipe</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-              <tr class="hover:bg-gray-50">
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"></path>
-                    </svg>
-                    <span class="text-sm text-gray-900">laporan.pdf</span>
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <svg class="w-5 h-5 text-gray-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2 6a2 2 0 012-2h5l2 2h7a2 2 0 012 2v7a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
-                    </svg>
-
-                    <span class="text-sm text-gray-900">I. SOP</span>
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="w-5 h-5 bg-red-500 rounded-full mr-2"></div>
-                    <span class="text-sm text-gray-900">user@gmail.com</span>
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2 Jul 2024</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"> <button onclick="toggleMenu(this)" class="text-blue-600 hover:text-blue-900">⋮</button> </td>
-              </tr>
+              <?php if (empty($latestDocuments)): ?>
+                <tr>
+                  <td colspan="6" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">Tidak ada dokumen terbaru.</td>
+                </tr>
+              <?php else: ?>
+                <?php foreach ($latestDocuments as $doc): ?>
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <div class="flex items-center">
+                        <svg class="<?= esc($doc['icon_class']) ?>" fill="currentColor" viewBox="0 0 20 20">
+                          <?= $doc['icon_path'] ?>
+                        </svg>
+                        <span class="text-sm text-gray-900"><?= esc($doc['display_name']) ?></span>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <div class="flex items-center">
+                        <?php if ($doc['type'] === 'folder'): // Tampilkan ikon folder hanya untuk folder induk ?>
+                            <svg class="w-5 h-5 text-gray-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 6a2 2 0 012-2h5l2 2h7a2 2 0 012 2v7a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
+                            </svg>
+                        <?php endif; ?>
+                        <span class="text-sm text-gray-900"><?= esc($doc['parent_folder_name']) ?></span>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <div class="flex items-center">
+                        <div class="w-5 h-5 bg-blue-400 rounded-full mr-2 flex items-center justify-center text-white text-xs">
+                          <?= strtoupper(substr(esc($doc['uploader_name']), 0, 1)) ?>
+                        </div>
+                        <span class="text-sm text-gray-900"><?= esc($doc['uploader_name']) ?></span>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <?= esc(date('d M Y', strtotime($doc['created_at']))) ?>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 capitalize">
+                      <?= esc($doc['type']) ?>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"> 
+                        <button onclick="toggleMenu(this)" class="text-blue-600 hover:text-blue-900">⋮</button> 
+                        <?php if ($doc['type'] === 'file'): ?>
+                            <a href="<?= base_url('hrd/dokumen/download-file/' . $doc['id']) ?>" class="text-green-600 hover:text-green-900 ml-2" title="Download">⬇️</a>
+                            <a href="<?= base_url('hrd/dokumen/view-file/' . $doc['id']) ?>" target="_blank" class="text-purple-600 hover:text-purple-900 ml-2" title="View">👁️</a>
+                        <?php elseif ($doc['type'] === 'folder'): ?>
+                            <a href="<?= base_url('hrd/dokumen-staff/' . $doc['id']) ?>" class="text-indigo-600 hover:text-indigo-900 ml-2" title="Buka Folder">📁</a>
+                        <?php elseif ($doc['type'] === 'hrd_doc'): ?>
+                            <?php 
+                                // Jika hrd_documents punya file_id dan file_id bisa di-resolve ke tabel files
+                                if (isset($doc['file_id']) && $doc['file_id']):
+                            ?>
+                                <a href="<?= base_url('hrd/dokumen/download-file/' . $doc['file_id']) ?>" class="text-green-600 hover:text-green-900 ml-2" title="Download">⬇️</a>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </td>
+                  </tr>
+                <?php endforeach; ?>
+              <?php endif; ?>
             </tbody>
         </table>
     </div>

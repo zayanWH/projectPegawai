@@ -12,41 +12,42 @@ class AuthFilter implements FilterInterface
     {
         $session = session();
         
-        // Cek apakah user sudah login
+        // Check if the user is logged in
         if (!$session->get('isLoggedIn')) {
             log_message('info', 'AuthFilter: User not logged in. Redirecting to /login');
             return redirect()->to(base_url('login'));
         }
 
-        // Jika user sudah login, cek role-nya
+        // If the user is logged in, check their role
         $userRoleId = $session->get('role_id');
-        $allowedRoles = $arguments; // Arguments akan berisi role_id yang diizinkan (misal: [1, 2])
+        $allowedRoles = $arguments; // Arguments will contain the allowed role_ids (e.g., [1, 2])
 
         log_message('debug', 'AuthFilter: User is logged in. Current role_id: ' . var_export($userRoleId, true));
         log_message('debug', 'AuthFilter: Allowed roles for this route: ' . var_export($allowedRoles, true));
 
-        // Jika tidak ada argumen role yang diberikan (misalnya, hanya perlu login), lewati saja
+        // If no role arguments are provided (e.g., only login is required), just proceed
         if (empty($allowedRoles)) {
             log_message('info', 'AuthFilter: No specific roles required, proceeding (user is logged in).');
             return null;
         }
 
-        // Periksa apakah role_id user ada di dalam daftar role yang diizinkan
-        // Kita perlu memastikan $allowedRoles adalah array integer untuk perbandingan yang benar
-        $allowedRoles = array_map('intval', $allowedRoles); // Konversi semua argumen ke integer
+        // Ensure $allowedRoles is an array and convert all arguments to integers for correct comparison
+        // The $arguments might come as an array of strings, so convert them to integers.
+        $allowedRoles = array_map('intval', (array) $allowedRoles); 
         
-        if (!in_array((int)$userRoleId, $allowedRoles)) { // Konversi userRoleId ke integer juga
-            log_message('warning', 'AuthFilter: User role_id ' . $userRoleId . ' is not in allowed roles ' . implode(', ', $allowedRoles) . '. Redirecting to /akses-ditolak');
-            // Jika role tidak diizinkan, arahkan ke halaman "Akses Ditolak"
+        // Convert userRoleId to an integer as well for strict comparison
+        if (!in_array((int)$userRoleId, $allowedRoles)) { 
+            log_message('warning', 'AuthFilter: User role_id ' . $userRoleId . ' is not in allowed roles [' . implode(', ', $allowedRoles) . ']. Redirecting to /akses-ditolak');
+            // If the role is not allowed, redirect to the "Access Denied" page
             return redirect()->to(base_url('akses-ditolak')); 
         }
         
         log_message('info', 'AuthFilter: User with role_id ' . $userRoleId . ' is allowed. Proceeding.');
-        return null; // Filter lolos, izinkan akses
+        return null; // Filter passes, allow access
     }
     
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        // Kosong
+        // Empty
     }
 }

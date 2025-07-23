@@ -1,0 +1,380 @@
+CRITICAL - 2025-07-21 02:53:26 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: staff/dokumen-staff]
+in APPPATH\Controllers\DokumenControllerStaff.php on line 8.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+ERROR - 2025-07-21 03:24:56 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'AppCloud', 3306, '', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(613): CodeIgniter\Model->doFind(true, '1')
+#6 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerStaff.php(123): CodeIgniter\BaseModel->find('1')
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->viewFolder('1')
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(613): CodeIgniter\Model->doFind(true, '1')
+#5 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerStaff.php(123): CodeIgniter\BaseModel->find('1')
+#6 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->viewFolder('1')
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2025-07-21 03:24:56 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: staff/folder/1]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `folders`
+WHERE `folders`.`id` = :folders.id:', [...], false)
+ 3 SYSTEMPATH\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(613): CodeIgniter\Model->doFind(true, '1')
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(123): CodeIgniter\BaseModel->find('1')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->viewFolder('1')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-21 04:43:45 --> mysqli_sql_exception: Unknown column 'updated_at' in 'field list' in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `fi...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fi...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fi...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fi...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(843): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerStaff.php(273): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#15 {main}
+CRITICAL - 2025-07-21 04:43:45 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'updated_at' in 'field list'
+[Method: POST, Route: staff/upload-file]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (:folder_id:, :uploader_id:, :file_name:, :file_path:, :file_size:, :file_type:, :created_at:, :updated_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(273): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-21 04:43:45 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'updated_at' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'8\', \'6\', \'1753073025_a69f96d0c7c09e94ed37.png\', \'C:\\\\laragon\\\\www\\\\projectPegawai-master\\\\writable\\\\uploads/1753073025_a69f96d0c7c09e94ed37.png\', 274924, \'image/png\', \'2025-07-21 04:43:45\', \'2025-07-21 04:43:45\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'8\', \'6\', \'1753073025_a69f96d0c7c09e94ed37.png\', \'C:\\\\laragon\\\\www\\\\projectPegawai-master\\\\writable\\\\uploads/1753073025_a69f96d0c7c09e94ed37.png\', 274924, \'image/png\', \'2025-07-21 04:43:45\', \'2025-07-21 04:43:45\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (:folder_id:, :uploader_id:, :file_name:, :file_path:, :file_size:, :file_type:, :created_at:, :updated_at:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\DokumenControllerStaff.php(273): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-21 04:43:45 --> [Caused by] mysqli_sql_exception: Unknown column 'updated_at' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'8\', \'6\', \'1753073025_a69f96d0c7c09e94ed37.png\', \'C:\\\\laragon\\\\www\\\\projectPegawai-master\\\\writable\\\\uploads/1753073025_a69f96d0c7c09e94ed37.png\', 274924, \'image/png\', \'2025-07-21 04:43:45\', \'2025-07-21 04:43:45\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'8\', \'6\', \'1753073025_a69f96d0c7c09e94ed37.png\', \'C:\\\\laragon\\\\www\\\\projectPegawai-master\\\\writable\\\\uploads/1753073025_a69f96d0c7c09e94ed37.png\', 274924, \'image/png\', \'2025-07-21 04:43:45\', \'2025-07-21 04:43:45\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'8\', \'6\', \'1753073025_a69f96d0c7c09e94ed37.png\', \'C:\\\\laragon\\\\www\\\\projectPegawai-master\\\\writable\\\\uploads/1753073025_a69f96d0c7c09e94ed37.png\', 274924, \'image/png\', \'2025-07-21 04:43:45\', \'2025-07-21 04:43:45\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (:folder_id:, :uploader_id:, :file_name:, :file_path:, :file_size:, :file_type:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\DokumenControllerStaff.php(273): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-21 07:10:33 --> ErrorException: Undefined property: App\Controllers\Folder::$folderModel
+[Method: POST, Route: folders/delete]
+in APPPATH\Controllers\Folder.php on line 86.
+ 1 APPPATH\Controllers\Folder.php(86): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Folder::$folderModel', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\Folder.php', 86)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Folder->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Folder))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-21 07:10:37 --> ErrorException: Undefined property: App\Controllers\Folder::$folderModel
+[Method: POST, Route: folders/delete]
+in APPPATH\Controllers\Folder.php on line 86.
+ 1 APPPATH\Controllers\Folder.php(86): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Folder::$folderModel', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\Folder.php', 86)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Folder->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Folder))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-21 07:11:03 --> ErrorException: Undefined property: App\Controllers\Folder::$folderModel
+[Method: POST, Route: folders/delete]
+in APPPATH\Controllers\Folder.php on line 86.
+ 1 APPPATH\Controllers\Folder.php(86): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Folder::$folderModel', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\Folder.php', 86)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Folder->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Folder))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-21 07:11:06 --> ErrorException: Undefined property: App\Controllers\Folder::$folderModel
+[Method: POST, Route: folders/delete]
+in APPPATH\Controllers\Folder.php on line 86.
+ 1 APPPATH\Controllers\Folder.php(86): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Folder::$folderModel', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\Folder.php', 86)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Folder->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Folder))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-21 07:11:09 --> ErrorException: Undefined property: App\Controllers\Folder::$folderModel
+[Method: POST, Route: folders/delete]
+in APPPATH\Controllers\Folder.php on line 86.
+ 1 APPPATH\Controllers\Folder.php(86): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Folder::$folderModel', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\Folder.php', 86)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Folder->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Folder))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-21 07:17:47 --> mysqli_sql_exception: Cannot delete or update a parent row: a foreign key constraint fails (`appcloud`.`folders`, CONSTRAINT `folders_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `folders` (`id`)) in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('DELETE FROM `fo...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `fo...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `fo...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2848): CodeIgniter\Database\BaseConnection->query('DELETE FROM `fo...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(521): CodeIgniter\Database\BaseBuilder->delete()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(1161): CodeIgniter\Model->doDelete(Array, false)
+#6 C:\laragon\www\projectPegawai-master\app\Controllers\Folder.php(132): CodeIgniter\BaseModel->delete(Array)
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Folder->delete()
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Folder))
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#14 {main}
+ERROR - 2025-07-21 07:18:08 --> mysqli_sql_exception: Cannot delete or update a parent row: a foreign key constraint fails (`appcloud`.`folders`, CONSTRAINT `folders_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `folders` (`id`)) in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('DELETE FROM `fo...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `fo...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `fo...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2848): CodeIgniter\Database\BaseConnection->query('DELETE FROM `fo...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(521): CodeIgniter\Database\BaseBuilder->delete()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(1161): CodeIgniter\Model->doDelete(Array, false)
+#6 C:\laragon\www\projectPegawai-master\app\Controllers\Folder.php(132): CodeIgniter\BaseModel->delete(Array)
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Folder->delete()
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Folder))
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#14 {main}
+ERROR - 2025-07-21 14:30:08 --> mysqli_sql_exception: Cannot delete or update a parent row: a foreign key constraint fails (`appcloud`.`folders`, CONSTRAINT `folders_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `folders` (`id`)) in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('DELETE FROM `fo...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `fo...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `fo...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2848): CodeIgniter\Database\BaseConnection->query('DELETE FROM `fo...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(521): CodeIgniter\Database\BaseBuilder->delete()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(1161): CodeIgniter\Model->doDelete(Array, false)
+#6 C:\laragon\www\projectPegawai-master\app\Controllers\Folder.php(132): CodeIgniter\BaseModel->delete(Array)
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Folder->delete()
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Folder))
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#14 {main}
+ERROR - 2025-07-21 14:35:17 --> mysqli_sql_exception: Cannot delete or update a parent row: a foreign key constraint fails (`appcloud`.`folders`, CONSTRAINT `folders_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `folders` (`id`)) in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('DELETE FROM `fo...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `fo...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `fo...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2848): CodeIgniter\Database\BaseConnection->query('DELETE FROM `fo...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(521): CodeIgniter\Database\BaseBuilder->delete()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(1161): CodeIgniter\Model->doDelete(Array, false)
+#6 C:\laragon\www\projectPegawai-master\app\Controllers\Folder.php(132): CodeIgniter\BaseModel->delete(Array)
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Folder->delete()
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Folder))
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#14 {main}
+ERROR - 2025-07-21 14:45:10 --> mysqli_sql_exception: Unknown column 'folder_name' in 'field list' in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `id`, `f...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id`, `f...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id`, `f...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `f...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerStaff.php(64): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2025-07-21 14:45:10 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'folder_name' in 'field list'
+[Method: GET, Route: staff/dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `folder_name` as `name`, `created_at`, `owner_id` as `uploader_id`, \'folder\' as type
+FROM `folders`
+ORDER BY `created_at` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DokumenControllerStaff.php(64): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-21 14:45:10 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'folder_name' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id`, `folder_name` as `name`, `created_at`, `owner_id` as `uploader_id`, \'folder\' as type
+FROM `folders`
+ORDER BY `created_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id`, `folder_name` as `name`, `created_at`, `owner_id` as `uploader_id`, \'folder\' as type
+FROM `folders`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `folder_name` as `name`, `created_at`, `owner_id` as `uploader_id`, \'folder\' as type
+FROM `folders`
+ORDER BY `created_at` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\DokumenControllerStaff.php(64): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-21 14:45:10 --> [Caused by] mysqli_sql_exception: Unknown column 'folder_name' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `id`, `folder_name` as `name`, `created_at`, `owner_id` as `uploader_id`, \'folder\' as type
+FROM `folders`
+ORDER BY `created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id`, `folder_name` as `name`, `created_at`, `owner_id` as `uploader_id`, \'folder\' as type
+FROM `folders`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id`, `folder_name` as `name`, `created_at`, `owner_id` as `uploader_id`, \'folder\' as type
+FROM `folders`
+ORDER BY `created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `folder_name` as `name`, `created_at`, `owner_id` as `uploader_id`, \'folder\' as type
+FROM `folders`
+ORDER BY `created_at` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\DokumenControllerStaff.php(64): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-21 15:19:38 --> CodeIgniter\Files\Exceptions\FileNotFoundException: File not found: "1753073102_93909c6ea64bb64fbd3d.png"
+[Method: GET, Route: staff/download-file/3]
+in SYSTEMPATH\Files\File.php on line 51.
+ 1 SYSTEMPATH\Files\File.php(51): CodeIgniter\Files\Exceptions\FileNotFoundException::forFileNotFound('1753073102_93909c6ea64bb64fbd3d.png')
+ 2 SYSTEMPATH\HTTP\DownloadResponse.php(106): CodeIgniter\Files\File->__construct('1753073102_93909c6ea64bb64fbd3d.png', true)
+ 3 SYSTEMPATH\HTTP\ResponseTrait.php(745): CodeIgniter\HTTP\DownloadResponse->setFilePath('1753073102_93909c6ea64bb64fbd3d.png')
+ 4 APPPATH\Controllers\DokumenControllerStaff.php(415): CodeIgniter\HTTP\Response->download('1753073102_93909c6ea64bb64fbd3d.png', null)
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->downloadFile('3')
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-21 15:57:43 --> ErrorException: finfo_file(C:\Users\ADV\AppData\Local\Temp\php3CF0.tmp): Failed to open stream: No such file or directory
+[Method: POST, Route: staff/upload-from-folder]
+in SYSTEMPATH\Files\File.php on line 137.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'finfo_file(C:\\Users\\ADV\\AppData\\Local\\Temp\\php3CF0.tmp): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\projectPegawai-master\\vendor\\codeigniter4\\framework\\system\\Files\\File.php', 137)
+ 2 SYSTEMPATH\Files\File.php(137): finfo_file(Object(finfo), 'C:\\Users\\ADV\\AppData\\Local\\Temp\\php3CF0.tmp')
+ 3 APPPATH\Controllers\DokumenControllerStaff.php(344): CodeIgniter\Files\File->getMimeType()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFromFolder()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-21 15:58:16 --> ErrorException: finfo_file(C:\Users\ADV\AppData\Local\Temp\phpC309.tmp): Failed to open stream: No such file or directory
+[Method: POST, Route: staff/upload-from-folder]
+in SYSTEMPATH\Files\File.php on line 137.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'finfo_file(C:\\Users\\ADV\\AppData\\Local\\Temp\\phpC309.tmp): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\projectPegawai-master\\vendor\\codeigniter4\\framework\\system\\Files\\File.php', 137)
+ 2 SYSTEMPATH\Files\File.php(137): finfo_file(Object(finfo), 'C:\\Users\\ADV\\AppData\\Local\\Temp\\phpC309.tmp')
+ 3 APPPATH\Controllers\DokumenControllerStaff.php(344): CodeIgniter\Files\File->getMimeType()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFromFolder()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-21 16:17:37 --> mysqli_sql_exception: Cannot delete or update a parent row: a foreign key constraint fails (`appcloud`.`files`, CONSTRAINT `files_ibfk_1` FOREIGN KEY (`folder_id`) REFERENCES `folders` (`id`)) in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('DELETE FROM `fo...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `fo...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `fo...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2848): CodeIgniter\Database\BaseConnection->query('DELETE FROM `fo...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(521): CodeIgniter\Database\BaseBuilder->delete()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(1161): CodeIgniter\Model->doDelete(Array, false)
+#6 C:\laragon\www\projectPegawai-master\app\Controllers\Folder.php(132): CodeIgniter\BaseModel->delete(Array)
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Folder->delete()
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Folder))
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#14 {main}

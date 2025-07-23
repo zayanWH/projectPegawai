@@ -317,7 +317,7 @@ class DokumenControllerStaff extends Controller
     public function uploadFromFolder()
     {
         $userId = $this->session->get('user_id');
-        if (!$userId) {
+        if (!$userId) { 
             return $this->response->setJSON(['status' => 'error', 'message' => 'Unauthorized'], 401);
         }
 
@@ -427,7 +427,7 @@ class DokumenControllerStaff extends Controller
                     return $this->response->setJSON([
                         'status' => 'success',
                         'message' => 'File berhasil diunggah.'
-                    ]);
+                    ]); 
                 } else {
                     // Hapus file jika insert DB gagal
                     unlink($targetDirectory . $newName);

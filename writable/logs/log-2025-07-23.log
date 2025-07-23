@@ -1,0 +1,862 @@
+CRITICAL - 2025-07-23 08:08:25 --> ErrorException: Undefined array key "file_path"
+[Method: GET, Route: staff/serve-file/4]
+in APPPATH\Controllers\DokumenControllerStaff.php on line 154.
+ 1 APPPATH\Controllers\DokumenControllerStaff.php(154): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "file_path"', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\DokumenControllerStaff.php', 154)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->serveFile('4')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-23 08:09:18 --> mysqli_sql_exception: Unknown column 'file_path' in 'field list' in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `fi...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fi...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fi...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fi...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(843): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerStaff.php(426): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#15 {main}
+CRITICAL - 2025-07-23 08:09:18 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'file_path' in 'field list'
+[Method: POST, Route: staff/upload-file]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (:folder_id:, :uploader_id:, :file_name:, :file_path:, :file_size:, :file_type:, :created_at:, :updated_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(426): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:09:18 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'file_path' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'39\', \'6\', \'Screenshot 2025-07-22 142925.png\', \'1753232958_43eafc46f488b3445c29.png\', 115765, \'image/png\', \'2025-07-23 08:09:18\', \'2025-07-23 08:09:18\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'39\', \'6\', \'Screenshot 2025-07-22 142925.png\', \'1753232958_43eafc46f488b3445c29.png\', 115765, \'image/png\', \'2025-07-23 08:09:18\', \'2025-07-23 08:09:18\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (:folder_id:, :uploader_id:, :file_name:, :file_path:, :file_size:, :file_type:, :created_at:, :updated_at:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\DokumenControllerStaff.php(426): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:09:18 --> [Caused by] mysqli_sql_exception: Unknown column 'file_path' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'39\', \'6\', \'Screenshot 2025-07-22 142925.png\', \'1753232958_43eafc46f488b3445c29.png\', 115765, \'image/png\', \'2025-07-23 08:09:18\', \'2025-07-23 08:09:18\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'39\', \'6\', \'Screenshot 2025-07-22 142925.png\', \'1753232958_43eafc46f488b3445c29.png\', 115765, \'image/png\', \'2025-07-23 08:09:18\', \'2025-07-23 08:09:18\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'39\', \'6\', \'Screenshot 2025-07-22 142925.png\', \'1753232958_43eafc46f488b3445c29.png\', 115765, \'image/png\', \'2025-07-23 08:09:18\', \'2025-07-23 08:09:18\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (:folder_id:, :uploader_id:, :file_name:, :file_path:, :file_size:, :file_type:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\DokumenControllerStaff.php(426): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-23 08:10:08 --> mysqli_sql_exception: Unknown column 'file_path' in 'field list' in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `fi...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fi...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fi...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fi...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(843): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerStaff.php(426): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#15 {main}
+CRITICAL - 2025-07-23 08:10:08 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'file_path' in 'field list'
+[Method: POST, Route: staff/upload-file]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (:folder_id:, :uploader_id:, :file_name:, :file_path:, :file_size:, :file_type:, :created_at:, :updated_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(426): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:10:08 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'file_path' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'39\', \'6\', \'Screenshot 2025-07-22 142925.png\', \'1753233008_b49beea89221d4003762.png\', 115765, \'image/png\', \'2025-07-23 08:10:08\', \'2025-07-23 08:10:08\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'39\', \'6\', \'Screenshot 2025-07-22 142925.png\', \'1753233008_b49beea89221d4003762.png\', 115765, \'image/png\', \'2025-07-23 08:10:08\', \'2025-07-23 08:10:08\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (:folder_id:, :uploader_id:, :file_name:, :file_path:, :file_size:, :file_type:, :created_at:, :updated_at:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\DokumenControllerStaff.php(426): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:10:08 --> [Caused by] mysqli_sql_exception: Unknown column 'file_path' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'39\', \'6\', \'Screenshot 2025-07-22 142925.png\', \'1753233008_b49beea89221d4003762.png\', 115765, \'image/png\', \'2025-07-23 08:10:08\', \'2025-07-23 08:10:08\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'39\', \'6\', \'Screenshot 2025-07-22 142925.png\', \'1753233008_b49beea89221d4003762.png\', 115765, \'image/png\', \'2025-07-23 08:10:08\', \'2025-07-23 08:10:08\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'39\', \'6\', \'Screenshot 2025-07-22 142925.png\', \'1753233008_b49beea89221d4003762.png\', 115765, \'image/png\', \'2025-07-23 08:10:08\', \'2025-07-23 08:10:08\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (:folder_id:, :uploader_id:, :file_name:, :file_path:, :file_size:, :file_type:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\DokumenControllerStaff.php(426): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-23 08:10:27 --> mysqli_sql_exception: Unknown column 'file_path' in 'field list' in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `fi...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fi...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fi...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fi...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(843): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerStaff.php(426): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#15 {main}
+CRITICAL - 2025-07-23 08:10:27 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'file_path' in 'field list'
+[Method: POST, Route: staff/upload-file]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (:folder_id:, :uploader_id:, :file_name:, :file_path:, :file_size:, :file_type:, :created_at:, :updated_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(426): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:10:27 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'file_path' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'39\', \'6\', \'Screenshot 2025-07-22 142925.png\', \'1753233027_6a83bbe6b8964b56ac36.png\', 115765, \'image/png\', \'2025-07-23 08:10:27\', \'2025-07-23 08:10:27\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'39\', \'6\', \'Screenshot 2025-07-22 142925.png\', \'1753233027_6a83bbe6b8964b56ac36.png\', 115765, \'image/png\', \'2025-07-23 08:10:27\', \'2025-07-23 08:10:27\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (:folder_id:, :uploader_id:, :file_name:, :file_path:, :file_size:, :file_type:, :created_at:, :updated_at:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\DokumenControllerStaff.php(426): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:10:27 --> [Caused by] mysqli_sql_exception: Unknown column 'file_path' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'39\', \'6\', \'Screenshot 2025-07-22 142925.png\', \'1753233027_6a83bbe6b8964b56ac36.png\', 115765, \'image/png\', \'2025-07-23 08:10:27\', \'2025-07-23 08:10:27\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'39\', \'6\', \'Screenshot 2025-07-22 142925.png\', \'1753233027_6a83bbe6b8964b56ac36.png\', 115765, \'image/png\', \'2025-07-23 08:10:27\', \'2025-07-23 08:10:27\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'39\', \'6\', \'Screenshot 2025-07-22 142925.png\', \'1753233027_6a83bbe6b8964b56ac36.png\', 115765, \'image/png\', \'2025-07-23 08:10:27\', \'2025-07-23 08:10:27\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (:folder_id:, :uploader_id:, :file_name:, :file_path:, :file_size:, :file_type:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\DokumenControllerStaff.php(426): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:12:44 --> ErrorException: file_get_contents(C:\laragon\www\projectPegawai-master\writable\uploads/): Failed to open stream: No such file or directory
+[Method: GET, Route: staff/serve-file/19]
+in APPPATH\Controllers\DokumenControllerStaff.php on line 167.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\DokumenControllerStaff.php', 167)
+ 2 APPPATH\Controllers\DokumenControllerStaff.php(167): file_get_contents('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->serveFile('19')
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-23 08:15:36 --> File ID 19 memiliki server_file_name yang kosong atau tidak ada di database. File data: {"id":"19","folder_id":"39","uploader_id":"6","file_name":"Screenshot 2025-07-22 082849.png","server_file_name":"","file_size":"34063","file_type":"image\/png","created_at":"2025-07-23 08:12:17","updated_at":"2025-07-23 08:12:17","download_count":"0"}
+CRITICAL - 2025-07-23 08:38:01 --> ErrorException: Undefined variable $totalFolders
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 88.
+ 1 APPPATH\Views\Staff\dashboard.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalFolders', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 88)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(106): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:38:02 --> ErrorException: Undefined variable $totalFolders
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 88.
+ 1 APPPATH\Views\Staff\dashboard.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalFolders', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 88)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(106): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:39:32 --> ErrorException: Undefined variable $TotalUserFolder
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 88.
+ 1 APPPATH\Views\Staff\dashboard.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $TotalUserFolder', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 88)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(106): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:40:06 --> ErrorException: Undefined variable $TotalUserFolder
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 88.
+ 1 APPPATH\Views\Staff\dashboard.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $TotalUserFolder', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 88)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(106): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:40:07 --> ErrorException: Undefined variable $TotalUserFolder
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 88.
+ 1 APPPATH\Views\Staff\dashboard.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $TotalUserFolder', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 88)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(106): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:40:47 --> ErrorException: Undefined variable $TotalUserFolder
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 88.
+ 1 APPPATH\Views\Staff\dashboard.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $TotalUserFolder', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 88)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(106): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:40:49 --> ErrorException: Undefined variable $TotalUserFolder
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 88.
+ 1 APPPATH\Views\Staff\dashboard.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $TotalUserFolder', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 88)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(106): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:40:50 --> ErrorException: Undefined variable $TotalUserFolder
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 88.
+ 1 APPPATH\Views\Staff\dashboard.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $TotalUserFolder', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 88)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(106): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:40:58 --> ErrorException: Undefined variable $TotalUserFolder
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 88.
+ 1 APPPATH\Views\Staff\dashboard.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $TotalUserFolder', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 88)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(106): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:41:32 --> ErrorException: Undefined variable $totalUserFolder
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 88.
+ 1 APPPATH\Views\Staff\dashboard.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalUserFolder', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 88)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(106): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:41:55 --> ErrorException: Undefined variable $totalFiles
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 102.
+ 1 APPPATH\Views\Staff\dashboard.php(102): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalFiles', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 102)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(106): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:42:15 --> ErrorException: Undefined variable $latestUploadDate
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 116.
+ 1 APPPATH\Views\Staff\dashboard.php(116): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $latestUploadDate', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 116)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(106): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-23 08:44:09 --> mysqli_sql_exception: Unknown column 'folder_type' in 'where clause' in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerStaff.php(539): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2025-07-23 08:44:09 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'folder_type' in 'where clause'
+[Method: GET, Route: staff/dokumen-bersama]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `files`
+WHERE `folder_type` IN :folder_type:', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DokumenControllerStaff.php(539): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:44:09 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'folder_type' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `files`
+WHERE `folder_type` IN (\'shared\',\'public\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `files`
+WHERE `folder_type` IN (\'shared\',\'public\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `files`
+WHERE `folder_type` IN :folder_type:', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\DokumenControllerStaff.php(539): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:44:09 --> [Caused by] mysqli_sql_exception: Unknown column 'folder_type' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `files`
+WHERE `folder_type` IN (\'shared\',\'public\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `files`
+WHERE `folder_type` IN (\'shared\',\'public\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `files`
+WHERE `folder_type` IN (\'shared\',\'public\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `files`
+WHERE `folder_type` IN :folder_type:', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\DokumenControllerStaff.php(539): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:44:22 --> ErrorException: Undefined variable $latestUploadDate
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 116.
+ 1 APPPATH\Views\Staff\dashboard.php(116): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $latestUploadDate', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 116)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(106): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:45:44 --> ErrorException: Array to string conversion
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 116.
+ 1 APPPATH\Views\Staff\dashboard.php(116): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 116)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(106): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:46:21 --> ErrorException: Array to string conversion
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 116.
+ 1 APPPATH\Views\Staff\dashboard.php(116): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 116)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(106): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:46:22 --> ErrorException: Array to string conversion
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 116.
+ 1 APPPATH\Views\Staff\dashboard.php(116): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 116)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(106): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:46:37 --> ErrorException: Undefined variable $latestUploadDate
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 116.
+ 1 APPPATH\Views\Staff\dashboard.php(116): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $latestUploadDate', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 116)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(106): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:46:38 --> ErrorException: Undefined variable $latestUploadDate
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 116.
+ 1 APPPATH\Views\Staff\dashboard.php(116): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $latestUploadDate', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 116)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(106): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:46:39 --> ErrorException: Undefined variable $latestUploadDate
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 116.
+ 1 APPPATH\Views\Staff\dashboard.php(116): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $latestUploadDate', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 116)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(106): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:47:02 --> ErrorException: Undefined variable $totalUserFolders
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 88.
+ 1 APPPATH\Views\Staff\dashboard.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalUserFolders', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 88)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(101): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:47:03 --> ErrorException: Undefined variable $totalUserFolders
+[Method: GET, Route: staff/dashboard]
+in APPPATH\Views\Staff\dashboard.php on line 88.
+ 1 APPPATH\Views\Staff\dashboard.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalUserFolders', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php', 88)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Staff/dashboard', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(101): view('Staff/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-23 08:48:53 --> mysqli_sql_exception: Unknown column 'file_path' in 'field list' in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `fi...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fi...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fi...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fi...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(843): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerStaff.php(426): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#15 {main}
+CRITICAL - 2025-07-23 08:48:53 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'file_path' in 'field list'
+[Method: POST, Route: staff/upload-file]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (:folder_id:, :uploader_id:, :file_name:, :file_path:, :file_size:, :file_type:, :created_at:, :updated_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(426): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:48:53 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'file_path' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'42\', \'6\', \'Screenshot 2025-07-21 084023.png\', \'1753235333_1b197575e72b07f6e549.png\', 66964, \'image/png\', \'2025-07-23 08:48:53\', \'2025-07-23 08:48:53\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'42\', \'6\', \'Screenshot 2025-07-21 084023.png\', \'1753235333_1b197575e72b07f6e549.png\', 66964, \'image/png\', \'2025-07-23 08:48:53\', \'2025-07-23 08:48:53\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (:folder_id:, :uploader_id:, :file_name:, :file_path:, :file_size:, :file_type:, :created_at:, :updated_at:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\DokumenControllerStaff.php(426): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:48:53 --> [Caused by] mysqli_sql_exception: Unknown column 'file_path' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'42\', \'6\', \'Screenshot 2025-07-21 084023.png\', \'1753235333_1b197575e72b07f6e549.png\', 66964, \'image/png\', \'2025-07-23 08:48:53\', \'2025-07-23 08:48:53\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'42\', \'6\', \'Screenshot 2025-07-21 084023.png\', \'1753235333_1b197575e72b07f6e549.png\', 66964, \'image/png\', \'2025-07-23 08:48:53\', \'2025-07-23 08:48:53\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (\'42\', \'6\', \'Screenshot 2025-07-21 084023.png\', \'1753235333_1b197575e72b07f6e549.png\', 66964, \'image/png\', \'2025-07-23 08:48:53\', \'2025-07-23 08:48:53\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `files` (`folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `updated_at`) VALUES (:folder_id:, :uploader_id:, :file_name:, :file_path:, :file_size:, :file_type:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\DokumenControllerStaff.php(426): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:56:58 --> ErrorException: mkdir(): Invalid argument
+[Method: POST, Route: staff/upload-file]
+in SYSTEMPATH\HTTP\Files\UploadedFile.php on line 181.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mkdir(): Invalid argument', 'C:\\laragon\\www\\projectPegawai-master\\vendor\\codeigniter4\\framework\\system\\HTTP\\Files\\UploadedFile.php', 181)
+ 2 SYSTEMPATH\HTTP\Files\UploadedFile.php(181): mkdir('\\/', 511, true)
+ 3 SYSTEMPATH\HTTP\Files\UploadedFile.php(135): CodeIgniter\HTTP\Files\UploadedFile->setPath('\\/')
+ 4 APPPATH\Controllers\DokumenControllerStaff.php(415): CodeIgniter\HTTP\Files\UploadedFile->move('\\/', '1753235818_4b4b7abfdeb1446d72ec.png')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:57:16 --> ErrorException: mkdir(): Invalid argument
+[Method: POST, Route: staff/upload-file]
+in SYSTEMPATH\HTTP\Files\UploadedFile.php on line 181.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mkdir(): Invalid argument', 'C:\\laragon\\www\\projectPegawai-master\\vendor\\codeigniter4\\framework\\system\\HTTP\\Files\\UploadedFile.php', 181)
+ 2 SYSTEMPATH\HTTP\Files\UploadedFile.php(181): mkdir('\\/', 511, true)
+ 3 SYSTEMPATH\HTTP\Files\UploadedFile.php(135): CodeIgniter\HTTP\Files\UploadedFile->setPath('\\/')
+ 4 APPPATH\Controllers\DokumenControllerStaff.php(415): CodeIgniter\HTTP\Files\UploadedFile->move('\\/', '1753235836_9b47ff88d170aea351c9.png')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:57:37 --> ErrorException: mkdir(): Invalid argument
+[Method: POST, Route: staff/upload-file]
+in SYSTEMPATH\HTTP\Files\UploadedFile.php on line 181.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mkdir(): Invalid argument', 'C:\\laragon\\www\\projectPegawai-master\\vendor\\codeigniter4\\framework\\system\\HTTP\\Files\\UploadedFile.php', 181)
+ 2 SYSTEMPATH\HTTP\Files\UploadedFile.php(181): mkdir('\\/', 511, true)
+ 3 SYSTEMPATH\HTTP\Files\UploadedFile.php(135): CodeIgniter\HTTP\Files\UploadedFile->setPath('\\/')
+ 4 APPPATH\Controllers\DokumenControllerStaff.php(415): CodeIgniter\HTTP\Files\UploadedFile->move('\\/', '1753235857_e69a3a18367402a7a402.png')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 08:58:02 --> ErrorException: mkdir(): Invalid argument
+[Method: POST, Route: staff/upload-file]
+in SYSTEMPATH\HTTP\Files\UploadedFile.php on line 181.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mkdir(): Invalid argument', 'C:\\laragon\\www\\projectPegawai-master\\vendor\\codeigniter4\\framework\\system\\HTTP\\Files\\UploadedFile.php', 181)
+ 2 SYSTEMPATH\HTTP\Files\UploadedFile.php(181): mkdir('\\/', 511, true)
+ 3 SYSTEMPATH\HTTP\Files\UploadedFile.php(135): CodeIgniter\HTTP\Files\UploadedFile->setPath('\\/')
+ 4 APPPATH\Controllers\DokumenControllerStaff.php(415): CodeIgniter\HTTP\Files\UploadedFile->move('\\/', '1753235882_49c6a4b656ee4c549f33.png')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 09:06:11 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: staff/upload-file]
+in SYSTEMPATH\BaseModel.php on line 1014.
+ 1 SYSTEMPATH\BaseModel.php(1014): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\DokumenControllerStaff.php(431): CodeIgniter\Model->update('42', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 09:07:04 --> ErrorException: file_get_contents(C:\laragon\www\projectPegawai-master\writable\uploads/): Failed to open stream: No such file or directory
+[Method: GET, Route: staff/serve-file/27]
+in APPPATH\Controllers\DokumenControllerStaff.php on line 167.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\DokumenControllerStaff.php', 167)
+ 2 APPPATH\Controllers\DokumenControllerStaff.php(167): file_get_contents('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->serveFile('27')
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-23 09:09:54 --> Empty server_file_name for file ID: 27
+ERROR - 2025-07-23 09:49:22 --> Empty server_file_name for file ID: 27
+CRITICAL - 2025-07-23 09:57:52 --> ErrorException: Undefined array key "folder_name"
+[Method: POST, Route: staff/upload-file]
+in APPPATH\Controllers\DokumenControllerStaff.php on line 552.
+ 1 APPPATH\Controllers\DokumenControllerStaff.php(552): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "folder_name"', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\DokumenControllerStaff.php', 552)
+ 2 APPPATH\Controllers\DokumenControllerStaff.php(533): App\Controllers\DokumenControllerStaff->getFolderPath('42')
+ 3 APPPATH\Controllers\DokumenControllerStaff.php(466): App\Controllers\DokumenControllerStaff->buildDirectoryPath('42')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 09:58:40 --> ErrorException: Undefined array key "folder_name"
+[Method: POST, Route: staff/upload-file]
+in APPPATH\Controllers\DokumenControllerStaff.php on line 552.
+ 1 APPPATH\Controllers\DokumenControllerStaff.php(552): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "folder_name"', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\DokumenControllerStaff.php', 552)
+ 2 APPPATH\Controllers\DokumenControllerStaff.php(533): App\Controllers\DokumenControllerStaff->getFolderPath('42')
+ 3 APPPATH\Controllers\DokumenControllerStaff.php(466): App\Controllers\DokumenControllerStaff->buildDirectoryPath('42')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->uploadFile()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-23 10:01:42 --> Empty server_file_name for file ID: 26
+ERROR - 2025-07-23 10:01:47 --> Empty server_file_name for file ID: 28
+ERROR - 2025-07-23 10:01:51 --> Empty server_file_name for file ID: 27
+ERROR - 2025-07-23 10:02:02 --> Empty server_file_name for file ID: 26
+ERROR - 2025-07-23 10:07:02 --> Empty or invalid server_file_name for file ID: 26
+ERROR - 2025-07-23 10:18:59 --> Empty or invalid server_file_name for file ID: 29
+ERROR - 2025-07-23 10:30:15 --> Empty or invalid server_file_name for file ID: 29
+CRITICAL - 2025-07-23 10:44:15 --> ParseError: syntax error, unexpected token "private"
+[Method: GET, Route: staff/view-file/29]
+in APPPATH\Controllers\DokumenControllerStaff.php on line 244.
+ 1 VENDORPATH\composer\ClassLoader.php(428): Composer\Autoload\includeFile('C:\\laragon\\www\\projectPegawai-master\\vendor\\composer/../../app/Controllers/DokumenControllerStaff.php')
+ 2 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Controllers\\DokumenControllerStaff')
+ 3 SYSTEMPATH\CodeIgniter.php(885): class_exists('\\App\\Controllers\\DokumenControllerStaff', true)
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->startController()
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 10:44:18 --> ParseError: syntax error, unexpected token "private"
+[Method: GET, Route: staff/view-file/29]
+in APPPATH\Controllers\DokumenControllerStaff.php on line 244.
+ 1 VENDORPATH\composer\ClassLoader.php(428): Composer\Autoload\includeFile('C:\\laragon\\www\\projectPegawai-master\\vendor\\composer/../../app/Controllers/DokumenControllerStaff.php')
+ 2 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Controllers\\DokumenControllerStaff')
+ 3 SYSTEMPATH\CodeIgniter.php(885): class_exists('\\App\\Controllers\\DokumenControllerStaff', true)
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->startController()
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 10:45:15 --> ParseError: syntax error, unexpected token "public"
+[Method: GET, Route: staff/view-file/29]
+in APPPATH\Controllers\DokumenControllerStaff.php on line 244.
+ 1 VENDORPATH\composer\ClassLoader.php(428): Composer\Autoload\includeFile('C:\\laragon\\www\\projectPegawai-master\\vendor\\composer/../../app/Controllers/DokumenControllerStaff.php')
+ 2 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Controllers\\DokumenControllerStaff')
+ 3 SYSTEMPATH\CodeIgniter.php(885): class_exists('\\App\\Controllers\\DokumenControllerStaff', true)
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->startController()
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 10:47:29 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: GET, Route: staff/serve-file/29]
+in SYSTEMPATH\BaseModel.php on line 1014.
+ 1 SYSTEMPATH\BaseModel.php(1014): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\DokumenControllerStaff.php(159): CodeIgniter\Model->update('29', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->serveFile('29')
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-23 10:49:39 --> Cannot reconstruct path for file ID: 4
+ERROR - 2025-07-23 10:50:01 --> Cannot reconstruct path for file ID: 4
+ERROR - 2025-07-23 10:50:43 --> Cannot reconstruct path for file ID: 4
+CRITICAL - 2025-07-23 10:57:46 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: GET, Route: staff/serve-file/30]
+in SYSTEMPATH\BaseModel.php on line 1014.
+ 1 SYSTEMPATH\BaseModel.php(1014): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\DokumenControllerStaff.php(159): CodeIgniter\Model->update('30', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->serveFile('30')
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')

@@ -88,63 +88,6 @@
     </div>
   </div>
 </div>
-
-<!-- Filter Dokumen -->
-<div class="mb-6">
-    <form method="GET" class="flex flex-wrap gap-4">
-        <!-- Dropdown Wrapper -->
-        <div class="relative">
-            <select name="jenis" class="appearance-none border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 px-4 py-2 pr-10">
-                <option value="">Jenis</option>
-                <option value="pdf" <?= request()->getGet('jenis') == 'pdf' ? 'selected' : '' ?>>PDF</option>
-                <option value="doc" <?= request()->getGet('jenis') == 'doc' ? 'selected' : '' ?>>Word</option>
-                <option value="xls" <?= request()->getGet('jenis') == 'xls' ? 'selected' : '' ?>>Excel</option>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-            </div>
-        </div>
-
-        <div class="relative w-[180px]">
-            <select name="orang"
-                class="appearance-none w-full border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 px-4 py-2 pr-10 truncate">
-                <option value="">Orang</option>
-                <option value="user2@gmail.com" <?= request()->getGet('orang') == 'user2@gmail.com' ? 'selected' : '' ?>>user1@gmail.com</option>
-                <option value="user2@gmail.com" <?= request()->getGet('orang') == 'user2@gmail.com' ? 'selected' : '' ?>>user2@gmail.com</option>
-                <option value="user3@gmail.com" <?= request()->getGet('orang') == 'user3@gmail.com' ? 'selected' : '' ?>>user3@gmail.com</option>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-            </div>
-        </div>
-
-
-        <div class="relative">
-            <select name="modifikasi" class="appearance-none border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 px-4 py-2 pr-10">
-                <option value="">Dimodifikasi</option>
-                <option value="today" <?= request()->getGet('modifikasi') == 'today' ? 'selected' : '' ?>>Hari ini</option>
-                <option value="week" <?= request()->getGet('modifikasi') == 'week' ? 'selected' : '' ?>>Minggu ini</option>
-                <option value="month" <?= request()->getGet('modifikasi') == 'month' ? 'selected' : '' ?>>Bulan ini</option>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-            </div>
-        </div>
-
-        <!-- Tombol Submit -->
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 text-sm">
-            Terapkan
-        </button>
-    </form>
-</div>
-
-
 <!-- Tabel Dokumen -->
 <div class="bg-white rounded-lg shadow-sm">
     <div class="p-6 border-b border-gray-200">

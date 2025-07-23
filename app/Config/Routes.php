@@ -7,12 +7,12 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Login::index');
 
-//Routes login
+// Routes login
 $routes->get('login', 'Login::index');
 $routes->post('login/proses', 'Login::proses');
 $routes->get('logout', 'Login::logout');
 
-// Rute untuk halaman Akses Ditolak (penting!)
+// Rute untuk halaman Akses Ditolak
 $routes->get('akses-ditolak', function() {
     echo '<h1>Akses Ditolak!</h1><p>Maaf, Anda tidak memiliki izin untuk mengakses halaman ini.</p>';
     echo '<p><a href="' . base_url('login') . '">Kembali ke Halaman Login</a></p>';
@@ -37,6 +37,17 @@ $routes->group('hrd', ['filter' => 'auth:2'], function ($routes) {
     $routes->get('dokumen-umum', 'DokumenControllerHRD::dokumenUmum');
     $routes->get('dokumen-bersama', 'DokumenControllerHRD::dokumenBersama');
     $routes->get('aktivitas', 'DokumenControllerHRD::aktivitas');
+    $routes->get('view-staff-folder/(:num)', 'DokumenControllerHRD::viewStaffFolder/$1');
+
+    $routes->post('create-folder', 'DokumenControllerHRD::createFolder'); 
+    $routes->post('upload-file', 'DokumenControllerHRD::uploadFile');
+    $routes->post('folder/rename', 'DokumenControllerHRD::renameFolder');
+    $routes->post('file/rename', 'DokumenControllerHRD::renameFile');
+    $routes->post('folder/delete', 'DokumenControllerHRD::deleteFolder');
+    $routes->post('file/delete', 'DokumenControllerHRD::deleteFile');
+    $routes->get('file/download/(:num)', 'DokumenControllerHRD::downloadFile/$1');
+    $routes->get('file/serve/(:num)', 'DokumenControllerHRD::serveFile/$1');
+    $routes->get('file/view/(:num)', 'DokumenControllerHRD::viewFile/$1');
 });
 
 // Routes untuk SPV 
@@ -81,10 +92,10 @@ $routes->group('direksi', ['filter' => 'auth:3'], function ($routes) {
 // Routes untuk Staff 
 $routes->group('staff', ['filter' => 'auth:6'], function ($routes) {
     $routes->get('dashboard', 'DokumenControllerStaff::dashboard');
-    $routes->post('search', 'DokumenControllerStaff::search');
+    $routes->post('search', 'DokumenControllerStaff::search'); // Consolidated duplicate
     $routes->get('dokumen-staff', 'DokumenControllerStaff::dokumenStaff');
     $routes->get('folder/(:num)', 'DokumenControllerStaff::viewFolder/$1');
-    $routes->get('view-file/(:num)', 'DokumenControllerStaff::viewFile/$1');
+    $routes->get('view-file/(:num)', 'DokumenControllerStaff::viewFile/$1'); // Consolidated duplicate
     $routes->get('serve-file/(:num)', 'DokumenControllerStaff::serveFile/$1');
     $routes->post('create-folder', 'DokumenControllerStaff::createFolder');
     $routes->post('upload-file', 'DokumenControllerStaff::uploadFile');
@@ -93,15 +104,11 @@ $routes->group('staff', ['filter' => 'auth:6'], function ($routes) {
     $routes->get('delete-file/(:num)', 'DokumenControllerStaff::deleteFile/$1'); 
     $routes->get('dokumen-bersama', 'DokumenControllerStaff::dokumenBersama'); 
     $routes->get('dokumen-umum', 'DokumenControllerStaff::dokumenUmum');
-    $routes->post('search', 'DokumenControllerStaff::search');
-     $routes->get('view-file/(:num)', 'DokumenControllerStaff::viewFile/$1');
 });
 
+// Global routes for folder and upload operations
 $routes->post('folder/rename/(:num)', 'Folder::rename/$1');
 $routes->post('upload/doUpload', 'Upload::doUpload');
-
-//delete folder
 $routes->post('folders/delete', 'Folder::delete');
-//rename folder
 $routes->post('folders/rename', 'Folder::rename');
 $routes->get('folder/download/(:num)', 'Folder::download/$1');
