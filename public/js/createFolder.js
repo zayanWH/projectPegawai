@@ -1,18 +1,17 @@
-// createFolder.js
-
 document.addEventListener('DOMContentLoaded', function() {
     const openCreateFolderBtn = document.getElementById('openCreateFolder');
     const modalCreateFolder = document.getElementById('modalCreateFolder');
     const cancelModalBtn = document.getElementById('cancelModal');
-    const createFolderBtn = document.getElementById('createFolderBtn');
+    const createFolderForm = document.getElementById('createFolderForm');
     const folderNameInput = document.getElementById('folderName');
+    const folderTypeSelect = document.getElementById('folderType');
+    const sharedOptionsDiv = document.getElementById('sharedOptions');
+    const parentIdInput = document.getElementById('parentId');
 
-    // Fungsi untuk membuka modal
     if (openCreateFolderBtn) {
         openCreateFolderBtn.addEventListener('click', function(event) {
             event.preventDefault();
             modalCreateFolder.classList.remove('hidden');
-            // Opsional: Sembunyikan dropdown "Baru" jika sedang terbuka
             const dropdownMenu = document.getElementById('dropdownMenu');
             if (dropdownMenu && !dropdownMenu.classList.contains('hidden')) {
                 dropdownMenu.classList.add('hidden');
@@ -20,52 +19,83 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Fungsi untuk menutup modal
     if (cancelModalBtn) {
         cancelModalBtn.addEventListener('click', function() {
             modalCreateFolder.classList.add('hidden');
-            folderNameInput.value = ''; // Bersihkan input saat ditutup
+            createFolderForm.reset();
+            sharedOptionsDiv.classList.add('hidden');
         });
     }
 
-    // Fungsi untuk menutup modal saat mengklik di luar konten modal
     if (modalCreateFolder) {
         modalCreateFolder.addEventListener('click', function(event) {
             if (event.target === modalCreateFolder) {
                 modalCreateFolder.classList.add('hidden');
-                folderNameInput.value = ''; // Bersihkan input saat ditutup
+                createFolderForm.reset();
+                sharedOptionsDiv.classList.add('hidden');
             }
         });
     }
 
-    // Fungsi untuk membuat folder (Contoh menggunakan Fetch API)
-    if (createFolderBtn) {
-        createFolderBtn.addEventListener('click', function() {
+    if (folderTypeSelect) {
+        folderTypeSelect.addEventListener('change', function() {
+            if (this.value === 'shared') {
+                sharedOptionsDiv.classList.remove('hidden');
+            } else {
+                sharedOptionsDiv.classList.add('hidden');
+            }
+        });
+    }
+
+    if (createFolderForm) {
+        createFolderForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
             const folderName = folderNameInput.value.trim();
+            const parentId = parentIdInput.value || null;
+            const folderType = folderTypeSelect.value;
+            let isShared = 0;
+            let sharedType = null;
+            let accessRoles = [];
 
             if (!folderName) {
-                alert('Nama sub-folder tidak boleh kosong.');
+                alert('Nama folder tidak boleh kosong.');
                 return;
             }
 
-            // Gunakan window.baseUrl dan window.currentFolderId dari variabel global
-            const parentFolderId = window.currentFolderId || null; // Jika ini root, bisa null atau ID root default
+            if (folderType === 'shared') {
+                isShared = 1;
+                sharedType = document.getElementById('sharedType').value;
+                document.querySelectorAll('input[name="access_roles[]"]:checked').forEach(checkbox => {
+                    accessRoles.push(checkbox.value);
+                });
+            }
 
-            fetch(`${window.baseUrl}api/create-folder`, { // Sesuaikan endpoint API Anda
+            const csrfToken = document.querySelector('input[name="<?= csrf_token() ?>"]').value;
+            const targetUrl = window.baseUrl + 'hrd/createFolder';
+
+            fetch(targetUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-Requested-With': 'XMLHttpRequest' // Penting untuk CodeIgniter/framework lain
+                    'X-Requested-With': 'XMLHttpRequest',
+                    '<?= csrf_header() ?>': csrfToken
                 },
                 body: JSON.stringify({
-                    parent_id: parentFolderId,
-                    folder_name: folderName,
-                    user_id: window.currentUserId // Kirim user_id jika diperlukan untuk otentikasi/otorisasi
+                    name: folderName,
+                    parent_id: parentId,
+                    folder_type: folderType,
+                    is_shared: isShared,
+                    shared_type: sharedType,
+                    access_roles: accessRoles
                 })
             })
             .then(response => {
+                const newCsrfToken = response.headers.get('X-CSRF-TOKEN');
+                if (newCsrfToken) {
+                    document.querySelector('input[name="<?= csrf_token() ?>"]').value = newCsrfToken;
+                }
                 if (!response.ok) {
-                    // Coba baca respons JSON untuk pesan error
                     return response.json().then(err => { throw err; }).catch(() => {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     });
@@ -74,24 +104,24 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(data => {
                 if (data.status === 'success') {
-                    alert('Sub-folder berhasil dibuat!');
+                    alert('Folder berhasil dibuat!');
                     modalCreateFolder.classList.add('hidden');
-                    folderNameInput.value = '';
-                    location.reload(); // Muat ulang halaman untuk melihat folder baru
+                    createFolderForm.reset();
+                    sharedOptionsDiv.classList.add('hidden');
+                    location.reload();
                 } else {
-                    alert('Gagal membuat sub-folder: ' + (data.message || 'Terjadi kesalahan.'));
+                    let errorMessage = 'Gagal membuat folder: ' + (data.message || 'Terjadi kesalahan.');
                     if (data.errors) {
-                        let errorMessages = '';
                         for (const key in data.errors) {
-                            errorMessages += `${data.errors[key]}\n`;
+                            errorMessage += `\n- ${data.errors[key]}`;
                         }
-                        alert('Validasi Gagal:\n' + errorMessages);
                     }
+                    alert(errorMessage);
                 }
             })
             .catch(error => {
                 console.error('Error saat membuat folder:', error);
-                alert('Terjadi kesalahan saat berkomunikasi dengan server. Silakan cek konsol.');
+                alert('Terjadi kesalahan saat berkomunikasi dengan server. Silakan cek konsol developer untuk detail lebih lanjut.');
             });
         });
     }

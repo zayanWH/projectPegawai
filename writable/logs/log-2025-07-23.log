@@ -860,3 +860,15 @@ in SYSTEMPATH\BaseModel.php on line 1014.
  8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 10 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-23 14:00:50 --> ErrorException: file_get_contents(C:\laragon\www\projectPegawai-master\writable\uploads/): Failed to open stream: No such file or directory
+[Method: GET, Route: staff/serve-file/4]
+in APPPATH\Controllers\DokumenControllerStaff.php on line 167.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\DokumenControllerStaff.php', 167)
+ 2 APPPATH\Controllers\DokumenControllerStaff.php(167): file_get_contents('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->serveFile('4')
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')

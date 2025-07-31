@@ -32,7 +32,7 @@
 
     <div id="dropdownMenu" class="absolute z-10 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible transform scale-95 transition-all duration-200 ease-out">
         <a href="#" id="openCreateFolder" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">📁 Buat Folder</a>
-        <a href="#" id="openUploadFolder" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">📤 Unggah Folder</a>
+        <a href="#" id="openUploadFolder" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">📁 Unggah Folder</a>
     </div>
 </div>
 
@@ -617,6 +617,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
 
+    // Pastikan URL ini benar-benar mengarah ke controller search Anda
+    // base_url() lebih disarankan untuk konsistensi daripada site_url()
+    const searchApiUrl = '<?= base_url('staff/search') ?>'; 
+
     if (searchInput) {
         searchInput.addEventListener('input', function() {
             const query = this.value.trim();
@@ -624,31 +628,39 @@ document.addEventListener('DOMContentLoaded', function() {
             if (query.length < 2) {
                 searchResults.innerHTML = '';
                 searchResults.classList.add('hidden');
+                // Pastikan tidak ada pesan "Tidak ada hasil ditemukan" yang tersisa
+                const noResultElement = searchResults.querySelector('.px-4.py-2.text-gray-500');
+                if (noResultElement) noResultElement.remove();
                 return;
             }
 
-            fetch('<?= site_url('staff/search') ?>', {
-                method: 'POST',
+            fetch(searchApiUrl, {
+                method: 'POST', // Pastikan rute Anda di CI juga menerima POST untuk /staff/search
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                     'X-Requested-With': 'XMLHttpRequest'
                 },
                 body: `q=${encodeURIComponent(query)}`
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) { // Tangani error HTTP
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
-                searchResults.innerHTML = '';
+                searchResults.innerHTML = ''; // Kosongkan hasil sebelumnya
                 if (data.length > 0) {
                     data.forEach(item => {
                         const a = document.createElement('a');
                         let url = '#';
                         if (item.type === 'folder') {
-                            url = `<?= site_url('staff/folder/') ?>${item.id}`;
-                        } else {
+                            url = `<?= base_url('staff/folder/') ?>${item.id}`; // Gunakan base_url()
+                        } else { // type === 'file'
                             if (item.folder_id) {
-                                url = `<?= site_url('staff/folder/') ?>${item.folder_id}`;
+                                url = `<?= base_url('staff/folder/') ?>${item.folder_id}`; // Gunakan base_url()
                             } else {
-                                url = `<?= site_url('staff/dokumen-staff') ?>`;
+                                url = `<?= base_url('staff/dokumen-staff') ?>`; // Gunakan base_url()
                             }
                         }
                         a.href = url;
@@ -667,7 +679,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => {
                 console.error('Error:', error);
-                searchResults.innerHTML = '<div class="px-4 py-2 text-red-500">Error saat mencari.</div>';
+                searchResults.innerHTML = `<div class="px-4 py-2 text-red-500">Error saat mencari: ${error.message}</div>`;
                 searchResults.classList.remove('hidden');
             });
         });

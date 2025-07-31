@@ -9,6 +9,36 @@ class Api extends BaseController
 {
     use ResponseTrait; // Gunakan trait untuk helper respon API
 
+    public function uploadFile()
+{
+    if ($this->request->getMethod() !== 'post') {
+        return $this->fail('Metode tidak diizinkan', 405);
+    }
+
+    $file = $this->request->getFile('file');
+    $parentId = $this->request->getPost('parent_id');
+    $userId = $this->request->getPost('user_id');
+
+    if (!$file->isValid()) {
+        return $this->fail('File tidak valid atau tidak ditemukan');
+    }
+
+    // Simpan file ke folder tertentu (misalnya folder uploads/)
+    $newName = $file->getRandomName();
+    $file->move(WRITEPATH . 'uploads', $newName);
+
+    // Bisa tambahkan logika untuk menyimpan metadata ke database di sini
+
+    return $this->respond([
+        'status' => 'success',
+        'message' => 'File berhasil diunggah.',
+        'file_name' => $newName,
+        'parent_id' => $parentId,
+        'user_id' => $userId
+    ]);
+}
+
+
     public function createFolder()
     {
         // Pastikan hanya menerima permintaan AJAX POST

@@ -15,6 +15,9 @@
  */
 defined('APP_NAMESPACE') || define('APP_NAMESPACE', 'App');
 
+
+defined('WRITABLE_PATH') || define('WRITABLE_PATH', realpath(FCPATH . '../writable') . DIRECTORY_SEPARATOR);
+
 /*
  | --------------------------------------------------------------------------
  | Composer Path

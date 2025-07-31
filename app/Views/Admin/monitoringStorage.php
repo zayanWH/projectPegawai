@@ -1,4 +1,4 @@
-<?= $this->extend('layout/admin') ?>
+<!<?= $this->extend('layout/admin') ?>
 
 <?= $this->section('content') ?>
 <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
@@ -12,6 +12,7 @@
     </div>
 </div>
 
+<!-- Storage by Position Table -->
 <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-6">
     <div class="p-6 border-b border-gray-200">
         <h2 class="text-lg font-semibold text-gray-800">Penggunaan Storage Berdasarkan Jabatan</h2>
@@ -26,36 +27,16 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Total Size</th>
                 </tr>
             </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-                <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Staff</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">120</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">725</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2.5GB</td>
+            <tbody id="storageByPositionTableBody" class="bg-white divide-y divide-gray-200">
+                <tr>
+                    <td colspan="4" class="px-6 py-4 text-center text-gray-500">Loading...</td>
                 </tr>
-                <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Supervisor</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">83</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">621</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">1.3GB</td>
-                </tr>
-                <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Manager</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">20</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">421</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">700mb</td>
-                </tr>
-                <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Direksi</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">4</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">285</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">248mb</td>
-                </tr>
-                </tbody>
+            </tbody>
         </table>
     </div>
 </div>
 
+<!-- Top Users Table -->
 <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-6">
     <div class="p-6 border-b border-gray-200">
         <h2 class="text-lg font-semibold text-gray-800">Penggunaan Storage Berdasarkan User (Top 5)</h2>
@@ -70,42 +51,16 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Total Size</th>
                 </tr>
             </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-                <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Ahmad Alpudin</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Staff</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">725</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2.5GB</td>
+            <tbody id="topUsersTableBody" class="bg-white divide-y divide-gray-200">
+                <tr>
+                    <td colspan="4" class="px-6 py-4 text-center text-gray-500">Loading...</td>
                 </tr>
-                <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Basar Jengka</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Supervisor</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">621</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">1.3GB</td>
-                </tr>
-                <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Dacita Bagas</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Manager</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">421</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">700mb</td>
-                </tr>
-                <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Georgina Siu</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Direksi</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">285</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">248mb</td>
-                </tr>
-                <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Lionel Messi</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Direksi</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">285</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">248mb</td>
-                </tr>
-                </tbody>
+            </tbody>
         </table>
     </div>
 </div>
 
+<!-- Largest Files Table -->
 <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-6">
     <div class="p-6 border-b border-gray-200">
         <h2 class="text-lg font-semibold text-gray-800">File Terbesar</h2>
@@ -121,108 +76,258 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Tanggal Upload</th>
                 </tr>
             </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-                <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-gray-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="text-sm text-gray-900">flutter.sdk</span>
-                        </div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2.5GB</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Agus Apip</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Staff</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2 Juli 2025</td>
+            <tbody id="largestFilesTableBody" class="bg-white divide-y divide-gray-200">
+                <tr>
+                    <td colspan="5" class="px-6 py-4 text-center text-gray-500">Loading...</td>
                 </tr>
-                <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-4 4 4 4-4v4z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="text-sm text-gray-900">iduladha.mp4</span>
-                        </div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">1.3GB</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">dadang Ducment</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Supervisor</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2 Juli 2025</td>
-                </tr>
-                <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zM11 6V3.586L14.414 7H12a2 2 0 01-2-2z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="text-sm text-gray-900">keuangan.docx</span>
-                        </div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">700mb</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Malin Kundang</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Manager</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">03 Juni 2025</td>
-                </tr>
-                </tbody>
+            </tbody>
         </table>
     </div>
 </div>
 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const ctx = document.getElementById('storageChart').getContext('2d');
+    document.addEventListener('DOMContentLoaded', function() {
+        let storageChart;
 
-    new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Staff', 'Manager', 'Supervisor', 'Admin'],
-            datasets: [{
-                data: [800, 600, 500, 500], // dalam MB
-                backgroundColor: [
-                    '#3B82F6', // Blue
-                    '#10B981', // Green
-                    '#F59E0B', // Yellow
-                    '#8B5CF6'  // Purple
-                ],
-                borderColor: [
-                    '#1E40AF',
-                    '#059669',
-                    '#D97706',
-                    '#7C3AED'
-                ],
-                borderWidth: 2,
-                hoverOffset: 4
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: false
+        // Load all data
+        loadStorageByPosition();
+        loadTopStorageUsers();
+        loadLargestFiles();
+
+        /**
+         * Load storage data by position
+         */
+        function loadStorageByPosition() {
+            fetch('<?= base_url('admin/getStorageByPosition') ?>', {
+                    method: 'GET',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        renderStorageByPositionTable(data.data);
+                        renderStorageChart(data.data);
+                        updateTotalStorageUsed(data.data);
+                    } else {
+                        console.error('Error loading storage by position:', data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        /**
+         * Load top storage users
+         */
+        function loadTopStorageUsers() {
+            fetch('<?= base_url('admin/getTopStorageUsers') ?>', {
+                    method: 'GET',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        renderTopUsersTable(data.data);
+                    } else {
+                        console.error('Error loading top users:', data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        /**
+         * Load largest files
+         */
+        function loadLargestFiles() {
+            fetch('<?= base_url('admin/getLargestFiles') ?>', {
+                    method: 'GET',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        renderLargestFilesTable(data.data);
+                    } else {
+                        console.error('Error loading largest files:', data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        /**
+         * Render storage by position table
+         */
+        function renderStorageByPositionTable(data) {
+            const tbody = document.getElementById('storageByPositionTableBody');
+
+            if (data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" class="px-6 py-4 text-center text-gray-500">Tidak ada data</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = data.map(item => `
+        <tr class="hover:bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.jabatan}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.jumlah_user}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.total_file}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${formatStorageSize(item.total_size_bytes)}</td>
+        </tr>
+    `).join('');
+        }
+
+        /**
+         * Render top users table
+         */
+        function renderTopUsersTable(data) {
+            const tbody = document.getElementById('topUsersTableBody');
+
+            if (data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" class="px-6 py-4 text-center text-gray-500">Tidak ada data</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = data.map(item => `
+            <tr class="hover:bg-gray-50">
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.nama_user}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.jabatan}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.total_file}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.total_size}</td>
+            </tr>
+        `).join('');
+        }
+
+        /**
+         * Render largest files table
+         */
+        function renderLargestFilesTable(data) {
+            const tbody = document.getElementById('largestFilesTableBody');
+
+            if (data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-4 text-center text-gray-500">Tidak ada data</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = data.map(item => `
+            <tr class="hover:bg-gray-50">
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                        ${item.file_icon}
+                        <span class="text-sm text-gray-900">${item.nama_file}</span>
+                    </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.ukuran}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.uploader}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.jabatan}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.tanggal_upload}</td>
+            </tr>
+        `).join('');
+        }
+
+        /**
+         * Render storage chart
+         */
+        function renderStorageChart(data) {
+            const ctx = document.getElementById('storageChart').getContext('2d');
+
+            // Destroy existing chart if it exists
+            if (storageChart) {
+                storageChart.destroy();
+            }
+
+            const colors = ['#3B82F6', '#10B981', '#F59E0B', '#8B5CF6', '#EF4444', '#06B6D4'];
+            const borderColors = ['#1E40AF', '#059669', '#D97706', '#7C3AED', '#DC2626', '#0891B2'];
+
+            const chartData = data.map((item, index) => ({
+                label: item.jabatan,
+                data: Math.round(item.total_size_bytes / (1024 * 1024)), // Convert to MB
+                backgroundColor: colors[index % colors.length],
+                borderColor: borderColors[index % borderColors.length]
+            }));
+
+            storageChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: chartData.map(item => item.label),
+                    datasets: [{
+                        data: chartData.map(item => item.data),
+                        backgroundColor: chartData.map(item => item.backgroundColor),
+                        borderColor: chartData.map(item => item.borderColor),
+                        borderWidth: 2,
+                        hoverOffset: 4
+                    }]
                 },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            const label = context.label || '';
-                            const value = context.parsed;
-                            const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                            const percentage = ((value / total) * 100).toFixed(1);
-                            return `${label}: ${value}MB (${percentage}%)`;
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'right'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = total > 0 ? ((value / total) * 100).toFixed(1) : 0;
+                                    return `${label}: ${value} MB (${percentage}%)`;
+                                }
+                            }
                         }
+                    },
+                    cutout: '60%',
+                    animation: {
+                        animateScale: true,
+                        animateRotate: true
                     }
                 }
-            },
-            cutout: '60%',
-            animation: {
-                animateScale: true,
-                animateRotate: true
+            });
+        }
+
+        /**
+         * Update total storage used
+         */
+        function updateTotalStorageUsed(data) {
+            const totalBytes = data.reduce((sum, item) => sum + item.total_size_bytes, 0);
+            const totalStorageElement = document.getElementById('totalStorageUsed');
+
+            // Format storage size
+            let formattedSize;
+            if (totalBytes >= (1024 * 1024 * 1024)) {
+                formattedSize = (totalBytes / (1024 * 1024 * 1024)).toFixed(2) + ' GB';
+            } else if (totalBytes >= (1024 * 1024)) {
+                formattedSize = (totalBytes / (1024 * 1024)).toFixed(1) + ' MB';
+            } else if (totalBytes >= 1024) {
+                formattedSize = (totalBytes / 1024).toFixed(1) + ' KB';
+            } else {
+                formattedSize = totalBytes + ' B';
             }
+
+            totalStorageElement.textContent = formattedSize;
+        }
+
+        function formatStorageSize(bytes) {
+            const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+            let i = 0;
+            while (bytes >= 1024 && i < units.length - 1) {
+                bytes /= 1024;
+                i++;
+            }
+            return `${bytes.toFixed(2)} ${units[i]}`;
         }
     });
-});
 </script>
 <?= $this->endSection() ?>

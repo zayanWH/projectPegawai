@@ -1,0 +1,480 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Jul 18, 2025 at 01:02 AM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `app_cloud`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `activity_logs`
+--
+
+CREATE TABLE `activity_logs` (
+  `id` bigint NOT NULL,
+  `user_id` bigint DEFAULT NULL,
+  `action` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `target_type` enum('file','folder') COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `target_id` bigint NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `files`
+--
+
+CREATE TABLE `files` (
+  `id` bigint NOT NULL,
+  `folder_id` bigint DEFAULT NULL,
+  `uploader_id` bigint DEFAULT NULL,
+  `file_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `file_path` text COLLATE utf8mb4_general_ci NOT NULL,
+  `file_size` int NOT NULL,
+  `file_type` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `download_count` int DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `files`
+--
+
+INSERT INTO `files` (`id`, `folder_id`, `uploader_id`, `file_name`, `file_path`, `file_size`, `file_type`, `created_at`, `download_count`) VALUES
+(1, NULL, 1, 'Cuplikan layar 2025-07-08 144705.png', 'hrd_documents/1751961408_70033fb90f45bbb2ae58.png', 15137, 'image/png', '2025-07-08 07:56:48', 0),
+(2, NULL, 1, 'Cuplikan layar 2025-07-08 084340.png', 'hrd_documents/1751967531_5bf4f3f968d47dd450df.png', 126095, 'image/png', '2025-07-08 09:38:51', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `folders`
+--
+
+CREATE TABLE `folders` (
+  `id` bigint NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `parent_id` bigint DEFAULT NULL,
+  `owner_id` bigint DEFAULT NULL,
+  `access_roles` text COLLATE utf8mb4_general_ci,
+  `is_shared` tinyint(1) NOT NULL DEFAULT '0',
+  `shared_type` enum('full','read') COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL,
+  `folder_type` enum('personal','shared') COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'personal'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `folders`
+--
+
+INSERT INTO `folders` (`id`, `name`, `parent_id`, `owner_id`, `access_roles`, `is_shared`, `shared_type`, `created_at`, `updated_at`, `folder_type`) VALUES
+(1, 'tes', NULL, 6, NULL, 0, NULL, '2025-07-16 23:59:49', '2025-07-17 06:59:49', 'personal'),
+(2, 'tes2', NULL, 6, NULL, 0, NULL, '2025-07-17 01:16:34', '2025-07-17 08:16:34', 'personal'),
+(3, 'TES3', NULL, 6, NULL, 0, NULL, '2025-07-17 01:54:27', '2025-07-17 08:54:27', 'personal');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `folder_permissions`
+--
+
+CREATE TABLE `folder_permissions` (
+  `id` bigint NOT NULL,
+  `folder_id` bigint DEFAULT NULL,
+  `role_id` bigint DEFAULT NULL,
+  `access_type` enum('read-only','read-write') COLLATE utf8mb4_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hrd_documents`
+--
+
+CREATE TABLE `hrd_documents` (
+  `id` bigint NOT NULL,
+  `file_id` bigint DEFAULT NULL,
+  `category` enum('SOP','SK','Pengumuman') COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_general_ci,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `hrd_documents`
+--
+
+INSERT INTO `hrd_documents` (`id`, `file_id`, `category`, `description`, `created_at`, `updated_at`) VALUES
+(10, 1, 'SK', 'hhh', '2025-07-08 07:56:48', '2025-07-08 07:56:48'),
+(11, 2, 'Pengumuman', 'hs,jbfjkabefli', '2025-07-08 09:38:51', '2025-07-08 09:38:51');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` bigint UNSIGNED NOT NULL,
+  `version` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `class` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `group` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `namespace` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `time` int NOT NULL,
+  `batch` int UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
+(1, '2025-07-17-064716', 'App\\Database\\Migrations\\AddAccessRolesToFolders', 'default', 'App', 1752734890, 1),
+(2, '2025-07-17-064846', 'App\\Database\\Migrations\\ModifySharedTypeEnum', 'default', 'App', 1752734947, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` bigint NOT NULL,
+  `user_id` bigint DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `message` text COLLATE utf8mb4_general_ci,
+  `is_read` tinyint(1) DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `is_emailed` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `user_id`, `title`, `message`, `is_read`, `created_at`, `is_emailed`) VALUES
+(1, 1, 'Dokumen Baru: SK', 'HRD telah mengunggah dokumen baru \'1751947931_bc027fa91292f231cd22.png\' dalam kategori \'SK\'. Deskripsi: jj\r\n... Silakan cek.', 1, '2025-07-08 04:12:11', 0),
+(2, 2, 'Dokumen Baru: SK', 'HRD telah mengunggah dokumen baru \'1751947931_bc027fa91292f231cd22.png\' dalam kategori \'SK\'. Deskripsi: jj\r\n... Silakan cek.', 0, '2025-07-08 04:12:11', 0),
+(3, 1, 'Dokumen Baru: SK', 'HRD telah mengunggah dokumen baru \'Cuplikan layar 2025-07-08 144705.png\' dalam kategori \'SK\'. Deskripsi: hhh... Silakan cek.', 0, '2025-07-08 07:56:48', 0),
+(4, 2, 'Dokumen Baru: SK', 'HRD telah mengunggah dokumen baru \'Cuplikan layar 2025-07-08 144705.png\' dalam kategori \'SK\'. Deskripsi: hhh... Silakan cek.', 0, '2025-07-08 07:56:48', 0),
+(5, 1, 'Dokumen Baru: Pengumuman', 'HRD telah mengunggah dokumen baru \'Cuplikan layar 2025-07-08 084340.png\' dalam kategori \'Pengumuman\'. Deskripsi: hs,jbfjkabefli... Silakan cek.', 0, '2025-07-08 09:38:51', 0),
+(6, 2, 'Dokumen Baru: Pengumuman', 'HRD telah mengunggah dokumen baru \'Cuplikan layar 2025-07-08 084340.png\' dalam kategori \'Pengumuman\'. Deskripsi: hs,jbfjkabefli... Silakan cek.', 0, '2025-07-08 09:38:51', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `id` bigint NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`id`, `email`, `token`, `created_at`) VALUES
+(7, 'izaisosial@gmail.com', '4a12f97f13f15dd04ebc0b40d117b1bbda2eb95c99adefecbe8c690d6799a62e', '2025-07-10 00:27:53');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` bigint NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `level` int NOT NULL,
+  `max_upload_size_mb` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `level`, `max_upload_size_mb`) VALUES
+(1, 'Admin', 1, 100),
+(2, 'HRD', 2, 80),
+(3, 'Direksi', 3, 1024),
+(4, 'Manajer', 4, 500),
+(5, 'Supervisor', 5, 250),
+(6, 'Staff', 6, 100);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `storage_usages`
+--
+
+CREATE TABLE `storage_usages` (
+  `id` bigint NOT NULL,
+  `user_id` bigint NOT NULL,
+  `total_used_mb` int NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `password_hash` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `role_id` bigint DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password_hash`, `role_id`, `is_active`, `created_at`) VALUES
+(1, 'admin_uss', 'admin@uss.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1, 1, '2025-07-16 07:17:30'),
+(2, 'hrd_citra', 'citra.hrd@uss.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, 1, '2025-07-16 07:17:30'),
+(3, 'direksi_budi', 'budi.direksi@uss.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3, 1, '2025-07-16 07:17:30'),
+(4, 'manager_dina', 'dina.manager@uss.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 4, 1, '2025-07-16 07:17:30'),
+(5, 'spv_eko', 'eko.spv@uss.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 5, 1, '2025-07-16 07:17:30'),
+(6, 'staff_fitri', 'fitri.staff@uss.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 6, 1, '2025-07-16 07:17:30');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `activity_logs`
+--
+ALTER TABLE `activity_logs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `files`
+--
+ALTER TABLE `files`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `folder_id` (`folder_id`),
+  ADD KEY `uploader_id` (`uploader_id`);
+
+--
+-- Indexes for table `folders`
+--
+ALTER TABLE `folders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `parent_id` (`parent_id`),
+  ADD KEY `owner_id` (`owner_id`);
+
+--
+-- Indexes for table `folder_permissions`
+--
+ALTER TABLE `folder_permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `folder_id` (`folder_id`),
+  ADD KEY `role_id` (`role_id`);
+
+--
+-- Indexes for table `hrd_documents`
+--
+ALTER TABLE `hrd_documents`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `file_id` (`file_id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `storage_usages`
+--
+ALTER TABLE `storage_usages`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `role_id` (`role_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `activity_logs`
+--
+ALTER TABLE `activity_logs`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `files`
+--
+ALTER TABLE `files`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `folders`
+--
+ALTER TABLE `folders`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `folder_permissions`
+--
+ALTER TABLE `folder_permissions`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `hrd_documents`
+--
+ALTER TABLE `hrd_documents`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `storage_usages`
+--
+ALTER TABLE `storage_usages`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `activity_logs`
+--
+ALTER TABLE `activity_logs`
+  ADD CONSTRAINT `activity_logs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `files`
+--
+ALTER TABLE `files`
+  ADD CONSTRAINT `files_ibfk_1` FOREIGN KEY (`folder_id`) REFERENCES `folders` (`id`),
+  ADD CONSTRAINT `files_ibfk_2` FOREIGN KEY (`uploader_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `folders`
+--
+ALTER TABLE `folders`
+  ADD CONSTRAINT `folders_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `folders` (`id`),
+  ADD CONSTRAINT `folders_ibfk_2` FOREIGN KEY (`owner_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `folder_permissions`
+--
+ALTER TABLE `folder_permissions`
+  ADD CONSTRAINT `folder_permissions_ibfk_1` FOREIGN KEY (`folder_id`) REFERENCES `folders` (`id`),
+  ADD CONSTRAINT `folder_permissions_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
+  ADD CONSTRAINT `folder_permissions_ibfk_3` FOREIGN KEY (`folder_id`) REFERENCES `folders` (`id`),
+  ADD CONSTRAINT `folder_permissions_ibfk_4` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
+
+--
+-- Constraints for table `hrd_documents`
+--
+ALTER TABLE `hrd_documents`
+  ADD CONSTRAINT `hrd_documents_ibfk_1` FOREIGN KEY (`file_id`) REFERENCES `files` (`id`);
+
+--
+-- Constraints for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `storage_usages`
+--
+ALTER TABLE `storage_usages`
+  ADD CONSTRAINT `storage_usages_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+activity_logs

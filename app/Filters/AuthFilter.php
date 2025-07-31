@@ -12,42 +12,66 @@ class AuthFilter implements FilterInterface
     {
         $session = session();
         
-        // Check if the user is logged in
+        // 1. Periksa apakah pengguna sudah login
         if (!$session->get('isLoggedIn')) {
             log_message('info', 'AuthFilter: User not logged in. Redirecting to /login');
             return redirect()->to(base_url('login'));
         }
 
-        // If the user is logged in, check their role
-        $userRoleId = $session->get('role_id');
-        $allowedRoles = $arguments; // Arguments will contain the allowed role_ids (e.g., [1, 2])
+        // Jika pengguna sudah login, dapatkan ID perannya
+        $userRoleId = (int)$session->get('role_id'); // Pastikan ini adalah integer
 
         log_message('debug', 'AuthFilter: User is logged in. Current role_id: ' . var_export($userRoleId, true));
+
+        // --- Logika akses mutlak untuk peran istimewa ---
+        // Daftar role_id yang memiliki akses mutlak (bisa mengakses semua halaman yang terfilter)
+        // SESUAIKAN ID INI DENGAN ID PERAN NYATA DI DATABASE ANDA!
+        // Contoh: Admin, HRD, Direksi, Manajer mungkin memiliki akses mutlak
+        $absoluteAccessRoles = [
+            1, // Admin
+            2, // HRD
+            3, // Direksi
+            4, // Manajer
+            // Catatan: Supervisor (ID 5) TIDAK ada di sini,
+            // sehingga aksesnya akan diperiksa per rute.
+        ];
+
+        // Jika role_id pengguna ada dalam daftar absoluteAccessRoles, abaikan semua pemeriksaan peran lainnya
+        if (in_array($userRoleId, $absoluteAccessRoles)) {
+            log_message('info', 'AuthFilter: User with role_id ' . $userRoleId . ' has absolute access. Proceeding.');
+            return null; // Izinkan akses tanpa pemeriksaan lebih lanjut
+        }
+        // --- Akhir logika akses mutlak ---
+
+        // $arguments akan berisi daftar role_id yang diizinkan untuk rute ini, 
+        // yang datang dari konfigurasi Routes.php (contoh: ['filter' => 'auth:1,2'])
+        $allowedRoles = $arguments; 
+
         log_message('debug', 'AuthFilter: Allowed roles for this route: ' . var_export($allowedRoles, true));
 
-        // If no role arguments are provided (e.g., only login is required), just proceed
+        // Jika tidak ada argumen peran yang diberikan (misalnya, hanya login yang diperlukan), lanjutkan saja
         if (empty($allowedRoles)) {
             log_message('info', 'AuthFilter: No specific roles required, proceeding (user is logged in).');
             return null;
         }
 
-        // Ensure $allowedRoles is an array and convert all arguments to integers for correct comparison
-        // The $arguments might come as an array of strings, so convert them to integers.
+        // Pastikan $allowedRoles adalah array dan konversi semua argumen ke integer 
+        // untuk perbandingan yang benar, karena $arguments mungkin datang sebagai array string.
         $allowedRoles = array_map('intval', (array) $allowedRoles); 
         
-        // Convert userRoleId to an integer as well for strict comparison
-        if (!in_array((int)$userRoleId, $allowedRoles)) { 
+        // Konversi $userRoleId ke integer juga untuk perbandingan yang ketat
+        if (!in_array($userRoleId, $allowedRoles)) { 
             log_message('warning', 'AuthFilter: User role_id ' . $userRoleId . ' is not in allowed roles [' . implode(', ', $allowedRoles) . ']. Redirecting to /akses-ditolak');
-            // If the role is not allowed, redirect to the "Access Denied" page
+            // Jika peran tidak diizinkan, arahkan ke halaman "Akses Ditolak"
             return redirect()->to(base_url('akses-ditolak')); 
         }
         
         log_message('info', 'AuthFilter: User with role_id ' . $userRoleId . ' is allowed. Proceeding.');
-        return null; // Filter passes, allow access
+        return null; // Filter lolos, izinkan akses
     }
     
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        // Empty
+        // Metode ini kosong dan tidak melakukan apa-apa setelah request selesai
     }
 }

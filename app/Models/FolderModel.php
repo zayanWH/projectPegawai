@@ -1,327 +1,72 @@
 <?php namespace App\Models;
 
 use CodeIgniter\Model;
+use CodeIgniter\Database\RawSql; // Pastikan ini ada jika menggunakan JSON_CONTAINS
 
 class FolderModel extends Model
 {
-    protected $table        = 'folders'; // Nama tabel Anda
-    protected $primaryKey   = 'id';
+    protected $table = 'folders';
+    protected $primaryKey = 'id';
 
     protected $useAutoIncrement = true;
+    protected $returnType = 'array';
+    protected $useSoftDeletes = false; 
 
-    protected $returnType     = 'array';
-    protected $useSoftDeletes = false; // Sesuaikan jika Anda menggunakan soft delete, pastikan ada kolom `deleted_at` di DB jika true
-
-    // Kolom-kolom yang diizinkan untuk diisi saat insert/update
-    // PASTIKAN 'access_roles' ADA DI SINI
     protected $allowedFields = ['name', 'parent_id', 'folder_type', 'is_shared', 'shared_type', 'owner_id', 'access_roles'];
 
     protected bool $allowEmptyInserts = false;
 
-    // Pengaturan Timestamps
-    protected $useTimestamps = true; // Aktifkan jika tabel Anda memiliki kolom created_at dan updated_at
-    protected $dateFormat    = 'datetime'; // Format tanggal (sesuaikan jika di DB berbeda, misal 'date' atau 'int')
-    protected $createdField  = 'created_at'; // Nama kolom untuk timestamp pembuatan
-    protected $updatedField  = 'updated_at'; // Nama kolom untuk timestamp pembaruan
-    protected $deletedField  = 'deleted_at'; // Nama kolom untuk timestamp soft delete (hanya jika useSoftDeletes true)
+    protected $useTimestamps = true;
+    protected $dateFormat = 'datetime';
+    protected $createdField = 'created_at';
+    protected $updatedField = 'updated_at';
+    protected $deletedField = 'deleted_at';
 
-    // Pengaturan Validasi (dapat ditambahkan sesuai kebutuhan)
     protected $validationRules = [
-        'name'        => 'required|min_length[1]|max_length[255]',
+        'name' => 'required|min_length[1]|max_length[255]',
         'folder_type' => 'required|in_list[personal,shared]',
-        'is_shared'   => 'required|in_list[0,1]',
-        'owner_id'    => 'required|integer',
-        'parent_id'   => 'permit_empty|integer'
+        'is_shared' => 'required|in_list[0,1]',
+        'owner_id' => 'required|integer',
+        'parent_id' => 'permit_empty|integer'
     ];
 
     protected $validationMessages = [
         'name' => [
-            'required'   => 'Nama folder wajib diisi.',
+            'required' => 'Nama folder wajib diisi.',
             'min_length' => 'Nama folder minimal 1 karakter.',
             'max_length' => 'Nama folder maksimal 255 karakter.',
         ],
         'folder_type' => [
             'required' => 'Jenis folder wajib diisi.',
-            'in_list'  => 'Jenis folder tidak valid.',
+            'in_list' => 'Jenis folder tidak valid.',
         ],
         'is_shared' => [
             'required' => 'Status share folder wajib diisi.',
-            'in_list'  => 'Status share folder tidak valid.',
+            'in_list' => 'Status share folder tidak valid.',
         ],
         'owner_id' => [
             'required' => 'Owner ID wajib diisi.',
-            'integer'  => 'Owner ID harus berupa angka.',
+            'integer' => 'Owner ID harus berupa angka.',
         ],
         'parent_id' => [
             'integer' => 'Parent ID harus berupa angka.',
         ],
     ];
-    protected $skipValidation     = false;
+    protected $skipValidation = false;
     protected $cleanValidationRules = true;
 
-    // Callbacks (dapat ditambahkan sesuai kebutuhan, misal untuk hash password sebelum insert)
     protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
-    protected $afterUpdate    = [];
-    protected $beforeFind     = [];
-    protected $afterFind      = [];
-    protected $beforeDelete   = [];
-    protected $afterDelete    = [];
+    protected $beforeInsert = ['setDefaultsBeforeInsert']; 
+    protected $afterInsert = [];
+    protected $beforeUpdate = ['checkNameExistsBeforeUpdate']; 
+    protected $afterUpdate = [];
+    protected $beforeFind = [];
+    protected $afterFind = [];
+    protected $beforeDelete = [];
+    protected $afterDelete = [];
 
-    public function canDeleteFolder($folderId)
-{
-    $errors = [];
-    
-    // Cek apakah folder memiliki subfolder
-    $subfolderCount = $this->where('parent_id', $folderId)->countAllResults();
-    if ($subfolderCount > 0) {
-        $errors[] = 'Folder memiliki ' . $subfolderCount . ' subfolder.';
-    }
-    
-    // Cek apakah folder memiliki file (jika ada tabel files)
-    /*
-    $fileModel = model('FileModel');
-    $fileCount = $fileModel->where('folder_id', $folderId)->countAllResults();
-    if ($fileCount > 0) {
-        $errors[] = 'Folder memiliki ' . $fileCount . ' file.';
-    }
-    */
-    
-    return [
-        'can_delete' => empty($errors),
-        'errors' => $errors
-    ];
-}
-
-/**
- * Hapus folder beserta semua isinya (use with caution)
- * @param int $folderId
- * @return bool
- */
-public function deleteFolder($folderId)
-{
-    $db = \Config\Database::connect();
-    $db->transStart();
-    
-    try {
-        // Hapus semua subfolder secara rekursif
-        $subfolders = $this->where('parent_id', $folderId)->findAll();
-        foreach ($subfolders as $subfolder) {
-            $this->deleteFolder($subfolder['id']);
-        }
-        
-        // Hapus semua file dalam folder (jika ada tabel files)
-        /*
-        $fileModel = model('FileModel');
-        $fileModel->where('folder_id', $folderId)->delete();
-        */
-        
-        // Hapus folder itu sendiri
-        $this->delete($folderId);
-        
-        $db->transCommit();
-        return true;
-        
-    } catch (\Exception $e) {
-        $db->transRollback();
-        throw $e;
-    }
-}
-
-/**
- * Soft delete folder (jika menggunakan soft delete)
- * @param int $folderId
- * @return bool
- */
-public function softDeleteFolder($folderId)
-{
-    $data = [
-        'deleted_at' => date('Y-m-d H:i:s'),
-        'updated_at' => date('Y-m-d H:i:s')
-    ];
-    
-    return $this->update($folderId, $data);
-}
-
-public function validateRename($data)
+    protected function setDefaultsBeforeInsert(array $data)
     {
-        $rules = [
-            'name' => 'required|min_length[1]|max_length[255]|regex_match[/^[a-zA-Z0-9\s\-_\.]+$/]'
-        ];
-
-        $messages = [
-            'name' => [
-                'required' => 'Nama folder harus diisi.',
-                'min_length' => 'Nama folder minimal 1 karakter.',
-                'max_length' => 'Nama folder maksimal 255 karakter.',
-                'regex_match' => 'Nama folder hanya boleh mengandung huruf, angka, spasi, tanda hubung, underscore, dan titik.'
-            ]
-        ];
-
-        $validation = \Config\Services::validation();
-        $validation->setRules($rules, $messages);
-
-        return $validation->run($data);
-    }
-
-    /**
-     * Cek apakah nama folder sudah digunakan dalam scope yang sama
-     * @param string $name
-     * @param int|null $parentId
-     * @param int $ownerId
-     * @param int|null $excludeId
-     * @return bool
-     */
-    public function isNameExists($name, $parentId, $ownerId, $excludeId = null)
-    {
-        $builder = $this->builder();
-        $builder->where('name', $name);
-        $builder->where('owner_id', $ownerId);
-        
-        if ($parentId === null) {
-            $builder->where('parent_id IS NULL');
-        } else {
-            $builder->where('parent_id', $parentId);
-        }
-        
-        if ($excludeId !== null) {
-            $builder->where('id !=', $excludeId);
-        }
-        
-        return $builder->countAllResults() > 0;
-    }
-
-    /**
-     * Mendapatkan folder berdasarkan owner dan parent
-     * @param int $ownerId
-     * @param int|null $parentId
-     * @return array
-     */
-    public function getFoldersByOwnerAndParent($ownerId, $parentId = null)
-    {
-        $builder = $this->builder();
-        $builder->where('owner_id', $ownerId);
-        
-        if ($parentId === null) {
-            $builder->where('parent_id IS NULL');
-        } else {
-            $builder->where('parent_id', $parentId);
-        }
-        
-        return $builder->orderBy('name', 'ASC')->findAll();
-    }
-
-    /**
-     * Mendapatkan folder dengan informasi owner
-     * @param int|null $folderId
-     * @return array|null
-     */
-    public function getFolderWithOwner($folderId = null)
-    {
-        $builder = $this->db->table($this->table . ' f');
-        $builder->join('users u', 'f.owner_id = u.id', 'left');
-        $builder->select('f.*, u.name as owner_name, u.username as owner_username, u.email as owner_email');
-        
-        if ($folderId !== null) {
-            $builder->where('f.id', $folderId);
-            return $builder->get()->getRowArray();
-        }
-        
-        return $builder->get()->getResultArray();
-    }
-
-    /**
-     * Update folder dengan validasi
-     * @param int $id
-     * @param array $data
-     * @return bool
-     */
-    public function updateFolder($id, $data)
-    {
-        // Validasi data sebelum update
-        if (isset($data['name'])) {
-            $folder = $this->find($id);
-            if (!$folder) {
-                return false;
-            }
-
-            // Cek duplikasi nama
-            if ($this->isNameExists($data['name'], $folder['parent_id'], $folder['owner_id'], $id)) {
-                return false;
-            }
-        }
-
-        // Update timestamp
-        $data['updated_at'] = date('Y-m-d H:i:s');
-        
-        return $this->update($id, $data);
-    }
-
-    /**
-     * Mendapatkan path lengkap folder
-     * @param int $folderId
-     * @return string
-     */
-    public function getFolderPath($folderId)
-    {
-        $path = [];
-        $currentId = $folderId;
-        
-        while ($currentId !== null) {
-            $folder = $this->find($currentId);
-            if (!$folder) {
-                break;
-            }
-            
-            array_unshift($path, $folder['name']);
-            $currentId = $folder['parent_id'];
-        }
-        
-        return implode('/', $path);
-    }
-
-    /**
-     * Mendapatkan semua subfolder dari sebuah folder
-     * @param int $parentId
-     * @return array
-     */
-    public function getSubfolders($parentId)
-    {
-        return $this->where('parent_id', $parentId)
-                    ->orderBy('name', 'ASC')
-                    ->findAll();
-    }
-
-    /**
-     * Mendapatkan breadcrumbs (array folder dari root ke folder saat ini)
-     * @param int $folderId
-     * @return array
-     */
-    public function getBreadcrumbs($folderId)
-    {
-        $breadcrumbs = [];
-        $currentId = $folderId;
-        while ($currentId !== null) {
-            $folder = $this->find($currentId);
-            if (!$folder) {
-                break;
-            }
-            array_unshift($breadcrumbs, $folder);
-            $currentId = $folder['parent_id'];
-        }
-        return $breadcrumbs;
-    }
-
-    /**
-     * Callback sebelum insert
-     * @param array $data
-     * @return array
-     */
-    protected function beforeInsert(array $data)
-    {
-        // Set default values jika tidak ada
         if (!isset($data['data']['is_shared'])) {
             $data['data']['is_shared'] = 0;
         }
@@ -333,14 +78,8 @@ public function validateRename($data)
         return $data;
     }
 
-    /**
-     * Callback sebelum update
-     * @param array $data
-     * @return array
-     */
-    protected function beforeUpdate(array $data)
+    protected function checkNameExistsBeforeUpdate(array $data)
     {
-        // Validasi tambahan saat update
         if (isset($data['data']['name']) && isset($data['id'])) {
             $folder = $this->find($data['id'][0]);
             if ($folder && $this->isNameExists($data['data']['name'], $folder['parent_id'], $folder['owner_id'], $data['id'][0])) {
@@ -349,5 +88,202 @@ public function validateRename($data)
         }
         
         return $data;
+    }
+
+    public function canDeleteFolder($folderId)
+    {
+        $errors = [];
+        
+        $subfolderCount = $this->where('parent_id', $folderId)->countAllResults();
+        if ($subfolderCount > 0) {
+            $errors[] = 'Folder memiliki ' . $subfolderCount . ' subfolder.';
+        }
+        
+        return [
+            'can_delete' => empty($errors),
+            'errors' => $errors
+        ];
+    }
+
+    public function findOrCreateByPath(string $path, ?int $rootParentId, int $userId): ?int
+    {
+        if (empty($path)) {
+            return $rootParentId;
+        }
+
+        $pathParts = explode('/', trim($path, '/'));
+        $currentParentId = $rootParentId;
+
+        foreach ($pathParts as $part) {
+            $folder = $this->where('name', $part)
+                           ->where('parent_id', $currentParentId)
+                           ->where('owner_id', $userId)
+                           ->first();
+
+            if ($folder) {
+                $currentParentId = $folder['id'];
+            } else {
+                $data = [
+                    'name' => $part,
+                    'parent_id' => $currentParentId,
+                    'folder_type' => 'personal',
+                    'is_shared' => 0,
+                    'owner_id' => $userId,
+                ];
+
+                $this->insert($data);
+                $currentParentId = $this->insertID();
+            }
+        }
+
+        return $currentParentId;
+    }
+
+    public function isNameExists(string $name, ?int $parentId, int $ownerId, ?int $excludeId = null): bool
+    {
+        $builder = $this->builder();
+        $builder->where('name', $name);
+        $builder->where('owner_id', $ownerId);
+
+        if ($parentId === null || $parentId === 0) {
+            $builder->where('parent_id IS NULL');
+        } else {
+            $builder->where('parent_id', $parentId);
+        }
+
+        if ($excludeId !== null) {
+            $builder->where('id !=', $excludeId);
+        }
+
+        return $builder->countAllResults() > 0;
+    }
+
+    public function getBreadcrumbs(int $folderId): array
+    {
+        $path = [];
+        $currentId = $folderId;
+
+        while ($currentId !== null && $currentId !== 0) {
+            $folder = $this->find($currentId);
+            if (!$folder) {
+                break;
+            }
+            array_unshift($path, ['id' => $folder['id'], 'name' => $folder['name']]);
+            $currentId = $folder['parent_id'];
+        }
+
+        return $path;
+    }
+
+    public function getFolderWithOwner(int $folderId): ?array
+    {
+        // Pastikan Anda memilih owner_name dan owner_role di sini
+        return $this->select('folders.*, users.name as owner_name, roles.name as owner_role')
+                    ->join('users', 'users.id = folders.owner_id')
+                    ->join('roles', 'roles.id = users.role_id', 'left') // Bergabung dengan tabel roles
+                    ->where('folders.id', $folderId)
+                    ->first();
+    }
+
+    public function getSubfolders(int $parentId, int $currentUserId, string $currentUserRole): array
+    {
+        $builder = $this->builder();
+
+        $builder->where('parent_id', $parentId);
+
+        // --- Perbaikan logika otorisasi ---
+        $builder->groupStart(); // Mulai grup untuk semua kondisi OR
+
+            // Kondisi 1: Folder adalah milik user yang login
+            $builder->where('owner_id', $currentUserId);
+
+            // Kondisi 2: Folder adalah 'public' (dibagikan ke semua orang)
+            $builder->orWhere('shared_type', 'public');
+
+            // Kondisi 3: Folder dibagikan ke peran tertentu (is_shared = 1 dan role ada di access_roles)
+            $builder->orGroupStart(); // Mulai grup OR bersarang untuk kondisi shared + role
+                $builder->where('is_shared', 1);
+                $builder->where('access_roles IS NOT NULL');
+                // Menggunakan JSON_CONTAINS untuk pencarian role yang lebih akurat
+                $builder->where(new RawSql("JSON_CONTAINS(access_roles, '\"{$currentUserRole}\"')"));
+            $builder->groupEnd(); // Akhiri grup OR bersarang
+
+        $builder->groupEnd(); // Akhiri grup untuk semua kondisi OR
+
+        $builder->orderBy('name', 'ASC');
+
+        return $builder->get()->getResultArray();
+    }
+    
+    public function getMyPersonalFolders(int $ownerId, ?int $parentId = null): array
+    {
+        $builder = $this->builder();
+        $builder->where('owner_id', $ownerId)
+                ->where('folder_type', 'personal')
+                ->where('is_shared', 0);
+
+        if ($parentId === null || $parentId === 0) {
+            $builder->where('parent_id IS NULL');
+        } else {
+            $builder->where('parent_id', $parentId);
+        }
+
+        $builder->orderBy('name', 'ASC');
+
+        return $builder->get()->getResultArray();
+    }
+
+    public function getSharedFoldersForUser(int $currentUserId, string $currentUserRole): array
+    {
+        $builder = $this->builder();
+
+        // **PENTING: Pastikan Anda memilih owner_name dan owner_role di sini**
+        $builder->select('folders.*, users.name as owner_name, roles.name as owner_role');
+        $builder->join('users', 'users.id = folders.owner_id');
+        $builder->join('roles', 'roles.id = users.role_id', 'left'); // Bergabung dengan tabel roles
+
+        $builder->groupStart(); // Mulai grup untuk semua kondisi OR
+
+            // Kondisi 1: Folder adalah milik user yang login
+            $builder->orWhere('owner_id', $currentUserId);
+
+            // Kondisi 2: Folder adalah 'public' (dibagikan ke semua orang)
+            $builder->orWhere('shared_type', 'public');
+
+            // Kondisi 3: Folder dibagikan ke peran tertentu (is_shared = 1 dan role ada di access_roles)
+            $builder->orGroupStart();
+                $builder->where('is_shared', 1);
+                $builder->where('access_roles IS NOT NULL');
+                $builder->where(new RawSql("JSON_CONTAINS(access_roles, '\"{$currentUserRole}\"')"));
+            $builder->groupEnd();
+
+        $builder->groupEnd();
+
+        // Untuk view dokumenBersama, Anda mungkin ingin melihat folder root yang dibagikan.
+        // Jika Anda ingin semua folder yang dibagikan (termasuk subfolder), hapus baris ini.
+        $builder->where('parent_id IS NULL');
+
+        $builder->orderBy('name', 'ASC');
+
+        return $builder->get()->getResultArray();
+    }
+
+    /**
+     * Mengambil jalur lengkap (path) dari sebuah folder sebagai string.
+     * Contoh: "Root Folder / Subfolder 1 / Target Folder"
+     *
+     * @param int $folderId ID dari folder yang ingin dicari jalurnya.
+     * @return string Jalur folder yang dipisahkan oleh ' / '.
+     */
+    public function getFolderPath(int $folderId): string
+    {
+        // Panggil method getBreadcrumbs yang sudah ada untuk mendapatkan array jalur
+        $breadcrumbs = $this->getBreadcrumbs($folderId);
+
+        // Ekstrak hanya nama-nama folder dari array breadcrumbs
+        $pathNames = array_column($breadcrumbs, 'name');
+
+        // Gabungkan nama-nama folder dengan ' / ' sebagai pemisah
+        return implode(' / ', $pathNames);
     }
 }

@@ -1,0 +1,1477 @@
+CRITICAL - 2025-07-24 08:25:57 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\FileModel::getTotalFileSize
+[Method: GET, Route: admin/dashboard]
+in SYSTEMPATH\Model.php on line 930.
+ 1 APPPATH\Controllers\DokumenControllerAdmin.php(25): CodeIgniter\Model->__call('getTotalFileSize', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerAdmin->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerAdmin))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 08:44:39 --> Error: Undefined constant "App\Controllers\WRITABLE_PATH"
+[Method: GET, Route: hrd/file/view/4]
+in APPPATH\Controllers\DokumenControllerHRD.php on line 619.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->viewFile('4')
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 08:45:08 --> ErrorException: readfile(C:\laragon\www\projectPegawai-master\writable\uploads/): Failed to open stream: No such file or directory
+[Method: GET, Route: hrd/file/view/4]
+in APPPATH\Controllers\DokumenControllerHRD.php on line 631.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'readfile(C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\DokumenControllerHRD.php', 631)
+ 2 APPPATH\Controllers\DokumenControllerHRD.php(631): readfile('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->viewFile('4')
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 08:45:14 --> Error: Undefined constant "App\Controllers\WRITABLE_PATH"
+[Method: GET, Route: hrd/file/view/4]
+in APPPATH\Controllers\DokumenControllerHRD.php on line 619.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->viewFile('4')
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 08:48:59 --> ErrorException: readfile(C:\laragon\www\projectPegawai-master\writable\uploads/): Failed to open stream: No such file or directory
+[Method: GET, Route: hrd/file/view/4]
+in APPPATH\Controllers\DokumenControllerHRD.php on line 641.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'readfile(C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\DokumenControllerHRD.php', 641)
+ 2 APPPATH\Controllers\DokumenControllerHRD.php(641): readfile('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->viewFile('4')
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 08:49:05 --> ErrorException: readfile(C:\laragon\www\projectPegawai-master\writable\uploads/): Failed to open stream: No such file or directory
+[Method: GET, Route: hrd/file/view/4]
+in APPPATH\Controllers\DokumenControllerHRD.php on line 641.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'readfile(C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\DokumenControllerHRD.php', 641)
+ 2 APPPATH\Controllers\DokumenControllerHRD.php(641): readfile('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->viewFile('4')
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 08:50:08 --> ErrorException: readfile(C:\laragon\www\projectPegawai-master\writable\uploads/): Failed to open stream: No such file or directory
+[Method: GET, Route: hrd/file/view/4]
+in APPPATH\Controllers\DokumenControllerHRD.php on line 641.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'readfile(C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\DokumenControllerHRD.php', 641)
+ 2 APPPATH\Controllers\DokumenControllerHRD.php(641): readfile('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->viewFile('4')
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 09:11:41 --> ErrorException: Undefined variable $folder_id
+[Method: GET, Route: hrd/view-staff-folder/3]
+in APPPATH\Views\HRD\viewFolderContent.php on line 6.
+ 1 APPPATH\Views\HRD\viewFolderContent.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $folder_id', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\viewFolderContent.php', 6)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\viewFolderContent.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/viewFolderContent', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(236): view('HRD/viewFolderContent', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->viewStaffFolder('3')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 09:12:03 --> ErrorException: Undefined variable $folder_id
+[Method: GET, Route: hrd/view-staff-folder/3]
+in APPPATH\Views\HRD\viewFolderContent.php on line 624.
+ 1 APPPATH\Views\HRD\viewFolderContent.php(624): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $folder_id', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\viewFolderContent.php', 624)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\viewFolderContent.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/viewFolderContent', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(236): view('HRD/viewFolderContent', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->viewStaffFolder('3')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 09:19:27 --> ParseError: syntax error, unexpected variable "$subFolders", expecting "function" or "const"
+[Method: GET, Route: hrd/view-staff-folder/3]
+in APPPATH\Controllers\DokumenControllerHRD.php on line 230.
+ 1 VENDORPATH\composer\ClassLoader.php(428): Composer\Autoload\includeFile('C:\\laragon\\www\\projectPegawai-master\\vendor\\composer/../../app/Controllers/DokumenControllerHRD.php')
+ 2 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Controllers\\DokumenControllerHRD')
+ 3 SYSTEMPATH\CodeIgniter.php(885): class_exists('\\App\\Controllers\\DokumenControllerHRD', true)
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->startController()
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 10:18:46 --> CodeIgniter\Files\Exceptions\FileNotFoundException: File not found: "C:\laragon\www\projectPegawai-master\writable\uploads/"
+[Method: GET, Route: hrd/file/view/5]
+in SYSTEMPATH\Files\File.php on line 51.
+ 1 SYSTEMPATH\Files\File.php(51): CodeIgniter\Files\Exceptions\FileNotFoundException::forFileNotFound('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/')
+ 2 SYSTEMPATH\HTTP\DownloadResponse.php(106): CodeIgniter\Files\File->__construct('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/', true)
+ 3 SYSTEMPATH\HTTP\ResponseTrait.php(745): CodeIgniter\HTTP\DownloadResponse->setFilePath('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/')
+ 4 APPPATH\Controllers\DokumenControllerHRD.php(644): CodeIgniter\HTTP\Response->download('', null)
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->viewFile('5')
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 10:18:57 --> ErrorException: readfile(C:\laragon\www\projectPegawai-master\writable\uploads/): Failed to open stream: No such file or directory
+[Method: GET, Route: hrd/file/view/4]
+in APPPATH\Controllers\DokumenControllerHRD.php on line 641.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'readfile(C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\DokumenControllerHRD.php', 641)
+ 2 APPPATH\Controllers\DokumenControllerHRD.php(641): readfile('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->viewFile('4')
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 10:19:14 --> CodeIgniter\Files\Exceptions\FileNotFoundException: File not found: "C:\laragon\www\projectPegawai-master\writable\uploads/"
+[Method: GET, Route: hrd/file/view/5]
+in SYSTEMPATH\Files\File.php on line 51.
+ 1 SYSTEMPATH\Files\File.php(51): CodeIgniter\Files\Exceptions\FileNotFoundException::forFileNotFound('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/')
+ 2 SYSTEMPATH\HTTP\DownloadResponse.php(106): CodeIgniter\Files\File->__construct('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/', true)
+ 3 SYSTEMPATH\HTTP\ResponseTrait.php(745): CodeIgniter\HTTP\DownloadResponse->setFilePath('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/')
+ 4 APPPATH\Controllers\DokumenControllerHRD.php(644): CodeIgniter\HTTP\Response->download('', null)
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->viewFile('5')
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 10:21:23 --> CodeIgniter\Files\Exceptions\FileNotFoundException: File not found: "C:\laragon\www\projectPegawai-master\writable\uploads/"
+[Method: GET, Route: hrd/file/view/5]
+in SYSTEMPATH\Files\File.php on line 51.
+ 1 SYSTEMPATH\Files\File.php(51): CodeIgniter\Files\Exceptions\FileNotFoundException::forFileNotFound('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/')
+ 2 SYSTEMPATH\HTTP\DownloadResponse.php(106): CodeIgniter\Files\File->__construct('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/', true)
+ 3 SYSTEMPATH\HTTP\ResponseTrait.php(745): CodeIgniter\HTTP\DownloadResponse->setFilePath('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/')
+ 4 APPPATH\Controllers\DokumenControllerHRD.php(636): CodeIgniter\HTTP\Response->download('', null)
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->viewFile('5')
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 10:40:34 --> ErrorException: Undefined property: App\Controllers\DokumenControllerHRD::$session
+[Method: POST, Route: hrd/create-folder]
+in APPPATH\Controllers\DokumenControllerHRD.php on line 245.
+ 1 APPPATH\Controllers\DokumenControllerHRD.php(245): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\DokumenControllerHRD::$session', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\DokumenControllerHRD.php', 245)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->createFolder()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 10:43:04 --> Error: Call to undefined method CodeIgniter\HTTP\IncomingRequest::getSession()
+[Method: POST, Route: hrd/create-folder]
+in APPPATH\Controllers\DokumenControllerHRD.php on line 244.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->createFolder()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 11:15:25 --> ErrorException: Undefined variable $fileName
+[Method: GET, Route: hrd/view-staff-folder/3]
+in APPPATH\Views\HRD\viewFolderContent.php on line 6.
+ 1 APPPATH\Views\HRD\viewFolderContent.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fileName', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\viewFolderContent.php', 6)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\viewFolderContent.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/viewFolderContent', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(236): view('HRD/viewFolderContent', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->viewStaffFolder('3')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 11:33:41 --> ErrorException: Undefined variable $fileName
+[Method: GET, Route: hrd/view-staff-folder/3]
+in APPPATH\Views\HRD\viewFolderContent.php on line 16.
+ 1 APPPATH\Views\HRD\viewFolderContent.php(16): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fileName', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\viewFolderContent.php', 16)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\viewFolderContent.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/viewFolderContent', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(236): view('HRD/viewFolderContent', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->viewStaffFolder('3')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 11:33:44 --> ErrorException: Undefined variable $fileName
+[Method: GET, Route: hrd/view-staff-folder/3]
+in APPPATH\Views\HRD\viewFolderContent.php on line 16.
+ 1 APPPATH\Views\HRD\viewFolderContent.php(16): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fileName', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\viewFolderContent.php', 16)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\viewFolderContent.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/viewFolderContent', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(236): view('HRD/viewFolderContent', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->viewStaffFolder('3')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 11:34:00 --> ErrorException: Undefined variable $fileName
+[Method: GET, Route: hrd/view-staff-folder/3]
+in APPPATH\Views\HRD\viewFolderContent.php on line 16.
+ 1 APPPATH\Views\HRD\viewFolderContent.php(16): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fileName', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\viewFolderContent.php', 16)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\viewFolderContent.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/viewFolderContent', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(236): view('HRD/viewFolderContent', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->viewStaffFolder('3')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 11:34:02 --> ErrorException: Undefined variable $fileName
+[Method: GET, Route: hrd/view-staff-folder/3]
+in APPPATH\Views\HRD\viewFolderContent.php on line 16.
+ 1 APPPATH\Views\HRD\viewFolderContent.php(16): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fileName', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\viewFolderContent.php', 16)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\viewFolderContent.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/viewFolderContent', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(236): view('HRD/viewFolderContent', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->viewStaffFolder('3')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 13:39:07 --> ErrorException: Undefined variable $roles
+[Method: GET, Route: hrd/dokumen-staff]
+in APPPATH\Views\HRD\dokumenStaff.php on line 59.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $roles', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php', 59)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(216): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 13:41:11 --> ErrorException: Undefined variable $roles
+[Method: GET, Route: hrd/dokumen-staff]
+in APPPATH\Views\HRD\dokumenStaff.php on line 59.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $roles', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php', 59)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(216): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 13:49:39 --> ErrorException: Undefined variable $roles
+[Method: GET, Route: hrd/dokumen-staff]
+in APPPATH\Views\HRD\dokumenStaff.php on line 59.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $roles', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php', 59)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(216): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 13:49:48 --> ErrorException: Undefined variable $roles
+[Method: GET, Route: hrd/dokumen-staff]
+in APPPATH\Views\HRD\dokumenStaff.php on line 59.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $roles', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php', 59)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(216): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-24 13:54:24 --> File ID 2 ditemukan, tetapi kunci "server_file_name" tidak ada atau kosong.
+CRITICAL - 2025-07-24 13:55:20 --> ErrorException: Undefined variable $roles
+[Method: GET, Route: hrd/dokumen-staff]
+in APPPATH\Views\HRD\dokumenStaff.php on line 59.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $roles', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php', 59)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(216): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 13:55:25 --> ErrorException: Undefined variable $roles
+[Method: GET, Route: hrd/dokumen-staff]
+in APPPATH\Views\HRD\dokumenStaff.php on line 59.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $roles', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php', 59)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(210): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 13:55:27 --> ErrorException: Undefined variable $roles
+[Method: GET, Route: hrd/dokumen-staff]
+in APPPATH\Views\HRD\dokumenStaff.php on line 59.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $roles', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php', 59)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(210): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 14:17:08 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: hrd/create-folder]
+in SYSTEMPATH\BaseModel.php on line 1014.
+ 1 SYSTEMPATH\BaseModel.php(1014): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\DokumenControllerHRD.php(340): CodeIgniter\Model->update(7, [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->createFolder()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 14:17:42 --> ErrorException: Undefined variable $roles
+[Method: GET, Route: hrd/dokumen-staff]
+in APPPATH\Views\HRD\dokumenStaff.php on line 59.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $roles', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php', 59)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(210): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-24 14:18:32 --> File fisik tidak ditemukan di: C:\laragon\www\projectPegawai-master\writable\uploads/1753259586_a3d2db134d3d3667ce74.docx untuk File ID: 3
+ERROR - 2025-07-24 14:19:27 --> File ID 1 ditemukan, tetapi kunci "server_file_name" tidak ada atau kosong.
+ERROR - 2025-07-24 14:19:45 --> File ID 2 ditemukan, tetapi kunci "server_file_name" tidak ada atau kosong.
+ERROR - 2025-07-24 14:19:49 --> File ID 1 ditemukan, tetapi kunci "server_file_name" tidak ada atau kosong.
+ERROR - 2025-07-24 14:20:11 --> File ID 2 ditemukan, tetapi kunci "server_file_name" tidak ada atau kosong.
+ERROR - 2025-07-24 14:20:25 --> File ID 2 ditemukan, tetapi kunci "server_file_name" tidak ada atau kosong.
+ERROR - 2025-07-24 14:21:33 --> File fisik tidak ditemukan di: C:\laragon\www\projectPegawai-master\writable\uploads/1753259336_00f972bdea6c3f392c5b.docx untuk File ID: 2
+ERROR - 2025-07-24 14:22:51 --> File fisik tidak ditemukan di: C:\laragon\www\projectPegawai-master\writable\uploads/1753259336_00f972bdea6c3f392c5b.docx untuk File ID: 2
+ERROR - 2025-07-24 14:22:57 --> File fisik tidak ditemukan di: C:\laragon\www\projectPegawai-master\writable\uploads/1753253563_499b6c61c1969facf64c.jpg untuk File ID: 1
+ERROR - 2025-07-24 16:01:44 --> mysqli_sql_exception: Unknown table 'folder' in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `folder`...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folder`...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folder`...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folder`...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerHRD.php(210): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2025-07-24 16:01:44 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown table 'folder'
+[Method: GET, Route: hrd/dokumen-staff]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folder`.*, `users`.`username` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DokumenControllerHRD.php(210): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 16:01:44 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown table 'folder'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folder`.*, `users`.`username` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folder`.*, `users`.`username` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folder`.*, `users`.`username` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\DokumenControllerHRD.php(210): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 16:01:44 --> [Caused by] mysqli_sql_exception: Unknown table 'folder'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `folder`.*, `users`.`username` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folder`.*, `users`.`username` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folder`.*, `users`.`username` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folder`.*, `users`.`username` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\DokumenControllerHRD.php(210): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-24 16:02:04 --> mysqli_sql_exception: Unknown column 'users.username' in 'field list' in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `folders...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folders...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folders...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folders...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerHRD.php(210): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2025-07-24 16:02:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'users.username' in 'field list'
+[Method: GET, Route: hrd/dokumen-staff]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folders`.*, `users`.`username` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folders`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DokumenControllerHRD.php(210): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 16:02:04 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'users.username' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folders`.*, `users`.`username` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folders`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folders`.*, `users`.`username` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folders`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folders`.*, `users`.`username` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folders`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\DokumenControllerHRD.php(210): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 16:02:04 --> [Caused by] mysqli_sql_exception: Unknown column 'users.username' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `folders`.*, `users`.`username` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folders`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folders`.*, `users`.`username` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folders`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folders`.*, `users`.`username` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folders`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folders`.*, `users`.`username` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folders`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\DokumenControllerHRD.php(210): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-24 16:03:51 --> mysqli_sql_exception: Unknown table 'folder' in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `folder`...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folder`...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folder`...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folder`...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerHRD.php(199): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2025-07-24 16:03:51 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown table 'folder'
+[Method: GET, Route: hrd/dokumen-staff]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folder`.*, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DokumenControllerHRD.php(199): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 16:03:51 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown table 'folder'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folder`.*, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folder`.*, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folder`.*, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\DokumenControllerHRD.php(199): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 16:03:51 --> [Caused by] mysqli_sql_exception: Unknown table 'folder'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `folder`.*, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folder`.*, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folder`.*, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folder`.*, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\DokumenControllerHRD.php(199): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-24 16:06:12 --> mysqli_sql_exception: Unknown column 'folder.parent_id' in 'where clause' in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `folders...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folders...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folders...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folders...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerHRD.php(200): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2025-07-24 16:06:12 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'folder.parent_id' in 'where clause'
+[Method: GET, Route: hrd/dokumen-staff]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folders`.*, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folders`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `folder`.`parent_id` IS NULL', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DokumenControllerHRD.php(200): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 16:06:12 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'folder.parent_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folders`.*, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folders`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `folder`.`parent_id` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folders`.*, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folders`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `folder`.`parent_id` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folders`.*, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folders`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `folder`.`parent_id` IS NULL', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\DokumenControllerHRD.php(200): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 16:06:12 --> [Caused by] mysqli_sql_exception: Unknown column 'folder.parent_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `folders`.*, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folders`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `folder`.`parent_id` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folders`.*, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folders`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `folder`.`parent_id` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folders`.*, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folders`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `folder`.`parent_id` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folders`.*, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folders`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `folder`.`parent_id` IS NULL', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\DokumenControllerHRD.php(200): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 16:14:07 --> ErrorException: Undefined property: App\Controllers\DokumenControllerStaff::$roleModel
+[Method: GET, Route: staff/dokumen-staff]
+in APPPATH\Controllers\DokumenControllerStaff.php on line 183.
+ 1 APPPATH\Controllers\DokumenControllerStaff.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\DokumenControllerStaff::$roleModel', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\DokumenControllerStaff.php', 183)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenStaff()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 16:14:50 --> Error: Call to a member function where() on null
+[Method: GET, Route: staff/dokumen-staff]
+in APPPATH\Controllers\DokumenControllerStaff.php on line 189.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenStaff()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-24 16:22:16 --> File fisik tidak ditemukan di: C:\laragon\www\projectPegawai-master\writable\uploads/1753259336_00f972bdea6c3f392c5b.docx untuk File ID: 2
+ERROR - 2025-07-24 16:22:27 --> File fisik tidak ditemukan di: C:\laragon\www\projectPegawai-master\writable\uploads/1753259336_00f972bdea6c3f392c5b.docx untuk File ID: 2
+CRITICAL - 2025-07-24 16:49:56 --> ErrorException: Undefined property: App\Controllers\DokumenControllerHRD::$session
+[Method: POST, Route: hrd/search]
+in APPPATH\Controllers\DokumenControllerHRD.php on line 224.
+ 1 APPPATH\Controllers\DokumenControllerHRD.php(224): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\DokumenControllerHRD::$session', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\DokumenControllerHRD.php', 224)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 16:53:48 --> Error: Cannot call constructor
+[Method: GET, Route: hrd/dokumen-staff]
+in APPPATH\Controllers\DokumenControllerHRD.php on line 25.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\DokumenControllerHRD->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 16:54:16 --> ErrorException: Undefined property: App\Controllers\DokumenControllerHRD::$session
+[Method: POST, Route: hrd/search]
+in APPPATH\Controllers\DokumenControllerHRD.php on line 225.
+ 1 APPPATH\Controllers\DokumenControllerHRD.php(225): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\DokumenControllerHRD::$session', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\DokumenControllerHRD.php', 225)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 16:55:06 --> Error: Cannot call constructor
+[Method: GET, Route: hrd/dokumen-staff]
+in APPPATH\Controllers\DokumenControllerHRD.php on line 26.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\DokumenControllerHRD->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-24 16:59:06 --> mysqli_sql_exception: Unknown column 'folder.id' in 'field list' in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `folder`...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folder`...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folder`...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folder`...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerHRD.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2025-07-24 16:59:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'folder.id' in 'field list'
+[Method: POST, Route: hrd/search]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folder`.`id`, `folder`.`name`, `folder`.`owner_id`, `folder`.`folder_type`, `folder`.`is_shared`, `folder`.`shared_type`, `folder`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = :folders.owner_id:
+OR `folders`.`owner_id` IN :folders.owner_id.1:
+ )
+AND  `folders`.`name` LIKE :folders.name: ESCAPE \'!\'', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DokumenControllerHRD.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 16:59:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'folder.id' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folder`.`id`, `folder`.`name`, `folder`.`owner_id`, `folder`.`folder_type`, `folder`.`is_shared`, `folder`.`shared_type`, `folder`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = \'9\'
+OR `folders`.`owner_id` IN (\'6\',\'10\')
+ )
+AND  `folders`.`name` LIKE \'%aa%\' ESCAPE \'!\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folder`.`id`, `folder`.`name`, `folder`.`owner_id`, `folder`.`folder_type`, `folder`.`is_shared`, `folder`.`shared_type`, `folder`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = \'9\'
+OR `folders`.`owner_id` IN (\'6\',\'10\')
+ )
+AND  `folders`.`name` LIKE \'%aa%\' ESCAPE \'!\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folder`.`id`, `folder`.`name`, `folder`.`owner_id`, `folder`.`folder_type`, `folder`.`is_shared`, `folder`.`shared_type`, `folder`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = :folders.owner_id:
+OR `folders`.`owner_id` IN :folders.owner_id.1:
+ )
+AND  `folders`.`name` LIKE :folders.name: ESCAPE \'!\'', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\DokumenControllerHRD.php(263): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 16:59:06 --> [Caused by] mysqli_sql_exception: Unknown column 'folder.id' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `folder`.`id`, `folder`.`name`, `folder`.`owner_id`, `folder`.`folder_type`, `folder`.`is_shared`, `folder`.`shared_type`, `folder`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = \'9\'
+OR `folders`.`owner_id` IN (\'6\',\'10\')
+ )
+AND  `folders`.`name` LIKE \'%aa%\' ESCAPE \'!\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folder`.`id`, `folder`.`name`, `folder`.`owner_id`, `folder`.`folder_type`, `folder`.`is_shared`, `folder`.`shared_type`, `folder`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = \'9\'
+OR `folders`.`owner_id` IN (\'6\',\'10\')
+ )
+AND  `folders`.`name` LIKE \'%aa%\' ESCAPE \'!\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folder`.`id`, `folder`.`name`, `folder`.`owner_id`, `folder`.`folder_type`, `folder`.`is_shared`, `folder`.`shared_type`, `folder`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = \'9\'
+OR `folders`.`owner_id` IN (\'6\',\'10\')
+ )
+AND  `folders`.`name` LIKE \'%aa%\' ESCAPE \'!\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folder`.`id`, `folder`.`name`, `folder`.`owner_id`, `folder`.`folder_type`, `folder`.`is_shared`, `folder`.`shared_type`, `folder`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = :folders.owner_id:
+OR `folders`.`owner_id` IN :folders.owner_id.1:
+ )
+AND  `folders`.`name` LIKE :folders.name: ESCAPE \'!\'', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\DokumenControllerHRD.php(263): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-24 16:59:06 --> mysqli_sql_exception: Unknown column 'folder.id' in 'field list' in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `folder`...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folder`...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folder`...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folder`...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerHRD.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2025-07-24 16:59:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'folder.id' in 'field list'
+[Method: POST, Route: hrd/search]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folder`.`id`, `folder`.`name`, `folder`.`owner_id`, `folder`.`folder_type`, `folder`.`is_shared`, `folder`.`shared_type`, `folder`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = :folders.owner_id:
+OR `folders`.`owner_id` IN :folders.owner_id.1:
+ )
+AND  `folders`.`name` LIKE :folders.name: ESCAPE \'!\'', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DokumenControllerHRD.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 16:59:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'folder.id' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folder`.`id`, `folder`.`name`, `folder`.`owner_id`, `folder`.`folder_type`, `folder`.`is_shared`, `folder`.`shared_type`, `folder`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = \'9\'
+OR `folders`.`owner_id` IN (\'6\',\'10\')
+ )
+AND  `folders`.`name` LIKE \'%aaa%\' ESCAPE \'!\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folder`.`id`, `folder`.`name`, `folder`.`owner_id`, `folder`.`folder_type`, `folder`.`is_shared`, `folder`.`shared_type`, `folder`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = \'9\'
+OR `folders`.`owner_id` IN (\'6\',\'10\')
+ )
+AND  `folders`.`name` LIKE \'%aaa%\' ESCAPE \'!\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folder`.`id`, `folder`.`name`, `folder`.`owner_id`, `folder`.`folder_type`, `folder`.`is_shared`, `folder`.`shared_type`, `folder`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = :folders.owner_id:
+OR `folders`.`owner_id` IN :folders.owner_id.1:
+ )
+AND  `folders`.`name` LIKE :folders.name: ESCAPE \'!\'', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\DokumenControllerHRD.php(263): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 16:59:06 --> [Caused by] mysqli_sql_exception: Unknown column 'folder.id' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `folder`.`id`, `folder`.`name`, `folder`.`owner_id`, `folder`.`folder_type`, `folder`.`is_shared`, `folder`.`shared_type`, `folder`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = \'9\'
+OR `folders`.`owner_id` IN (\'6\',\'10\')
+ )
+AND  `folders`.`name` LIKE \'%aaa%\' ESCAPE \'!\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folder`.`id`, `folder`.`name`, `folder`.`owner_id`, `folder`.`folder_type`, `folder`.`is_shared`, `folder`.`shared_type`, `folder`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = \'9\'
+OR `folders`.`owner_id` IN (\'6\',\'10\')
+ )
+AND  `folders`.`name` LIKE \'%aaa%\' ESCAPE \'!\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folder`.`id`, `folder`.`name`, `folder`.`owner_id`, `folder`.`folder_type`, `folder`.`is_shared`, `folder`.`shared_type`, `folder`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = \'9\'
+OR `folders`.`owner_id` IN (\'6\',\'10\')
+ )
+AND  `folders`.`name` LIKE \'%aaa%\' ESCAPE \'!\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folder`.`id`, `folder`.`name`, `folder`.`owner_id`, `folder`.`folder_type`, `folder`.`is_shared`, `folder`.`shared_type`, `folder`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = :folders.owner_id:
+OR `folders`.`owner_id` IN :folders.owner_id.1:
+ )
+AND  `folders`.`name` LIKE :folders.name: ESCAPE \'!\'', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\DokumenControllerHRD.php(263): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-24 16:59:45 --> mysqli_sql_exception: Unknown column 'folder.owner_id' in 'on clause' in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `folders...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folders...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folders...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folders...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerHRD.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2025-07-24 16:59:45 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'folder.owner_id' in 'on clause'
+[Method: POST, Route: hrd/search]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folders`.`id`, `folders`.`name`, `folders`.`owner_id`, `folders`.`folder_type`, `folders`.`is_shared`, `folders`.`shared_type`, `folders`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = :folders.owner_id:
+OR `folders`.`owner_id` IN :folders.owner_id.1:
+ )
+AND  `folders`.`name` LIKE :folders.name: ESCAPE \'!\'', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DokumenControllerHRD.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 16:59:45 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'folder.owner_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folders`.`id`, `folders`.`name`, `folders`.`owner_id`, `folders`.`folder_type`, `folders`.`is_shared`, `folders`.`shared_type`, `folders`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = \'9\'
+OR `folders`.`owner_id` IN (\'6\',\'10\')
+ )
+AND  `folders`.`name` LIKE \'%wa%\' ESCAPE \'!\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folders`.`id`, `folders`.`name`, `folders`.`owner_id`, `folders`.`folder_type`, `folders`.`is_shared`, `folders`.`shared_type`, `folders`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = \'9\'
+OR `folders`.`owner_id` IN (\'6\',\'10\')
+ )
+AND  `folders`.`name` LIKE \'%wa%\' ESCAPE \'!\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folders`.`id`, `folders`.`name`, `folders`.`owner_id`, `folders`.`folder_type`, `folders`.`is_shared`, `folders`.`shared_type`, `folders`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = :folders.owner_id:
+OR `folders`.`owner_id` IN :folders.owner_id.1:
+ )
+AND  `folders`.`name` LIKE :folders.name: ESCAPE \'!\'', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\DokumenControllerHRD.php(263): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 16:59:45 --> [Caused by] mysqli_sql_exception: Unknown column 'folder.owner_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `folders`.`id`, `folders`.`name`, `folders`.`owner_id`, `folders`.`folder_type`, `folders`.`is_shared`, `folders`.`shared_type`, `folders`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = \'9\'
+OR `folders`.`owner_id` IN (\'6\',\'10\')
+ )
+AND  `folders`.`name` LIKE \'%wa%\' ESCAPE \'!\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `folders`.`id`, `folders`.`name`, `folders`.`owner_id`, `folders`.`folder_type`, `folders`.`is_shared`, `folders`.`shared_type`, `folders`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = \'9\'
+OR `folders`.`owner_id` IN (\'6\',\'10\')
+ )
+AND  `folders`.`name` LIKE \'%wa%\' ESCAPE \'!\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `folders`.`id`, `folders`.`name`, `folders`.`owner_id`, `folders`.`folder_type`, `folders`.`is_shared`, `folders`.`shared_type`, `folders`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = \'9\'
+OR `folders`.`owner_id` IN (\'6\',\'10\')
+ )
+AND  `folders`.`name` LIKE \'%wa%\' ESCAPE \'!\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `folders`.`id`, `folders`.`name`, `folders`.`owner_id`, `folders`.`folder_type`, `folders`.`is_shared`, `folders`.`shared_type`, `folders`.`access_roles`, `users`.`name` as `owner_display`, `roles`.`name` as `owner_role_name`, "folder" as `type`
+FROM `folders`
+LEFT JOIN `users` ON `users`.`id` = `folder`.`owner_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE   (
+`folders`.`owner_id` = :folders.owner_id:
+OR `folders`.`owner_id` IN :folders.owner_id.1:
+ )
+AND  `folders`.`name` LIKE :folders.name: ESCAPE \'!\'', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\DokumenControllerHRD.php(263): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-24 17:00:30 --> mysqli_sql_exception: Unknown column 'files.name' in 'field list' in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `files`....', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `files`....')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `files`....')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `files`....', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerHRD.php(302): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2025-07-24 17:00:30 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'files.name' in 'field list'
+[Method: POST, Route: hrd/search]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `files`.`id`, `files`.`name` as `name`, `files`.`uploader_id`, `files`.`folder_id`, "file" as `type`, `users`.`name` as `uploader_display`, `roles`.`name` as `uploader_role_name`, `folders`.`name` as `folder_name`
+FROM `files`
+LEFT JOIN `users` ON `users`.`id` = `files`.`uploader_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+LEFT JOIN `folders` ON `folders`.`id` = `files`.`folder_id`
+WHERE   (
+`files`.`uploader_id` = :files.uploader_id:
+OR `files`.`uploader_id` IN :files.uploader_id.1:
+ )
+AND  `files`.`name` LIKE :files.name: ESCAPE \'!\'', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DokumenControllerHRD.php(302): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 17:00:30 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'files.name' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `files`.`id`, `files`.`name` as `name`, `files`.`uploader_id`, `files`.`folder_id`, "file" as `type`, `users`.`name` as `uploader_display`, `roles`.`name` as `uploader_role_name`, `folders`.`name` as `folder_name`
+FROM `files`
+LEFT JOIN `users` ON `users`.`id` = `files`.`uploader_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+LEFT JOIN `folders` ON `folders`.`id` = `files`.`folder_id`
+WHERE   (
+`files`.`uploader_id` = \'9\'
+OR `files`.`uploader_id` IN (\'6\',\'10\')
+ )
+AND  `files`.`name` LIKE \'%wa%\' ESCAPE \'!\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `files`.`id`, `files`.`name` as `name`, `files`.`uploader_id`, `files`.`folder_id`, "file" as `type`, `users`.`name` as `uploader_display`, `roles`.`name` as `uploader_role_name`, `folders`.`name` as `folder_name`
+FROM `files`
+LEFT JOIN `users` ON `users`.`id` = `files`.`uploader_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+LEFT JOIN `folders` ON `folders`.`id` = `files`.`folder_id`
+WHERE   (
+`files`.`uploader_id` = \'9\'
+OR `files`.`uploader_id` IN (\'6\',\'10\')
+ )
+AND  `files`.`name` LIKE \'%wa%\' ESCAPE \'!\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `files`.`id`, `files`.`name` as `name`, `files`.`uploader_id`, `files`.`folder_id`, "file" as `type`, `users`.`name` as `uploader_display`, `roles`.`name` as `uploader_role_name`, `folders`.`name` as `folder_name`
+FROM `files`
+LEFT JOIN `users` ON `users`.`id` = `files`.`uploader_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+LEFT JOIN `folders` ON `folders`.`id` = `files`.`folder_id`
+WHERE   (
+`files`.`uploader_id` = :files.uploader_id:
+OR `files`.`uploader_id` IN :files.uploader_id.1:
+ )
+AND  `files`.`name` LIKE :files.name: ESCAPE \'!\'', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\DokumenControllerHRD.php(302): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 17:00:30 --> [Caused by] mysqli_sql_exception: Unknown column 'files.name' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `files`.`id`, `files`.`name` as `name`, `files`.`uploader_id`, `files`.`folder_id`, "file" as `type`, `users`.`name` as `uploader_display`, `roles`.`name` as `uploader_role_name`, `folders`.`name` as `folder_name`
+FROM `files`
+LEFT JOIN `users` ON `users`.`id` = `files`.`uploader_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+LEFT JOIN `folders` ON `folders`.`id` = `files`.`folder_id`
+WHERE   (
+`files`.`uploader_id` = \'9\'
+OR `files`.`uploader_id` IN (\'6\',\'10\')
+ )
+AND  `files`.`name` LIKE \'%wa%\' ESCAPE \'!\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `files`.`id`, `files`.`name` as `name`, `files`.`uploader_id`, `files`.`folder_id`, "file" as `type`, `users`.`name` as `uploader_display`, `roles`.`name` as `uploader_role_name`, `folders`.`name` as `folder_name`
+FROM `files`
+LEFT JOIN `users` ON `users`.`id` = `files`.`uploader_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+LEFT JOIN `folders` ON `folders`.`id` = `files`.`folder_id`
+WHERE   (
+`files`.`uploader_id` = \'9\'
+OR `files`.`uploader_id` IN (\'6\',\'10\')
+ )
+AND  `files`.`name` LIKE \'%wa%\' ESCAPE \'!\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `files`.`id`, `files`.`name` as `name`, `files`.`uploader_id`, `files`.`folder_id`, "file" as `type`, `users`.`name` as `uploader_display`, `roles`.`name` as `uploader_role_name`, `folders`.`name` as `folder_name`
+FROM `files`
+LEFT JOIN `users` ON `users`.`id` = `files`.`uploader_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+LEFT JOIN `folders` ON `folders`.`id` = `files`.`folder_id`
+WHERE   (
+`files`.`uploader_id` = \'9\'
+OR `files`.`uploader_id` IN (\'6\',\'10\')
+ )
+AND  `files`.`name` LIKE \'%wa%\' ESCAPE \'!\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `files`.`id`, `files`.`name` as `name`, `files`.`uploader_id`, `files`.`folder_id`, "file" as `type`, `users`.`name` as `uploader_display`, `roles`.`name` as `uploader_role_name`, `folders`.`name` as `folder_name`
+FROM `files`
+LEFT JOIN `users` ON `users`.`id` = `files`.`uploader_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+LEFT JOIN `folders` ON `folders`.`id` = `files`.`folder_id`
+WHERE   (
+`files`.`uploader_id` = :files.uploader_id:
+OR `files`.`uploader_id` IN :files.uploader_id.1:
+ )
+AND  `files`.`name` LIKE :files.name: ESCAPE \'!\'', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\DokumenControllerHRD.php(302): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+ERROR - 2025-07-24 17:01:45 --> mysqli_sql_exception: Unknown column 'files.name' in 'where clause' in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `files`....', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `files`....')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `files`....')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `files`....', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerHRD.php(302): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2025-07-24 17:01:45 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'files.name' in 'where clause'
+[Method: POST, Route: hrd/search]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `files`.`id`, `files`.`file_name` as `name`, `files`.`uploader_id`, `files`.`folder_id`, "file" as `type`, `users`.`name` as `uploader_display`, `roles`.`name` as `uploader_role_name`, `folders`.`name` as `folder_name`
+FROM `files`
+LEFT JOIN `users` ON `users`.`id` = `files`.`uploader_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+LEFT JOIN `folders` ON `folders`.`id` = `files`.`folder_id`
+WHERE   (
+`files`.`uploader_id` = :files.uploader_id:
+OR `files`.`uploader_id` IN :files.uploader_id.1:
+ )
+AND  `files`.`name` LIKE :files.name: ESCAPE \'!\'', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DokumenControllerHRD.php(302): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 17:01:45 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'files.name' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `files`.`id`, `files`.`file_name` as `name`, `files`.`uploader_id`, `files`.`folder_id`, "file" as `type`, `users`.`name` as `uploader_display`, `roles`.`name` as `uploader_role_name`, `folders`.`name` as `folder_name`
+FROM `files`
+LEFT JOIN `users` ON `users`.`id` = `files`.`uploader_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+LEFT JOIN `folders` ON `folders`.`id` = `files`.`folder_id`
+WHERE   (
+`files`.`uploader_id` = \'9\'
+OR `files`.`uploader_id` IN (\'6\',\'10\')
+ )
+AND  `files`.`name` LIKE \'%wa%\' ESCAPE \'!\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `files`.`id`, `files`.`file_name` as `name`, `files`.`uploader_id`, `files`.`folder_id`, "file" as `type`, `users`.`name` as `uploader_display`, `roles`.`name` as `uploader_role_name`, `folders`.`name` as `folder_name`
+FROM `files`
+LEFT JOIN `users` ON `users`.`id` = `files`.`uploader_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+LEFT JOIN `folders` ON `folders`.`id` = `files`.`folder_id`
+WHERE   (
+`files`.`uploader_id` = \'9\'
+OR `files`.`uploader_id` IN (\'6\',\'10\')
+ )
+AND  `files`.`name` LIKE \'%wa%\' ESCAPE \'!\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `files`.`id`, `files`.`file_name` as `name`, `files`.`uploader_id`, `files`.`folder_id`, "file" as `type`, `users`.`name` as `uploader_display`, `roles`.`name` as `uploader_role_name`, `folders`.`name` as `folder_name`
+FROM `files`
+LEFT JOIN `users` ON `users`.`id` = `files`.`uploader_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+LEFT JOIN `folders` ON `folders`.`id` = `files`.`folder_id`
+WHERE   (
+`files`.`uploader_id` = :files.uploader_id:
+OR `files`.`uploader_id` IN :files.uploader_id.1:
+ )
+AND  `files`.`name` LIKE :files.name: ESCAPE \'!\'', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\DokumenControllerHRD.php(302): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-07-24 17:01:45 --> [Caused by] mysqli_sql_exception: Unknown column 'files.name' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `files`.`id`, `files`.`file_name` as `name`, `files`.`uploader_id`, `files`.`folder_id`, "file" as `type`, `users`.`name` as `uploader_display`, `roles`.`name` as `uploader_role_name`, `folders`.`name` as `folder_name`
+FROM `files`
+LEFT JOIN `users` ON `users`.`id` = `files`.`uploader_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+LEFT JOIN `folders` ON `folders`.`id` = `files`.`folder_id`
+WHERE   (
+`files`.`uploader_id` = \'9\'
+OR `files`.`uploader_id` IN (\'6\',\'10\')
+ )
+AND  `files`.`name` LIKE \'%wa%\' ESCAPE \'!\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `files`.`id`, `files`.`file_name` as `name`, `files`.`uploader_id`, `files`.`folder_id`, "file" as `type`, `users`.`name` as `uploader_display`, `roles`.`name` as `uploader_role_name`, `folders`.`name` as `folder_name`
+FROM `files`
+LEFT JOIN `users` ON `users`.`id` = `files`.`uploader_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+LEFT JOIN `folders` ON `folders`.`id` = `files`.`folder_id`
+WHERE   (
+`files`.`uploader_id` = \'9\'
+OR `files`.`uploader_id` IN (\'6\',\'10\')
+ )
+AND  `files`.`name` LIKE \'%wa%\' ESCAPE \'!\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `files`.`id`, `files`.`file_name` as `name`, `files`.`uploader_id`, `files`.`folder_id`, "file" as `type`, `users`.`name` as `uploader_display`, `roles`.`name` as `uploader_role_name`, `folders`.`name` as `folder_name`
+FROM `files`
+LEFT JOIN `users` ON `users`.`id` = `files`.`uploader_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+LEFT JOIN `folders` ON `folders`.`id` = `files`.`folder_id`
+WHERE   (
+`files`.`uploader_id` = \'9\'
+OR `files`.`uploader_id` IN (\'6\',\'10\')
+ )
+AND  `files`.`name` LIKE \'%wa%\' ESCAPE \'!\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `files`.`id`, `files`.`file_name` as `name`, `files`.`uploader_id`, `files`.`folder_id`, "file" as `type`, `users`.`name` as `uploader_display`, `roles`.`name` as `uploader_role_name`, `folders`.`name` as `folder_name`
+FROM `files`
+LEFT JOIN `users` ON `users`.`id` = `files`.`uploader_id`
+LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+LEFT JOIN `folders` ON `folders`.`id` = `files`.`folder_id`
+WHERE   (
+`files`.`uploader_id` = :files.uploader_id:
+OR `files`.`uploader_id` IN :files.uploader_id.1:
+ )
+AND  `files`.`name` LIKE :files.name: ESCAPE \'!\'', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\DokumenControllerHRD.php(302): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->search()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')

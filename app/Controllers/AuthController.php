@@ -1,4 +1,4 @@
-    <?php
+<?php
 
     namespace App\Controllers;
 
@@ -16,21 +16,24 @@
             
             $db = \Config\Database::connect();
             $user = $db->table('users')
-                    ->where('email', $email)
-                    ->where('is_active', 1)
-                    ->get()
-                    ->getRowArray();
+                        ->where('email', $email)
+                        ->where('is_active', 1)
+                        ->get()
+                        ->getRowArray();
             
             if ($user && password_verify($password, $user['password_hash'])) {
                 $session = session();
                 $session->set([
                     'isLoggedIn' => true,
-                    'user_id' => $user['id'],
+                    'id' => $user['id'], // <--- UBAH DARI 'user_id' MENJADI 'id' DI SINI
                     'role_id' => $user['role_id']
                 ]);
                 
                 if ($user['role_id'] == 1) {
                     return redirect()->to('/admin/dashboard');
+                } else {
+                    // Pastikan Anda juga memiliki rute dan controller yang menangani redirect ini
+                    return redirect()->to('/dashboard-pegawai'); // Contoh: redirect ke dashboard umum/manajer
                 }
                 
             } else {

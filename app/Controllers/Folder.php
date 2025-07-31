@@ -114,34 +114,6 @@ class Folder extends Controller
         return $this->fail('Folder tidak ditemukan.', 404);
     }
 
-    // Optional: Cek apakah user memiliki permission untuk menghapus folder
-    // Misalnya hanya owner yang bisa menghapus
-    /*
-    $currentUserId = session()->get('user_id'); // Sesuaikan dengan session management Anda
-    if ($folder['owner_id'] != $currentUserId) {
-        return $this->fail('Anda tidak memiliki permission untuk menghapus folder ini.', 403);
-    }
-    */
-
-    // Cek apakah folder memiliki subfolder atau file
-    // $hasSubfolders = $this->folderModel->where('parent_id', $folderId)->countAllResults() > 0;
-    
-    // if ($hasSubfolders) {
-    //     return $this->fail('Folder tidak dapat dihapus karena masih memiliki subfolder.', 400);
-    // }
-
-    // Optional: Cek apakah folder memiliki file
-    // Jika Anda memiliki tabel files yang terkait dengan folder
-    /*
-    $fileModel = new \App\Models\FileModel();
-    $hasFiles = $fileModel->where('folder_id', $folderId)->countAllResults() > 0;
-    
-    if ($hasFiles) {
-        return $this->fail('Folder tidak dapat dihapus karena masih memiliki file.', 400);
-    }
-    */
-
-    // Hapus folder dari database
     try {
         $result = $this->folderModel->delete($folderId);
         

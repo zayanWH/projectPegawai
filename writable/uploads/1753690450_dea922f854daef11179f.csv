@@ -1,0 +1,299 @@
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               8.0.30 - MySQL Community Server - GPL
+-- Server OS:                    Win64
+-- HeidiSQL Version:             12.1.0.6537
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+-- Dumping structure for table appcloud.activity_logs
+CREATE TABLE IF NOT EXISTS `activity_logs` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint DEFAULT NULL,
+  `action` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `target_type` enum('file','folder') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `target_id` bigint NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `activity_logs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table appcloud.activity_logs: ~0 rows (approximately)
+
+-- Dumping structure for table appcloud.files
+CREATE TABLE IF NOT EXISTS `files` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `folder_id` bigint DEFAULT NULL,
+  `uploader_id` bigint DEFAULT NULL,
+  `file_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `server_file_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `file_size` int NOT NULL,
+  `file_type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `download_count` int DEFAULT '0',
+  `file_path` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `folder_id` (`folder_id`),
+  KEY `uploader_id` (`uploader_id`),
+  CONSTRAINT `files_ibfk_1` FOREIGN KEY (`folder_id`) REFERENCES `folders` (`id`),
+  CONSTRAINT `files_ibfk_2` FOREIGN KEY (`uploader_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table appcloud.files: ~30 rows (approximately)
+REPLACE INTO `files` (`id`, `folder_id`, `uploader_id`, `file_name`, `server_file_name`, `file_size`, `file_type`, `created_at`, `updated_at`, `download_count`, `file_path`) VALUES
+	(1, NULL, 1, 'Cuplikan layar 2025-07-08 144705.png', 'path/to/whatsapp_random_name.jpg', 15137, 'image/png', '2025-07-08 07:56:48', NULL, 0, NULL),
+	(2, NULL, 1, 'Cuplikan layar 2025-07-08 084340.png', 'path/to/whatsapp_random_name.jpg', 126095, 'image/png', '2025-07-08 09:38:51', NULL, 0, NULL),
+	(3, 8, 6, '1753073102_93909c6ea64bb64fbd3d.png', 'path/to/whatsapp_random_name.jpg', 274924, 'image/png', '2025-07-20 21:45:02', '2025-07-21 08:23:53', 6, NULL),
+	(4, 1, 6, '1753084084_4b5f7ee2555bb470d94b.jpg', 'path/to/whatsapp_random_name.jpg', 81450, 'image/jpeg', '2025-07-21 07:48:04', '2025-07-21 07:59:30', 1, NULL),
+	(5, 22, 6, 'app_cloud.sql', 'path/to/whatsapp_random_name.jpg', 15542, 'text/plain', '2025-07-21 09:00:30', '2025-07-21 09:00:30', 0, NULL),
+	(6, 22, 6, 'ddd.sql', 'path/to/whatsapp_random_name.jpg', 1470, 'text/plain', '2025-07-21 09:00:30', '2025-07-21 09:00:30', 0, NULL),
+	(7, 24, 6, 'Screenshot 2025-07-21 081315.png', 'path/to/whatsapp_random_name.jpg', 297473, 'image/png', '2025-07-21 09:20:09', '2025-07-21 09:20:09', 0, NULL),
+	(8, 25, 6, 'READ.rtf', 'path/to/whatsapp_random_name.jpg', 1443, 'text/rtf', '2025-07-21 09:22:56', '2025-07-21 09:22:56', 0, NULL),
+	(9, 26, 6, 'Cached Theme.pak', 'path/to/whatsapp_random_name.jpg', 570, 'application/octet-stream', '2025-07-21 09:22:56', '2025-07-21 09:22:56', 0, NULL),
+	(10, 26, 6, 'icon.png', 'path/to/whatsapp_random_name.jpg', 6119, 'image/png', '2025-07-21 09:22:56', '2025-07-21 09:22:56', 0, NULL),
+	(11, 26, 6, 'manifest.json', 'path/to/whatsapp_random_name.jpg', 913, 'application/json', '2025-07-21 09:22:57', '2025-07-21 09:22:57', 0, NULL),
+	(12, 28, 6, 'messages.json', 'path/to/whatsapp_random_name.jpg', 114, 'application/json', '2025-07-21 09:22:57', '2025-07-21 09:22:57', 0, NULL),
+	(13, 29, 6, 'icon.png', 'path/to/whatsapp_random_name.jpg', 6119, 'image/png', '2025-07-21 09:22:57', '2025-07-21 09:22:57', 0, NULL),
+	(14, 29, 6, 'manifest.json', 'path/to/whatsapp_random_name.jpg', 961, 'application/json', '2025-07-21 09:22:57', '2025-07-21 09:22:57', 0, NULL),
+	(15, 31, 6, 'messages.json', 'path/to/whatsapp_random_name.jpg', 110, 'application/json', '2025-07-21 09:22:58', '2025-07-21 09:22:58', 0, NULL),
+	(16, 35, 6, 'terminal.jpg', 'path/to/whatsapp_random_name.jpg', 21527, 'image/jpeg', '2025-07-22 01:56:03', '2025-07-22 01:56:03', 0, NULL),
+	(17, 37, 6, 'wp.png', 'path/to/whatsapp_random_name.jpg', 1416972, 'image/png', '2025-07-22 07:54:48', '2025-07-22 07:54:48', 0, NULL),
+	(18, 37, 6, 'WhatsApp Image 2025-07-18 at 20.33.33_30bd49d9.jpg', 'path/to/whatsapp_random_name.jpg', 28872, 'image/jpeg', '2025-07-22 07:58:14', '2025-07-22 07:58:14', 0, NULL),
+	(19, 39, 6, 'Screenshot 2025-07-22 082849.png', '', 34063, 'image/png', '2025-07-23 01:12:17', '2025-07-23 01:12:17', 0, NULL),
+	(20, 39, 6, 'Screenshot 2025-07-22 082849.png', '', 34063, 'image/png', '2025-07-23 01:12:18', '2025-07-23 01:12:18', 0, NULL),
+	(21, 39, 6, 'Screenshot 2025-07-22 082849.png', '', 34063, 'image/png', '2025-07-23 01:12:18', '2025-07-23 01:12:18', 0, NULL),
+	(22, 39, 6, 'Screenshot 2025-07-22 082849.png', '', 34063, 'image/png', '2025-07-23 01:12:18', '2025-07-23 01:12:18', 0, NULL),
+	(23, 39, 6, 'Screenshot 2025-07-22 082849.png', '', 34063, 'image/png', '2025-07-23 01:12:18', '2025-07-23 01:12:18', 0, NULL),
+	(24, 39, 6, 'Screenshot 2025-07-22 082849.png', '', 34063, 'image/png', '2025-07-23 01:12:18', '2025-07-23 01:12:18', 0, NULL),
+	(25, 39, 6, 'Screenshot 2025-07-22 082849.png', '', 34063, 'image/png', '2025-07-23 01:12:19', '2025-07-23 01:12:19', 0, NULL),
+	(26, 42, 6, 'Screenshot 2025-07-22 161106.png', '', 325069, 'image/png', '2025-07-23 01:50:00', '2025-07-23 01:50:00', 0, NULL),
+	(27, 42, 6, 'Screenshot 2025-07-21 082015.png', '', 274924, 'image/png', '2025-07-23 02:06:30', '2025-07-23 02:06:30', 0, NULL),
+	(28, 42, 6, 'Screenshot 2025-07-23 091208.png', '', 69298, 'image/png', '2025-07-23 03:01:14', '2025-07-23 03:01:14', 0, 'DSDASDASDSDCXZC'),
+	(29, 43, 6, 'Screenshot 2025-07-21 080624.png', '', 254998, 'image/png', '2025-07-23 03:18:55', '2025-07-23 03:18:55', 0, 'BISMILLAH'),
+	(30, 1, 6, 'terminal.jpg', '', 21527, 'image/jpeg', '2025-07-23 03:57:42', '2025-07-23 03:57:42', 0, 'Neymar');
+
+-- Dumping structure for table appcloud.folders
+CREATE TABLE IF NOT EXISTS `folders` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `path` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `full_path_physical` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `parent_id` bigint DEFAULT NULL,
+  `owner_id` bigint DEFAULT NULL,
+  `access_roles` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `is_shared` tinyint(1) NOT NULL DEFAULT '0',
+  `shared_type` enum('full','read') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL,
+  `folder_type` enum('personal','shared') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'personal',
+  `owner_role` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `parent_id` (`parent_id`),
+  KEY `owner_id` (`owner_id`),
+  CONSTRAINT `folders_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `folders` (`id`),
+  CONSTRAINT `folders_ibfk_2` FOREIGN KEY (`owner_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table appcloud.folders: ~42 rows (approximately)
+REPLACE INTO `folders` (`id`, `name`, `path`, `full_path_physical`, `parent_id`, `owner_id`, `access_roles`, `is_shared`, `shared_type`, `created_at`, `updated_at`, `folder_type`, `owner_role`) VALUES
+	(1, 'Neymar', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-16 23:59:49', '2025-07-21 16:20:36', 'personal', 'staff'),
+	(2, 'tes2', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-17 01:16:34', '2025-07-17 08:16:34', 'personal', 'staff'),
+	(3, 'TES3', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-17 01:54:27', '2025-07-17 08:54:27', 'personal', 'staff'),
+	(4, 'tes234', NULL, NULL, 1, 6, NULL, 0, NULL, '2025-07-17 20:40:29', '2025-07-21 14:35:02', 'personal', 'staff'),
+	(5, 'anjay', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-18 01:45:58', '2025-07-18 08:45:58', 'personal', 'staff'),
+	(8, 'ssssdj', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-19 09:33:03', '2025-07-19 16:33:03', 'personal', 'staff'),
+	(9, 'dsjbdjsa', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-19 10:08:33', '2025-07-19 17:08:33', 'personal', 'staff'),
+	(10, 'zaswqa', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-20 20:49:37', '2025-07-21 03:49:37', 'personal', 'staff'),
+	(11, 'zzz', NULL, NULL, 10, 6, NULL, 0, NULL, '2025-07-20 20:56:20', '2025-07-21 03:56:20', 'personal', 'staff'),
+	(12, 'nizar', NULL, NULL, 10, 6, NULL, 0, NULL, '2025-07-20 20:56:39', '2025-07-21 03:56:39', 'personal', 'staff'),
+	(13, 'niza1', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-20 20:57:02', '2025-07-21 03:57:02', 'personal', 'staff'),
+	(14, 'nizar', NULL, NULL, 13, 6, NULL, 0, NULL, '2025-07-20 20:57:17', '2025-07-21 03:57:17', 'personal', 'staff'),
+	(15, 'tes34', NULL, NULL, 2, 6, NULL, 0, NULL, '2025-07-20 21:00:05', '2025-07-21 04:00:05', 'personal', 'staff'),
+	(16, 'hahaha', NULL, NULL, 14, 6, NULL, 0, NULL, '2025-07-20 21:08:34', '2025-07-21 04:08:34', 'personal', 'staff'),
+	(17, 'tes1baka', NULL, NULL, 4, 6, NULL, 0, NULL, '2025-07-20 21:09:17', '2025-07-21 14:35:32', 'personal', 'staff'),
+	(18, 'sekarang', NULL, NULL, 17, 6, NULL, 0, NULL, '2025-07-20 21:09:33', '2025-07-21 04:09:33', 'personal', 'staff'),
+	(19, 'cihuyyyanjay', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-21 00:26:32', '2025-07-21 07:27:01', 'personal', 'staff'),
+	(20, 'beneranjayy', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-21 07:27:56', '2025-07-21 14:27:56', 'personal', 'staff'),
+	(21, '7tsp_gui_2019_edition_by_devillnside_ddb5026', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-21 08:57:42', '2025-07-21 15:57:42', 'personal', 'staff'),
+	(22, 'Database File', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-21 08:58:16', '2025-07-21 15:58:16', 'personal', 'staff'),
+	(23, 'Ronaldo', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-21 09:19:04', '2025-07-21 16:19:04', 'personal', 'staff'),
+	(24, 'messi is shit', NULL, NULL, 23, 6, NULL, 0, NULL, '2025-07-21 09:19:24', '2025-07-21 16:19:24', 'personal', 'staff'),
+	(25, 'Chrome Themes', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-21 09:22:56', '2025-07-21 16:22:56', 'personal', 'staff'),
+	(26, 'macOS Night', NULL, NULL, 25, 6, NULL, 0, NULL, '2025-07-21 09:22:56', '2025-07-21 16:22:56', 'personal', 'staff'),
+	(27, '_locales', NULL, NULL, 26, 6, NULL, 0, NULL, '2025-07-21 09:22:57', '2025-07-21 16:22:57', 'personal', 'staff'),
+	(28, 'en', NULL, NULL, 27, 6, NULL, 0, NULL, '2025-07-21 09:22:57', '2025-07-21 16:22:57', 'personal', 'staff'),
+	(29, 'macOS Day', NULL, NULL, 25, 6, NULL, 0, NULL, '2025-07-21 09:22:57', '2025-07-21 16:22:57', 'personal', 'staff'),
+	(30, '_locales', NULL, NULL, 29, 6, NULL, 0, NULL, '2025-07-21 09:22:58', '2025-07-21 16:22:58', 'personal', 'staff'),
+	(31, 'en', NULL, NULL, 30, 6, NULL, 0, NULL, '2025-07-21 09:22:58', '2025-07-21 16:22:58', 'personal', 'staff'),
+	(32, 'Folder', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-22 01:38:22', '2025-07-22 08:38:22', 'personal', 'staff'),
+	(33, 'Folder1', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-22 01:41:55', '2025-07-22 08:41:55', 'personal', 'staff'),
+	(34, 'fisik', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-22 01:51:41', '2025-07-22 08:51:41', 'personal', 'staff'),
+	(35, 'tes', NULL, NULL, 34, 6, NULL, 0, NULL, '2025-07-22 01:52:45', '2025-07-22 08:52:45', 'personal', 'staff'),
+	(36, 'jhb', NULL, NULL, 34, 6, NULL, 0, NULL, '2025-07-22 02:07:58', '2025-07-22 09:07:58', 'personal', 'staff'),
+	(37, 'HRD TES', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-22 07:54:15', '2025-07-22 14:54:15', 'personal', NULL),
+	(38, 'TESDULU', NULL, NULL, 37, 6, NULL, 0, NULL, '2025-07-22 07:54:36', '2025-07-22 14:54:36', 'personal', NULL),
+	(39, 'teslur', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-22 09:05:54', '2025-07-22 16:05:54', 'personal', NULL),
+	(40, 'teslur', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-22 09:06:19', '2025-07-22 16:06:19', 'personal', NULL),
+	(41, 'ASasAS', NULL, NULL, 40, 6, NULL, 0, NULL, '2025-07-22 09:19:22', '2025-07-22 16:19:22', 'personal', NULL),
+	(42, 'DSDASDASDSDCXZC', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-22 09:19:43', '2025-07-22 16:19:43', 'personal', NULL),
+	(43, 'BISMILLAH', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-23 03:18:27', '2025-07-23 10:18:27', 'personal', NULL),
+	(44, 'BASMALAH', NULL, NULL, 43, 6, NULL, 0, NULL, '2025-07-23 03:18:45', '2025-07-23 10:18:45', 'personal', NULL);
+
+-- Dumping structure for table appcloud.folder_permissions
+CREATE TABLE IF NOT EXISTS `folder_permissions` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `folder_id` bigint DEFAULT NULL,
+  `role_id` bigint DEFAULT NULL,
+  `access_type` enum('read-only','read-write') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `folder_id` (`folder_id`),
+  KEY `role_id` (`role_id`),
+  CONSTRAINT `folder_permissions_ibfk_1` FOREIGN KEY (`folder_id`) REFERENCES `folders` (`id`),
+  CONSTRAINT `folder_permissions_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
+  CONSTRAINT `folder_permissions_ibfk_3` FOREIGN KEY (`folder_id`) REFERENCES `folders` (`id`),
+  CONSTRAINT `folder_permissions_ibfk_4` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table appcloud.folder_permissions: ~0 rows (approximately)
+
+-- Dumping structure for table appcloud.hrd_documents
+CREATE TABLE IF NOT EXISTS `hrd_documents` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `file_id` bigint DEFAULT NULL,
+  `category` enum('SOP','SK','Pengumuman') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `file_id` (`file_id`),
+  CONSTRAINT `hrd_documents_ibfk_1` FOREIGN KEY (`file_id`) REFERENCES `files` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table appcloud.hrd_documents: ~2 rows (approximately)
+REPLACE INTO `hrd_documents` (`id`, `file_id`, `category`, `description`, `created_at`, `updated_at`) VALUES
+	(10, 1, 'SK', 'hhh', '2025-07-08 07:56:48', '2025-07-08 07:56:48'),
+	(11, 2, 'Pengumuman', 'hs,jbfjkabefli', '2025-07-08 09:38:51', '2025-07-08 09:38:51');
+
+-- Dumping structure for table appcloud.migrations
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `version` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `class` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `group` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `namespace` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `time` int NOT NULL,
+  `batch` int unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table appcloud.migrations: ~2 rows (approximately)
+REPLACE INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
+	(1, '2025-07-17-064716', 'App\\Database\\Migrations\\AddAccessRolesToFolders', 'default', 'App', 1752734890, 1),
+	(2, '2025-07-17-064846', 'App\\Database\\Migrations\\ModifySharedTypeEnum', 'default', 'App', 1752734947, 2);
+
+-- Dumping structure for table appcloud.notifications
+CREATE TABLE IF NOT EXISTS `notifications` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `is_read` tinyint(1) DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `is_emailed` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table appcloud.notifications: ~6 rows (approximately)
+REPLACE INTO `notifications` (`id`, `user_id`, `title`, `message`, `is_read`, `created_at`, `is_emailed`) VALUES
+	(1, 1, 'Dokumen Baru: SK', 'HRD telah mengunggah dokumen baru \'1751947931_bc027fa91292f231cd22.png\' dalam kategori \'SK\'. Deskripsi: jj\r\n... Silakan cek.', 1, '2025-07-08 04:12:11', 0),
+	(2, 2, 'Dokumen Baru: SK', 'HRD telah mengunggah dokumen baru \'1751947931_bc027fa91292f231cd22.png\' dalam kategori \'SK\'. Deskripsi: jj\r\n... Silakan cek.', 0, '2025-07-08 04:12:11', 0),
+	(3, 1, 'Dokumen Baru: SK', 'HRD telah mengunggah dokumen baru \'Cuplikan layar 2025-07-08 144705.png\' dalam kategori \'SK\'. Deskripsi: hhh... Silakan cek.', 0, '2025-07-08 07:56:48', 0),
+	(4, 2, 'Dokumen Baru: SK', 'HRD telah mengunggah dokumen baru \'Cuplikan layar 2025-07-08 144705.png\' dalam kategori \'SK\'. Deskripsi: hhh... Silakan cek.', 0, '2025-07-08 07:56:48', 0),
+	(5, 1, 'Dokumen Baru: Pengumuman', 'HRD telah mengunggah dokumen baru \'Cuplikan layar 2025-07-08 084340.png\' dalam kategori \'Pengumuman\'. Deskripsi: hs,jbfjkabefli... Silakan cek.', 0, '2025-07-08 09:38:51', 0),
+	(6, 2, 'Dokumen Baru: Pengumuman', 'HRD telah mengunggah dokumen baru \'Cuplikan layar 2025-07-08 084340.png\' dalam kategori \'Pengumuman\'. Deskripsi: hs,jbfjkabefli... Silakan cek.', 0, '2025-07-08 09:38:51', 0);
+
+-- Dumping structure for table appcloud.password_resets
+CREATE TABLE IF NOT EXISTS `password_resets` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table appcloud.password_resets: ~1 rows (approximately)
+REPLACE INTO `password_resets` (`id`, `email`, `token`, `created_at`) VALUES
+	(7, 'izaisosial@gmail.com', '4a12f97f13f15dd04ebc0b40d117b1bbda2eb95c99adefecbe8c690d6799a62e', '2025-07-10 00:27:53');
+
+-- Dumping structure for table appcloud.roles
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `level` int NOT NULL,
+  `max_upload_size_mb` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table appcloud.roles: ~6 rows (approximately)
+REPLACE INTO `roles` (`id`, `name`, `level`, `max_upload_size_mb`) VALUES
+	(1, 'Admin', 1, 100),
+	(2, 'HRD', 2, 80),
+	(3, 'Direksi', 3, 1024),
+	(4, 'Manajer', 4, 500),
+	(5, 'Supervisor', 5, 250),
+	(6, 'Staff', 6, 100);
+
+-- Dumping structure for table appcloud.storage_usages
+CREATE TABLE IF NOT EXISTS `storage_usages` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint NOT NULL,
+  `total_used_mb` int NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `storage_usages_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table appcloud.storage_usages: ~0 rows (approximately)
+
+-- Dumping structure for table appcloud.users
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `password_hash` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `role_id` bigint DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`),
+  KEY `role_id` (`role_id`),
+  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table appcloud.users: ~6 rows (approximately)
+REPLACE INTO `users` (`id`, `name`, `email`, `password_hash`, `role_id`, `is_active`, `created_at`) VALUES
+	(1, 'admin_uss', 'admin@uss.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1, 1, '2025-07-16 07:17:30'),
+	(2, 'hrd_citra', 'citra.hrd@uss.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, 1, '2025-07-16 07:17:30'),
+	(3, 'direksi_budi', 'budi.direksi@uss.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3, 1, '2025-07-16 07:17:30'),
+	(4, 'manager_dina', 'dina.manager@uss.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 4, 1, '2025-07-16 07:17:30'),
+	(5, 'spv_eko', 'eko.spv@uss.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 5, 1, '2025-07-16 07:17:30'),
+	(6, 'staff_fitri', 'fitri.staff@uss.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 6, 1, '2025-07-16 07:17:30');
+
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
