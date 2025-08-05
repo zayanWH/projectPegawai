@@ -1,0 +1,1848 @@
+DEBUG - 2025-08-05 09:04:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-05 09:04:25 --> Login proses method called
+INFO - 2025-08-05 09:04:25 --> Email: citra.hrd@uss.com
+INFO - 2025-08-05 09:04:25 --> Password length: 8
+INFO - 2025-08-05 09:04:25 --> User found: YES
+INFO - 2025-08-05 09:04:25 --> User role_id: 2
+INFO - 2025-08-05 09:04:25 --> Password verified successfully
+DEBUG - 2025-08-05 09:04:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-05 09:04:25 --> Session set for user_id: 9
+INFO - 2025-08-05 09:04:25 --> Redirecting to hrd dashboard
+DEBUG - 2025-08-05 09:04:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 09:04:26 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 09:04:26 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 09:04:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 09:04:28 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 09:04:28 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 09:04:28 --> DokumenControllerStaff::dokumenBersama(): User ID: 9, Role ID: 2, Nama Role: HRD
+WARNING - 2025-08-05 09:04:28 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Umum\dokumenBersama.php on line 224.
+ 1 APPPATH\Views\Umum\dokumenBersama.php(224): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Umum\\dokumenBersama.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Umum/dokumenBersama', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(910): view('Umum/dokumenBersama', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-05 09:04:28 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Umum\dokumenBersama.php on line 224.
+ 1 APPPATH\Views\Umum\dokumenBersama.php(224): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Umum\\dokumenBersama.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Umum/dokumenBersama', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(910): view('Umum/dokumenBersama', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-05 09:04:28 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Umum\dokumenBersama.php on line 224.
+ 1 APPPATH\Views\Umum\dokumenBersama.php(224): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Umum\\dokumenBersama.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Umum/dokumenBersama', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(910): view('Umum/dokumenBersama', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-05 09:04:28 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Umum\dokumenBersama.php on line 224.
+ 1 APPPATH\Views\Umum\dokumenBersama.php(224): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Umum\\dokumenBersama.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Umum/dokumenBersama', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(910): view('Umum/dokumenBersama', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-05 09:04:28 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Umum\dokumenBersama.php on line 224.
+ 1 APPPATH\Views\Umum\dokumenBersama.php(224): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Umum\\dokumenBersama.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Umum/dokumenBersama', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(910): view('Umum/dokumenBersama', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 09:04:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 09:04:32 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 09:04:32 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 09:06:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 09:06:06 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 09:06:06 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 09:06:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 09:06:31 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 09:06:31 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 09:06:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 09:06:33 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 09:06:33 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 09:49:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-05 09:49:39 --> User logged out. Session destroyed.
+DEBUG - 2025-08-05 09:49:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-05 09:49:45 --> Login proses method called
+INFO - 2025-08-05 09:49:45 --> Email: admin@uss.com
+INFO - 2025-08-05 09:49:45 --> Password length: 8
+INFO - 2025-08-05 09:49:45 --> User found: YES
+INFO - 2025-08-05 09:49:45 --> User role_id: 1
+INFO - 2025-08-05 09:49:45 --> Password verified successfully
+DEBUG - 2025-08-05 09:49:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-05 09:49:45 --> Session set for user_id: 1
+INFO - 2025-08-05 09:49:45 --> Redirecting to admin dashboard
+DEBUG - 2025-08-05 09:49:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 09:49:45 --> AuthFilter: User is logged in. Current role_id: 1
+INFO - 2025-08-05 09:49:45 --> AuthFilter: User with role_id 1 has absolute access. Proceeding.
+WARNING - 2025-08-05 09:49:45 --> [DEPRECATED] Implicit conversion from float 47825.4033203125 to int loses precision in APPPATH\Controllers\DokumenControllerAdmin.php on line 190.
+ 1 APPPATH\Controllers\DokumenControllerAdmin.php(68): App\Controllers\DokumenControllerAdmin->formatStorageSize(47825.4033203125)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerAdmin->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerAdmin))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 09:49:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 09:49:46 --> AuthFilter: User is logged in. Current role_id: 1
+INFO - 2025-08-05 09:49:46 --> AuthFilter: User with role_id 1 has absolute access. Proceeding.
+DEBUG - 2025-08-05 09:49:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 09:49:51 --> AuthFilter: User is logged in. Current role_id: 1
+INFO - 2025-08-05 09:49:51 --> AuthFilter: User with role_id 1 has absolute access. Proceeding.
+DEBUG - 2025-08-05 09:49:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 09:49:54 --> AuthFilter: User is logged in. Current role_id: 1
+INFO - 2025-08-05 09:49:54 --> AuthFilter: User with role_id 1 has absolute access. Proceeding.
+DEBUG - 2025-08-05 09:50:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 09:50:12 --> AuthFilter: User is logged in. Current role_id: 1
+INFO - 2025-08-05 09:50:12 --> AuthFilter: User with role_id 1 has absolute access. Proceeding.
+DEBUG - 2025-08-05 09:50:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 09:50:14 --> AuthFilter: User is logged in. Current role_id: 1
+INFO - 2025-08-05 09:50:14 --> AuthFilter: User with role_id 1 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:11:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:11:41 --> AuthFilter: User is logged in. Current role_id: 1
+INFO - 2025-08-05 10:11:41 --> AuthFilter: User with role_id 1 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:11:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-05 10:11:43 --> User logged out. Session destroyed.
+DEBUG - 2025-08-05 10:11:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:11:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-05 10:11:53 --> Login proses method called
+INFO - 2025-08-05 10:11:53 --> Email: citra.hrd@uss.com
+INFO - 2025-08-05 10:11:53 --> Password length: 8
+INFO - 2025-08-05 10:11:53 --> User found: YES
+INFO - 2025-08-05 10:11:53 --> User role_id: 2
+INFO - 2025-08-05 10:11:53 --> Password verified successfully
+DEBUG - 2025-08-05 10:11:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-05 10:11:53 --> Session set for user_id: 9
+INFO - 2025-08-05 10:11:53 --> Redirecting to hrd dashboard
+DEBUG - 2025-08-05 10:11:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:11:53 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:11:53 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+INFO - 2025-08-05 10:12:03 --> Login proses method called
+INFO - 2025-08-05 10:12:03 --> Email: citra.hrd@uss.com
+INFO - 2025-08-05 10:12:03 --> Password length: 8
+INFO - 2025-08-05 10:12:04 --> User found: YES
+INFO - 2025-08-05 10:12:04 --> User role_id: 2
+INFO - 2025-08-05 10:12:04 --> Password verified successfully
+DEBUG - 2025-08-05 10:12:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-05 10:12:04 --> Session set for user_id: 9
+INFO - 2025-08-05 10:12:04 --> Redirecting to hrd dashboard
+DEBUG - 2025-08-05 10:12:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:12:04 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:12:04 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:13:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-05 10:13:28 --> Login proses method called
+INFO - 2025-08-05 10:13:28 --> Email: citra.hrd@uss.com
+INFO - 2025-08-05 10:13:28 --> Password length: 8
+INFO - 2025-08-05 10:13:28 --> User found: YES
+INFO - 2025-08-05 10:13:28 --> User role_id: 2
+INFO - 2025-08-05 10:13:28 --> Password verified successfully
+DEBUG - 2025-08-05 10:13:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-05 10:13:28 --> Session set for user_id: 9
+INFO - 2025-08-05 10:13:28 --> Redirecting to hrd dashboard
+DEBUG - 2025-08-05 10:13:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:13:29 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:13:29 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 10:13:29 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\FolderModel::getSharedFoldersByRole
+[Method: GET, Route: hrd/dashboard]
+in SYSTEMPATH\Model.php on line 930.
+ 1 APPPATH\Controllers\DashboardController.php(19): CodeIgniter\Model->__call('getSharedFoldersByRole', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 10:17:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:17:56 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:17:56 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 10:17:56 --> ErrorException: Undefined variable $totalFiles
+[Method: GET, Route: hrd/dashboard]
+in APPPATH\Views\HRD\dashboard.php on line 326.
+ 1 APPPATH\Views\HRD\dashboard.php(326): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalFiles', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php', 326)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dashboard', [], true)
+ 5 APPPATH\Controllers\DashboardController.php(54): view('HRD/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 10:17:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:17:58 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:17:58 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 10:17:58 --> ErrorException: Undefined variable $totalFiles
+[Method: GET, Route: hrd/dashboard]
+in APPPATH\Views\HRD\dashboard.php on line 326.
+ 1 APPPATH\Views\HRD\dashboard.php(326): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalFiles', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php', 326)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dashboard', [], true)
+ 5 APPPATH\Controllers\DashboardController.php(54): view('HRD/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 10:20:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:20:49 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:20:49 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 10:20:49 --> ErrorException: Undefined variable $totalHrdFiles
+[Method: GET, Route: hrd/dashboard]
+in APPPATH\Views\HRD\dashboard.php on line 343.
+ 1 APPPATH\Views\HRD\dashboard.php(343): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalHrdFiles', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php', 343)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dashboard', [], true)
+ 5 APPPATH\Controllers\DashboardController.php(55): view('HRD/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 10:20:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:20:50 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:20:50 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 10:20:50 --> ErrorException: Undefined variable $totalHrdFiles
+[Method: GET, Route: hrd/dashboard]
+in APPPATH\Views\HRD\dashboard.php on line 343.
+ 1 APPPATH\Views\HRD\dashboard.php(343): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalHrdFiles', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php', 343)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dashboard', [], true)
+ 5 APPPATH\Controllers\DashboardController.php(55): view('HRD/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 10:20:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:20:51 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:20:51 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 10:20:51 --> ErrorException: Undefined variable $totalHrdFiles
+[Method: GET, Route: hrd/dashboard]
+in APPPATH\Views\HRD\dashboard.php on line 343.
+ 1 APPPATH\Views\HRD\dashboard.php(343): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalHrdFiles', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php', 343)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dashboard', [], true)
+ 5 APPPATH\Controllers\DashboardController.php(55): view('HRD/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 10:21:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:21:14 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:21:14 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 10:21:14 --> ErrorException: Undefined variable $totalHrdFiles
+[Method: GET, Route: hrd/dashboard]
+in APPPATH\Views\HRD\dashboard.php on line 343.
+ 1 APPPATH\Views\HRD\dashboard.php(343): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalHrdFiles', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php', 343)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dashboard', [], true)
+ 5 APPPATH\Controllers\DashboardController.php(55): view('HRD/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 10:21:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:21:20 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:21:20 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 10:21:20 --> ErrorException: Undefined variable $totalHrdFiles
+[Method: GET, Route: hrd/dashboard]
+in APPPATH\Views\HRD\dashboard.php on line 343.
+ 1 APPPATH\Views\HRD\dashboard.php(343): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalHrdFiles', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php', 343)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dashboard', [], true)
+ 5 APPPATH\Controllers\DashboardController.php(55): view('HRD/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 10:26:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:26:23 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:26:23 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 10:26:23 --> ErrorException: Undefined variable $totalUser
+[Method: GET, Route: hrd/dashboard]
+in APPPATH\Views\HRD\dashboard.php on line 357.
+ 1 APPPATH\Views\HRD\dashboard.php(357): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalUser', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php', 357)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dashboard', [], true)
+ 5 APPPATH\Controllers\DashboardController.php(56): view('HRD/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 10:26:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:26:25 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:26:25 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 10:26:25 --> ErrorException: Undefined variable $totalUser
+[Method: GET, Route: hrd/dashboard]
+in APPPATH\Views\HRD\dashboard.php on line 357.
+ 1 APPPATH\Views\HRD\dashboard.php(357): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalUser', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php', 357)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dashboard', [], true)
+ 5 APPPATH\Controllers\DashboardController.php(56): view('HRD/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 10:31:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:31:56 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:31:56 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+ERROR - 2025-08-05 10:31:56 --> mysqli_sql_exception: Unknown column 'created_by' in 'where clause' in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT COUNT(*)...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(676): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+#5 C:\laragon\www\projectPegawai-master\app\Controllers\DashboardController.php(29): CodeIgniter\Model->countAllResults()
+#6 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2025-08-05 10:31:56 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_by' in 'where clause'
+[Method: GET, Route: hrd/dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `folders`
+WHERE `created_by` = :created_by:', [...], false)
+ 2 SYSTEMPATH\Model.php(676): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 3 APPPATH\Controllers\DashboardController.php(29): CodeIgniter\Model->countAllResults()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-08-05 10:31:56 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_by' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `folders`
+WHERE `created_by` = \'9\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `folders`
+WHERE `created_by` = \'9\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `folders`
+WHERE `created_by` = :created_by:', [...], false)
+ 4 SYSTEMPATH\Model.php(676): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 5 APPPATH\Controllers\DashboardController.php(29): CodeIgniter\Model->countAllResults()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-08-05 10:31:56 --> [Caused by] mysqli_sql_exception: Unknown column 'created_by' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `folders`
+WHERE `created_by` = \'9\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `folders`
+WHERE `created_by` = \'9\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `folders`
+WHERE `created_by` = \'9\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `folders`
+WHERE `created_by` = :created_by:', [...], false)
+ 5 SYSTEMPATH\Model.php(676): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 6 APPPATH\Controllers\DashboardController.php(29): CodeIgniter\Model->countAllResults()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 10:31:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:31:57 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:31:57 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+ERROR - 2025-08-05 10:31:57 --> mysqli_sql_exception: Unknown column 'created_by' in 'where clause' in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT COUNT(*)...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(676): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+#5 C:\laragon\www\projectPegawai-master\app\Controllers\DashboardController.php(29): CodeIgniter\Model->countAllResults()
+#6 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+#7 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+#8 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2025-08-05 10:31:57 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_by' in 'where clause'
+[Method: GET, Route: hrd/dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `folders`
+WHERE `created_by` = :created_by:', [...], false)
+ 2 SYSTEMPATH\Model.php(676): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 3 APPPATH\Controllers\DashboardController.php(29): CodeIgniter\Model->countAllResults()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-08-05 10:31:57 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_by' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `folders`
+WHERE `created_by` = \'9\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `folders`
+WHERE `created_by` = \'9\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `folders`
+WHERE `created_by` = :created_by:', [...], false)
+ 4 SYSTEMPATH\Model.php(676): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 5 APPPATH\Controllers\DashboardController.php(29): CodeIgniter\Model->countAllResults()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+CRITICAL - 2025-08-05 10:31:57 --> [Caused by] mysqli_sql_exception: Unknown column 'created_by' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `folders`
+WHERE `created_by` = \'9\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `folders`
+WHERE `created_by` = \'9\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `folders`
+WHERE `created_by` = \'9\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `folders`
+WHERE `created_by` = :created_by:', [...], false)
+ 5 SYSTEMPATH\Model.php(676): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 6 APPPATH\Controllers\DashboardController.php(29): CodeIgniter\Model->countAllResults()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 10:34:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:34:26 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:34:26 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 10:34:26 --> CodeIgniter\Exceptions\RuntimeException: View themes, no current section.
+[Method: GET, Route: hrd/dashboard]
+in SYSTEMPATH\View\View.php on line 430.
+ 1 APPPATH\Views\HRD\dashboard.php(448): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dashboard', [], true)
+ 5 APPPATH\Controllers\DashboardController.php(64): view('HRD/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 10:34:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:34:29 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:34:29 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 10:34:29 --> CodeIgniter\Exceptions\RuntimeException: View themes, no current section.
+[Method: GET, Route: hrd/dashboard]
+in SYSTEMPATH\View\View.php on line 430.
+ 1 APPPATH\Views\HRD\dashboard.php(448): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dashboard', [], true)
+ 5 APPPATH\Controllers\DashboardController.php(64): view('HRD/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 10:36:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:36:51 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:36:51 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:36:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:36:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:36:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:36:56 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:36:56 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 10:36:57 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "HRD/notification_dashboard.php"
+[Method: GET, Route: hrd/notifications/dashboard]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(212): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('HRD/notification_dashboard.php')
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/notification_dashboard', [], true)
+ 3 APPPATH\Controllers\NotificationController.php(201): view('HRD/notification_dashboard', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\NotificationController->dashboard()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NotificationController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 10:36:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:36:59 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:36:59 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:37:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:01 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:37:01 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:37:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:04 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:37:04 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:37:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:05 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:37:05 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:37:05 --> DokumenControllerHRD::dokumenStaff(): User ID: 9, Role Name: 
+DEBUG - 2025-08-05 10:37:05 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 75
+DEBUG - 2025-08-05 10:37:05 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 5
+DEBUG - 2025-08-05 10:37:05 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"147","folder_id":null,"uploader_id":"8","file_name":"","server_file_name":"","file_size":"0","file_type":"","created_at":"2025-07-31 15:31:19","updated_at":"2025-07-31 15:31:19","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-05 10:37:05 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL
+WARNING - 2025-08-05 10:37:05 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 135.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(135): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-05 10:37:05 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 135.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(135): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-05 10:37:05 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 135.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(135): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-05 10:37:05 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 135.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(135): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-05 10:37:05 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 135.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(135): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-05 10:37:05 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 135.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(135): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 10:37:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:07 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:37:07 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:37:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:32 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:37:32 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:37:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:35 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:37:35 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:37:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:42 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:37:42 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 10:37:43 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "HRD/notification_dashboard.php"
+[Method: GET, Route: hrd/notifications/dashboard]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(212): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('HRD/notification_dashboard.php')
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/notification_dashboard', [], true)
+ 3 APPPATH\Controllers\NotificationController.php(201): view('HRD/notification_dashboard', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\NotificationController->dashboard()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NotificationController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 10:37:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:47 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:37:47 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:37:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:37:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:38:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:38:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:38:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:38:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:05 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:49:05 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:49:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:09 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:49:09 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:49:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:11 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:49:11 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:49:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:17 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:49:17 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:49:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:26 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:49:26 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:49:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:32 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:49:32 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:49:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:34 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:49:34 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:49:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:48 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:49:48 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:49:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:49:58 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:49:58 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:50:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:50:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:50:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:50:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:50:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:50:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:50:36 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:50:36 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:50:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:50:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:50:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:50:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:50:56 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:50:56 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:51:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:51:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:51:04 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:51:04 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:51:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:51:07 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:51:07 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+ERROR - 2025-08-05 10:51:07 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', `created_at`, `document_id`, `is_emailed`, `is_read`, `message`, `title`, `use' at line 1 in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `no...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `no...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `no...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1841): CodeIgniter\Database\BaseConnection->query('INSERT INTO `no...', NULL, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2230): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(428): CodeIgniter\Database\BaseBuilder->insertBatch(Array, NULL, 100)
+#6 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(963): CodeIgniter\Model->doInsertBatch(Array, NULL, 100, false)
+#7 C:\laragon\www\projectPegawai-master\app\Models\NotificationModel.php(79): CodeIgniter\BaseModel->insertBatch(Array)
+#8 C:\laragon\www\projectPegawai-master\app\Services\NotificationService.php(30): App\Models\NotificationModel->createDocumentNotification(1754365867, 'Test Document -...', 'Test User', 'SOP')
+#9 C:\laragon\www\projectPegawai-master\app\Controllers\NotificationController.php(101): App\Services\NotificationService->processDocumentUploadNotification(1754365867, 'Test Document -...', 'Test User', 'SOP')
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\NotificationController->simulateNotification()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NotificationController))
+#12 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#14 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#15 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#16 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#17 {main}
+ERROR - 2025-08-05 10:51:07 --> NotificationService error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', `created_at`, `document_id`, `is_emailed`, `is_read`, `message`, `title`, `use' at line 1
+DEBUG - 2025-08-05 10:51:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:51:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:51:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:51:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:51:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:51:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:52:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:52:01 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:52:01 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:52:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:52:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:52:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:52:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:52:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:52:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:55:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:55:03 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:55:03 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:55:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:55:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:55:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:55:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:55:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:55:18 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:55:18 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:55:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:55:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:55:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:55:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:55:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:55:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:55:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:55:54 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:55:54 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:55:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:55:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:55:56 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:55:56 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:55:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:56:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:56:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:56:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:56:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:56:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:56:21 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:56:21 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:56:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:56:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:56:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:57:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:57:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:57:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:57:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:57:36 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:57:36 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:57:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:57:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:57:37 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:57:37 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:57:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:57:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:57:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:57:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:57:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:58:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:58:11 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:58:11 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:58:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:58:43 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 10:58:43 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 10:58:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:58:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:58:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:58:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:58:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 10:59:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:01:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:01:17 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:01:17 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:01:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:01:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:01:20 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:01:20 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:01:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:01:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:01:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:01:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:01:31 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:01:31 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:01:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:01:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:01:53 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:01:53 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+ERROR - 2025-08-05 11:01:53 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', `created_at`, `document_id`, `is_emailed`, `is_read`, `message`, `title`, `use' at line 1 in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `no...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `no...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `no...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1841): CodeIgniter\Database\BaseConnection->query('INSERT INTO `no...', NULL, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2230): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(428): CodeIgniter\Database\BaseBuilder->insertBatch(Array, NULL, 100)
+#6 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(963): CodeIgniter\Model->doInsertBatch(Array, NULL, 100, false)
+#7 C:\laragon\www\projectPegawai-master\app\Models\NotificationModel.php(79): CodeIgniter\BaseModel->insertBatch(Array)
+#8 C:\laragon\www\projectPegawai-master\app\Services\NotificationService.php(30): App\Models\NotificationModel->createDocumentNotification(1754366513, 'Test Document -...', 'Test User', 'SOP')
+#9 C:\laragon\www\projectPegawai-master\app\Controllers\NotificationController.php(101): App\Services\NotificationService->processDocumentUploadNotification(1754366513, 'Test Document -...', 'Test User', 'SOP')
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\NotificationController->simulateNotification()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NotificationController))
+#12 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#14 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#15 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#16 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#17 {main}
+ERROR - 2025-08-05 11:01:53 --> NotificationService error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', `created_at`, `document_id`, `is_emailed`, `is_read`, `message`, `title`, `use' at line 1
+DEBUG - 2025-08-05 11:01:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:02:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:08:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:08:08 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:08:08 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:08:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:08:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:08:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:08:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:08:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:08:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:08:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:08:48 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:08:48 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:08:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:08:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:08:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:09:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:09:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:09:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:09:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:09:45 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:09:45 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:09:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:09:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:09:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:09:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:09:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:09:56 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:09:56 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:09:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:10:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:10:01 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:10:01 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:10:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:10:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:10:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:10:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:10:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:10:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:10:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:10:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:10:30 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:10:30 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:10:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:10:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:10:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:10:53 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:10:53 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:10:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:10:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:10:56 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:10:56 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:10:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:11:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:11:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:11:01 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:11:01 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:11:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:11:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:11:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:11:21 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:11:21 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:11:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:11:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:11:36 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:11:36 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+ERROR - 2025-08-05 11:11:36 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', `created_at`, `document_id`, `is_emailed`, `is_read`, `message`, `title`, `use' at line 1 in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `no...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `no...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `no...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1841): CodeIgniter\Database\BaseConnection->query('INSERT INTO `no...', NULL, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2230): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(428): CodeIgniter\Database\BaseBuilder->insertBatch(Array, NULL, 100)
+#6 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(963): CodeIgniter\Model->doInsertBatch(Array, NULL, 100, false)
+#7 C:\laragon\www\projectPegawai-master\app\Models\NotificationModel.php(78): CodeIgniter\BaseModel->insertBatch(Array)
+#8 C:\laragon\www\projectPegawai-master\app\Services\NotificationService.php(30): App\Models\NotificationModel->createDocumentNotification(1754367096, 'Test Document -...', 'Test User', 'SOP')
+#9 C:\laragon\www\projectPegawai-master\app\Controllers\NotificationController.php(101): App\Services\NotificationService->processDocumentUploadNotification(1754367096, 'Test Document -...', 'Test User', 'SOP')
+#10 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\NotificationController->simulateNotification()
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NotificationController))
+#12 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#14 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#15 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#16 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#17 {main}
+ERROR - 2025-08-05 11:11:36 --> NotificationService error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', `created_at`, `document_id`, `is_emailed`, `is_read`, `message`, `title`, `use' at line 1
+DEBUG - 2025-08-05 11:16:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:16:37 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:16:37 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:16:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:16:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:16:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:16:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:16:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:16:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:16:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:17:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:17:50 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:17:50 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:17:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:17:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:17:51 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:17:51 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:17:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:17:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:17:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:18:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:18:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:18:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:23 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:23:23 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:23:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:25 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:23:25 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:23:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:25 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:23:25 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:23:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:27 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:23:27 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:23:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:40 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:23:40 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:23:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:43 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:23:43 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:23:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:45 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:23:45 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:23:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:54 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:23:54 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:23:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:23:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:24:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:24:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:24:07 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:24:07 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+ERROR - 2025-08-05 11:24:07 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', `created_at`, `document_id`, `is_emailed`, `is_read`, `message`, `title`, `use' at line 1 in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `no...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `no...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `no...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1841): CodeIgniter\Database\BaseConnection->query('INSERT INTO `no...', NULL, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2230): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(428): CodeIgniter\Database\BaseBuilder->insertBatch(Array, NULL, 100)
+#6 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(963): CodeIgniter\Model->doInsertBatch(Array, NULL, 100, false)
+#7 C:\laragon\www\projectPegawai-master\app\Models\NotificationModel.php(78): CodeIgniter\BaseModel->insertBatch(Array)
+#8 C:\laragon\www\projectPegawai-master\app\Services\NotificationService.php(30): App\Models\NotificationModel->createDocumentNotification(21, '1754367847_786e...', 'System', NULL)
+#9 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerHRD.php(1470): App\Services\NotificationService->processDocumentUploadNotification(21, '1754367847_786e...', 'System', NULL)
+#10 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerHRD.php(1379): App\Controllers\DokumenControllerHRD->triggerDocumentNotification(21, '1754367847_786e...', NULL)
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->uploadFileUmum()
+#12 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#18 {main}
+ERROR - 2025-08-05 11:24:07 --> NotificationService error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', `created_at`, `document_id`, `is_emailed`, `is_read`, `message`, `title`, `use' at line 1
+WARNING - 2025-08-05 11:24:07 --> Failed to trigger document notification for: 1754367847_786eeb9a58e4df77a974.docx
+DEBUG - 2025-08-05 11:24:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:24:10 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:24:10 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:24:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:24:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:24:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:24:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:24:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:24:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:24:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:24:46 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:24:46 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:24:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:24:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:25:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:25:02 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:25:02 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:25:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:25:04 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:25:04 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:25:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:25:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:25:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:25:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:25:19 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 11:25:19 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 11:25:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:25:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:25:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:25:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:25:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 11:25:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:19:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-05 13:19:18 --> Login proses method called
+INFO - 2025-08-05 13:19:18 --> Email: citra.hrd@uss.com
+INFO - 2025-08-05 13:19:18 --> Password length: 8
+INFO - 2025-08-05 13:19:18 --> User found: YES
+INFO - 2025-08-05 13:19:18 --> User role_id: 2
+INFO - 2025-08-05 13:19:18 --> Password verified successfully
+DEBUG - 2025-08-05 13:19:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-05 13:19:18 --> Session set for user_id: 9
+INFO - 2025-08-05 13:19:18 --> Redirecting to hrd dashboard
+DEBUG - 2025-08-05 13:19:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:19:19 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:19:19 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:19:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:19:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:19:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:19:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:19:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:19:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:20:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-05 13:20:26 --> Login proses method called
+INFO - 2025-08-05 13:20:26 --> Email: citra.hrd@uss.com
+INFO - 2025-08-05 13:20:26 --> Password length: 8
+INFO - 2025-08-05 13:20:26 --> User found: YES
+INFO - 2025-08-05 13:20:26 --> User role_id: 2
+INFO - 2025-08-05 13:20:26 --> Password verified successfully
+DEBUG - 2025-08-05 13:20:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-05 13:20:26 --> Session set for user_id: 9
+INFO - 2025-08-05 13:20:26 --> Redirecting to hrd dashboard
+DEBUG - 2025-08-05 13:20:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:20:26 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:20:26 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:20:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:20:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:20:30 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:20:30 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:20:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:20:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:20:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:20:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:20:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:20:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:20:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:20:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:20:54 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:20:54 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:20:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:20:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:21:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:21:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:21:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:21:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:28:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:28:29 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:28:29 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:28:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:28:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:28:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:28:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:28:41 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:28:41 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:28:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:28:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:28:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:28:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:28:48 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:28:48 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:28:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:28:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:28:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:28:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:28:56 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:28:56 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:28:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:29:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:29:00 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:29:00 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:29:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:29:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:29:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:29:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:29:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:29:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:33:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:33:38 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:33:38 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:33:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:33:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:33:40 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:33:40 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:33:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:33:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:33:42 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:33:42 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:33:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:33:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:33:44 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:33:44 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:33:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:33:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:33:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:33:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:33:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:33:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:33:59 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:33:59 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:34:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:34:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:34:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:34:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:34:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:34:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:37:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:37:47 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:37:47 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:37:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:37:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:37:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:37:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:38:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:38:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:42:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:42:06 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:42:06 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:42:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:42:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:42:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:42:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:42:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:42:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:43:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:43:07 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:43:07 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:43:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:43:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:43:11 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:43:11 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:43:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:43:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:43:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:43:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:43:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:43:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:43:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:07 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:48:07 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:48:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:12 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:48:12 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:48:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:30 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:48:30 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:48:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:35 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:48:35 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:48:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:48:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:54:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:54:52 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:54:52 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:54:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:54:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:54:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:55:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:55:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:55:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:55:05 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:55:05 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:55:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:55:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:55:09 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 13:55:09 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 13:55:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:55:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:55:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:55:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:55:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 13:55:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:01:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:01:55 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:01:55 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:01:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:01:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:01:58 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:01:58 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:01:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:02:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:02:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:02:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:02:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:02:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:03:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:03:18 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:03:18 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:03:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:03:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:03:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:03:23 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:03:23 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:03:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:03:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:03:25 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:03:25 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:03:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:03:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:03:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:03:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:03:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:03:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:05:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:05:58 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:05:58 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:05:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:07 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:06:07 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:06:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:13 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:06:13 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:06:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:43 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:06:43 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:06:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:46 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:06:46 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:06:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:51 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:06:51 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:06:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:06:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:07:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:07:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:07:04 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:07:04 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:07:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:07:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:07:10 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:07:10 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:07:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:07:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:07:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:07:24 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:07:24 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:07:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:07:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:07:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:07:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:07:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:07:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:11:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:11:03 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:11:03 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:11:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:11:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:11:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:11:08 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:11:08 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:11:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:11:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:11:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:11:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:11:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:11:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:11:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:11:52 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:11:52 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:11:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:11:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:11:56 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:11:56 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:11:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:12:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:12:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:12:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:12:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:12:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:21:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:21:33 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:21:33 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:21:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:21:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:21:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:21:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:21:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:21:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:21:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:21:51 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:21:51 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:21:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:21:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:21:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:22:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:22:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:22:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:24:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:24:51 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:24:51 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:24:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:24:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:24:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:25:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:25:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:25:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:25:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-05 14:25:20 --> AuthFilter: User not logged in. Redirecting to /login
+DEBUG - 2025-08-05 14:25:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:28:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:28:38 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:28:38 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:28:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:28:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:28:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:28:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:28:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:28:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:31:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:31:25 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:31:25 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:31:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:31:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:31:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:31:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:31:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:31:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:32:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:32:42 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:32:42 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:32:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:32:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:32:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:32:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:32:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:33:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:35:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:35:23 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:35:23 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 14:35:23 --> CodeIgniter\Exceptions\RuntimeException: View themes, no current section.
+[Method: GET, Route: hrd/dokumen-umum/folder/18]
+in SYSTEMPATH\View\View.php on line 430.
+ 1 APPPATH\Views\HRD\dokumenUmumFolder.php(582): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenUmumFolder.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenUmumFolder', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(1312): view('HRD/dokumenUmumFolder', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenUmumFolder('18')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 14:35:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:35:39 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:35:39 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 14:35:40 --> CodeIgniter\Exceptions\RuntimeException: View themes, no current section.
+[Method: GET, Route: hrd/dokumen-umum/folder/18]
+in SYSTEMPATH\View\View.php on line 430.
+ 1 APPPATH\Views\HRD\dokumenUmumFolder.php(582): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenUmumFolder.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenUmumFolder', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(1312): view('HRD/dokumenUmumFolder', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenUmumFolder('18')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 14:35:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:35:47 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:35:47 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 14:35:47 --> CodeIgniter\Exceptions\RuntimeException: View themes, no current section.
+[Method: GET, Route: hrd/dokumen-umum/folder/18]
+in SYSTEMPATH\View\View.php on line 430.
+ 1 APPPATH\Views\HRD\dokumenUmumFolder.php(582): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenUmumFolder.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenUmumFolder', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(1312): view('HRD/dokumenUmumFolder', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenUmumFolder('18')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 14:35:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:35:53 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:35:53 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 14:35:53 --> CodeIgniter\Exceptions\RuntimeException: View themes, no current section.
+[Method: GET, Route: hrd/dokumen-umum/folder/18]
+in SYSTEMPATH\View\View.php on line 430.
+ 1 APPPATH\Views\HRD\dokumenUmumFolder.php(582): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenUmumFolder.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenUmumFolder', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(1312): view('HRD/dokumenUmumFolder', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenUmumFolder('18')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 14:35:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:35:55 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:35:55 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 14:35:55 --> CodeIgniter\Exceptions\RuntimeException: View themes, no current section.
+[Method: GET, Route: hrd/dokumen-umum/folder/18]
+in SYSTEMPATH\View\View.php on line 430.
+ 1 APPPATH\Views\HRD\dokumenUmumFolder.php(582): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenUmumFolder.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenUmumFolder', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(1312): view('HRD/dokumenUmumFolder', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenUmumFolder('18')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 14:36:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:36:07 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:36:07 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 14:36:07 --> CodeIgniter\Exceptions\RuntimeException: View themes, no current section.
+[Method: GET, Route: hrd/dokumen-umum/folder/18]
+in SYSTEMPATH\View\View.php on line 430.
+ 1 APPPATH\Views\HRD\dokumenUmumFolder.php(582): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenUmumFolder.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenUmumFolder', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(1312): view('HRD/dokumenUmumFolder', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenUmumFolder('18')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 14:36:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:36:08 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:36:08 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 14:36:08 --> CodeIgniter\Exceptions\RuntimeException: View themes, no current section.
+[Method: GET, Route: hrd/dokumen-umum/folder/18]
+in SYSTEMPATH\View\View.php on line 430.
+ 1 APPPATH\Views\HRD\dokumenUmumFolder.php(582): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenUmumFolder.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenUmumFolder', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(1312): view('HRD/dokumenUmumFolder', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenUmumFolder('18')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 14:36:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:36:14 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:36:14 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:36:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:36:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:36:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:36:18 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:36:18 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 14:36:18 --> CodeIgniter\Exceptions\RuntimeException: View themes, no current section.
+[Method: GET, Route: hrd/dokumen-umum/folder/14]
+in SYSTEMPATH\View\View.php on line 430.
+ 1 APPPATH\Views\HRD\dokumenUmumFolder.php(582): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenUmumFolder.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenUmumFolder', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(1312): view('HRD/dokumenUmumFolder', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenUmumFolder('14')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 14:38:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:38:48 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:38:48 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 14:38:48 --> CodeIgniter\Exceptions\RuntimeException: View themes, no current section.
+[Method: GET, Route: hrd/dokumen-umum/folder/14]
+in SYSTEMPATH\View\View.php on line 430.
+ 1 APPPATH\Views\HRD\dokumenUmumFolder.php(582): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenUmumFolder.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenUmumFolder', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(1312): view('HRD/dokumenUmumFolder', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenUmumFolder('14')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 14:38:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:38:49 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:38:49 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 14:38:49 --> CodeIgniter\Exceptions\RuntimeException: View themes, no current section.
+[Method: GET, Route: hrd/dokumen-umum/folder/14]
+in SYSTEMPATH\View\View.php on line 430.
+ 1 APPPATH\Views\HRD\dokumenUmumFolder.php(582): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenUmumFolder.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenUmumFolder', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(1312): view('HRD/dokumenUmumFolder', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenUmumFolder('14')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 14:38:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:38:58 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:38:58 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 14:38:59 --> CodeIgniter\Exceptions\RuntimeException: View themes, no current section.
+[Method: GET, Route: hrd/dokumen-umum/folder/14]
+in SYSTEMPATH\View\View.php on line 430.
+ 1 APPPATH\Views\HRD\dokumenUmumFolder.php(582): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenUmumFolder.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenUmumFolder', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(1312): view('HRD/dokumenUmumFolder', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenUmumFolder('14')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 14:39:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:39:00 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:39:00 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:39:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:39:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:39:02 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:39:02 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:39:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:39:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:39:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:39:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:39:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:39:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:39:19 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:39:19 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:39:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:39:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:39:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:39:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:39:23 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:39:23 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 14:39:23 --> CodeIgniter\Exceptions\RuntimeException: View themes, no current section.
+[Method: GET, Route: hrd/dokumen-umum/folder/18]
+in SYSTEMPATH\View\View.php on line 430.
+ 1 APPPATH\Views\HRD\dokumenUmumFolder.php(582): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenUmumFolder.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenUmumFolder', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(1312): view('HRD/dokumenUmumFolder', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenUmumFolder('18')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 14:39:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:39:43 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:39:43 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 14:39:43 --> CodeIgniter\Exceptions\RuntimeException: View themes, no current section.
+[Method: GET, Route: hrd/dokumen-umum/folder/18]
+in SYSTEMPATH\View\View.php on line 430.
+ 1 APPPATH\Views\HRD\dokumenUmumFolder.php(582): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenUmumFolder.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenUmumFolder', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(1312): view('HRD/dokumenUmumFolder', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenUmumFolder('18')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 14:39:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:39:56 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:39:56 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 14:39:56 --> CodeIgniter\Exceptions\RuntimeException: View themes, no current section.
+[Method: GET, Route: hrd/dokumen-umum/folder/18]
+in SYSTEMPATH\View\View.php on line 430.
+ 1 APPPATH\Views\HRD\dokumenUmumFolder.php(582): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenUmumFolder.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenUmumFolder', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(1312): view('HRD/dokumenUmumFolder', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenUmumFolder('18')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 14:41:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:41:49 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:41:49 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 14:41:49 --> CodeIgniter\Exceptions\RuntimeException: View themes, no current section.
+[Method: GET, Route: hrd/dokumen-umum/folder/18]
+in SYSTEMPATH\View\View.php on line 430.
+ 1 APPPATH\Views\HRD\dokumenUmumFolder.php(582): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenUmumFolder.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenUmumFolder', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(1312): view('HRD/dokumenUmumFolder', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenUmumFolder('18')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 14:42:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:42:50 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:42:50 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-05 14:42:50 --> CodeIgniter\Exceptions\RuntimeException: View themes, no current section.
+[Method: GET, Route: hrd/dokumen-umum/folder/18]
+in SYSTEMPATH\View\View.php on line 430.
+ 1 APPPATH\Views\HRD\dokumenUmumFolder.php(582): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenUmumFolder.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenUmumFolder', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(1312): view('HRD/dokumenUmumFolder', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenUmumFolder('18')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-05 14:48:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:48:08 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:48:08 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:48:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:48:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:48:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:48:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:48:18 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:48:18 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+ERROR - 2025-08-05 14:48:18 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', `created_at`, `document_id`, `is_emailed`, `is_read`, `message`, `title`, `use' at line 1 in C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `no...', 0)
+#1 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `no...')
+#2 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `no...')
+#3 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1841): CodeIgniter\Database\BaseConnection->query('INSERT INTO `no...', NULL, false)
+#4 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2230): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Model.php(428): CodeIgniter\Database\BaseBuilder->insertBatch(Array, NULL, 100)
+#6 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\BaseModel.php(963): CodeIgniter\Model->doInsertBatch(Array, NULL, 100, false)
+#7 C:\laragon\www\projectPegawai-master\app\Models\NotificationModel.php(78): CodeIgniter\BaseModel->insertBatch(Array)
+#8 C:\laragon\www\projectPegawai-master\app\Services\NotificationService.php(30): App\Models\NotificationModel->createDocumentNotification(23, '1754380098_c0a7...', 'System', NULL)
+#9 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerHRD.php(1470): App\Services\NotificationService->processDocumentUploadNotification(23, '1754380098_c0a7...', 'System', NULL)
+#10 C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerHRD.php(1379): App\Controllers\DokumenControllerHRD->triggerDocumentNotification(23, '1754380098_c0a7...', NULL)
+#11 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->uploadFileUmum()
+#12 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+#13 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\laragon\www\projectPegawai-master\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 C:\laragon\www\projectPegawai-master\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\laragon\\www\\...')
+#18 {main}
+ERROR - 2025-08-05 14:48:18 --> NotificationService error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', `created_at`, `document_id`, `is_emailed`, `is_read`, `message`, `title`, `use' at line 1
+WARNING - 2025-08-05 14:48:18 --> Failed to trigger document notification for: 1754380098_c0a757117f656c9eedfb.docx
+DEBUG - 2025-08-05 14:48:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:48:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:48:21 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:48:21 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:48:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:48:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:48:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:48:25 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 14:48:25 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 14:48:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:48:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:48:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:48:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:48:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 14:48:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 15:26:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 15:26:27 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 15:26:27 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 15:26:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 15:26:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 15:26:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 15:26:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 15:26:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 15:26:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 15:26:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 15:26:44 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-05 15:26:44 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-05 15:26:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 15:26:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 15:26:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 15:26:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 15:26:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-05 15:27:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

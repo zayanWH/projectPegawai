@@ -166,7 +166,7 @@
                                 data-item-id="<?= esc($file['id']) ?>"
                                 data-item-name="<?= esc($file['file_name']) ?>">
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <a href="<?= base_url('staff/view-file/' . $file['id']) ?>" target="_blank" class="block h-full w-full text-sm text-gray-900 hover:text-blue-700 hover:underline">
+                                    <a href="<?= base_url('supervisor/view-file/' . $file['id']) ?>" target="_blank" class="block h-full w-full text-sm text-gray-900 hover:text-blue-700 hover:underline">
                                         <div class="flex items-center">
                                             <?php
                                                 $fileExtension = pathinfo($file['file_name'], PATHINFO_EXTENSION);

@@ -6,6 +6,7 @@ use App\Models\FileModel;
 use App\Models\LogAksesModel;
 use App\Models\RoleModel;
 use App\Models\UserModel;
+use App\Models\ActivityLogsModel;
 // use CodeIgniter\Controller;
 use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\API\ResponseTrait;
@@ -17,7 +18,11 @@ class DokumenControllerStaff extends BaseController
     protected $fileModel;
     protected $roleModel;
     protected $userModel;
+
+    protected $activityLogsModel;
     protected $logAksesModel;
+
+
     protected $session;
 
     public function __construct()
@@ -27,6 +32,7 @@ class DokumenControllerStaff extends BaseController
         $this->userModel = new UserModel();
         $this->roleModel = new RoleModel();
         $this->logAksesModel = new LogAksesModel();
+        $this->activityLogsModel = new ActivityLogsModel();
         $this->session = \Config\Services::session();
         helper(['form', 'url']);
     }
@@ -38,24 +44,53 @@ class DokumenControllerStaff extends BaseController
 
     public function dashboard()
     {
+        $session = session();
+        $userId = $session->get('user_id'); // User ID yang sedang login (tetap diambil untuk personal folder jika ada)
+        $userRole = $session->get('role'); // Nama role user yang sedang login
+
+        // Pastikan user sudah login
+        if (!$userId || !$userRole) {
+            return redirect()->to('/login')->with('error', 'Silakan login untuk mengakses dashboard.');
+        }
+
         $folderModel = new FolderModel();
         $fileModel = new FileModel();
+        $userModel = new UserModel();
 
-        // Hitung total folder dari tabel 'folders'
-        $totalFolders = $folderModel->countAllResults();
+        // --- Tentukan role_id yang ingin difilter (Staff = 6) ---
+        // Anda bisa langsung menetapkan nilai ini jika role 'Staff' selalu ID 6.
+        // Atau, jika role ID bisa berubah, Anda bisa mencari ID role 'Staff' dari tabel roles.
+        $staffRoleId = 6; // Mengasumsikan role_id untuk Staff adalah 6
 
-        // Hitung total file dari tabel 'files'
-        $totalFiles = $fileModel->countAllResults();
+        // Dapatkan semua ID user yang memiliki role_id = 6 (Staff)
+        $staffUserIds = $userModel->select('id')->where('role_id', $staffRoleId)->findAll();
+        $staffUserIds = array_column($staffUserIds, 'id');
 
-        // Ambil tanggal created_at terbaru dari tabel 'folders'
-        $latestFolderUpload = $folderModel->selectMax('created_at')->first();
+        // Jika tidak ada user Staff, set array kosong untuk mencegah error query IN ()
+        if (empty($staffUserIds)) {
+            $staffUserIds = [0]; // Memberikan nilai default agar query WHERE IN tidak kosong
+        }
+
+        // --- Hitung Total Folder berdasarkan role_id = 6 ---
+        $totalFolders = $folderModel->whereIn('owner_id', $staffUserIds)->countAllResults();
+
+        // --- Hitung Total File berdasarkan role_id = 6 ---
+        $totalFiles = $fileModel->whereIn('uploader_id', $staffUserIds)->countAllResults();
+
+        // --- Ambil Tanggal Terakhir Upload berdasarkan role_id = 6 ---
+        // Folder
+        $latestFolderUpload = $folderModel->selectMax('created_at')
+            ->whereIn('owner_id', $staffUserIds)
+            ->first();
         $latestFolderDate = $latestFolderUpload['created_at'] ?? null;
 
-        // Ambil tanggal created_at terbaru dari tabel 'files'
-        $latestFileUpload = $fileModel->selectMax('created_at')->first();
+        // File
+        $latestFileUpload = $fileModel->selectMax('created_at')
+            ->whereIn('uploader_id', $staffUserIds)
+            ->first();
         $latestFileDate = $latestFileUpload['created_at'] ?? null;
 
-        // Tentukan tanggal upload paling terbaru
+        // Tentukan tanggal upload paling terbaru dari kedua jenis item
         $latestUploadDate = null;
         if ($latestFolderDate && $latestFileDate) {
             $latestUploadDate = (strtotime($latestFolderDate) > strtotime($latestFileDate)) ? $latestFolderDate : $latestFileDate;
@@ -65,15 +100,19 @@ class DokumenControllerStaff extends BaseController
             $latestUploadDate = $latestFileDate;
         }
 
-        // Format tanggal untuk tampilan (opsional, bisa juga diformat di view)
+        // Format tanggal untuk tampilan
         $formattedLatestUpload = $latestUploadDate ? date('d M Y', strtotime($latestUploadDate)) : 'Belum ada upload';
 
-        // Ambil 10 item terbaru (file dan folder)
+        // --- Ambil 10 Item Terbaru (file dan folder) berdasarkan role_id = 6 ---
+        // Folders
         $folders = $folderModel->select("id, name, created_at, owner_id as uploader_id, 'folder' as type")
+            ->whereIn('owner_id', $staffUserIds)
             ->orderBy('created_at', 'DESC')
             ->findAll();
 
+        // Files
         $files = $fileModel->select("id, file_name as name, created_at, uploader_id, 'file' as type")
+            ->whereIn('uploader_id', $staffUserIds)
             ->orderBy('created_at', 'DESC')
             ->findAll();
 
@@ -87,25 +126,28 @@ class DokumenControllerStaff extends BaseController
         // Ambil hanya 10 item teratas
         $recentItems = array_slice($recentItems, 0, 10);
 
-        // Ambil semua personal folders untuk user yang sedang login
-        $personalFolders = $folderModel->where('owner_id', session()->get('user_id'))
+        // --- Ambil semua personal folders untuk user yang sedang login (Tidak berubah, tetap personal) ---
+        $personalFolders = $folderModel->where('owner_id', $userId)
             ->where('folder_type', 'personal')
             ->findAll();
 
-        // Ambil file yang tidak terkait dengan folder (file tanpa folder_id)
-        $orphanFiles = $fileModel->where('folder_id IS NULL')->findAll();
+        // --- Ambil file yang tidak terkait dengan folder (orphan files) oleh user Staff ---
+        $orphanFiles = $fileModel->where('folder_id IS NULL')
+            ->whereIn('uploader_id', $staffUserIds) // Pastikan ini juga difilter
+            ->findAll();
 
         $data = [
             'personalFolders' => $personalFolders,
-            'folderId' => null,
-            'folderType' => null,
-            'isShared' => null,
-            'sharedType' => null,
+            'folderId' => null, // Sesuaikan jika ada logika untuk ini
+            'folderType' => null, // Sesuaikan jika ada logika untuk ini
+            'isShared' => null, // Sesuaikan jika ada logika untuk ini
+            'sharedType' => null, // Sesuaikan jika ada logika untuk ini
             'orphanFiles' => $orphanFiles,
             'totalFolders' => $totalFolders,
             'totalFiles' => $totalFiles,
-            'latestUploadDate' => $formattedLatestUpload, // Meneruskan tanggal terakhir upload ke view
-            'recentItems' => $recentItems // Menambahkan item terbaru ke data
+            'latestUploadDate' => $formattedLatestUpload,
+            'recentItems' => $recentItems,
+            'currentRoleName' => $userRole
         ];
 
         return view('Staff/dashboard', $data);
@@ -200,12 +242,31 @@ class DokumenControllerStaff extends BaseController
             throw PageNotFoundException::forPageNotFound('File tidak ditemukan.');
         }
 
+        // Pastikan Anda mendapatkan data pembuat/user dari relasi atau model lain jika diperlukan
+        // Contoh: $userModel = new \App\Models\UserModel();
+        // $creator = $userModel->find($file['uploaded_by']); // Asumsi ada kolom 'uploaded_by' di tabel file
+
+        $filePath = WRITEPATH . 'uploads/' . $file['file_path'];
+        $fileExtension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
+
+        // Daftar ekstensi yang bisa di-preview secara native oleh browser
+        $isNativePreviewable = in_array($fileExtension, ['pdf', 'png', 'jpg', 'jpeg', 'gif', 'txt', 'html']);
+
         $data = [
             'fileId' => $fileId,
             'fileName' => $file['file_name'],
+            'file' => $file, // Kirim objek file lengkap untuk info lain
+            // 'creator'    => $creator, // Jika Anda ingin menampilkan info pembuat
         ];
 
-        return view('Staff/view_file_wrapper', $data);
+        if ($isNativePreviewable) {
+            // Untuk PDF, Gambar, Teks: tampilkan di iframe
+            $data['previewUrl'] = site_url('staff/serve-file/' . $fileId); // Pastikan serve-file punya otorisasi
+            return view('Staff/view_file_wrapper', $data);
+        } else {
+            // Untuk DOCX, PPTX, XLSX, dll.: tampilkan halaman info dan tombol unduh
+            return view('Staff/view_file_khusus', $data);
+        }
     }
 
     public function serveFile($fileId)
@@ -497,6 +558,11 @@ class DokumenControllerStaff extends BaseController
             return $this->response->setStatusCode(405)->setJSON(['status' => 'error', 'message' => 'Metode tidak diizinkan.']);
         }
 
+        $json = $this->request->getJSON();
+        if (empty($json)) {
+            return $this->failValidationErrors(['data' => 'Tidak ada data JSON yang diterima.']);
+        }
+
         $userId = $this->session->get('user_id');
         if (!$userId) {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Unauthorized. User not logged in.']);
@@ -575,6 +641,11 @@ class DokumenControllerStaff extends BaseController
                         return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal membuat folder fisik di server (mkdir() false).']);
                     }
                 }
+
+                // 🔥 LOG ACTIVITY - FOLDER CREATED
+                // KODE DIPERBARUI: Menambahkan nama folder ($json->name) ke log
+                $this->activityLogsModel->logActivity($userId, 'create_folder', 'folder', $newFolderId, $json->name);
+
                 // Jika semua sukses (DB insert dan folder fisik berhasil dibuat)
                 return $this->response->setJSON(['status' => 'success', 'message' => 'Folder berhasil dibuat!', 'new_folder_id' => $newFolderId]);
 

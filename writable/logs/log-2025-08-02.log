@@ -1,0 +1,97 @@
+DEBUG - 2025-08-02 19:26:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-02 19:26:15 --> Login proses method called
+INFO - 2025-08-02 19:26:15 --> Email: olvy.hrd@uss.com
+INFO - 2025-08-02 19:26:15 --> Password length: 8
+INFO - 2025-08-02 19:26:15 --> User found: YES
+INFO - 2025-08-02 19:26:15 --> User role_id: 2
+INFO - 2025-08-02 19:26:15 --> Password verified successfully
+DEBUG - 2025-08-02 19:26:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-02 19:26:15 --> Session set for user_id: 8
+INFO - 2025-08-02 19:26:15 --> Redirecting to hrd dashboard
+DEBUG - 2025-08-02 19:26:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:26:15 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:26:15 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:26:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:26:18 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:26:18 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:27:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:27:08 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:27:08 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:27:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:27:48 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:27:48 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:27:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:27:49 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:27:49 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:36:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:36:18 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:36:18 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:37:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:37:39 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:37:39 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:39:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:39:59 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:39:59 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:40:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:40:11 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:40:11 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:42:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:42:05 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:42:05 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:43:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:43:55 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:43:55 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:44:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:44:02 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:44:02 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:48:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:48:33 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:48:33 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:49:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:49:47 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:49:47 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:50:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:50:11 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:50:11 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:53:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:53:13 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:53:13 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:54:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:54:22 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:54:22 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:55:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:55:05 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:55:05 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:57:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:57:10 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:57:10 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:58:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:58:43 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:58:43 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 19:59:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 19:59:09 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 19:59:09 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 20:00:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 20:00:30 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 20:00:30 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 20:03:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 20:03:27 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 20:03:27 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 20:04:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 20:04:03 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 20:04:03 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 20:07:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 20:07:07 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 20:07:07 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 20:10:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 20:10:24 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 20:10:24 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 20:14:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 20:14:25 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 20:14:25 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 20:16:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 20:16:54 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 20:16:54 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-02 20:17:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-02 20:17:56 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-02 20:17:56 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.

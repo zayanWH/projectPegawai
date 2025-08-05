@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (cancelModalBtn) {
         cancelModalBtn.addEventListener('click', function() {
             modalCreateFolder.classList.add('hidden');
-            createFolderForm.reset();
-            sharedOptionsDiv.classList.add('hidden');
+            if (createFolderForm) createFolderForm.reset();
+            if (sharedOptionsDiv) sharedOptionsDiv.classList.add('hidden');
         });
     }
 
@@ -31,14 +31,15 @@ document.addEventListener('DOMContentLoaded', function() {
         modalCreateFolder.addEventListener('click', function(event) {
             if (event.target === modalCreateFolder) {
                 modalCreateFolder.classList.add('hidden');
-                createFolderForm.reset();
-                sharedOptionsDiv.classList.add('hidden');
+                if (createFolderForm) createFolderForm.reset();
+                if (sharedOptionsDiv) sharedOptionsDiv.classList.add('hidden');
             }
         });
     }
 
     if (folderTypeSelect) {
         folderTypeSelect.addEventListener('change', function() {
+            if (!sharedOptionsDiv) return;
             if (this.value === 'shared') {
                 sharedOptionsDiv.classList.remove('hidden');
             } else {
@@ -51,9 +52,9 @@ document.addEventListener('DOMContentLoaded', function() {
         createFolderForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const folderName = folderNameInput.value.trim();
-            const parentId = parentIdInput.value || null;
-            const folderType = folderTypeSelect.value;
+            const folderName = folderNameInput?.value.trim();
+            const parentId = parentIdInput?.value || null;
+            const folderType = folderTypeSelect?.value;
             let isShared = 0;
             let sharedType = null;
             let accessRoles = [];
@@ -65,13 +66,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (folderType === 'shared') {
                 isShared = 1;
-                sharedType = document.getElementById('sharedType').value;
+                sharedType = document.getElementById('sharedType')?.value;
                 document.querySelectorAll('input[name="access_roles[]"]:checked').forEach(checkbox => {
                     accessRoles.push(checkbox.value);
                 });
             }
 
-            const csrfToken = document.querySelector('input[name="<?= csrf_token() ?>"]').value;
+            const csrfToken = document.querySelector('input[name="<?= csrf_token() ?>"]')?.value;
             const targetUrl = window.baseUrl + 'hrd/createFolder';
 
             fetch(targetUrl, {
@@ -106,8 +107,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (data.status === 'success') {
                     alert('Folder berhasil dibuat!');
                     modalCreateFolder.classList.add('hidden');
-                    createFolderForm.reset();
-                    sharedOptionsDiv.classList.add('hidden');
+                    if (createFolderForm) createFolderForm.reset();
+                    if (sharedOptionsDiv) sharedOptionsDiv.classList.add('hidden');
                     location.reload();
                 } else {
                     let errorMessage = 'Gagal membuat folder: ' + (data.message || 'Terjadi kesalahan.');

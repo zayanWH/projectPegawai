@@ -6,6 +6,8 @@ use App\Models\FolderModel;
 use App\Models\FileModel;
 use App\Models\HrdDocumentModel;
 use App\Models\UserModel;
+use App\Models\NotificationsModel;
+use App\Models\ActivityLogsModel;
 use App\Models\RoleModel;
 use CodeIgniter\Files\File;
 use CodeIgniter\Exceptions\PageNotFoundException;
@@ -17,6 +19,8 @@ class DokumenControllerHRD extends BaseController
     protected $fileModel;
     protected $hrdDocumentModel;
     protected $userModel;
+
+    protected $activityLogsModel; // Model untuk aktivitas log
     protected $roleModel; // Deklarasi properti
     protected $helpers = ['form', 'url', 'filesystem'];
 
@@ -25,6 +29,7 @@ class DokumenControllerHRD extends BaseController
         $this->folderModel = new FolderModel();
         $this->fileModel = new FileModel();
         $this->hrdDocumentModel = new HrdDocumentModel();
+        $this->activityLogsModel = new ActivityLogsModel();
         $this->userModel = new UserModel();
         $this->roleModel = new RoleModel(); // Inisialisasi properti
         helper('session');
@@ -32,10 +37,13 @@ class DokumenControllerHRD extends BaseController
 
 
 
+    /**
+     * Melayani file (menampilkan atau mengunduh) berdasarkan ID file.
+     */
     public function serveFile($fileId)
     {
         $session = session();
-        $userRole = $session->get('role'); // Contoh: 'hrd', 'staff', dll.
+        $userRole = $session->get('role');
         $userId = $session->get('user_id');
 
         $file = $this->fileModel->find($fileId);
@@ -47,29 +55,51 @@ class DokumenControllerHRD extends BaseController
         // Logika Otorisasi:
         if ($userRole === 'hrd') {
             // HRD memiliki akses penuh, lanjutkan
-        } elseif ($file['uploader_id'] == $userId) {
+        } elseif (isset($file['uploader_id']) && $file['uploader_id'] == $userId) { // Pastikan uploader_id ada
             // Pengguna adalah pemilik file, lanjutkan
         } else {
-            throw new AccessDeniedException('Anda tidak memiliki izin untuk melihat file ini.');
+            // Jika AccessDeniedException Anda adalah custom class, pastikan di-import di atas.
+            // Jika tidak, gunakan generic Exception atau PageNotFoundException untuk menyembunyikan informasi.
+            throw new Exception('Anda tidak memiliki izin untuk melihat file ini.');
+            // Atau: throw PageNotFoundException::forPageNotFound('Akses ditolak.');
         }
 
-        // --- Pastikan konstanta WRITABLE_PATH didefinisikan di app/Config/Constants.php ---
-        $filePath = WRITABLE_PATH . 'uploads' . DIRECTORY_SEPARATOR . $file['server_file_name'];
-        // ---------------------------------------------------------------------------------
+        // --- INI ADALAH BAGIAN UTAMA YANG DIPERBAIKI ---
+        // Pastikan kolom-kolom ini ada dan terisi dari database
+        if (
+            !isset($file['file_path']) || empty($file['file_path']) ||
+            !isset($file['server_file_name']) || empty($file['server_file_name'])
+        ) {
+            log_message('error', 'File ID ' . $fileId . ' ditemukan di DB, tetapi "file_path" atau "server_file_name" tidak ada atau kosong.');
+            throw PageNotFoundException::forPageNotFound('Informasi path file tidak lengkap.');
+        }
+
+        // Mengkonstruksi path fisik lengkap menggunakan WRITEPATH, file_path (direktori), dan server_file_name (nama file unik)
+        $filePath = WRITABLE_PATH . $file['file_path'] . $file['server_file_name'];
+        // Pastikan $file['file_path'] dari DB sudah berakhir dengan DIRECTORY_SEPARATOR jika perlu.
+        // Jika tidak, tambahkan di sini: $filePath = WRITABLE_PATH . $file['file_path'] . DIRECTORY_SEPARATOR . $file['server_file_name'];
 
         // Verifikasi apakah file fisik benar-benar ada
         if (!file_exists($filePath)) {
+            log_message('error', 'File fisik tidak ditemukan di: ' . $filePath . ' untuk File ID: ' . $fileId);
             throw PageNotFoundException::forPageNotFound('File fisik tidak ditemukan di server.');
         }
 
-        $mimeType = $file['file_type'];
+        // Pastikan 'type' dan 'file_name' ada
+        if (!isset($file['type']) || empty($file['type']) || !isset($file['file_name']) || empty($file['file_name'])) {
+            log_message('error', 'File ID ' . $fileId . ' ditemukan, tetapi "type" atau "file_name" tidak lengkap.');
+            throw PageNotFoundException::forPageNotFound('Informasi MIME type atau nama file asli tidak lengkap.');
+        }
+
+        $mimeType = $file['type']; // Menggunakan 'type' dari DB
+        $originalFileName = $file['file_name']; // Menggunakan 'file_name' dari DB
 
         if (strpos($mimeType, 'image/') === 0 || $mimeType === 'application/pdf') {
             header('Content-Type: ' . $mimeType);
             readfile($filePath);
             exit;
         } else {
-            return $this->response->download($filePath, null)->setFileName($file['file_name']);
+            return $this->response->download($filePath, null)->setFileName($originalFileName);
         }
     }
 
@@ -193,25 +223,46 @@ class DokumenControllerHRD extends BaseController
         $currentUserId = $session->get('user_id'); // ID pengguna HRD yang sedang login
         $currentUserRole = $session->get('role_name'); // Nama peran HRD yang sedang login (misal: 'HRD')
 
+        log_message('debug', 'DokumenControllerHRD::dokumenStaff(): User ID: ' . $currentUserId . ', Role Name: ' . $currentUserRole);
+
         // Ambil semua folder dari database, beserta informasi pemilik (nama pengguna dan nama peran)
         $data['personalFolders'] = $this->folderModel
-            ->select('folders.*, users.name as owner_display, roles.name as owner_role_name') // Menggunakan 'users.name' jika itu kolom nama pengguna
-            ->join('users', 'users.id = folders.owner_id', 'left') // Join dengan tabel users
-            ->join('roles', 'roles.id = users.role_id', 'left')   // Join dengan tabel roles melalui users
-            ->where('folders.parent_id IS NULL')
-            ->findAll(); // Mengambil semua folder
+            ->select('folders.*, users.name as owner_display, roles.name as owner_role_name')
+            ->join('users', 'users.id = folders.owner_id', 'left')
+            ->join('roles', 'roles.id = users.role_id', 'left')
+            ->where('folders.parent_id IS NULL') // Hanya folder tingkat atas
+            ->findAll();
 
-        // Untuk saat ini, kita asumsikan tidak ada file yang ditampilkan bersama folder di halaman ini.
-        // Jika ada, Anda perlu query terpisah untuk file.
-        $data['files'] = []; // Inisialisasi kosong jika tidak ada file yang ditampilkan
+        log_message('debug', 'DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: ' . count($data['personalFolders']));
+        // Untuk melihat detail folder pertama (opsional, jika ingin melihat isinya)
+        // if (!empty($data['personalFolders'])) {
+        //     log_message('debug', 'DokumenControllerHRD::dokumenStaff(): First Personal Folder: ' . json_encode($data['personalFolders'][0]));
+        // }
+
+        // Ambil file-file yang ada di root (folder_id IS NULL)
+        // Dan yang bisa diakses oleh user HRD yang sedang login
+        // app/Controllers/DokumenControllerHRD.php
+
+        // Anda tidak lagi membutuhkan variabel $currentUserRole untuk metode ini
+// $currentUserRole = $session->get('role_name') ?? '';
+
+        $data['files'] = $this->fileModel->getSharedFiles(null, $currentUserId);
+
+        log_message('debug', 'DokumenControllerHRD::dokumenStaff(): Fetched Files count: ' . count($data['files']));
+        // Untuk melihat detail file pertama (opsional, jika ingin melihat isinya)
+        if (!empty($data['files'])) {
+            log_message('debug', 'DokumenControllerHRD::dokumenStaff(): First Fetched File: ' . json_encode($data['files'][0]));
+        }
+
 
         // Data untuk JavaScript frontend (penting!)
-        // currentFolderId di set null karena ini adalah halaman root dokumen staff
-        $data['currentFolderId'] = null;
+        $data['currentFolderId'] = null; // null karena ini adalah halaman root dokumen staff
         $data['currentUserId'] = $currentUserId;
         $data['userRoleName'] = $currentUserRole;
 
-        return view('HRD/dokumenStaff', $data); // Pastikan path view sudah benar (HRD/dokumenStaff)
+        log_message('debug', 'DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: ' . ($data['currentFolderId'] ?? 'NULL'));
+
+        return view('HRD/dokumenStaff', $data);
     }
 
     public function search()
@@ -334,22 +385,17 @@ class DokumenControllerHRD extends BaseController
 
     public function createFolder()
     {
-        // Memastikan request adalah AJAX
         if (!$this->request->isAJAX()) {
             return $this->response->setStatusCode(405)->setJSON(['status' => 'error', 'message' => 'Metode tidak diizinkan.']);
         }
 
-        // Mengambil ID pengguna dari sesi
         $userId = session()->get('user_id');
-        // MENGAMBIL ROLE ID PENGGUNA DARI SESI SAAT FOLDER DIBUAT
-        $userRole = session()->get('user_role'); // Ini penting ditambahkan!
+        $userRole = session()->get('user_role'); 
 
-        // Memastikan pengguna sudah login
         if (!$userId) {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Unauthorized. User not logged in.']);
         }
 
-        // Mengambil input JSON dari request
         $input = $this->request->getJSON(true);
 
         $folderName = $input['name'] ?? null;
@@ -357,9 +403,8 @@ class DokumenControllerHRD extends BaseController
         $folderType = $input['folder_type'] ?? 'personal';
         $isShared = $input['is_shared'] ?? 0;
         $sharedType = $input['shared_type'] ?? null;
-        $accessRoles = $input['access_roles'] ?? []; // Pastikan ini array kosong sebagai default
+        $accessRoles = $input['access_roles'] ?? []; 
 
-        // Aturan validasi untuk nama folder
         $rules = [
             'name' => 'required|min_length[3]|max_length[255]',
         ];
@@ -367,27 +412,20 @@ class DokumenControllerHRD extends BaseController
             return $this->response->setJSON(['status' => 'error', 'message' => 'Validasi gagal.', 'errors' => $this->validator->getErrors()]);
         }
 
-        // Jika ada parent_id, ambil informasi folder induk
         if ($parentId) {
             $parentFolder = $this->folderModel->find($parentId);
             if ($parentFolder) {
-                // Warisi properti dari folder induk
                 $folderType = $parentFolder['folder_type'];
                 $isShared = $parentFolder['is_shared'];
                 $sharedType = $parentFolder['shared_type'];
-                // Decode access_roles dari induk jika ada
                 $accessRoles = json_decode($parentFolder['access_roles'] ?? '[]', true);
             } else {
                 return $this->response->setJSON(['status' => 'error', 'message' => 'Parent folder tidak ditemukan.']);
             }
         }
 
-        // --- LOGIKA PENTING BARU UNTUK owner_role dan access_roles ---
-
-        // Set owner_role ke role dari pengguna yang membuat folder
         $ownerRoleToSave = $userRole;
 
-        // Jika folder bertipe 'personal' dan dibuat oleh Admin (role 1) atau Staff (role 6)
         if ($folderType === 'personal') {
             if ($userRole == 1) { // Jika Admin (role ID 1) yang membuat folder personal
                 $accessRoles = [6]; // Otomatis berikan akses ke Staff (role ID 6)
@@ -513,6 +551,10 @@ class DokumenControllerHRD extends BaseController
         return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal memindahkan file.'], 500);
     }
 
+    /**
+     * Metode untuk mengunggah file.
+     * Menerima file dan folder_id (opsional) melalui POST.
+     */
     public function uploadFile() // Tidak perlu lagi parameter $folderId di sini
     {
         $session = session();
@@ -522,9 +564,30 @@ class DokumenControllerHRD extends BaseController
             return $this->response->setJSON(['status' => 'error', 'message' => 'User not logged in.'])->setStatusCode(401);
         }
 
+        // --- VALIDASI FILE DI SINI ---
+        // Tambahkan validasi eksplisit seperti max_size, ext_in dll.
+        $validationRule = [
+            'file' => [
+                'label' => 'Dokumen',
+                'rules' => 'uploaded[file]|max_size[file,5120]|ext_in[file,pdf,doc,docx,xls,xlsx,ppt,pptx,jpg,jpeg,png,gif]',
+                'errors' => [
+                    'uploaded' => 'Anda harus memilih file untuk diunggah.',
+                    'max_size' => 'Ukuran file terlalu besar (maks 5MB).',
+                    'ext_in' => 'Format file tidak diizinkan. Hanya PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, JPG, JPEG, PNG, GIF.',
+                ],
+            ],
+        ];
+
+        if (!$this->validate($validationRule)) {
+            $errors = $this->validator->getErrors();
+            return $this->response->setJSON(['status' => 'error', 'message' => implode(', ', $errors)])->setStatusCode(400);
+        }
+        // --- AKHIR VALIDASI FILE ---
+
         // Ambil file yang diupload
         $file = $this->request->getFile('file'); // 'file' adalah nama input field di form/payload
 
+        // Baris ini menjadi tidak terlalu krusial karena validasi di atas, tapi bisa dipertahankan sebagai fallback
         if (!$file || !$file->isValid() || $file->hasMoved()) {
             return $this->response->setJSON(['status' => 'error', 'message' => $file->getErrorString() ?? 'File upload failed.'])->setStatusCode(400);
         }
@@ -546,15 +609,22 @@ class DokumenControllerHRD extends BaseController
         // Tentukan direktori tujuan penyimpanan fisik
         $targetDirectory = WRITEPATH . 'uploads' . DIRECTORY_SEPARATOR . 'files';
         if ($folder) {
-            $targetDirectory = $folder['full_path_physical']; // Gunakan path fisik folder
+            // Pastikan full_path_physical di database folders sudah berakhir dengan DIRECTORY_SEPARATOR
+            $targetDirectory = $folder['full_path_physical'];
+            // Jika full_path_physical tidak berakhir dengan slash, tambahkan
+            if (substr($targetDirectory, -1) !== DIRECTORY_SEPARATOR) {
+                $targetDirectory .= DIRECTORY_SEPARATOR;
+            }
         } else {
             // Jika tidak ada folderId (upload ke root/orphan), simpan di folder user
-            $targetDirectory .= DIRECTORY_SEPARATOR . $currentUserId;
+            $targetDirectory .= DIRECTORY_SEPARATOR . $currentUserId . DIRECTORY_SEPARATOR; // Tambahkan slash di akhir
         }
 
         // Pastikan direktori tujuan ada
         if (!is_dir($targetDirectory)) {
-            mkdir($targetDirectory, 0777, true);
+            if (!mkdir($targetDirectory, 0777, true)) {
+                return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal membuat direktori upload. Periksa izin folder.']);
+            }
         }
 
         // Generate nama file unik untuk menghindari tabrakan
@@ -563,24 +633,25 @@ class DokumenControllerHRD extends BaseController
         // Pindahkan file ke direktori tujuan
         if ($file->move($targetDirectory, $newName)) {
             // Simpan metadata file ke database (tabel 'files')
-            $dataToSave = [
-                'name' => $file->getName(), // Nama asli file
-                'new_name' => $newName,         // Nama unik di server
+            // --- INI ADALAH BAGIAN UTAMA YANG DIPERBAIKI ---
+            $dataToSaveForDb = [
+                'file_name' => $file->getName(), // Menggunakan 'file_name' sesuai model
+                'server_file_name' => $newName,         // Menggunakan 'server_file_name' sesuai model
                 'type' => $file->getClientMimeType(),
                 'size' => $file->getSizeByUnit('kb'),
-                'path' => str_replace(WRITEPATH, '', $targetDirectory), // Path relatif dari WRITEPATH
-                'full_path_physical' => $targetDirectory . DIRECTORY_SEPARATOR . $newName,
-                'folder_id' => $folderId,      // ID folder tempat file diupload (bisa NULL)
-                'uploader_id' => $currentUserId, // ID pengguna yang mengunggah
-                'owner_role' => $session->get('role_name'), // Peran user yang mengunggah
+                'file_path' => str_replace(WRITEPATH, '', $targetDirectory), // Menggunakan 'file_path' sesuai model (path direktori relatif)
+                'folder_id' => $folderId,
+                'uploader_id' => $currentUserId,
+                'owner_role' => $session->get('role_name'),
+                'uploaded_at' => date('Y-m-d H:i:s'), // Pastikan kolom ini ada dan diizinkan di FileModel
             ];
 
-            if ($this->fileModel->insert($dataToSave)) {
-                return $this->response->setJSON(['status' => 'success', 'message' => 'File uploaded successfully!', 'file' => $dataToSave]);
+            if ($this->fileModel->insert($dataToSaveForDb)) {
+                return $this->response->setJSON(['status' => 'success', 'message' => 'File uploaded successfully!', 'file' => $dataToSaveForDb]);
             } else {
                 // Hapus file fisik jika penyimpanan DB gagal
-                if (file_exists($targetDirectory . DIRECTORY_SEPARATOR . $newName)) {
-                    unlink($targetDirectory . DIRECTORY_SEPARATOR . $newName);
+                if (file_exists($targetDirectory . $newName)) { // Gunakan $targetDirectory yang sudah di-slash
+                    unlink($targetDirectory . $newName);
                 }
                 return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to save file metadata to database.']);
             }
@@ -588,6 +659,102 @@ class DokumenControllerHRD extends BaseController
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to move uploaded file.']);
         }
     }
+
+    public function uploadDokumenUmum()
+    {
+        // 1. Ambil session user
+        $session = session();
+        $currentUserId = $session->get('user_id');
+
+        if (!$currentUserId) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'User not logged in.'])->setStatusCode(401);
+        }
+
+        // 2. Validasi file dan input POST
+        $validationRule = [
+            'file' => [
+                'label' => 'Dokumen',
+                'rules' => 'uploaded[file]|max_size[file,5120]|ext_in[file,pdf,doc,docx,xls,xlsx,ppt,pptx,jpg,jpeg,png,gif]',
+                'errors' => [
+                    'uploaded' => 'Anda harus memilih file untuk diunggah.',
+                    'max_size' => 'Ukuran file terlalu besar (maks 5MB).',
+                    'ext_in' => 'Format file tidak diizinkan. Hanya PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, JPG, JPEG, PNG, GIF.',
+                ],
+            ],
+            'category' => 'required',
+            'description' => 'required',
+        ];
+
+        if (!$this->validate($validationRule)) {
+            $errors = $this->validator->getErrors();
+            // Redirect kembali dengan pesan error
+            return redirect()->back()->withInput()->with('errors', $errors);
+        }
+
+        $file = $this->request->getFile('file');
+
+        if (!$file || !$file->isValid() || $file->hasMoved()) {
+            return redirect()->back()->with('error', 'File tidak valid atau gagal diunggah.');
+        }
+
+        // 3. Pindahkan file dan simpan ke database
+        $newName = $file->getRandomName();
+        $uploadPath = WRITEPATH . 'uploads/dokumen-umum/';
+
+        if (!is_dir($uploadPath)) {
+            if (!mkdir($uploadPath, 0777, true)) {
+                return redirect()->back()->with('error', 'Gagal membuat direktori upload. Periksa izin folder.');
+            }
+        }
+
+        if (!$file->move($uploadPath, $newName)) {
+            return redirect()->back()->with('error', 'Gagal memindahkan file yang diunggah.');
+        }
+
+        $hrdDocumentModel = new HrdDocumentModel();
+        $dataDokumen = [
+            'file_id' => $newName,
+            'category' => $this->request->getPost('category'),
+            'description' => $this->request->getPost('description'),
+            'file_name' => $file->getName(),
+        ];
+        $hrdDocumentModel->save($dataDokumen);
+        $documentId = $hrdDocumentModel->insertID();
+
+        // 4. Kirim permintaan ke server Node.js untuk broadcast notifikasi
+        $dataNotif = [
+            'title' => 'Dokumen Umum Baru',
+            'message' => 'Dokumen umum baru telah diunggah: ' . $this->request->getPost('description'),
+            'url' => base_url('dokumen/view/' . $documentId) // Sesuaikan URL
+        ];
+
+        $ch = curl_init('http://localhost:3000/api/broadcast-notification');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($dataNotif));
+
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($httpCode !== 200) {
+            log_message('error', 'Failed to send notification to Node.js server. HTTP Code: ' . $httpCode . ', Response: ' . $response);
+        }
+
+        return redirect()->to(base_url('hrd/dokumen-umum'))->with('success', 'Dokumen berhasil diunggah.');
+    }
+
+    public function listDocuments($parentId = null)
+    {
+        $documents = $this->hrdDocumentModel->getByParent($parentId);
+        return view('hrd/documents_list', [
+            'documents' => $documents,
+            'parent_id' => $parentId
+        ]);
+    }
+
+
 
     public function renameFolder()
     {
@@ -848,10 +1015,6 @@ class DokumenControllerHRD extends BaseController
                 log_message('warning', 'File ' . $fileId . ' memiliki folder_id tidak valid atau full_path_physical hilang untuk folder ' . $file['folder_id']);
             }
         }
-
-        // --- GANTI BARIS INI ---
-        // Dari: $filePath = $filePathBase . $file['server_file_name'];
-        // Menjadi:
         $filePath = $filePathBase . $file['file_path'];
 
         // Hapus baris dd($filePath); yang sebelumnya Anda tambahkan
@@ -889,13 +1052,49 @@ class DokumenControllerHRD extends BaseController
         return $breadcrumbs;
     }
 
-    public function dokumenSPV()
+    public function dokumenSpv()
     {
-        return view('HRD/dokumenSPV');
+        $session = session();
+        $currentUserId = $session->get('user_id');
+
+        // Mengambil data file untuk Supervisor.
+        // Metode getSupervisorFiles() ini harus Anda buat di FileModel.
+        // Asumsi: Kita ingin mengambil file yang diunggah oleh pengguna dengan peran 'supervisor' (role_id 3).
+        $data['files'] = $this->fileModel->getSupervisorFiles(null, $currentUserId);
+
+        // Mengambil folder pribadi (jika dibutuhkan)
+        $data['personalFolders'] = $this->folderModel->getMyPersonalFolders($currentUserId);
+
+        // Data yang akan dilewatkan ke view
+        $data['title'] = 'Dokumen Supervisor';
+        $data['breadcrumb'] = [
+            'Dashboard' => site_url('hrd/dashboard'),
+            'Dokumen Supervisor' => null,
+        ];
+
+        // Memuat view yang Anda inginkan
+        return view('hrd/dokumenSpv', $data);
     }
     public function dokumenManager()
     {
-        return view('HRD/dokumenManager');
+        $session = session();
+        $currentUserId = $session->get('user_id');
+
+        // Mengambil data file untuk Manager (sudah diperbaiki)
+        $data['files'] = $this->fileModel->getManagerFiles(null, $currentUserId);
+
+        // Mengambil data folder untuk Manager (PERBAIKAN BARU)
+        // Panggil metode baru yang telah kita buat
+        $data['folders'] = $this->folderModel->getManagerFolders(null);
+
+        // Data yang akan dilewatkan ke view
+        $data['title'] = 'Dokumen Manager';
+        $data['breadcrumb'] = [
+            'Dashboard' => site_url('hrd/dashboard'),
+            'Dokumen Manager' => null,
+        ];
+
+        return view('hrd/dokumenManager', $data);
     }
     public function dokumenDireksi()
     {
@@ -904,7 +1103,6 @@ class DokumenControllerHRD extends BaseController
 
     public function dokumenBersama()
     {
-        // dd("Controller Direksi Reached!"); // <--- HAPUS BARIS INI!
 
         $session = session();
         $userId = $session->get('user_id');
@@ -957,13 +1155,332 @@ class DokumenControllerHRD extends BaseController
         return view('Umum/dokumenBersama', $data); // Sesuaikan dengan path yang Anda berikan
     }
 
-    public function dokumenUmum()
-    {
-        return view('HRD/dokumenUmum');
+    // app/Controllers/DokumenControllerHRD.php
+public function dokumenUmum()
+{
+    $hrdDocumentModel = new \App\Models\HrdDocumentModel();
+    $data['documents'] = $hrdDocumentModel->getByParent(null); // Mengambil dokumen root level
+    $data['parent_id'] = null;
+    return view('HRD/dokumenUmum', $data);
+}
+
+/**
+ * Method khusus untuk membuat folder di halaman dokumen umum
+ */
+public function createFolderUmum()
+{
+    // Clear any previous output
+    if (ob_get_level()) {
+        ob_clean();
+    }
+    
+    // Set proper headers
+    $this->response->setHeader('Content-Type', 'application/json');
+    $this->response->setHeader('Cache-Control', 'no-cache, must-revalidate');
+    
+    if (!$this->request->isAJAX()) {
+        return $this->response->setStatusCode(405)->setJSON(['status' => 'error', 'message' => 'Metode tidak diizinkan.']);
     }
 
-    public function aktivitas()
+    $input = $this->request->getJSON(true);
+    
+    $folderName = $input['name'] ?? null;
+    $parentId = $input['parent_id'] ?? null;
+    $folderType = $input['folder_type'] ?? 'personal';
+
+    // Validasi input
+    if (!$folderName || trim($folderName) === '') {
+        return $this->response->setJSON(['status' => 'error', 'message' => 'Nama folder tidak boleh kosong.']);
+    }
+
+    // Inisialisasi HrdDocumentModel
+    $hrdDocumentModel = new \App\Models\HrdDocumentModel();
+    
+    // Siapkan data untuk disimpan
+    $data = [
+        'parent_id' => $parentId ?: null,
+        'name' => trim($folderName),
+        'type' => 'folder',
+        'mime_type' => null,
+        'size' => null,
+        'file_path' => null,
+        'file_id' => null,
+        'category' => ($folderType !== 'personal') ? $folderType : null,
+        'description' => null
+    ];
+
+    try {
+        // Simpan ke database
+        if ($hrdDocumentModel->insert($data)) {
+            return $this->response->setJSON([
+                'status' => 'success', 
+                'message' => 'Folder berhasil dibuat!'
+            ]);
+        } else {
+            $errors = $hrdDocumentModel->errors();
+            return $this->response->setJSON([
+                'status' => 'error', 
+                'message' => 'Gagal membuat folder.', 
+                'errors' => $errors
+            ]);
+        }
+    } catch (\Exception $e) {
+        return $this->response->setJSON([
+            'status' => 'error', 
+            'message' => 'Terjadi kesalahan: ' . $e->getMessage()
+        ]);
+    }
+}
+
+    public function ActivityLogs()
     {
-        return view('HRD/aktivitas');
+        $startDate = $this->request->getGet('start_date');
+        $endDate = $this->request->getGet('end_date');
+        $searchQuery = $this->request->getGet('search');
+
+        $query = $this->activityLogsModel
+            ->select('activity_logs.*, users.name as user_name, roles.name as role_name');
+
+        // Lakukan JOIN hanya untuk users dan roles
+        $query->join('users', 'users.id = activity_logs.user_id', 'left')
+            ->join('roles', 'roles.id = users.role_id', 'left');
+
+        // 🔥 PENTING: HAPUS SEMUA JOIN KE TABEL 'files' dan 'folders' di sini.
+        // Sekarang, nama file/folder diambil langsung dari 'activity_logs.target_name'.
+
+        // Terapkan filter tanggal
+        if (!empty($startDate) && !empty($endDate)) {
+            try {
+                $startDateTime = Time::parse($startDate . ' 00:00:00')->toDateTimeString();
+                $endDateTime = Time::parse($endDate . ' 23:59:59')->toDateTimeString();
+
+                $query->where('activity_logs.timestamp >=', $startDateTime)
+                    ->where('activity_logs.timestamp <=', $endDateTime);
+            } catch (\Exception $e) {
+                log_message('error', 'Gagal parsing tanggal filter untuk log aktivitas: ' . $e->getMessage());
+                session()->setFlashdata('error', 'Format tanggal tidak valid.');
+                return redirect()->back(); // Gunakan redirect()->back() untuk lebih fleksibel
+            }
+        }
+
+        // Terapkan filter pencarian
+        if (!empty($searchQuery)) {
+            $query->groupStart()
+                ->orLike('users.name', $searchQuery)
+                ->orLike('roles.name', $searchQuery)
+                ->orLike('activity_logs.action', $searchQuery)
+                ->orLike('activity_logs.target_name', $searchQuery) // 🔥 Gunakan kolom baru ini
+                ->groupEnd();
+        }
+
+        $activityLogs = $query->orderBy('activity_logs.timestamp', 'DESC')->findAll();
+
+        $data = [
+            'title' => 'Log Aktivitas File HRD',
+            'logs' => $activityLogs,
+            'startDate' => $startDate,
+            'endDate' => $endDate,
+            'searchQuery' => $searchQuery,
+        ];
+
+        return view('HRD/aktivitas', $data); // Sesuaikan nama view jika perlu
+    }
+
+    /**
+     * Method untuk navigasi ke dalam folder dokumen umum
+     */
+    public function dokumenUmumFolder($folderId)
+    {
+        $hrdDocumentModel = new \App\Models\HrdDocumentModel();
+        
+        // Validasi folder exists
+        $folder = $hrdDocumentModel->find($folderId);
+        if (!$folder || $folder['type'] !== 'folder') {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Folder tidak ditemukan.');
+        }
+        
+        // Ambil semua dokumen/folder di dalam folder ini
+        $documents = $hrdDocumentModel->getByParent($folderId);
+        
+        $data = [
+            'documents' => $documents,
+            'current_folder' => $folder,
+            'parent_id' => $folderId,
+            'breadcrumb' => $this->getBreadcrumb($folderId, $hrdDocumentModel)
+        ];
+        
+        return view('HRD/dokumenUmumFolder', $data);
+    }
+    
+    /**
+     * Method untuk upload file ke dalam folder dokumen umum
+     */
+    public function uploadFileUmum()
+    {
+        // Clear any previous output
+        if (ob_get_level()) {
+            ob_clean();
+        }
+        
+        // Set proper headers
+        $this->response->setHeader('Content-Type', 'application/json');
+        $this->response->setHeader('Cache-Control', 'no-cache, must-revalidate');
+        
+        if (!$this->request->isAJAX()) {
+            return $this->response->setStatusCode(405)->setJSON(['status' => 'error', 'message' => 'Metode tidak diizinkan.']);
+        }
+        
+        $file = $this->request->getFile('file');
+        $parentId = $this->request->getPost('parent_id');
+        $description = $this->request->getPost('description');
+        
+        if (!$file || !$file->isValid()) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'File tidak valid.']);
+        }
+        
+        // Validasi parent folder
+        $hrdDocumentModel = new \App\Models\HrdDocumentModel();
+        if ($parentId) {
+            $parentFolder = $hrdDocumentModel->find($parentId);
+            if (!$parentFolder || $parentFolder['type'] !== 'folder') {
+                return $this->response->setJSON(['status' => 'error', 'message' => 'Folder tujuan tidak valid.']);
+            }
+        }
+        
+        try {
+            // Generate unique filename
+            $fileName = $file->getRandomName();
+            $uploadPath = WRITEPATH . 'uploads/dokumen-umum/';
+            
+            // Create directory if not exists
+            if (!is_dir($uploadPath)) {
+                mkdir($uploadPath, 0777, true);
+            }
+            
+            // Move file
+            if ($file->move($uploadPath, $fileName)) {
+                // Simpan data ke database
+                $data = [
+                    'parent_id' => $parentId,
+                    'name' => $fileName,
+                    'type' => 'file',
+                    'mime_type' => $file->getClientMimeType(),
+                    'size' => $file->getSize(),
+                    'file_path' => 'uploads/dokumen-umum/' . $fileName,
+                    'category' => null,
+                    'description' => $description,
+                    'created_at' => date('Y-m-d H:i:s')
+                ];
+                
+                $documentId = $hrdDocumentModel->insert($data);
+                
+                if ($documentId) {
+                    // Trigger notifikasi realtime dan email
+                    $this->triggerDocumentNotification($documentId, $fileName, null);
+                    
+                    return $this->response->setJSON([
+                        'status' => 'success',
+                        'message' => 'File berhasil diupload!',
+                        'document_id' => $documentId
+                    ]);
+                } else {
+                    // Hapus file jika gagal insert ke database
+                    if (file_exists($uploadPath . $fileName)) {
+                        unlink($uploadPath . $fileName);
+                    }
+                    return $this->response->setJSON([
+                        'status' => 'error',
+                        'message' => 'Gagal menyimpan data file ke database.'
+                    ]);
+                }
+            } else {
+                return $this->response->setJSON([
+                    'status' => 'error',
+                    'message' => 'Gagal mengupload file.'
+                ]);
+            }
+        } catch (\Exception $e) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Terjadi kesalahan: ' . $e->getMessage()
+            ]);
+        }
+    }
+    
+    /**
+     * Helper method untuk membuat breadcrumb navigasi
+     */
+    private function getBreadcrumb($folderId, $model)
+    {
+        $breadcrumb = [];
+        $currentId = $folderId;
+        
+        while ($currentId) {
+            $folder = $model->find($currentId);
+            if ($folder) {
+                array_unshift($breadcrumb, $folder);
+                $currentId = $folder['parent_id'];
+            } else {
+                break;
+            }
+        }
+        
+        return $breadcrumb;
+    }
+
+    /**
+     * Helper method untuk generate breadcrumb
+     */
+    private function generateBreadcrumb($parentId)
+    {
+        $breadcrumb = [];
+        $hrdDocumentModel = new \App\Models\HrdDocumentModel();
+        
+        while ($parentId) {
+            $parent = $hrdDocumentModel->find($parentId);
+            if ($parent) {
+                array_unshift($breadcrumb, [
+                    'id' => $parent['id'],
+                    'name' => $parent['name']
+                ]);
+                $parentId = $parent['parent_id'];
+            } else {
+                break;
+            }
+        }
+        
+        return $breadcrumb;
+    }
+
+    /**
+     * Trigger notifikasi realtime dan email saat upload dokumen
+     */
+    private function triggerDocumentNotification($documentId, $documentName, $category = null)
+    {
+        try {
+            // Get current user info
+            $session = session();
+            $uploaderName = $session->get('name') ?? 'System';
+            
+            // Load notification service
+            $notificationService = new \App\Services\NotificationService();
+            
+            // Process notification (database insert, WebSocket push, email send)
+            $result = $notificationService->processDocumentUploadNotification(
+                $documentId,
+                $documentName,
+                $uploaderName,
+                $category
+            );
+            
+            if ($result) {
+                log_message('info', "Document notification triggered successfully for: {$documentName}");
+            } else {
+                log_message('warning', "Failed to trigger document notification for: {$documentName}");
+            }
+            
+        } catch (\Exception $e) {
+            log_message('error', 'Error triggering document notification: ' . $e->getMessage());
+        }
     }
 }

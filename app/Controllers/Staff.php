@@ -9,7 +9,7 @@ use App\Models\RoleModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 use App\Exceptions\AccessDeniedException;
 
-class Staff extends BaseController
+ class Staff extends BaseController
 {
     protected $folderModel;
     protected $fileModel;
@@ -74,58 +74,105 @@ class Staff extends BaseController
         $userId = $session->get('user_id');
         $userRole = $session->get('role_name');
 
+        // Pastikan pengguna sudah login
+        if (!$userId) {
+            // Sebaiknya redirect ke halaman login atau tampilkan pesan error
+            return redirect()->to(base_url('login'))->with('error', 'Anda harus login untuk mengakses folder bersama.');
+        }
+
+        // Inisialisasi variabel untuk view
+        $currentFolder = null;
+        $allowedFolders = []; // Ini yang akan dikirim ke view
+        $allowedFiles = [];   // Ini yang akan dikirim ke view
+        $currentFolderName = 'Dokumen Bersama'; // Default untuk root
+
+        // LOGIKA KETIKA AKSES FOLDER TERTENTU (BUKAN ROOT)
         if ($folderId) {
             $currentFolder = $this->folderModel->find($folderId);
+
             if (!$currentFolder) {
+                // Log jika folder tidak ditemukan untuk debugging
+                log_message('error', 'Folder ID ' . $folderId . ' not found for user ' . $userId . ' (Role: ' . $userRole . ').');
                 throw PageNotFoundException::forPageNotFound('Folder yang diminta tidak ditemukan.');
             }
 
-            // Pengecekan otorisasi untuk shared folder
+            // --- Pengecekan Otorisasi Kritis untuk FOLDER SAAT INI ---
+            // Ini adalah cek pertama dan paling penting. Jika user tidak punya akses ke folder ini, langsung tolak.
             if ($currentFolder['is_shared'] && $currentFolder['access_roles'] !== null) {
                 $accessRoles = json_decode($currentFolder['access_roles'], true);
-                if (!in_array($userRole, $accessRoles)) {
+                if (!is_array($accessRoles) || !in_array($userRole, $accessRoles)) {
+                    // Log percobaan akses yang ditolak
+                    log_message('critical', 'Access Denied: User ID ' . $userId . ' with role ' . $userRole . ' attempted to access shared folder ' . $folderId . ' (Access roles: ' . ($currentFolder['access_roles'] ?? 'N/A') . ').');
                     throw new AccessDeniedException('Anda tidak memiliki izin untuk mengakses folder ini.');
+                }
+            } else {
+                // Jika folderId ada, tapi folder tersebut TIDAK di-shared (misalnya folder pribadi user lain)
+                // maka user tidak boleh mengaksesnya melalui rute sharedFolder ini.
+                // Asumsi: rute sharedFolder hanya untuk shared folders.
+                // Jika folder ini adalah folder personal user yang login, izinkan.
+                if ($currentFolder['owner_id'] != $userId) {
+                    log_message('critical', 'Access Denied: User ID ' . $userId . ' (Role: ' . $userRole . ') attempted to access non-shared folder ' . $folderId . ' which is not theirs via shared route.');
+                    throw new AccessDeniedException('Folder ini bukan folder bersama yang dapat Anda akses atau bukan milik Anda.');
                 }
             }
 
-            $subfolders = $this->folderModel
+            $currentFolderName = $currentFolder['name'];
+
+            // Ambil subfolder di dalam currentFolder yang sudah diizinkan aksesnya
+            $subfoldersRaw = $this->folderModel
                 ->where('parent_id', $folderId)
                 ->findAll();
-            $files = $this->fileModel
+
+            foreach ($subfoldersRaw as $subfolder) {
+                // Jika subfolder ini juga shared, cek izinnya
+                if ($subfolder['is_shared'] && $subfolder['access_roles'] !== null) {
+                    $subfolderAccessRoles = json_decode($subfolder['access_roles'], true);
+                    if (is_array($subfolderAccessRoles) && in_array($userRole, $subfolderAccessRoles)) {
+                        $allowedFolders[] = $subfolder;
+                    }
+                } else {
+                    // Jika subfolder tidak shared, ia akan mewarisi izin dari parent-nya.
+                    // Karena kita sudah cek izin parent ($currentFolder), maka ini aman untuk ditambahkan.
+                    // Ini penting agar subfolder pribadi di dalam folder shared tetap terlihat oleh user yang berhak.
+                    $allowedFolders[] = $subfolder;
+                }
+            }
+
+            // Ambil file di dalam currentFolder. Semua file di dalam folder yang sudah diizinkan boleh dilihat.
+            $allowedFiles = $this->fileModel
                 ->where('folder_id', $folderId)
                 ->findAll();
 
-            $data = [
-                'sharedFolders' => $subfolders,
-                'sharedFiles' => $files,
-                'currentFolderId' => $folderId,
-                'currentFolderName' => $currentFolder['name'],
-                'userRoleName' => $userRole
-            ];
         } else {
-            $sharedFolders = $this->folderModel
+            // LOGIKA KETIKA AKSES ROOT DARI SHARED FOLDER (folderId is null)
+            $topLevelSharedFolders = $this->folderModel
                 ->where('is_shared', 1)
-                ->where('parent_id', null)
+                ->where('parent_id', null) // Hanya folder top-level
                 ->findAll();
 
-            $allowedFolders = [];
-            foreach ($sharedFolders as $folder) {
+            foreach ($topLevelSharedFolders as $folder) {
                 if ($folder['access_roles'] !== null) {
                     $accessRoles = json_decode($folder['access_roles'], true);
-                    if (in_array($userRole, $accessRoles)) {
+                    if (is_array($accessRoles) && in_array($userRole, $accessRoles)) {
                         $allowedFolders[] = $folder;
                     }
                 }
+                // Jika access_roles null tapi is_shared = 1, ini perlu dipertimbangkan
+                // Asumsi: Jika is_shared=1 tapi access_roles null, maka defaultnya tidak ada yang bisa akses
+                // atau mungkin ini adalah "public shared" (shared_type = 'public') - sesuaikan logika Anda
+                // jika ada shared_type 'public' yang harus terlihat oleh semua authenticated user.
             }
-
-            $data = [
-                'sharedFolders' => $allowedFolders,
-                'sharedFiles' => [],
-                'currentFolderId' => null,
-                'currentFolderName' => 'Dokumen Bersama',
-                'userRoleName' => $userRole
-            ];
+            // Di root shared, biasanya tidak ada file langsung yang ditampilkan.
+            $allowedFiles = [];
         }
+
+        $data = [
+            'sharedFolders' => $allowedFolders, // Hanya folder yang diizinkan
+            'sharedFiles' => $allowedFiles,     // Hanya file di dalam folder yang diizinkan (atau kosong di root)
+            'currentFolderId' => $folderId,
+            'currentFolderName' => $currentFolderName,
+            'userRoleName' => $userRole // Penting untuk logika di view
+        ];
 
         return view('shared_folder', $data);
     }
@@ -138,113 +185,156 @@ class Staff extends BaseController
     // app/Controllers/Staff.php
 
      public function viewSharedFolder(int $folderId = null)
-{
-    helper(['form', 'url']);
+    {
+        helper(['form', 'url']);
 
-    $userId = session()->get('user_id');
-    if (!$userId) {
-        log_message('error', 'User not authenticated when trying to access shared folder ' . $folderId);
-        throw new Exception('Anda tidak terautentikasi. Silakan login kembali.');
-    }
-
-    $user = $this->userModel
-        ->select('users.id, users.name, roles.name as role_name')
-        ->join('roles', 'roles.id = users.role_id', 'left')
-        ->find($userId);
-
-    $userRole = $user['role_name'] ?? 'Guest';
-
-    log_message('debug', 'DEBUG Staff::viewSharedFolder: User ID: ' . $userId . ', Role: ' . $userRole . ', Attempting to view folder ID: ' . ($folderId ?? 'root'));
-
-    $folder = null;
-    $isRoot = ($folderId === null); // Tentukan apakah ini folder root
-
-    if (!$isRoot) {
-        $folder = $this->folderModel->getFolderWithOwner($folderId); // Mengambil folder dengan info owner
-        if (!$folder) {
-            log_message('error', 'Folder not found or not accessible for user ' . $userId . ' (role: ' . $userRole . '). Folder ID: ' . $folderId);
-            throw new Exception('Folder tidak ditemukan atau tidak dapat diakses.');
+        $userId = session()->get('user_id');
+        if (!$userId) {
+            log_message('error', 'User not authenticated when trying to access shared folder ' . $folderId);
+            return redirect()->to(base_url('auth/login')); // Redirect ke login jika tidak terautentikasi
         }
-    } else {
-        // Ini adalah folder root
-        $folder = [
-            'id' => null, // ID null untuk root
-            'name' => 'Dokumen Bersama', // Nama untuk tampilan
-            'owner_id' => null, // Root tidak punya owner spesifik dalam konteks ini
-            'is_shared' => 1, // Root dokumen bersama dianggap 'shared' secara default
-            'shared_type' => 'public', // Root bisa diatur sebagai public atau hanya terotentikasi
-            'access_roles' => null // Atau json_encode(['Super Admin', 'Staff']) jika hanya role tertentu bisa melihat root ini
-        ];
-    }
-    
-    // Logika akses untuk folder saat ini (atau root)
-    $isAuthorized = false;
 
-    // Jika ini adalah folder root, dan diizinkan untuk semua user login atau role tertentu
-    if ($isRoot) {
-        // Asumsi: Root 'Dokumen Bersama' bisa diakses oleh semua user yang login
-        // Anda bisa menambahkan logika role di sini jika diperlukan (misal: hanya Staff & Admin)
-        if ($userId) { // Cukup pastikan user terautentikasi
-            $isAuthorized = true;
-            log_message('debug', 'Root folder diakses oleh user terautentikasi. Authorized.');
-        }
-    } else {
-        // Logika akses untuk sub-folder
-        if ($folder['owner_id'] == $userId) {
-            $isAuthorized = true;
-            log_message('debug', 'Folder ' . $folderId . ' diakses sebagai owner. Authorized.');
-        } else if ($folder['is_shared'] == 1) {
-            if ($folder['shared_type'] === 'public') {
-                $isAuthorized = true;
-                log_message('debug', 'Folder ' . $folderId . ' diakses karena public. Authorized.');
-            } else if (!empty($folder['access_roles'])) {
-                $accessRoles = json_decode($folder['access_roles'], true);
-                if (is_array($accessRoles) && in_array($userRole, $accessRoles)) {
-                    $isAuthorized = true;
-                    log_message('debug', 'Folder ' . $folderId . ' diakses karena role ' . $userRole . ' ada di access_roles. Authorized.');
-                }
-            }
-            if (!$isAuthorized) {
-                log_message('critical', 'Access denied for folder ' . $folderId . '. Shared but user role ' . $userRole . ' not allowed. User ID: ' . $userId);
-                throw new Exception('Anda tidak memiliki izin untuk mengakses folder ini (dibagikan ke peran tertentu).');
+        $user = $this->userModel
+            ->select('users.id, users.name, roles.name as role_name')
+            ->join('roles', 'roles.id = users.role_id', 'left')
+            ->find($userId);
+
+        $userRole = $user['role_name'] ?? 'Guest';
+
+        log_message('debug', 'DEBUG Staff::viewSharedFolder: User ID: ' . $userId . ', Role: ' . $userRole . ', Attempting to view folder ID: ' . ($folderId ?? 'root'));
+
+        $currentFolder = null;
+        $isRoot = ($folderId === null);
+        $effectiveSharedType = 'full'; // Default type for the current view.
+
+        if (!$isRoot) {
+            $currentFolder = $this->folderModel->getFolderWithOwner($folderId); // Mengambil folder dengan info owner
+            if (!$currentFolder) {
+                log_message('error', 'Folder not found or not accessible for user ' . $userId . ' (role: ' . $userRole . '). Folder ID: ' . $folderId);
+                throw new Exception('Folder tidak ditemukan atau tidak dapat diakses.');
             }
         } else {
-            log_message('critical', 'Access denied for folder ' . $folderId . '. Not owner and not shared. User role: ' . $userRole);
+            // Ini adalah folder root 'Dokumen Bersama'
+            $currentFolder = [
+                'id' => null,
+                'name' => 'Dokumen Bersama',
+                'owner_id' => null,
+                'is_shared' => 1,
+                'shared_type' => 'full', // Default shared_type untuk root Dokumen Bersama (bisa disesuaikan jika root itu sendiri 'read')
+                'access_roles' => null
+            ];
+        }
+
+        // --- Logika Penentuan Effective Shared Type untuk Halaman Saat Ini ---
+        // Jika folder saat ini adalah subfolder dari folder yang shared_type-nya 'read',
+        // maka shared_type efektif untuk tampilan ini akan menjadi 'read'.
+        // Kita akan mencari "ancestor" terdekat yang merupakan folder shared.
+        
+        $effectiveSharedTypeDetermined = false; // Flag untuk melacak apakah shared_type sudah ditemukan
+
+        if (!$isRoot) {
+            $currentParentId = $currentFolder['id'];
+            // Loop ke atas melalui parent untuk menemukan folder shared terdekat
+            while ($currentParentId !== null) {
+                $ancestorFolder = $this->folderModel->find($currentParentId);
+                if ($ancestorFolder && $ancestorFolder['is_shared'] == 1) {
+                    if (isset($ancestorFolder['shared_type'])) {
+                         $effectiveSharedType = $ancestorFolder['shared_type'];
+                         $effectiveSharedTypeDetermined = true;
+                         break; // Ditemukan ancestor shared, ambil shared_type-nya dan keluar loop
+                    }
+                }
+                $currentParentId = $ancestorFolder['parent_id'] ?? null; // Lanjutkan ke parent berikutnya
+            }
+        } else {
+            // Jika ini root 'Dokumen Bersama', shared_type-nya adalah 'full' secara default
+            // Anda bisa mengubah ini jika root 'Dokumen Bersama' juga bisa menjadi 'read'
+            $effectiveSharedType = 'full'; // Atau dari config jika 'public' berarti 'full'
+            $effectiveSharedTypeDetermined = true;
+        }
+
+        // Jika setelah looping tidak ada ancestor shared yang ditemukan,
+        // atau jika folder saat ini adalah folder pribadi yang tidak di-shared,
+        // maka shared_type efektif adalah 'full'.
+        if (!$effectiveSharedTypeDetermined) {
+            $effectiveSharedType = 'full';
+        }
+        // Pastikan shared_type tetap 'full' jika folder tersebut owned by user sendiri
+        // atau tidak di-share sama sekali.
+        // HANYA jika folder current tidak shared (is_shared == 0) DAN dimiliki oleh user,
+        // maka sharedType efektif-nya menjadi 'full' (user memiliki kontrol penuh atas foldernya sendiri)
+        if (!$isRoot && $currentFolder['owner_id'] == $userId && $currentFolder['is_shared'] == 0) {
+             $effectiveSharedType = 'full';
+        }
+
+
+        log_message('debug', 'Effective Shared Type for folder ' . ($folderId ?? 'root') . ': ' . $effectiveSharedType);
+
+        // Logika akses untuk folder saat ini (atau root)
+        $isAuthorized = false;
+
+        // Jika ini adalah folder root, dan diizinkan untuk semua user login atau role tertentu
+        if ($isRoot) {
+            if ($userId) {
+                $isAuthorized = true;
+                log_message('debug', 'Root folder diakses oleh user terautentikasi. Authorized.');
+            }
+        } else {
+            // Logika akses untuk sub-folder
+            if ($currentFolder['owner_id'] == $userId) {
+                $isAuthorized = true;
+                log_message('debug', 'Folder ' . $folderId . ' diakses sebagai owner. Authorized.');
+            } else if ($currentFolder['is_shared'] == 1) {
+                if ($currentFolder['shared_type'] === 'public') {
+                    $isAuthorized = true;
+                    log_message('debug', 'Folder ' . $folderId . ' diakses karena public. Authorized.');
+                } else if (!empty($currentFolder['access_roles'])) {
+                    $accessRoles = json_decode($currentFolder['access_roles'], true);
+                    if (is_array($accessRoles) && in_array($userRole, $accessRoles)) {
+                        $isAuthorized = true;
+                        log_message('debug', 'Folder ' . $folderId . ' diakses karena role ' . $userRole . ' ada di access_roles. Authorized.');
+                    }
+                }
+                if (!$isAuthorized) {
+                    log_message('critical', 'Access denied for folder ' . $folderId . '. Shared but user role ' . $userRole . ' not allowed. User ID: ' . $userId);
+                    throw new Exception('Anda tidak memiliki izin untuk mengakses folder ini (dibagikan ke peran tertentu).');
+                }
+            } else {
+                log_message('critical', 'Access denied for folder ' . $folderId . '. Not owner and not shared. User role: ' . $userRole);
+                throw new Exception('Anda tidak memiliki izin untuk mengakses folder ini.');
+            }
+        }
+
+        if (!$isAuthorized) {
+            log_message('critical', 'Final access check failed for folder ' . $folderId . '. User ID: ' . $userId . ', Role: ' . $userRole);
             throw new Exception('Anda tidak memiliki izin untuk mengakses folder ini.');
         }
+
+        // Ambil subfolder dan file berdasarkan folder saat ini (atau null untuk root)
+        // PERBAIKAN DI SINI: Gunakan metode yang sudah ada di model Anda
+        $subfolders = $this->folderModel->getSubfolders($currentFolder['id'], $userId, $userRole); 
+        $files = $this->fileModel->getFilesByFolder($currentFolder['id'], $userId, $userRole);     
+
+        // Breadcrumbs
+        $breadcrumbs = [];
+        if (!$isRoot) {
+            $breadcrumbs = $this->getBreadcrumbs($currentFolder['id']);
+        }
+
+        $data = [
+            'folder' => $currentFolder, // Menggunakan $currentFolder yang sudah ditentukan
+            'breadcrumbs' => $breadcrumbs,
+            'sharedFolders' => $subfolders,
+            'sharedFiles' => $files,
+            'owner_id' => $currentFolder['owner_id'],
+            'userRole' => $userRole,
+            'currentFolderId' => $folderId,
+            'title' => ($isRoot ? 'Dokumen Bersama' : 'Isi Folder: ' . $currentFolder['name']),
+            'currentFolderSharedType' => $effectiveSharedType, // INI YANG PENTING DIKIRIM KE VIEW
+        ];
+
+        return view('Umum/viewsharedfolder', $data);
     }
-
-    if (!$isAuthorized) {
-        log_message('critical', 'Final access check failed for folder ' . $folderId . '. User ID: ' . $userId . ', Role: ' . $userRole);
-        throw new Exception('Anda tidak memiliki izin untuk mengakses folder ini.');
-    }
-
-    // Ambil subfolder dan file berdasarkan folder saat ini (atau null untuk root)
-    $subfolders = $this->folderModel->getSubfolders($folder['id'], $userId, $userRole);
-    $files = $this->fileModel->getFilesByFolder($folder['id'], $userId, $userRole);
-
-    // Breadcrumbs
-    $breadcrumbs = [];
-    if (!$isRoot) {
-        $breadcrumbs = $this->folderModel->getBreadcrumbs($folder['id']);
-    }
-    // // Tambahkan link "Kembali" ke root Dokumen Bersama
-    // array_unshift($breadcrumbs, ['id' => null, 'name' => 'Dokumen Bersama']);
-
-
-    $data = [
-        'folder' => $folder,
-        'breadcrumbs' => $breadcrumbs,
-        'sharedFolders' => $subfolders, // Ganti 'subfolders' agar cocok dengan nama di view
-        'sharedFiles' => $files,      // Ganti 'files' agar cocok dengan nama di view
-        'owner_id' => $folder['owner_id'],
-        'userRole' => $userRole,
-        'currentFolderId' => $folderId, // Ini yang akan dikirim ke JS
-        'title' => ($isRoot ? 'Dokumen Bersama' : 'Isi Folder: ' . $folder['name']),
-    ];
-
-    return view('Umum/viewsharedfolder', $data);
-}
 
     /**
      * Fungsi pembantu untuk membuat breadcrumbs dari folder saat ini ke atas.
@@ -254,30 +344,20 @@ class Staff extends BaseController
     private function getBreadcrumbs($folderId = null)
     {
         $breadcrumbs = [];
-        $currentFolder = null;
+        $currentId = $folderId;
 
-        if ($folderId) {
-            $currentFolder = $this->folderModel->find($folderId);
-        }
-
-        // Perbaiki loop: Pastikan $currentFolder valid sebelum masuk ke loop
-        while ($currentFolder) {
-            // Tambahkan pengecekan null di sini untuk keamanan ekstra
-            if (!is_array($currentFolder) || !isset($currentFolder['name']) || !isset($currentFolder['id'])) {
-                // Jika data folder rusak, hentikan loop
-                break;
+        while ($currentId) {
+            $folder = $this->folderModel->find($currentId);
+            if ($folder) {
+                array_unshift($breadcrumbs, [
+                    'name' => $folder['name'],
+                    'id' => $folder['id']
+                ]);
+                $currentId = $folder['parent_id'] ?? null;
+            } else {
+                break; // Folder tidak ditemukan, hentikan
             }
-
-            array_unshift($breadcrumbs, [
-                'name' => $currentFolder['name'],
-                'id' => $currentFolder['id']
-            ]);
-
-            // Ambil folder induknya dan pastikan hasilnya valid sebelum melanjutkan
-            $parentFolderId = $currentFolder['parent_id'];
-            $currentFolder = ($parentFolderId) ? $this->folderModel->find($parentFolderId) : null;
         }
-
         return $breadcrumbs;
     }
 

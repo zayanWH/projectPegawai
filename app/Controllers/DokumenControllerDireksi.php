@@ -8,6 +8,7 @@ use App\Models\UserModel;   // Pastikan Anda mengimpor UserModel
 use CodeIgniter\Controller; // Jika DokumenControllerSPV bukan turunan BaseController
 use CodeIgniter\Session\Session; // Import Session class jika belum
 use CodeIgniter\Exceptions\PageNotFoundException;
+use CodeIgniter\I18n\Time;
 
 class DokumenControllerDireksi extends BaseController
 {
@@ -26,9 +27,194 @@ class DokumenControllerDireksi extends BaseController
         $this->roleModel = new \App\Models\RoleModel(); 
     }
 
-    public function index()
+    public function uploadFile()
     {
-        return view('Direksi/dashboard');
+        if (!$this->request->isAJAX()) {
+            return $this->response->setStatusCode(405)->setJSON(['status' => 'error', 'message' => 'Metode tidak diizinkan.']);
+        }
+
+        $userId = $this->session->get('user_id'); // ID Manager yang sedang login
+        if (!$userId) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Unauthorized. User not logged in.']);
+        }
+
+        $file = $this->request->getFile('file_upload');
+        $folderId = $this->request->getPost('folder_id');
+        $folderType = $this->request->getPost('folder_type');
+        $targetUserId = $this->request->getPost('target_user_id') ?? $userId; // Owner file adalah target_user_id jika ada, atau user yang login
+
+        if (!$file || !$file->isValid() || $file->hasMoved()) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal mengunggah file. Pastikan file valid dan belum dipindahkan.']);
+        }
+
+        // Validasi ukuran file (misalnya, dari role_id atau konfigurasi)
+        // Anda perlu implementasi ini jika belum ada.
+        // $maxUploadSize = $this->userModel->getMaxUploadSize($userId); // Contoh
+        // if ($file->getSize() > $maxUploadSize) { ... }
+
+        $originalName = $file->getName();
+        $newName = $file->getRandomName(); // Generate unique name
+        $mimeType = $file->getMimeType();
+        $fileSize = $file->getSize();
+
+        // Dapatkan path folder fisik di server
+        $targetFolderPath = WRITEPATH . 'uploads/';
+        if ($folderId) {
+            $currentFolder = $this->folderModel->find($folderId);
+            if ($currentFolder) {
+                $relativePath = $this->folderModel->getFolderPath($folderId); // Dapatkan path relatif
+                $targetFolderPath .= $relativePath;
+            } else {
+                return $this->response->setJSON(['status' => 'error', 'message' => 'Folder tujuan tidak ditemukan.']);
+            }
+        } else {
+            // Jika tidak ada folderId, asumsikan upload ke root personal folder user yang punya targetUserId
+            $targetFolderPath .= 'personal/' . $targetUserId . '/';
+        }
+
+        // Pastikan folder fisik ada
+        if (!is_dir($targetFolderPath)) {
+            if (!mkdir($targetFolderPath, 0777, true)) {
+                return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal membuat direktori upload.']);
+            }
+        }
+
+        // Pindahkan file
+        if ($file->move($targetFolderPath, $newName)) {
+            $data = [
+                'file_name'     => $originalName,
+                'server_file_name' => $newName,
+                'file_type'     => $mimeType,
+                'file_size'     => $fileSize,
+                'folder_id'     => $folderId,
+                'uploader_id'   => $userId,      // Uploader adalah Manager yang login
+                'owner_id'      => $targetUserId, // Owner bisa Staff/Supervisor jika di folder mereka
+                'created_at'    => date('Y-m-d H:i:s'),
+                'updated_at'    => date('Y-m-d H:i:s'),
+            ];
+
+            if ($this->fileModel->insert($data)) {
+                return $this->response->setJSON(['status' => 'success', 'message' => 'File berhasil diunggah!']);
+            } else {
+                // Jika gagal insert ke DB, hapus file yang sudah terupload
+                unlink($targetFolderPath . $newName);
+                $errors = $this->fileModel->errors();
+                return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal menyimpan info file ke database.', 'errors' => $errors]);
+            }
+        } else {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal memindahkan file ke direktori upload.']);
+        }
+    }
+
+    public function dashboard()
+    {
+        $session = session();
+        $userId = $session->get('user_id'); // User ID yang sedang login (tetap diambil untuk personal folder jika ada)
+        $userRole = $session->get('role'); // Nama role user yang sedang login
+
+        // Pastikan user sudah login
+        if (!$userId || !$userRole) {
+            return redirect()->to('/login')->with('error', 'Silakan login untuk mengakses dashboard.');
+        }
+
+        $folderModel = new FolderModel();
+        $fileModel = new FileModel();
+        $userModel = new UserModel();
+
+        // --- Tentukan role_id yang ingin difilter (Staff = 6) ---
+        // Anda bisa langsung menetapkan nilai ini jika role 'Staff' selalu ID 6.
+        // Atau, jika role ID bisa berubah, Anda bisa mencari ID role 'Staff' dari tabel roles.
+        $staffRoleId = 3; // Mengasumsikan role_id untuk Staff adalah 6
+
+        // Dapatkan semua ID user yang memiliki role_id = 6 (Staff)
+        $staffUserIds = $userModel->select('id')->where('role_id', $staffRoleId)->findAll();
+        $staffUserIds = array_column($staffUserIds, 'id');
+
+        // Jika tidak ada user Staff, set array kosong untuk mencegah error query IN ()
+        if (empty($staffUserIds)) {
+            $staffUserIds = [0]; // Memberikan nilai default agar query WHERE IN tidak kosong
+        }
+
+        // --- Hitung Total Folder berdasarkan role_id = 6 ---
+        $totalFolders = $folderModel->whereIn('owner_id', $staffUserIds)->countAllResults();
+
+        // --- Hitung Total File berdasarkan role_id = 6 ---
+        $totalFiles = $fileModel->whereIn('uploader_id', $staffUserIds)->countAllResults();
+
+        // --- Ambil Tanggal Terakhir Upload berdasarkan role_id = 6 ---
+        // Folder
+        $latestFolderUpload = $folderModel->selectMax('created_at')
+                                          ->whereIn('owner_id', $staffUserIds)
+                                          ->first();
+        $latestFolderDate = $latestFolderUpload['created_at'] ?? null;
+
+        // File
+        $latestFileUpload = $fileModel->selectMax('created_at')
+                                      ->whereIn('uploader_id', $staffUserIds)
+                                      ->first();
+        $latestFileDate = $latestFileUpload['created_at'] ?? null;
+
+        // Tentukan tanggal upload paling terbaru dari kedua jenis item
+        $latestUploadDate = null;
+        if ($latestFolderDate && $latestFileDate) {
+            $latestUploadDate = (strtotime($latestFolderDate) > strtotime($latestFileDate)) ? $latestFolderDate : $latestFileDate;
+        } elseif ($latestFolderDate) {
+            $latestUploadDate = $latestFolderDate;
+        } elseif ($latestFileDate) {
+            $latestUploadDate = $latestFileDate;
+        }
+
+        // Format tanggal untuk tampilan
+        $formattedLatestUpload = $latestUploadDate ? date('d M Y', strtotime($latestUploadDate)) : 'Belum ada upload';
+
+        // --- Ambil 10 Item Terbaru (file dan folder) berdasarkan role_id = 6 ---
+        // Folders
+        $folders = $folderModel->select("id, name, created_at, owner_id as uploader_id, 'folder' as type")
+                               ->whereIn('owner_id', $staffUserIds)
+                               ->orderBy('created_at', 'DESC')
+                               ->findAll();
+        
+        // Files
+        $files = $fileModel->select("id, file_name as name, created_at, uploader_id, 'file' as type")
+                           ->whereIn('uploader_id', $staffUserIds)
+                           ->orderBy('created_at', 'DESC')
+                           ->findAll();
+        
+        $recentItems = array_merge($folders, $files);
+        
+        // Urutkan gabungan item berdasarkan tanggal pembuatan
+        usort($recentItems, function($a, $b) {
+            return strtotime($b['created_at']) - strtotime($a['created_at']);
+        });
+        
+        // Ambil hanya 10 item teratas
+        $recentItems = array_slice($recentItems, 0, 10);
+
+        // --- Ambil semua personal folders untuk user yang sedang login (Tidak berubah, tetap personal) ---
+        $personalFolders = $folderModel->where('owner_id', $userId)
+                                       ->where('folder_type', 'personal')
+                                       ->findAll();
+
+        // --- Ambil file yang tidak terkait dengan folder (orphan files) oleh user Staff ---
+        $orphanFiles = $fileModel->where('folder_id IS NULL')
+                                 ->whereIn('uploader_id', $staffUserIds) // Pastikan ini juga difilter
+                                 ->findAll();
+
+        $data = [
+            'personalFolders'    => $personalFolders,
+            'folderId'           => null, // Sesuaikan jika ada logika untuk ini
+            'folderType'         => null, // Sesuaikan jika ada logika untuk ini
+            'isShared'           => null, // Sesuaikan jika ada logika untuk ini
+            'sharedType'         => null, // Sesuaikan jika ada logika untuk ini
+            'orphanFiles'        => $orphanFiles,
+            'totalFolders'       => $totalFolders,
+            'totalFiles'         => $totalFiles,
+            'latestUploadDate'   => $formattedLatestUpload,
+            'recentItems'        => $recentItems,
+            'currentRoleName'    => $userRole
+        ];
+
+        return view('Direksi/dashboard', $data);
     }
 
     public function dokumenDireksi()

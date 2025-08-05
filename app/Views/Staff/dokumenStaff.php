@@ -47,7 +47,6 @@
             <select id="folderType" class="w-full border rounded-lg px-3 py-2 pr-10 appearance-none">
                 <option disabled selected value="">Pilih jenis folder</option>
                 <option value="personal">Personal Folder</option>
-                <option value="shared">Shared Folder</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">

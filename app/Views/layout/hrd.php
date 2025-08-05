@@ -62,7 +62,7 @@
                 </li>
 
                 <li>
-                    <a href="<?= site_url('hrd/dokumen-direksi') ?>"
+                    <a href="<?= site_url('direksi/dokumen-direksi') ?>"
                         class="flex items-center gap-4 text-white hover:bg-[#2B364F] hover:text-white rounded-md px-3 py-3 transition">
                         <img src="<?= base_url('images/dokumenJabatan.png') ?>" alt="Dashboard Icon"
                             class="w-6 h-6 filter invert">
@@ -70,19 +70,19 @@
                     </a>
                 </li>
                 <li>
-                        <a href="<?= base_url('umum/dokumen-bersama') ?>"
-                            class="flex items-center gap-4 text-white hover:bg-[#2B364F] hover:text-white rounded-md px-3 py-3 transition">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-users-icon lucide-users">
-                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                <path d="M16 3.128a4 4 0 0 1 0 7.744" />
-                                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                                <circle cx="9" cy="7" r="4" />
-                            </svg>
-                            <span>Share Folder</span>
-                        </a>
-                    </li>
+                    <a href="<?= base_url('umum/dokumen-bersama') ?>"
+                        class="flex items-center gap-4 text-white hover:bg-[#2B364F] hover:text-white rounded-md px-3 py-3 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-users-icon lucide-users">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                            <circle cx="9" cy="7" r="4" />
+                        </svg>
+                        <span>Share Folder</span>
+                    </a>
+                </li>
                 <li>
                     <a href="<?= site_url('hrd/dokumen-umum') ?>"
                         class="flex items-center gap-4 text-white hover:bg-[#2B364F] hover:text-white rounded-md px-3 py-3 transition">
@@ -177,9 +177,29 @@
     </div>
 
 
+    <?php 
+    // Jangan load popupFileFolder.js dan createFolder.js di halaman dokumen umum untuk menghindari konflik
+    $currentUri = uri_string();
+    if (strpos($currentUri, 'dokumen-umum') === false): 
+    ?>
     <script src="<?= base_url('js/popupFileFolder.js') ?>"></script>
     <script src="<?= base_url('js/createFolder.js') ?>"></script>
+    <?php endif; ?>
     <script src="<?= base_url('js/titiktiga.js') ?>"></script>
+    
+    <!-- Load simple notification WebSocket client -->
+    <script src="<?= base_url('assets/js/simple-notification-client.js') ?>"></script>
+    <script>
+        // Initialize Simple WebSocket with current user ID
+        if (window.SimpleNotificationManager) {
+            window.SimpleNotificationManager.init(<?= session()->get('user_id') ?? 'null' ?>);
+        }
+    </script>
+    <script>
+        // Set user ID for notification system
+        document.body.dataset.userId = '<?= session()->get('user_id') ?? '' ?>';
+        window.currentUserId = '<?= session()->get('user_id') ?? '' ?>';
+    </script>
 
 
 </body>

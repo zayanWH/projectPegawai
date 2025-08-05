@@ -286,4 +286,41 @@ class FolderModel extends Model
         // Gabungkan nama-nama folder dengan ' / ' sebagai pemisah
         return implode(' / ', $pathNames);
     }
+
+     /**
+     * Mengambil folder yang diunggah oleh pengguna dengan peran 'Manajer'.
+     *
+     * @param int|null $parentId ID dari folder induk. Null untuk folder root.
+     * @return array
+     */
+    public function getManagerFolders(?int $parentId): array
+    {
+        // Mengambil ID dari semua pengguna dengan peran 'Manajer'
+        $userModel = new UserModel();
+        // PERBAIKAN: Mengganti 'Manager' menjadi 'Manajer'
+        $managerUserIds = $userModel->getUsersByRole('Manajer');
+
+        $builder = $this->builder();
+        
+        // Memfilter folder berdasarkan parent_id
+        if ($parentId === null) {
+            $builder->where('parent_id IS NULL');
+        } else {
+            $builder->where('parent_id', $parentId);
+        }
+
+        // PERBAIKAN: Pengecekan apakah ada user ID yang ditemukan
+        if (!empty($managerUserIds)) {
+            $builder->whereIn('owner_id', $managerUserIds);
+        } else {
+            // Jika tidak ada user manager, kembalikan array kosong agar tidak terjadi error SQL
+            return [];
+        }
+        
+        // PERBAIKAN: Mengganti 'folder_name' dengan 'name'
+        $builder->orderBy('name', 'ASC');
+
+        return $builder->get()->getResultArray();
+    }
 }
+

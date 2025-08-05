@@ -538,26 +538,22 @@
     <div id="floatingMenu"
         class="fixed w-48 bg-white rounded-xl shadow-lg hidden transition ease-out duration-200 transform scale-95 opacity-0 z-[9998]">
         <ul class="text-sm text-gray-700 divide-y divide-gray-100">
-            <li onclick="showRenameModal()" class="flex items-center px-4 py-3 hover:bg-gray-100 cursor-pointer">
+            <li id="renameOption" onclick="showRenameModal()"
+                class="flex items-center px-4 py-3 hover:bg-gray-100 cursor-pointer">
                 <svg class="w-5 h-5 mr-3 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
                     <path
                         d="M17.414 2.586a2 2 0 00-2.828 0l-1.793 1.793 2.828 2.828 1.793-1.793a2 2 0 000-2.828zM2 13.586V17h3.414l9.793-9.793-2.828-2.828L2 13.586z" />
                 </svg>
                 Ganti nama
             </li>
-            <li onclick="downloadFolder()" class="flex items-center px-4 py-3 hover:bg-gray-100 cursor-pointer">
-                <svg class="w-5 h-5 mr-3 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M3 3a1 1 0 011-1h3v2H5v12h10V4h-2V2h3a1 1 0 011 1v14a1 1 0 01-1 1H4a1 1 0 01-1-1V3z" />
-                </svg>
-                Download
-            </li>
-            <li onclick="showInfoDetailModal()" class="flex items-center px-4 py-3 hover:bg-gray-100 cursor-pointer">
+            <li id="infoDetailOption" onclick="showInfoDetailModal()"
+                class="flex items-center px-4 py-3 hover:bg-gray-100 cursor-pointer">
                 <svg class="w-5 h-5 mr-3 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9 2a7 7 0 100 14A7 7 0 009 2zM8 7h2v5H8V7zm1 8a1 1 0 110-2 1 1 0 010 2z" />
                 </svg>
                 Informasi detail
             </li>
-            <li onclick="showDeleteConfirmModal()"
+            <li id="deleteOption" onclick="showDeleteConfirmModal()"
                 class="flex items-center px-4 py-3 hover:bg-gray-100 cursor-pointer text-red-600">
                 <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
                     <path

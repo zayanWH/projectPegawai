@@ -6,12 +6,12 @@ use CodeIgniter\Model;
 
 class FileModel extends Model
 {
-    protected $table        = 'files';
-    protected $primaryKey   = 'id';
+    protected $table = 'files';
+    protected $primaryKey = 'id';
 
     protected $useAutoIncrement = true;
 
-    protected $returnType     = 'array';
+    protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
     // Kolom-kolom yang boleh diisi
@@ -29,12 +29,12 @@ class FileModel extends Model
 
     // Timestamp
     protected $useTimestamps = true;
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
+    protected $createdField = 'created_at';
+    protected $updatedField = 'updated_at';
 
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
-    protected $skipValidation       = false;
+    protected $validationRules = [];
+    protected $validationMessages = [];
+    protected $skipValidation = false;
     protected $cleanValidationRules = true;
 
     /**
@@ -46,8 +46,8 @@ class FileModel extends Model
     public function getFilesByFolder(int $folderId): array
     {
         return $this->where('folder_id', $folderId)
-                    ->orderBy('file_name', 'ASC') // Mengurutkan berdasarkan nama file
-                    ->findAll();
+            ->orderBy('file_name', 'ASC') // Mengurutkan berdasarkan nama file
+            ->findAll();
     }
 
     /**
@@ -160,8 +160,8 @@ class FileModel extends Model
             ->getRowArray();
 
         return [
-            'total_files' => (int)$result['total_files'],
-            'total_size_bytes' => (int)$result['total_size_bytes'],
+            'total_files' => (int) $result['total_files'],
+            'total_size_bytes' => (int) $result['total_size_bytes'],
             'total_size_mb' => round($result['total_size_bytes'] / (1024 * 1024), 2),
             'total_size_gb' => round($result['total_size_bytes'] / (1024 * 1024 * 1024), 2)
         ];
@@ -202,31 +202,79 @@ class FileModel extends Model
     }
 
     // Di app/Models/FileModel.php
-public function getSharedFiles(?int $folderId, int $currentUserId, string $currentUserRole): array
-{
-    $builder = $this->builder();
+    public function getSharedFiles(?int $folderId, int $currentUserId): array
+    {
+        $builder = $this->builder();
 
-    if ($folderId === null) {
-        $builder->where('folder_id IS NULL'); // File di root shared folder
-    } else {
-        $builder->where('folder_id', $folderId);
+        // Memfilter file berdasarkan folder_id
+        if ($folderId === null) {
+            $builder->where('folder_id IS NULL');
+        } else {
+            $builder->where('folder_id', $folderId);
+        }
+
+        // Tampilkan file yang bukan diunggah oleh pengguna saat ini
+        // Ini adalah asumsi untuk 'shared files' karena kolom yang dibutuhkan tidak ada
+        $builder->where('uploader_id !=', $currentUserId);
+
+        $builder->orderBy('file_name', 'ASC');
+
+        return $builder->get()->getResultArray();
     }
 
-    $builder->where('is_shared', 1); // Hanya file yang ditandai sebagai shared
+    public function getSupervisorFiles(?int $folderId, int $currentUserId): array
+    {
+        // Mengambil ID dari semua pengguna dengan peran 'Supervisor' (role_id 3)
+        $userModel = new UserModel();
 
-    $builder->groupStart();
-        $builder->orWhere('owner_id', $currentUserId); // File yang dimiliki user
-        $builder->orWhere('shared_type', 'public'); // File yang dibagikan secara publik
-        $builder->orGroupStart(); // Atau file yang dibagikan ke peran user
-            $builder->where('access_roles IS NOT NULL');
-            $builder->where(new \CodeIgniter\Database\RawSql("JSON_CONTAINS(access_roles, '\"{$currentUserRole}\"')"));
-        $builder->groupEnd();
-    $builder->groupEnd();
+        // Asumsi: Ada metode getUsersByRole() di UserModel
+        // Ganti 'Supervisor' dengan nama peran yang benar di database Anda
+        $supervisorUserIds = $userModel->getUsersByRole('Supervisor');
 
-    $builder->orderBy('file_name', 'ASC');
+        $builder = $this->builder();
 
-    return $builder->get()->getResultArray();
-}
+        // Memfilter file berdasarkan folder_id
+        if ($folderId === null) {
+            $builder->where('folder_id IS NULL');
+        } else {
+            $builder->where('folder_id', $folderId);
+        }
 
-    
+        $builder->whereIn('uploader_id', $supervisorUserIds);
+
+        $builder->orderBy('file_name', 'ASC');
+
+        return $builder->get()->getResultArray();
+    }
+
+    public function getManagerFiles(?int $folderId, int $currentUserId): array
+    {
+        // Mengambil ID dari semua pengguna dengan peran 'Manager'
+        $userModel = new UserModel();
+
+        $managerUserIds = $userModel->getUsersByRole('Manajer');
+
+        $builder = $this->builder();
+
+        // Memfilter file berdasarkan folder_id
+        if ($folderId === null) {
+            $builder->where('folder_id IS NULL');
+        } else {
+            $builder->where('folder_id', $folderId);
+        }
+
+        // PERBAIKAN: Tambahkan pengecekan apakah ada user ID yang ditemukan
+        if (!empty($managerUserIds)) {
+            $builder->whereIn('uploader_id', $managerUserIds);
+        } else {
+            // Jika tidak ada user manager, kembalikan array kosong agar tidak terjadi error SQL
+            return [];
+        }
+
+        $builder->orderBy('file_name', 'ASC');
+
+        return $builder->get()->getResultArray();
+    }
+
+
 }

@@ -227,24 +227,53 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
 
     public function dashboard()
     {
-        $userId = $this->session->get('user_id');
-        $userRoleId = $this->session->get('role_id');
-        $userRoleName = $this->session->get('user_role'); // Ambil nama role
+        $session = session();
+        $userId = $session->get('user_id'); // User ID yang sedang login (tetap diambil untuk personal folder jika ada)
+        $userRole = $session->get('role'); // Nama role user yang sedang login
 
-        if (!$userId || $userRoleId != 5) { // Pastikan hanya Supervisor yang bisa mengakses
-            return redirect()->to(base_url('login'))->with('error', 'Anda tidak memiliki izin untuk mengakses dashboard ini.');
+        // Pastikan user sudah login
+        if (!$userId || !$userRole) {
+            return redirect()->to('/login')->with('error', 'Silakan login untuk mengakses dashboard.');
         }
 
-        // --- Statistik Sistem Global ---
-        $totalFolders = $this->folderModel->countAllResults();
-        $totalFiles = $this->fileModel->countAllResults();
+        $folderModel = new FolderModel();
+        $fileModel = new FileModel();
+        $userModel = new UserModel();
 
-        $latestFolderUpload = $this->folderModel->selectMax('created_at')->first();
+        // --- Tentukan role_id yang ingin difilter (Staff = 6) ---
+        // Anda bisa langsung menetapkan nilai ini jika role 'Staff' selalu ID 6.
+        // Atau, jika role ID bisa berubah, Anda bisa mencari ID role 'Staff' dari tabel roles.
+        $staffRoleId = 5; // Mengasumsikan role_id untuk Staff adalah 6
+
+        // Dapatkan semua ID user yang memiliki role_id = 6 (Staff)
+        $staffUserIds = $userModel->select('id')->where('role_id', $staffRoleId)->findAll();
+        $staffUserIds = array_column($staffUserIds, 'id');
+
+        // Jika tidak ada user Staff, set array kosong untuk mencegah error query IN ()
+        if (empty($staffUserIds)) {
+            $staffUserIds = [0]; // Memberikan nilai default agar query WHERE IN tidak kosong
+        }
+
+        // --- Hitung Total Folder berdasarkan role_id = 6 ---
+        $totalFolders = $folderModel->whereIn('owner_id', $staffUserIds)->countAllResults();
+
+        // --- Hitung Total File berdasarkan role_id = 6 ---
+        $totalFiles = $fileModel->whereIn('uploader_id', $staffUserIds)->countAllResults();
+
+        // --- Ambil Tanggal Terakhir Upload berdasarkan role_id = 6 ---
+        // Folder
+        $latestFolderUpload = $folderModel->selectMax('created_at')
+                                          ->whereIn('owner_id', $staffUserIds)
+                                          ->first();
         $latestFolderDate = $latestFolderUpload['created_at'] ?? null;
 
-        $latestFileUpload = $this->fileModel->selectMax('created_at')->first();
+        // File
+        $latestFileUpload = $fileModel->selectMax('created_at')
+                                      ->whereIn('uploader_id', $staffUserIds)
+                                      ->first();
         $latestFileDate = $latestFileUpload['created_at'] ?? null;
 
+        // Tentukan tanggal upload paling terbaru dari kedua jenis item
         $latestUploadDate = null;
         if ($latestFolderDate && $latestFileDate) {
             $latestUploadDate = (strtotime($latestFolderDate) > strtotime($latestFileDate)) ? $latestFolderDate : $latestFileDate;
@@ -253,52 +282,55 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
         } elseif ($latestFileDate) {
             $latestUploadDate = $latestFileDate;
         }
+
+        // Format tanggal untuk tampilan
         $formattedLatestUpload = $latestUploadDate ? date('d M Y', strtotime($latestUploadDate)) : 'Belum ada upload';
 
-        // --- 10 Item Terbaru (Folder & File) dari SELURUH SISTEM ---
-        $foldersGlobal = $this->folderModel
-            ->select("folders.id, folders.name, folders.created_at, folders.owner_id as uploader_id, users.name as uploader_name, 'folder' as type")
-            ->join('users', 'users.id = folders.owner_id', 'left')
-            ->orderBy('folders.created_at', 'DESC')
-            ->findAll();
-
-        $filesGlobal = $this->fileModel
-            ->select("files.id, files.file_name as name, files.created_at, files.uploader_id, users.name as uploader_name, 'file' as type")
-            ->join('users', 'users.id = files.uploader_id', 'left')
-            ->orderBy('files.created_at', 'DESC')
-            ->findAll();
-
-        $recentItems = array_merge($foldersGlobal, $filesGlobal);
-
-        usort($recentItems, function ($a, $b) {
+        // --- Ambil 10 Item Terbaru (file dan folder) berdasarkan role_id = 6 ---
+        // Folders
+        $folders = $folderModel->select("id, name, created_at, owner_id as uploader_id, 'folder' as type")
+                               ->whereIn('owner_id', $staffUserIds)
+                               ->orderBy('created_at', 'DESC')
+                               ->findAll();
+        
+        // Files
+        $files = $fileModel->select("id, file_name as name, created_at, uploader_id, 'file' as type")
+                           ->whereIn('uploader_id', $staffUserIds)
+                           ->orderBy('created_at', 'DESC')
+                           ->findAll();
+        
+        $recentItems = array_merge($folders, $files);
+        
+        // Urutkan gabungan item berdasarkan tanggal pembuatan
+        usort($recentItems, function($a, $b) {
             return strtotime($b['created_at']) - strtotime($a['created_at']);
         });
-
+        
+        // Ambil hanya 10 item teratas
         $recentItems = array_slice($recentItems, 0, 10);
 
-        // --- Folder Personal Supervisor ---
-        $personalFoldersSPV = $this->folderModel
-            ->where('owner_id', $userId)
-            ->where('parent_id', null) // Hanya root personal folders
-            ->where('folder_type', 'personal')
-            ->findAll();
+        // --- Ambil semua personal folders untuk user yang sedang login (Tidak berubah, tetap personal) ---
+        $personalFolders = $folderModel->where('owner_id', $userId)
+                                       ->where('folder_type', 'personal')
+                                       ->findAll();
 
-        // --- File Tanpa Folder Pribadi Supervisor ---
-        $orphanFilesSPV = $this->fileModel
-            ->where('uploader_id', $userId) // Filter berdasarkan uploader_id Supervisor
-            ->where('folder_id IS NULL')
-            ->findAll();
+        // --- Ambil file yang tidak terkait dengan folder (orphan files) oleh user Staff ---
+        $orphanFiles = $fileModel->where('folder_id IS NULL')
+                                 ->whereIn('uploader_id', $staffUserIds) // Pastikan ini juga difilter
+                                 ->findAll();
 
         $data = [
-            'title' => 'Dashboard Supervisor',
-            'totalFolders' => $totalFolders, // Total global
-            'totalFiles' => $totalFiles,   // Total global
-            'latestUploadDate' => $formattedLatestUpload, // Tanggal upload terbaru global
-            'recentItems' => $recentItems,           // 10 item terbaru global
-            'personalFolders' => $personalFoldersSPV,   // Folder personal milik SPV
-            'orphanFiles' => $orphanFilesSPV,       // File tanpa folder milik SPV
-            'userRoleName' => $userRoleName,
-            'currentUserId' => $userId, // Kirim ID user ke view
+            'personalFolders'    => $personalFolders,
+            'folderId'           => null, // Sesuaikan jika ada logika untuk ini
+            'folderType'         => null, // Sesuaikan jika ada logika untuk ini
+            'isShared'           => null, // Sesuaikan jika ada logika untuk ini
+            'sharedType'         => null, // Sesuaikan jika ada logika untuk ini
+            'orphanFiles'        => $orphanFiles,
+            'totalFolders'       => $totalFolders,
+            'totalFiles'         => $totalFiles,
+            'latestUploadDate'   => $formattedLatestUpload,
+            'recentItems'        => $recentItems,
+            'currentRoleName'    => $userRole
         ];
 
         return view('Supervisor/dashboard', $data);

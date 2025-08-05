@@ -187,7 +187,16 @@
                     </tr>
                 <?php else: ?>
                     <?php foreach ($sharedFolders as $folder): ?>
-                        <tr class="hover:bg-gray-50 folder-row">
+                        <tr class="hover:bg-gray-50 folder-row" data-folder-id="<?= esc($folder['id']) ?>"
+                            data-folder-name="<?= esc($folder['name']) ?>"
+                            data-folder-path="<?= esc($folder['path'] ?? $folder['id']) ?>"
+                            data-folder-type="<?= esc($folder['folder_type'] ?? 'personal') ?>"
+                            data-folder-is-shared="<?= esc($folder['is_shared'] ? '1' : '0') ?>"
+                            data-folder-shared-type="<?= esc($folder['shared_type'] ?? '') ?>"
+                            data-folder-owner-id="<?= esc($folder['owner_id']) ?>"
+                            data-folder-owner-name="<?= esc($folder['owner_name'] ?? 'Unknown') ?>"
+                            data-folder-created-at="<?= esc($folder['created_at'] ?? '') ?>"
+                            data-folder-updated-at="<?= esc($folder['updated_at'] ?? '') ?>">
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
                                     <svg class="w-5 h-5 text-gray-400 mr-2" fill="currentColor" viewBox="0 0 20 20">

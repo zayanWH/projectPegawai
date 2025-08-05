@@ -18,7 +18,7 @@
 
   <div id="dropdownMenu" class="absolute z-10 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
     <a href="#" id="openCreateFolder" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">📁 Buat Folder</a>
-    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">⬆️ Upload File</a>
+    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">⬆ Upload File</a>
     <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">📂 Upload Folder</a>
   </div>
 </div>

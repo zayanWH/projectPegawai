@@ -3,6 +3,9 @@ const modalInfoDetail = document.getElementById('modalInfoDetail');
 const modalRename = document.getElementById('modalRename');
 const newFileNameInput = document.getElementById('newFileName');
 const modalDeleteConfirm = document.getElementById('modalDeleteConfirm');
+const renameOption = document.getElementById('renameOption');
+const infoDetailOption = document.getElementById('infoDetailOption');
+const deleteOption = document.getElementById('deleteOption');
 
 let currentFolderData = null;
 let isModalOpening = false; // Flag untuk mencegah penutupan saat modal sedang dibuka
@@ -76,6 +79,28 @@ function toggleMenu(button) {
     if (!floatingMenu) {
         console.error('Elemen floatingMenu tidak ditemukan.');
         return;
+    }
+
+     // Pastikan elemen opsi menu ditemukan sebelum mencoba memanipulasi kelasnya
+    if (renameOption) {
+        if (currentFolderData.sharedType === 'read') {
+            renameOption.classList.add('hidden'); // Sembunyikan jika hanya baca
+        } else {
+            renameOption.classList.remove('hidden'); // Tampilkan jika akses penuh atau bukan shared
+        }
+    }
+
+    if (deleteOption) {
+        if (currentFolderData.sharedType === 'read') {
+            deleteOption.classList.add('hidden'); // Sembunyikan jika hanya baca
+        } else {
+            deleteOption.classList.remove('hidden'); // Tampilkan jika akses penuh atau bukan shared
+        }
+    }
+
+    // Informasi Detail harus selalu terlihat
+    if (infoDetailOption) {
+        infoDetailOption.classList.remove('hidden');
     }
 
     // Hitung posisi menu
