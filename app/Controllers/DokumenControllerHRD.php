@@ -390,7 +390,7 @@ class DokumenControllerHRD extends BaseController
         }
 
         $userId = session()->get('user_id');
-        $userRole = session()->get('user_role'); 
+        $userRole = session()->get('user_role');
 
         if (!$userId) {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Unauthorized. User not logged in.']);
@@ -403,7 +403,7 @@ class DokumenControllerHRD extends BaseController
         $folderType = $input['folder_type'] ?? 'personal';
         $isShared = $input['is_shared'] ?? 0;
         $sharedType = $input['shared_type'] ?? null;
-        $accessRoles = $input['access_roles'] ?? []; 
+        $accessRoles = $input['access_roles'] ?? [];
 
         $rules = [
             'name' => 'required|min_length[3]|max_length[255]',
@@ -1156,81 +1156,81 @@ class DokumenControllerHRD extends BaseController
     }
 
     // app/Controllers/DokumenControllerHRD.php
-public function dokumenUmum()
-{
-    $hrdDocumentModel = new \App\Models\HrdDocumentModel();
-    $data['documents'] = $hrdDocumentModel->getByParent(null); // Mengambil dokumen root level
-    $data['parent_id'] = null;
-    return view('HRD/dokumenUmum', $data);
-}
-
-/**
- * Method khusus untuk membuat folder di halaman dokumen umum
- */
-public function createFolderUmum()
-{
-    // Clear any previous output
-    if (ob_get_level()) {
-        ob_clean();
-    }
-    
-    // Set proper headers
-    $this->response->setHeader('Content-Type', 'application/json');
-    $this->response->setHeader('Cache-Control', 'no-cache, must-revalidate');
-    
-    if (!$this->request->isAJAX()) {
-        return $this->response->setStatusCode(405)->setJSON(['status' => 'error', 'message' => 'Metode tidak diizinkan.']);
+    public function dokumenUmum()
+    {
+        $hrdDocumentModel = new \App\Models\HrdDocumentModel();
+        $data['documents'] = $hrdDocumentModel->getByParent(null); // Mengambil dokumen root level
+        $data['parent_id'] = null;
+        return view('HRD/dokumenUmum', $data);
     }
 
-    $input = $this->request->getJSON(true);
-    
-    $folderName = $input['name'] ?? null;
-    $parentId = $input['parent_id'] ?? null;
-    $folderType = $input['folder_type'] ?? 'personal';
+    /**
+     * Method khusus untuk membuat folder di halaman dokumen umum
+     */
+    public function createFolderUmum()
+    {
+        // Clear any previous output
+        if (ob_get_level()) {
+            ob_clean();
+        }
 
-    // Validasi input
-    if (!$folderName || trim($folderName) === '') {
-        return $this->response->setJSON(['status' => 'error', 'message' => 'Nama folder tidak boleh kosong.']);
-    }
+        // Set proper headers
+        $this->response->setHeader('Content-Type', 'application/json');
+        $this->response->setHeader('Cache-Control', 'no-cache, must-revalidate');
 
-    // Inisialisasi HrdDocumentModel
-    $hrdDocumentModel = new \App\Models\HrdDocumentModel();
-    
-    // Siapkan data untuk disimpan
-    $data = [
-        'parent_id' => $parentId ?: null,
-        'name' => trim($folderName),
-        'type' => 'folder',
-        'mime_type' => null,
-        'size' => null,
-        'file_path' => null,
-        'file_id' => null,
-        'category' => ($folderType !== 'personal') ? $folderType : null,
-        'description' => null
-    ];
+        if (!$this->request->isAJAX()) {
+            return $this->response->setStatusCode(405)->setJSON(['status' => 'error', 'message' => 'Metode tidak diizinkan.']);
+        }
 
-    try {
-        // Simpan ke database
-        if ($hrdDocumentModel->insert($data)) {
+        $input = $this->request->getJSON(true);
+
+        $folderName = $input['name'] ?? null;
+        $parentId = $input['parent_id'] ?? null;
+        $folderType = $input['folder_type'] ?? 'personal';
+
+        // Validasi input
+        if (!$folderName || trim($folderName) === '') {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Nama folder tidak boleh kosong.']);
+        }
+
+        // Inisialisasi HrdDocumentModel
+        $hrdDocumentModel = new \App\Models\HrdDocumentModel();
+
+        // Siapkan data untuk disimpan
+        $data = [
+            'parent_id' => $parentId ?: null,
+            'name' => trim($folderName),
+            'type' => 'folder',
+            'mime_type' => null,
+            'size' => null,
+            'file_path' => null,
+            'file_id' => null,
+            'category' => ($folderType !== 'personal') ? $folderType : null,
+            'description' => null
+        ];
+
+        try {
+            // Simpan ke database
+            if ($hrdDocumentModel->insert($data)) {
+                return $this->response->setJSON([
+                    'status' => 'success',
+                    'message' => 'Folder berhasil dibuat!'
+                ]);
+            } else {
+                $errors = $hrdDocumentModel->errors();
+                return $this->response->setJSON([
+                    'status' => 'error',
+                    'message' => 'Gagal membuat folder.',
+                    'errors' => $errors
+                ]);
+            }
+        } catch (\Exception $e) {
             return $this->response->setJSON([
-                'status' => 'success', 
-                'message' => 'Folder berhasil dibuat!'
-            ]);
-        } else {
-            $errors = $hrdDocumentModel->errors();
-            return $this->response->setJSON([
-                'status' => 'error', 
-                'message' => 'Gagal membuat folder.', 
-                'errors' => $errors
+                'status' => 'error',
+                'message' => 'Terjadi kesalahan: ' . $e->getMessage()
             ]);
         }
-    } catch (\Exception $e) {
-        return $this->response->setJSON([
-            'status' => 'error', 
-            'message' => 'Terjadi kesalahan: ' . $e->getMessage()
-        ]);
     }
-}
 
     public function ActivityLogs()
     {
@@ -1292,26 +1292,26 @@ public function createFolderUmum()
     public function dokumenUmumFolder($folderId)
     {
         $hrdDocumentModel = new \App\Models\HrdDocumentModel();
-        
+
         // Validasi folder exists
         $folder = $hrdDocumentModel->find($folderId);
         if (!$folder || $folder['type'] !== 'folder') {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Folder tidak ditemukan.');
         }
-        
+
         // Ambil semua dokumen/folder di dalam folder ini
         $documents = $hrdDocumentModel->getByParent($folderId);
-        
+
         $data = [
             'documents' => $documents,
             'current_folder' => $folder,
             'parent_id' => $folderId,
             'breadcrumb' => $this->getBreadcrumb($folderId, $hrdDocumentModel)
         ];
-        
+
         return view('HRD/dokumenUmumFolder', $data);
     }
-    
+
     /**
      * Method untuk upload file ke dalam folder dokumen umum
      */
@@ -1321,23 +1321,23 @@ public function createFolderUmum()
         if (ob_get_level()) {
             ob_clean();
         }
-        
+
         // Set proper headers
         $this->response->setHeader('Content-Type', 'application/json');
         $this->response->setHeader('Cache-Control', 'no-cache, must-revalidate');
-        
+
         if (!$this->request->isAJAX()) {
             return $this->response->setStatusCode(405)->setJSON(['status' => 'error', 'message' => 'Metode tidak diizinkan.']);
         }
-        
+
         $file = $this->request->getFile('file');
         $parentId = $this->request->getPost('parent_id');
         $description = $this->request->getPost('description');
-        
+
         if (!$file || !$file->isValid()) {
             return $this->response->setJSON(['status' => 'error', 'message' => 'File tidak valid.']);
         }
-        
+
         // Validasi parent folder
         $hrdDocumentModel = new \App\Models\HrdDocumentModel();
         if ($parentId) {
@@ -1346,17 +1346,17 @@ public function createFolderUmum()
                 return $this->response->setJSON(['status' => 'error', 'message' => 'Folder tujuan tidak valid.']);
             }
         }
-        
+
         try {
             // Generate unique filename
             $fileName = $file->getRandomName();
             $uploadPath = WRITEPATH . 'uploads/dokumen-umum/';
-            
+
             // Create directory if not exists
             if (!is_dir($uploadPath)) {
                 mkdir($uploadPath, 0777, true);
             }
-            
+
             // Move file
             if ($file->move($uploadPath, $fileName)) {
                 // Simpan data ke database
@@ -1371,13 +1371,13 @@ public function createFolderUmum()
                     'description' => $description,
                     'created_at' => date('Y-m-d H:i:s')
                 ];
-                
+
                 $documentId = $hrdDocumentModel->insert($data);
-                
+
                 if ($documentId) {
                     // Trigger notifikasi realtime dan email
                     $this->triggerDocumentNotification($documentId, $fileName, null);
-                    
+
                     return $this->response->setJSON([
                         'status' => 'success',
                         'message' => 'File berhasil diupload!',
@@ -1406,7 +1406,7 @@ public function createFolderUmum()
             ]);
         }
     }
-    
+
     /**
      * Helper method untuk membuat breadcrumb navigasi
      */
@@ -1414,7 +1414,7 @@ public function createFolderUmum()
     {
         $breadcrumb = [];
         $currentId = $folderId;
-        
+
         while ($currentId) {
             $folder = $model->find($currentId);
             if ($folder) {
@@ -1424,7 +1424,7 @@ public function createFolderUmum()
                 break;
             }
         }
-        
+
         return $breadcrumb;
     }
 
@@ -1435,7 +1435,7 @@ public function createFolderUmum()
     {
         $breadcrumb = [];
         $hrdDocumentModel = new \App\Models\HrdDocumentModel();
-        
+
         while ($parentId) {
             $parent = $hrdDocumentModel->find($parentId);
             if ($parent) {
@@ -1448,7 +1448,7 @@ public function createFolderUmum()
                 break;
             }
         }
-        
+
         return $breadcrumb;
     }
 
@@ -1461,10 +1461,10 @@ public function createFolderUmum()
             // Get current user info
             $session = session();
             $uploaderName = $session->get('name') ?? 'System';
-            
+
             // Load notification service
             $notificationService = new \App\Services\NotificationService();
-            
+
             // Process notification (database insert, WebSocket push, email send)
             $result = $notificationService->processDocumentUploadNotification(
                 $documentId,
@@ -1472,13 +1472,13 @@ public function createFolderUmum()
                 $uploaderName,
                 $category
             );
-            
+
             if ($result) {
                 log_message('info', "Document notification triggered successfully for: {$documentName}");
             } else {
                 log_message('warning', "Failed to trigger document notification for: {$documentName}");
             }
-            
+
         } catch (\Exception $e) {
             log_message('error', 'Error triggering document notification: ' . $e->getMessage());
         }

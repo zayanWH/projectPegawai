@@ -9,14 +9,7 @@
         </div>
         <div class="flex items-center space-x-4">
             <!-- Search Bar -->
-            <div class="relative">
-                <input type="text"
-                    placeholder="Masukkan file dokumen..."
-                    class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                <svg class="absolute right-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
-            </div>
+        
             <!-- Logo -->
             <img src="<?= base_url('images/logo.png') ?>" alt="Logo USSI" class="h-10 w-auto rounded-lg">
         </div>
@@ -49,8 +42,7 @@
                 <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M7 3h8l5 5v13a2 2 0 01-2 2H7a2 2 0 01-2-2V5a2 2 0 012-2z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M14 3v5h5" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3v5h5" />
                 </svg>
 
             </div>
@@ -66,7 +58,8 @@
         <div class="flex items-center">
             <div class="flex-shrink-0">
                 <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
             </div>
             <div class="ml-4">
@@ -98,7 +91,9 @@
                                         </svg>
                                     <?php else: ?>
                                         <svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"></path>
+                                            <path fill-rule="evenodd"
+                                                d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"
+                                                clip-rule="evenodd"></path>
                                         </svg>
                                     <?php endif; ?>
                                     <span class="text-sm text-gray-900"><?= esc($item['name']) ?></span>
@@ -139,13 +134,16 @@
                             </svg>
                         <?php else: ?>
                             <svg class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                                <path fill-rule="evenodd"
+                                    d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"
+                                    clip-rule="evenodd" />
                             </svg>
                         <?php endif; ?>
                         <div class="text-sm">
                             <div class="font-medium text-gray-900"><?= esc($item['name']) ?></div>
                             <div class="text-gray-500 text-xs">
-                                <?= date('d M Y', strtotime($item['created_at'])) ?> oleh User ID: <?= esc($item['uploader_id']) ?>
+                                <?= date('d M Y', strtotime($item['created_at'])) ?> oleh User ID:
+                                <?= esc($item['uploader_id']) ?>
                             </div>
                         </div>
                     </div>
@@ -161,7 +159,9 @@
     <div class="p-6 border-b border-gray-200">
         <h2 class="text-lg font-semibold text-gray-800 flex items-center">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                </path>
             </svg>
             Dokumen Terbaru
         </h2>
@@ -170,7 +170,9 @@
         <div class="flex items-center justify-between px-6 py-4 hover:bg-gray-50">
             <div class="flex items-center space-x-4">
                 <svg class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd"
+                        d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"
+                        clip-rule="evenodd" />
                 </svg>
                 <div class="text-sm">
                     <div class="font-medium text-gray-900">laporan.pdf</div>

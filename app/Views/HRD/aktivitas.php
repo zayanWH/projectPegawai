@@ -1,4 +1,4 @@
-<?= $this->extend('layout/hrd') ?>
+<?= $this->extend('layout/main') ?>
 
 <?= $this->section('content') ?>
 <div class="bg-white rounded-lg shadow-sm p-6 mb-6">

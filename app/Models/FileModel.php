@@ -201,6 +201,16 @@ class FileModel extends Model
             ->findAll();
     }
 
+    public function getFilesByFolderWithUploader(int $folderId): array
+    {
+        return $this->select('files.*, users.name as uploader_name, roles.name as uploader_role')
+            ->join('users', 'users.id = files.uploader_id', 'left')
+            ->join('roles', 'roles.id = users.role_id', 'left')
+            ->where('files.folder_id', $folderId)
+            ->orderBy('files.file_name', 'ASC')
+            ->findAll();
+    }
+
     // Di app/Models/FileModel.php
     public function getSharedFiles(?int $folderId, int $currentUserId): array
     {

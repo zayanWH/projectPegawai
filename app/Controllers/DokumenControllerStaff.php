@@ -523,8 +523,8 @@ class DokumenControllerStaff extends BaseController
         }
 
 
-        $subFolders = $this->folderModel->where('parent_id', $folderId)->findAll();
-        $filesInFolder = $this->fileModel->where('folder_id', $folderId)->findAll();
+        $subFolders = $this->folderModel->getSubfoldersWithDetails($folderId, $userId, $userRole);
+        $filesInFolder = $this->fileModel->getFilesByFolderWithUploader($folderId);
         $breadcrumbs = $this->folderModel->getBreadcrumbs($folderId);
 
         log_message('debug', 'DokumenControllerStaff::viewFolder: Subfolders ditemukan: ' . count($subFolders));
@@ -552,6 +552,8 @@ class DokumenControllerStaff extends BaseController
         log_message('debug', 'DokumenControllerStaff::viewFolder: Mengirim data ke view staff/viewFolder.');
         return view('staff/viewFolder', $data);
     }
+
+    
     public function createFolder()
     {
         if (!$this->request->isAJAX()) {
@@ -967,20 +969,12 @@ class DokumenControllerStaff extends BaseController
 
     public function dokumenUmum()
     {
-        $userId = $this->session->get('user_id');
-
-        if (!$userId) {
-            return redirect()->to(base_url('login'))->with('error', 'Anda harus login untuk mengakses dokumen umum.');
-        }
-        $publicFolders = $this->folderModel
-            ->where('folder_type', 'public')
-            ->findAll();
-
-        $data = [
-            'title' => 'Dokumen Umum',
-            'publicFolders' => $publicFolders,
-        ];
-
+        $hrdDocumentModel = new \App\Models\HrdDocumentModel();
+        $data['documents'] = $hrdDocumentModel->getByParent(null); // Mengambil dokumen root level
+        $data['parent_id'] = null;
         return view('Umum/dokumenUmum', $data);
     }
+
+    
 }
+

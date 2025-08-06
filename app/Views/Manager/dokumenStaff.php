@@ -561,7 +561,7 @@
 
     <?= $this->section('scripts') ?>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+       document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
             const searchResults = document.getElementById('searchResults');
 
@@ -575,7 +575,7 @@
                         return;
                     }
 
-                    fetch('<?= site_url('staff/search') ?>', {
+                    fetch('<?= site_url('manager/searchStaff') ?>', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -586,22 +586,50 @@
                         .then(response => response.json())
                         .then(data => {
                             searchResults.innerHTML = '';
+
+                            // Check if there's an error
+                            if (data.status && data.status === 'error') {
+                                const errorDiv = document.createElement('div');
+                                errorDiv.className = 'px-4 py-2 text-red-500';
+                                errorDiv.textContent = data.message;
+                                searchResults.appendChild(errorDiv);
+                                searchResults.classList.remove('hidden');
+                                return;
+                            }
+
                             if (data.length > 0) {
                                 data.forEach(item => {
                                     const a = document.createElement('a');
                                     let url = '#';
+
                                     if (item.type === 'folder') {
-                                        url = `<?= site_url('staff/folder/') ?>${item.id}`;
-                                    } else {
+                                        // URL untuk melihat folder staff
+                                        url = `<?= site_url('manager/view-staff-folder/') ?>${item.id}`;
+                                    } else if (item.type === 'file') {
                                         if (item.folder_id) {
-                                            url = `<?= site_url('staff/folder/') ?>${item.folder_id}`;
+                                            // File ada dalam folder
+                                            url = `<?= site_url('manager/view-staff-folder/') ?>${item.folder_id}`;
                                         } else {
-                                            url = `<?= site_url('staff/dokumen-staff') ?>`;
+                                            // File tanpa folder (orphan files)
+                                            url = `<?= site_url('manager/dokumen-staff') ?>`;
                                         }
                                     }
+
                                     a.href = url;
-                                    a.className = 'block px-4 py-2 text-gray-700 hover:bg-gray-100';
-                                    a.textContent = `${item.type === 'folder' ? '📁' : '📄'} ${item.name}`;
+                                    a.className = 'block px-4 py-2 text-gray-700 hover:bg-gray-100 border-b border-gray-100';
+
+                                    // Create icon and text
+                                    const icon = item.type === 'folder' ? '📁' : '📄';
+                                    a.innerHTML = `
+                                <div class="flex items-center">
+                                    <span class="mr-2">${icon}</span>
+                                    <div>
+                                        <div class="font-medium text-sm">${item.name}</div>
+                                        <div class="text-xs text-gray-500">${item.type === 'folder' ? 'Folder' : 'File'}</div>
+                                    </div>
+                                </div>
+                            `;
+
                                     searchResults.appendChild(a);
                                 });
                                 searchResults.classList.remove('hidden');
@@ -620,6 +648,7 @@
                         });
                 });
 
+                // Hide search results when clicking outside
                 document.addEventListener('click', function(event) {
                     if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
                         searchResults.classList.add('hidden');

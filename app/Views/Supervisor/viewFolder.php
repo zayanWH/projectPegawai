@@ -50,19 +50,19 @@
 </div>
 
 <?php if (isset($canManageFolder) && $canManageFolder): ?>
-<div class="relative inline-block text-left mb-6">
-    <button id="newButton" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium flex items-center space-x-2">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-        </svg>
-        <span>Baru</span>
-    </button>
+    <div class="relative inline-block text-left mb-6">
+        <button id="newButton" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+            <span>Baru</span>
+        </button>
 
-    <div id="newDropdown" class="absolute z-10 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
-        <a href="#" id="createFolderLink" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">📁 Buat Sub-Folder</a>
-        <a href="#" id="uploadFileLink" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">⬆ Upload File</a>
+        <div id="newDropdown" class="absolute z-10 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+            <a href="#" id="createFolderLink" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">📁 Buat Sub-Folder</a>
+            <a href="#" id="uploadFileLink" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">⬆ Upload File</a>
+        </div>
     </div>
-</div>
 <?php endif; ?>
 
 <div id="modalUploadFile" class="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-sm hidden">
@@ -150,9 +150,9 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     <?php if (isset($canManageFolder) && $canManageFolder): ?>
-                                    <button onclick="setSelectedFolderId(<?= $subFolder['id'] ?>); toggleMenu(this);" class="text-blue-600 hover:text-blue-900">⋮</button>
+                                        <button onclick="toggleMenu(this);" class="text-blue-600 hover:text-blue-900">⋮</button>
                                     <?php else: ?>
-                                    <span class="text-gray-400">-</span>
+                                        <span class="text-gray-400">-</span>
                                     <?php endif; ?>
                                 </td>
                             </tr>
@@ -164,21 +164,45 @@
                             <tr class="hover:bg-gray-50 item-with-context-menu"
                                 data-item-type="file"
                                 data-item-id="<?= esc($file['id']) ?>"
-                                data-item-name="<?= esc($file['file_name']) ?>">
+                                data-item-name="<?= esc($file['file_name']) ?>"
+                                data-file-id="<?= esc($file['id']) ?>"
+                                data-file-name="<?= esc($file['file_name']) ?>"
+                                data-file-size="<?= esc($file['file_size'] ?? '0') ?>"
+                                data-file-type="<?= esc($file['file_type'] ?? '') ?>"
+                                data-file-path="<?= esc($file['file_path'] ?? '') ?>"
+                                data-file-owner-id="<?= esc($file['uploader_id'] ?? '') ?>"
+                                data-file-owner-name="<?= esc($file['uploader_name'] ?? '') ?>"
+                                data-file-created-at="<?= esc($file['created_at']) ?>"
+                                data-file-updated-at="<?= esc($file['updated_at'] ?? '') ?>">
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <a href="<?= base_url('supervisor/view-file/' . $file['id']) ?>" target="_blank" class="block h-full w-full text-sm text-gray-900 hover:text-blue-700 hover:underline">
                                         <div class="flex items-center">
                                             <?php
-                                                $fileExtension = pathinfo($file['file_name'], PATHINFO_EXTENSION);
-                                                $iconSvg = '';
-                                                switch (strtolower($fileExtension)) {
-                                                    case 'pdf': $iconSvg = '<svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"></path></svg>'; break;
-                                                    case 'doc': case 'docx': $iconSvg = '<svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a2 2 0 00-2 2v4a2 2 0 002 2h2a2 2 0 002-2V4a2 2 0 00-2-2H9z"></path><path d="M5 9a2 2 0 00-2 2v4a2 2 0 002 2h10a2 2 0 002-2v-4a2 2 0 00-2-2H5z"></path></svg>'; break;
-                                                    case 'xls': case 'xlsx': $iconSvg = '<svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM6 8v6h2V8H6zm4 0v6h2V8h-2zm4 0v6h2V8h-2z"></path></svg>'; break;
-                                                    case 'png': case 'jpg': case 'jpeg': case 'gif': $iconSvg = '<svg class="w-5 h-5 text-purple-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-4 4 4 4-4v4z" clip-rule="evenodd"></path></svg>'; break;
-                                                    default: $iconSvg = '<svg class="w-5 h-5 text-gray-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>'; break;
-                                                }
-                                                echo $iconSvg;
+                                            $fileExtension = pathinfo($file['file_name'], PATHINFO_EXTENSION);
+                                            $iconSvg = '';
+                                            switch (strtolower($fileExtension)) {
+                                                case 'pdf':
+                                                    $iconSvg = '<svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"></path></svg>';
+                                                    break;
+                                                case 'doc':
+                                                case 'docx':
+                                                    $iconSvg = '<svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a2 2 0 00-2 2v4a2 2 0 002 2h2a2 2 0 002-2V4a2 2 0 00-2-2H9z"></path><path d="M5 9a2 2 0 00-2 2v4a2 2 0 002 2h10a2 2 0 002-2v-4a2 2 0 00-2-2H5z"></path></svg>';
+                                                    break;
+                                                case 'xls':
+                                                case 'xlsx':
+                                                    $iconSvg = '<svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM6 8v6h2V8H6zm4 0v6h2V8h-2zm4 0v6h2V8h-2z"></path></svg>';
+                                                    break;
+                                                case 'png':
+                                                case 'jpg':
+                                                case 'jpeg':
+                                                case 'gif':
+                                                    $iconSvg = '<svg class="w-5 h-5 text-purple-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-4 4 4 4-4v4z" clip-rule="evenodd"></path></svg>';
+                                                    break;
+                                                default:
+                                                    $iconSvg = '<svg class="w-5 h-5 text-gray-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>';
+                                                    break;
+                                            }
+                                            echo $iconSvg;
                                             ?>
                                             <span class="text-sm text-gray-900"><?= esc($file['file_name']) ?></span>
                                         </div>
@@ -192,9 +216,9 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     <?php if (isset($canManageFolder) && $canManageFolder): ?>
-                                    <button onclick="showFloatingMenu(event, 'file', '<?= esc($file['id']) ?>', '<?= esc($file['file_name']) ?>')" class="text-blue-600 hover:text-blue-900">⋮</button>
+                                        <button onclick="toggleMenu(this, event);" class="text-blue-600 hover:text-blue-900">⋮</button>
                                     <?php else: ?>
-                                    <span class="text-gray-400">-</span>
+                                        <span class="text-gray-400">-</span>
                                     <?php endif; ?>
                                 </td>
                             </tr>
@@ -224,7 +248,7 @@
         // --- ALL ELEMENTS ---
         const newButton = document.getElementById('newButton');
         const newDropdown = document.getElementById('newDropdown');
-        
+
         // Create Folder elements
         const createFolderLink = document.getElementById('createFolderLink');
         const modalCreateFolder = document.getElementById('modalCreateFolder');
@@ -277,28 +301,28 @@
                     return;
                 }
 
-                fetch(<?= site_url('supervisor/create-folder') ?>, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-Requested-With': 'XMLHttpRequest'
-                    },
-                    body: JSON.stringify({
-                        name: folderName,
-                        parent_id: window.currentFolderId,
-                        folder_type: window.currentFolderType // Kirim juga folder_type
+                fetch('<?= esc(site_url('supervisor/create-folder')) ?>', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest'
+                        },
+                        body: JSON.stringify({
+                            name: folderName,
+                            parent_id: window.currentFolderId,
+                            folder_type: window.currentFolderType // Kirim juga folder_type
+                        })
                     })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        alert(data.message);
-                        window.location.reload();
-                    } else {
-                        alert('Gagal membuat folder: ' + (data.message || 'Terjadi kesalahan.'));
-                    }
-                })
-                .catch(error => console.error('Error creating folder:', error));
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            alert(data.message);
+                            window.location.reload();
+                        } else {
+                            alert('Gagal membuat folder: ' + (data.message || 'Terjadi kesalahan.'));
+                        }
+                    })
+                    .catch(error => console.error('Error creating folder:', error));
             });
         }
 
@@ -311,8 +335,8 @@
                 modalUploadFile.classList.remove('hidden');
             });
         }
-        
-        if(cancelUploadFileModal) {
+
+        if (cancelUploadFileModal) {
             cancelUploadFileModal.addEventListener('click', function() {
                 modalUploadFile.classList.add('hidden');
             });
@@ -330,21 +354,23 @@
                 formData.append('folder_id', window.currentFolderId);
 
                 // UBAH URL INI KE ROUTE SUPERVISOR UNTUK UPLOAD
-                fetch(<?= site_url('supervisor/upload-file') ?>, {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        alert(data.message);
-                        window.location.reload();
-                    } else {
-                        alert('Gagal mengunggah file: ' + (data.message || 'Terjadi kesalahan.'));
-                    }
-                })
-                .catch(error => console.error('Error uploading file:', error));
+                fetch('<?= esc(site_url('supervisor/upload-file')) ?>', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            alert(data.message);
+                            window.location.reload();
+                        } else {
+                            alert('Gagal mengunggah file: ' + (data.message || 'Terjadi kesalahan.'));
+                        }
+                    })
+                    .catch(error => console.error('Error uploading file:', error));
             });
         }
     });

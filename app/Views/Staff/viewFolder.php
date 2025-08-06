@@ -137,12 +137,19 @@
 
                     <?php if (!empty($filesInFolder)): ?>
                         <?php foreach ($filesInFolder as $file): ?>
-                            <tr class="hover:bg-gray-50 item-with-context-menu" data-item-type="file"
-                                data-item-id="<?= esc($file['id']) ?>" data-item-name="<?= esc($file['file_name']) ?>"
-                                data-folder-id="<?= esc($file['id']) ?>" data-folder-name="<?= esc($file['file_name']) ?>"
-                                data-folder-type="file" data-folder-is-shared="0" data-folder-shared-type="" data-folder-owner-id=""
-                                data-folder-owner-name="" data-folder-created-at="<?= esc($file['created_at']) ?>"
-                                data-folder-updated-at="<?= esc($file['updated_at']) ?>" data-folder-path="">
+                            <tr class="hover:bg-gray-50 item-with-context-menu"
+                                data-item-type="file"
+                                data-item-id="<?= esc($file['id']) ?>"
+                                data-item-name="<?= esc($file['file_name']) ?>"
+                                data-file-id="<?= esc($file['id']) ?>"
+                                data-file-name="<?= esc($file['file_name']) ?>"
+                                data-file-size="<?= esc($file['file_size'] ?? '0') ?>"
+                                data-file-type="<?= esc($file['file_type'] ?? '') ?>"
+                                data-file-path="<?= esc($file['file_path'] ?? '') ?>"
+                                data-file-owner-id="<?= esc($file['uploader_id'] ?? '') ?>"
+                                data-file-owner-name="<?= esc($file['uploader_name'] ?? '') ?>"
+                                data-file-created-at="<?= esc($file['created_at']) ?>"
+                                data-file-updated-at="<?= esc($file['updated_at'] ?? '') ?>">
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <a href="<?= base_url('staff/view-file/' . $file['id']) ?>" target="_blank"
                                         class="block h-full w-full text-sm text-gray-900 hover:text-blue-700 hover:underline">
@@ -185,7 +192,7 @@
                                     <?= date('d M Y', strtotime($file['created_at'])) ?>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    <button onclick="toggleMenu(this)" class="text-blue-600 hover:text-blue-900">⋮</button>
+                                    <button onclick="toggleMenu(this, event);" class="text-blue-600 hover:text-blue-900">⋮</button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

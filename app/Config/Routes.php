@@ -29,15 +29,15 @@ $routes->group('admin', ['filter' => 'auth:1'], function ($routes) {
     $routes->get('getLargestFiles', 'DokumenControllerAdmin::getLargestFiles');
     $routes->get('log-akses-file', 'DokumenControllerAdmin::logAksesFile');
     $routes->get('users', 'AdminController::users');
-    $routes->get('users/edit/(:num)', 'DokumenControllerAdmin::getUserForEdit/$1'); 
+    $routes->get('users/edit/(:num)', 'DokumenControllerAdmin::getUserForEdit/$1');
     $routes->post('users/update', 'DokumenControllerAdmin::updateUser');
-    $routes->post('users/add', 'DokumenControllerAdmin::addUser'); 
-    $routes->post('users/delete', 'DokumenControllerAdmin::deleteUser'); 
-    $routes->get('jabatan/edit/(:num)', 'DokumenControllerAdmin::getRoleForEdit/$1'); 
-    $routes->post('jabatan/update', 'DokumenControllerAdmin::updateJabatan'); 
+    $routes->post('users/add', 'DokumenControllerAdmin::addUser');
+    $routes->post('users/delete', 'DokumenControllerAdmin::deleteUser');
+    $routes->get('jabatan/edit/(:num)', 'DokumenControllerAdmin::getRoleForEdit/$1');
+    $routes->post('jabatan/update', 'DokumenControllerAdmin::updateJabatan');
     $routes->post('jabatan/delete', 'DokumenControllerAdmin::deleteJabatan');
-    $routes->post('jabatan/add', 'DokumenControllerAdmin::addJabatan'); 
-    $routes->get('roles', 'DokumenControllerAdmin::getRoles'); 
+    $routes->post('jabatan/add', 'DokumenControllerAdmin::addJabatan');
+    $routes->get('roles', 'DokumenControllerAdmin::getRoles');
     $routes->get('search-users', 'DokumenControllerAdmin::searchUsers');
     $routes->get('getStorageByRole', 'DokumenControllerAdmin::getStorageByRole');
     $routes->get('log-akses-file', 'DokumenControllerAdmin::logAksesFile');
@@ -84,7 +84,7 @@ $routes->group('hrd', ['filter' => 'auth:2'], function ($routes) {
     $routes->get('dokumen-umum/folder/(:num)', 'DokumenControllerHRD::dokumenUmumFolder/$1');
     $routes->post('dokumen-umum/create-folder', 'DokumenControllerHRD::createFolderUmum');
     $routes->post('dokumen-umum/upload-file', 'DokumenControllerHRD::uploadFileUmum');
-    
+
     // Notification Routes - HRD Only
     $routes->get('notifications/dashboard', 'NotificationController::dashboard');
     $routes->post('notifications/test-system', 'NotificationController::testSystem');
@@ -94,10 +94,14 @@ $routes->group('hrd', ['filter' => 'auth:2'], function ($routes) {
     $routes->post('notifications/mark-read/(:num)', 'NotificationController::markAsRead/$1');
 });
 
-$routes->group('umum', ['filter' => 'auth:2,3,4,5,6'], function ($routes) { 
-    $routes->get('dokumen-bersama', 'DokumenControllerStaff::dokumenBersama'); 
-    $routes->get('dokumen-umum-staff', 'DokumenControllerStaff::dokumenUmum');       
-    $routes->get('view-shared-folder/(:num)', 'Staff::viewSharedFolder/$1');   
+$routes->group('umum', ['filter' => 'auth:2,3,4,5,6'], function ($routes) {
+    $routes->get('dokumen-bersama', 'DokumenControllerStaff::dokumenBersama');
+    $routes->get('dokumen-umum-staff', 'DokumenControllerStaff::dokumenUmum');
+    $routes->get('view-shared-folder/(:num)', 'Staff::viewSharedFolder/$1');
+    $routes->get('dokumen-umum', 'DokumenControllerHRD::dokumenUmum');
+    $routes->get('dokumen-umum/folder/(:num)', 'DokumenControllerHRD::dokumenUmumFolder/$1');
+    $routes->post('dokumen-umum/create-folder', 'DokumenControllerHRD::createFolderUmum');
+    $routes->post('dokumen-umum/upload-file', 'DokumenControllerHRD::uploadFileUmum');
 });
 
 
@@ -108,6 +112,8 @@ $routes->group('supervisor', ['filter' => 'auth:5'], function ($routes) {
     $routes->get('dokumen-staff', 'DokumenControllerSPV::dokumenStaffUntukSPV');
     $routes->get('dokumenStaff', 'DokumenControllerSPV::dokumenStaffUntukSPV');
     $routes->get('folder/(:num)', 'DokumenControllerSPV::viewFolder/$1');
+    $routes->get('view-file/(:num)', 'DokumenControllerSPV::viewFile/$1');
+    $routes->get('serve-file/(:num)', 'DokumenControllerSPV::serveFile/$1');
     $routes->post('create-folder', 'DokumenControllerSPV::createFolder');
     $routes->post('upload-file', 'DokumenControllerSPV::uploadFile');
     $routes->get('download-file/(:num)', 'DokumenControllerSPV::downloadFile/$1');
@@ -124,6 +130,8 @@ $routes->group('manager', ['filter' => 'auth:4'], function ($routes) {
     $routes->get('view-folder/(:num)', 'DokumenControllerManager::viewFolder/$1');
     $routes->post('create-folder', 'DokumenControllerManager::createFolder');
     $routes->post('upload-file', 'DokumenControllerManager::uploadFile');
+    $routes->get('view-file/(:num)', 'DokumenControllerManager::viewFile/$1');
+    $routes->get('serve-file/(:num)', 'DokumenControllerManager::serveFile/$1');
     $routes->get('download-file/(:num)', 'DokumenControllerManager::downloadFile/$1');
     $routes->get('delete-file/(:num)', 'DokumenControllerManager::deleteFile/$1');
     $routes->get('dokumen-staff', 'DokumenControllerManager::dokumenStaffUntukManager');
@@ -132,6 +140,9 @@ $routes->group('manager', ['filter' => 'auth:4'], function ($routes) {
     $routes->get('dokumenSupervisor', 'DokumenControllerManager::dokumenSPVUntukManager');
     $routes->get('view-staff-folder/(:num)', 'DokumenControllerManager::viewStaffFolder/$1');
     $routes->get('view-supervisor-folder/(:num)', 'DokumenControllerManager::viewSPVFolder/$1');
+    $routes->post('search', 'DokumenControllerManager::search');
+    $routes->post('searchStaff', 'DokumenControllerManager::searchStaff');
+    $routes->post('searchSPV', 'DokumenControllerManager::searchSPV');
 });
 
 // Routes untuk Direksi
@@ -141,6 +152,8 @@ $routes->group('direksi', ['filter' => 'auth:3'], function ($routes) {
     $routes->get('view-folder/(:num)', 'DokumenControllerDireksi::viewFolder/$1');
     $routes->post('create-folder', 'DokumenControllerDireksi::createFolder');
     $routes->post('upload-file', 'DokumenControllerDireksi::uploadFile');
+    $routes->get('view-file/(:num)', 'DokumenControllerDireksi::viewFile/$1');
+    $routes->get('serve-file/(:num)', 'DokumenControllerDireksi::serveFile/$1');
     $routes->get('download-file/(:num)', 'DokumenControllerDireksi::downloadFile/$1');
     $routes->get('delete-file/(:num)', 'DokumenControllerDireksi::deleteFile/$1');
     $routes->get('dokumen-staff', 'DokumenControllerDireksi::dokumenStaffUntukDireksi');
@@ -152,20 +165,28 @@ $routes->group('direksi', ['filter' => 'auth:3'], function ($routes) {
     $routes->get('view-staff-folder/(:num)', 'DokumenControllerDireksi::viewStaffFolder/$1');
     $routes->get('view-supervisor-folder/(:num)', 'DokumenControllerDireksi::viewSPVFolder/$1');
     $routes->get('view-manager-folder/(:num)', 'DokumenControllerDireksi::viewManagerFolder/$1');
+    $routes->post('search', 'DokumenControllerDireksi::search');
+    $routes->post('searchStaff', 'DokumenControllerDireksi::searchStaff');
+    $routes->post('searchSPV', 'DokumenControllerDireksi::searchSPV');
+    $routes->post('searchManager', 'DokumenControllerDireksi::searchManager');
 });
 
-$routes->group('staff', ['filter' => 'auth:6'], function ($routes) { 
+$routes->group('staff', ['filter' => 'auth:6'], function ($routes) {
     $routes->get('dashboard', 'DokumenControllerStaff::dashboard');
     $routes->post('search', 'DokumenControllerStaff::search');
     $routes->get('dokumen-staff', 'DokumenControllerStaff::dokumenStaff');
     $routes->get('folder/(:num)', 'DokumenControllerStaff::viewFolder/$1');
     $routes->get('view-file/(:num)', 'DokumenControllerStaff::viewFile/$1');
     $routes->get('serve-file/(:num)', 'DokumenControllerStaff::serveFile/$1');
-    $routes->post('create-folder', 'DokumenControllerStaff::createFolder'); 
+    $routes->post('create-folder', 'DokumenControllerStaff::createFolder');
     $routes->post('upload-file', 'DokumenControllerStaff::uploadFile');
     $routes->post('upload-from-folder', 'DokumenControllerStaff::uploadFromFolder');
     $routes->get('download-file/(:num)', 'DokumenControllerStaff::downloadFile/$1');
     $routes->get('delete-file/(:num)', 'DokumenControllerStaff::deleteFile/$1');
+    $routes->get('dokumen-umum', 'DokumenControllerStaff::dokumenUmum');
+    $routes->get('dokumen-umum/folder/(:num)', 'DokumenControllerHRD::dokumenUmumFolder/$1');
+    $routes->post('dokumen-umum/create-folder', 'DokumenControllerHRD::createFolderUmum');
+    $routes->post('dokumen-umum/upload-file', 'DokumenControllerHRD::uploadFileUmum');
 });
 
 $routes->post('folders/create', 'Folder::create');
@@ -174,3 +195,6 @@ $routes->post('folders/delete', 'Folder::delete');
 $routes->post('upload/doUpload', 'Upload::doUpload');
 $routes->get('folder/download/(:num)', 'Folder::download/$1');
 $routes->post('folders/rename', 'Folder::rename');
+
+$routes->post('file/rename', 'File::renameFile');
+$routes->post('file/delete', 'File::deleteFile');

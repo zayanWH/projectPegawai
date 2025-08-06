@@ -8,12 +8,15 @@
         </div>
         <div class="flex items-center space-x-4">
             <div class="relative">
-                <input type="text" 
-                       placeholder="Masukkan file dokumen..." 
-                       class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                <svg class="absolute right-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                <input type="text" id="searchInput" placeholder="Masukkan file dokumen..."
+                    class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <svg class="absolute right-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
+                <div id="searchResults"
+                    class="absolute z-20 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-lg hidden"></div>
             </div>
             <img src="<?= base_url('images/logo.png') ?>" alt="Logo USSI" class="h-10 w-auto rounded-lg">
         </div>
@@ -674,7 +677,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            fetch('<?= site_url('staff/search') ?>', {
+            fetch('<?= site_url('manager/search') ?>', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -690,12 +693,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         const a = document.createElement('a');
                         let url = '#';
                         if (item.type === 'folder') {
-                            url = `<?= site_url('staff/folder/') ?>${item.id}`;
+                            url = `<?= site_url('manager/view-folder/') ?>${item.id}`;
                         } else {
                             if (item.folder_id) {
-                                url = `<?= site_url('staff/folder/') ?>${item.folder_id}`;
+                                url = `<?= site_url('manager/view-folder/') ?>${item.folder_id}`;
                             } else {
-                                url = `<?= site_url('staff/dokumen-staff') ?>`;
+                                url = `<?= site_url('manager/dokumen-manager') ?>`;
                             }
                         }
                         a.href = url;

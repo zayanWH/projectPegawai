@@ -159,443 +159,103 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
+
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // --- Global Variables (Ensure these are passed from Controller) ---
-        // Example in Controller:
-        // $data['currentFolderId'] = $folderId ?? null;
-        // $data['currentUserId'] = $this->session->get('user_id');
-        // $data['userRoleName'] = 'Supervisor';
-        window.currentFolderId = <?= json_encode($currentFolderId ?? null) ?>;
-        window.currentUserId = <?= json_encode($currentUserId ?? null) ?>;
-        window.currentUserRole = <?= json_encode($userRoleName ?? null) ?>;
+       document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const searchResults = document.getElementById('searchResults');
 
-        // --- Elements for "Baru" Dropdown and "Create Folder" Modal ---
-        const dropdownButton = document.getElementById('dropdownButton');
-        const dropdownMenu = document.getElementById('dropdownMenu');
-        const openCreateFolder = document.getElementById('openCreateFolder');
-        const modalCreateFolder = document.getElementById('modalCreateFolder');
-        const cancelModal = document.getElementById('cancelModal');
-        const createFolderBtn = document.getElementById('createFolderBtn');
-        const folderNameInput = document.getElementById('folderName');
-        const folderTypeSelect = document.getElementById('folderType');
-        const folderAccessSelect = document.getElementById('folderAccess');
-        const accessRolesContainer = document.getElementById('accessRolesContainer');
-        const accessRolesCheckboxes = document.querySelectorAll('input[name="accessRoles[]"]');
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const query = this.value.trim();
 
-        // --- Elements for "Upload File" Modal ---
-        const openUploadFile = document.getElementById('openUploadFile');
-        const modalUploadFile = document.getElementById('modalUploadFile');
-        const cancelUploadModal = document.getElementById('cancelUploadModal');
-        const uploadFileBtn = document.getElementById('uploadFileBtn');
-        const fileInput = document.getElementById('fileInput');
-        const fileDescription = document.getElementById('fileDescription');
-
-        // --- Element for "Upload Folder" ---
-        const openUploadFolder = document.getElementById('openUploadFolder');
-        const folderUploadInput = document.getElementById('folderUploadInput'); // Make sure this input is in your HTML with webkitdirectory attribute
-
-        // --- Search Elements ---
-        const searchInput = document.getElementById('searchInput');
-        const searchResults = document.getElementById('searchResults');
-
-
-        // --- CORE FUNCTIONS FOR DROPDOWNS AND MODALS ---
-
-        /**
-         * Shows a dropdown menu with transition effects.
-         * @param {HTMLElement} element The dropdown menu element.
-         */
-        function showDropdown(element) {
-            element.classList.remove('invisible', 'opacity-0', 'scale-95');
-            element.classList.add('opacity-100', 'scale-100');
-        }
-
-        /**
-         * Hides a dropdown menu with transition effects.
-         * @param {HTMLElement} element The dropdown menu element.
-         */
-        function hideDropdown(element) {
-            element.classList.remove('opacity-100', 'scale-100');
-            element.classList.add('opacity-0', 'scale-95');
-            // Use a timeout to fully hide the element AFTER the transition finishes
-            // This prevents immediate clicks on underlying elements
-            setTimeout(() => {
-                element.classList.add('invisible');
-            }, 200); // Must match your transition duration
-        }
-
-        /**
-         * Shows a modal.
-         * @param {HTMLElement} modalElement The modal element.
-         */
-        function showModal(modalElement) {
-            modalElement.classList.remove('hidden');
-        }
-
-        /**
-         * Hides a modal.
-         * @param {HTMLElement} modalElement The modal element.
-         */
-        function hideModal(modalElement) {
-            modalElement.classList.add('hidden');
-        }
-
-        function resetCreateFolderForm() {
-            folderNameInput.value = '';
-            folderTypeSelect.value = ''; // Reset select to default 'Pilih jenis folder'
-            folderAccessSelect.value = ''; // Reset select to default 'Pilih akses'
-            if (accessRolesContainer) { // Ensure element exists before accessing
-                accessRolesContainer.classList.add('hidden');
-            }
-            accessRolesCheckboxes.forEach(checkbox => checkbox.checked = false);
-        }
-
-        function resetUploadFileForm() {
-            fileInput.value = '';
-            fileDescription.value = '';
-        }
-
-        // --- MAIN EVENT LISTENERS ---
-
-        // Event Listener for the "Baru" dropdown button
-        if (dropdownButton && dropdownMenu) {
-            dropdownButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation(); // Prevent event from bubbling up to document click listener
-
-                // Close all other table dropdown menus (if any exist)
-                document.querySelectorAll('.menu-dropdown').forEach(otherMenu => {
-                    hideDropdown(otherMenu);
-                });
-
-                // Toggle the "Baru" dropdown visibility
-                const isVisible = dropdownMenu.classList.contains('invisible') || dropdownMenu.classList.contains('opacity-0');
-                if (isVisible) {
-                    showDropdown(dropdownMenu);
-                } else {
-                    hideDropdown(dropdownMenu);
-                }
-            });
-        }
-
-        // Close the "Baru" dropdown if user clicks outside of it or its button
-        document.addEventListener('click', function(event) {
-            if (dropdownButton && dropdownMenu && !dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
-                hideDropdown(dropdownMenu);
-            }
-        });
-
-        // Event Listener for "Buat Folder" link in dropdown
-        if (openCreateFolder && modalCreateFolder) {
-            openCreateFolder.addEventListener('click', function(e) {
-                e.preventDefault();
-                hideDropdown(dropdownMenu); // Close "Baru" dropdown
-                resetCreateFolderForm(); // Reset form before opening
-                showModal(modalCreateFolder); // Show folder modal
-            });
-        }
-
-        // Event Listener for "Unggah File" link in dropdown
-        if (openUploadFile && modalUploadFile) {
-            openUploadFile.addEventListener('click', function(e) {
-                e.preventDefault();
-                hideDropdown(dropdownMenu); // Close "Baru" dropdown
-                resetUploadFileForm(); // Reset form before opening
-                showModal(modalUploadFile); // Show upload modal
-            });
-        }
-
-        // --- Event Listener for Upload Folder ---
-        // Ensure you have <input type="file" id="folderUploadInput" webkitdirectory directory multiple class="hidden"> in your HTML
-        if (openUploadFolder && folderUploadInput) {
-            openUploadFolder.addEventListener('click', function(e) {
-                e.preventDefault();
-                hideDropdown(dropdownMenu);
-                folderUploadInput.click(); // Programmatically click the hidden input
-            });
-
-            folderUploadInput.addEventListener('change', async function(e) {
-                const files = e.target.files;
-                if (files.length === 0) {
-                    return;
-                }
-
-                const progressDiv = document.createElement('div');
-                progressDiv.className = 'fixed bottom-4 right-4 bg-blue-600 text-white p-4 rounded-lg shadow-lg z-50'; // Added z-index
-                progressDiv.textContent = `Mengunggah 0 dari ${files.length} file...`;
-                document.body.appendChild(progressDiv);
-
-                for (let i = 0; i < files.length; i++) {
-                    progressDiv.textContent = `Mengunggah ${i + 1} dari ${files.length} file: ${files[i].name}`;
-                    const formData = new FormData();
-                    formData.append('file', files[i]);
-                    formData.append('relativePath', files[i].webkitRelativePath);
-                    formData.append('parent_id', window.currentFolderId || null); // Will be null if at root
-                    formData.append('user_id', window.currentUserId); // Pass user ID
-
-                    try {
-                        const response = await fetch('<?= base_url('supervisor/upload-from-folder') ?>', { // CONFIRM THIS URL!
-                            method: 'POST',
-                            body: formData,
-                            headers: {
-                                'X-Requested-With': 'XMLHttpRequest'
-                            }
-                        });
-                        const result = await response.json();
-                        if (result.status !== 'success') {
-                            alert(`Gagal mengunggah ${files[i].name}: ${result.message || 'Terjadi kesalahan.'}`);
-                            document.body.removeChild(progressDiv);
-                            return;
-                        }
-                    } catch (error) {
-                        console.error('Error during folder upload:', error);
-                        alert(`Terjadi kesalahan jaringan saat mengunggah ${files[i].name}.`);
-                        document.body.removeChild(progressDiv);
+                    if (query.length < 2) {
+                        searchResults.innerHTML = '';
+                        searchResults.classList.add('hidden');
                         return;
                     }
-                }
 
-                progressDiv.textContent = 'Semua file berhasil diunggah!';
-                setTimeout(() => {
-                    document.body.removeChild(progressDiv);
-                    window.location.reload(); // Reload page to show new files/folders
-                }, 2000);
-            });
-        }
-
-        // Event Listener for "Batal" button in "Create Folder" modal
-        if (cancelModal && modalCreateFolder) {
-            cancelModal.addEventListener('click', function() {
-                hideModal(modalCreateFolder);
-            });
-        }
-
-        // Close "Create Folder" modal when clicking outside
-        if (modalCreateFolder) {
-            modalCreateFolder.addEventListener('click', function(e) {
-                if (e.target === modalCreateFolder) {
-                    hideModal(modalCreateFolder);
-                }
-            });
-        }
-
-        // Event Listener for "Batal" button in "Upload File" modal
-        if (cancelUploadModal && modalUploadFile) {
-            cancelUploadModal.addEventListener('click', function() {
-                hideModal(modalUploadFile);
-            });
-        }
-
-        // Close "Upload File" modal when clicking outside
-        if (modalUploadFile) {
-            modalUploadFile.addEventListener('click', function(e) {
-                if (e.target === modalUploadFile) {
-                    hideModal(modalUploadFile);
-                }
-            });
-        }
-
-        // ADDITIONAL LOGIC: Show/Hide role checkboxes based on folder type
-        if (folderTypeSelect && accessRolesContainer) {
-            folderTypeSelect.addEventListener('change', function() {
-                if (this.value === 'shared') {
-                    accessRolesContainer.classList.remove('hidden');
-                } else {
-                    accessRolesContainer.classList.add('hidden');
-                    accessRolesCheckboxes.forEach(checkbox => checkbox.checked = false);
-                }
-            });
-        }
-
-        // --- FETCH LOGIC FOR CREATING FOLDER ---
-        if (createFolderBtn && folderNameInput && folderTypeSelect && folderAccessSelect) {
-            createFolderBtn.addEventListener('click', function() {
-                const folderName = folderNameInput.value.trim();
-                const folderType = folderTypeSelect.value;
-                const folderAccess = folderAccessSelect.value;
-                let selectedAccessRoles = [];
-
-                if (folderType === 'shared') {
-                    selectedAccessRoles = Array.from(accessRolesCheckboxes)
-                        .filter(checkbox => checkbox.checked)
-                        .map(checkbox => checkbox.value);
-                }
-
-                // Frontend Validation
-                if (folderName === '') {
-                    alert('Nama folder tidak boleh kosong!');
-                    return;
-                }
-                if (folderType === '') {
-                    alert('Silakan pilih jenis folder!');
-                    return;
-                }
-                if (folderType === 'shared' && folderAccess === '') {
-                    alert('Silakan pilih jenis akses untuk Shared Folder!');
-                    return;
-                }
-                if (folderType === 'shared' && selectedAccessRoles.length === 0) {
-                    alert('Untuk Shared Folder, minimal satu peran akses harus dipilih!');
-                    return;
-                }
-
-                // CONFIRM THIS URL FOR SUPERVISOR
-                fetch('<?= base_url('supervisor/create-folder') ?>', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-Requested-With': 'XMLHttpRequest'
-                        },
-                        body: JSON.stringify({
-                            name: folderName,
-                            folder_type: folderType,
-                            is_shared: folderType === 'shared' ? 1 : 0,
-                            shared_type: folderType === 'shared' ? folderAccess : null,
-                            owner_id: window.currentUserId,
-                            access_roles: folderType === 'shared' ? selectedAccessRoles : null,
-                            parent_id: window.currentFolderId // Will be null if at root supervisor folder
+                    fetch('<?= site_url('direksi/searchSPV') ?>', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                                'X-Requested-With': 'XMLHttpRequest'
+                            },
+                            body: `q=${encodeURIComponent(query)}`
                         })
-                    })
-                    .then(response => {
-                        const contentType = response.headers.get('content-type');
-                        if (contentType && contentType.indexOf('application/json') !== -1) {
-                            return response.json();
-                        } else {
-                            return response.text().then(text => {
-                                console.error('Server returned non-JSON response:', text);
-                                throw new Error('Server returned non-JSON response. Check PHP error logs. Response: ' + text);
-                            });
-                        }
-                    })
-                    .then(data => {
-                        if (data.status === 'success') {
-                            alert(data.message);
-                            hideModal(modalCreateFolder);
-                            window.location.reload(); // Reload page to show new folder
-                        } else {
-                            alert('Error: ' + (data.message || 'Terjadi kesalahan.'));
-                            if (data.errors) {
-                                let errorMessages = '';
-                                for (const key in data.errors) {
-                                    errorMessages += `${data.errors[key]}\n`;
-                                }
-                                alert('Validasi Gagal:\n' + errorMessages);
+                        .then(response => response.json())
+                        .then(data => {
+                            searchResults.innerHTML = '';
+
+                            // Check if there's an error
+                            if (data.status && data.status === 'error') {
+                                const errorDiv = document.createElement('div');
+                                errorDiv.className = 'px-4 py-2 text-red-500';
+                                errorDiv.textContent = data.message;
+                                searchResults.appendChild(errorDiv);
+                                searchResults.classList.remove('hidden');
+                                return;
                             }
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error saat membuat folder:', error);
-                        alert('Terjadi kesalahan saat berkomunikasi dengan server untuk membuat folder.');
-                    });
-            });
-        }
 
-        // --- FETCH LOGIC FOR UPLOADING FILE ---
-        if (uploadFileBtn && fileInput) {
-            uploadFileBtn.addEventListener('click', function() {
-                const file = fileInput.files[0];
-                const description = fileDescription.value.trim();
+                            if (data.length > 0) {
+                                data.forEach(item => {
+                                    const a = document.createElement('a');
+                                    let url = '#';
 
-                if (!file) {
-                    alert('Silakan pilih file untuk diunggah!');
-                    return;
-                }
+                                    if (item.type === 'folder') {
+                                        // URL untuk melihat folder staff
+                                        url = `<?= site_url('direksi/view-supervisor-folder/') ?>${item.id}`;
+                                    } else if (item.type === 'file') {
+                                        if (item.folder_id) {
+                                            // File ada dalam folder
+                                            url = `<?= site_url('direksi/view-supervisor-folder/') ?>${item.folder_id}`;
+                                        } else {
+                                            // File tanpa folder (orphan files)
+                                            url = `<?= site_url('direksi/dokumen-supervisor') ?>`;
+                                        }
+                                    }
 
-                const formData = new FormData();
-                formData.append('file', file);
-                formData.append('description', description);
-                formData.append('parent_id', window.currentFolderId);
-                formData.append('user_id', window.currentUserId);
+                                    a.href = url;
+                                    a.className = 'block px-4 py-2 text-gray-700 hover:bg-gray-100 border-b border-gray-100';
 
-                fetch('<?= base_url('supervisor/upload-file') ?>', { // CONFIRM THIS URL!
-                        method: 'POST',
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest'
-                        },
-                        body: formData
-                    })
-                    .then(response => {
-                        const contentType = response.headers.get('content-type');
-                        if (contentType && contentType.indexOf('application/json') !== -1) {
-                            return response.json();
-                        } else {
-                            return response.text().then(text => {
-                                console.error('Server returned non-JSON response for upload:', text);
-                                throw new Error('Server returned non-JSON response for upload. Check PHP error logs. Response: ' + text);
-                            });
-                        }
-                    })
-                    .then(data => {
-                        if (data.status === 'success') {
-                            alert(data.message);
-                            hideModal(modalUploadFile);
-                            window.location.reload(); // Reload page to show new file
-                        } else {
-                            alert('Error unggah: ' + (data.message || 'Terjadi kesalahan saat mengunggah file.'));
-                            if (data.errors) {
-                                let errorMessages = '';
-                                for (const key in data.errors) {
-                                    errorMessages += `${data.errors[key]}\n`;
-                                }
-                                alert('Validasi Unggah Gagal:\n' + errorMessages);
+                                    // Create icon and text
+                                    const icon = item.type === 'folder' ? '📁' : '📄';
+                                    a.innerHTML = `
+                                <div class="flex items-center">
+                                    <span class="mr-2">${icon}</span>
+                                    <div>
+                                        <div class="font-medium text-sm">${item.name}</div>
+                                        <div class="text-xs text-gray-500">${item.type === 'folder' ? 'Folder' : 'File'}</div>
+                                    </div>
+                                </div>
+                            `;
+
+                                    searchResults.appendChild(a);
+                                });
+                                searchResults.classList.remove('hidden');
+                            } else {
+                                const noResult = document.createElement('div');
+                                noResult.className = 'px-4 py-2 text-gray-500';
+                                noResult.textContent = 'Tidak ada hasil ditemukan';
+                                searchResults.appendChild(noResult);
+                                searchResults.classList.remove('hidden');
                             }
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error saat mengunggah file:', error);
-                        alert('Terjadi kesalahan saat berkomunikasi dengan server untuk unggah file.');
-                    });
-            });
-        }
-
-        // Logic for table dropdown menus (optional, if you want to add them)
-        window.toggleMenu = function(button) {
-            // You'll need to add a dropdown menu element right after your button in the HTML.
-            // For example:
-            // <button onclick="toggleMenu(this)" class="text-blue-600 hover:text-blue-900">⋮</button>
-            // <div class="menu-dropdown absolute bg-white shadow-lg rounded-md hidden z-20">
-            //    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Opsi 1</a>
-            //    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Opsi 2</a>
-            // </div>
-
-            const menu = button.nextElementSibling; // Assumes menu is right after the button
-            if (menu && menu.classList.contains('menu-dropdown')) { // Make sure this is the correct dropdown menu
-                // Close the "Baru" dropdown if open
-                hideDropdown(dropdownMenu);
-
-                // Close all other table dropdown menus
-                document.querySelectorAll('.menu-dropdown').forEach(otherMenu => {
-                    if (otherMenu !== menu) {
-                        hideDropdown(otherMenu);
-                    }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            searchResults.innerHTML = '<div class="px-4 py-2 text-red-500">Error saat mencari.</div>';
+                            searchResults.classList.remove('hidden');
+                        });
                 });
 
-                // Toggle the clicked menu
-                const isVisible = menu.classList.contains('invisible') || menu.classList.contains('opacity-0');
-                if (isVisible) {
-                    showDropdown(menu);
-                } else {
-                    hideDropdown(menu);
-                }
+                // Hide search results when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
+                        searchResults.classList.add('hidden');
+                    }
+                });
             }
-        };
-
-        // Close table dropdown menus if clicked outside
-        document.addEventListener('click', function(event) {
-            document.querySelectorAll('.menu-dropdown').forEach(menu => {
-                const button = menu.previousElementSibling; // Assumes button is right before the menu
-                if (menu && button && !button.contains(event.target) && !menu.contains(event.target)) {
-                    hideDropdown(menu);
-                }
-            });
         });
-
-        // Initialize dropdownMenu to be hidden with transition classes on page load
-        // This ensures it starts with opacity-0, invisible, and scale-95
-        hideDropdown(dropdownMenu);
-
-    });
-</script>
+    </script>
 
 <?= $this->endSection() ?>

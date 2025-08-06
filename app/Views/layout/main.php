@@ -170,62 +170,78 @@
 
             <?php elseif ($currentRole === 'hrd'): ?>
                 <ul class="space-y-1 text-base flex-1">
-                    <li>
-                        <a href="<?= site_url('hrd/dashboard') ?>"
-                            class="flex items-center gap-4 text-white hover:bg-[#2B364F] hover:text-white rounded-md px-3 py-3 transition">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-layout-dashboard-icon lucide-layout-dashboard">
-                                <rect width="7" height="9" x="3" y="3" rx="1" />
-                                <rect width="7" height="5" x="14" y="3" rx="1" />
-                                <rect width="7" height="9" x="14" y="12" rx="1" />
-                                <rect width="7" height="5" x="3" y="16" rx="1" />
-                            </svg>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?= site_url('hrd/dokumen-staff') ?>"
-                            class="flex items-center gap-4 text-white hover:bg-[#2B364F] hover:text-white rounded-md px-3 py-3 transition">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-file-icon lucide-file">
-                                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
-                                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-                            </svg>
-                            <span>Dokumen Staff</span>
-                        </a>
-                    </li>
-                    <li>
-                    <li>
-                        <a href="<?= base_url('umum/dokumen-bersama') ?>"
-                            class="flex items-center gap-4 text-white hover:bg-[#2B364F] hover:text-white rounded-md px-3 py-3 transition">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-users-icon lucide-users">
-                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                <path d="M16 3.128a4 4 0 0 1 0 7.744" />
-                                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                                <circle cx="9" cy="7" r="4" />
-                            </svg>
-                            <span>Share Folder</span>
-                        </a>
-                    </li>
-                    </li>
-                    <li>
-                        <a href="<?= site_url('hrd/dokumen-umum') ?>"
-                            class="flex items-center gap-4 text-white hover:bg-[#2B364F] hover:text-white rounded-md px-3 py-3 transition">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-files-icon lucide-files">
-                                <path d="M20 7h-3a2 2 0 0 1-2-2V2" />
-                                <path d="M9 18a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h7l4 4v10a2 2 0 0 1-2 2Z" />
-                                <path d="M3 7.6v12.8A1.6 1.6 0 0 0 4.6 22h9.8" />
-                            </svg>
-                            <span>Dokumen Umum</span>
-                        </a>
-                    </li>
-                </ul>
+                <li>
+                    <a href="<?= site_url('hrd/dashboard') ?>"
+                        class="flex items-center gap-4 text-white hover:bg-[#2B364F] hover:text-white rounded-md px-3 py-3 transition">
+                        <img src="<?= base_url('images/dashboard.png') ?>" alt="Dashboard Icon"
+                            class="w-6 h-6 filter invert">
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= site_url('hrd/dokumen-staff') ?>"
+                        class="flex items-center gap-4 text-white hover:bg-[#2B364F] hover:text-white rounded-md px-3 py-3 transition">
+                        <img src="<?= base_url('images/dokumenJabatan.png') ?>" alt="Dokumen Staff Icon"
+                            class="w-6 h-6 filter invert">
+                        <span>Dokumen Staff</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= site_url('hrd/dokumen-spv') ?>"
+                        class="flex items-center gap-4 text-white hover:bg-[#2B364F] hover:text-white rounded-md px-3 py-3 transition">
+                        <img src="<?= base_url('images/dokumenJabatan.png') ?>" alt="Dokumen Bersama Icon"
+                            class="w-6 h-6 filter invert">
+                        <span>Dokumen SPV</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= site_url('hrd/dokumen-manager') ?>"
+                        class="flex items-center gap-4 text-white hover:bg-[#2B364F] hover:text-white rounded-md px-3 py-3 transition">
+                        <img src="<?= base_url('images/dokumenJabatan.png') ?>" alt="Dokumen Umum Icon"
+                            class="w-6 h-6 filter invert">
+                        <span>Dokumen Manager</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= site_url('hrd/dokumen-direksi') ?>"
+                        class="flex items-center gap-4 text-white hover:bg-[#2B364F] hover:text-white rounded-md px-3 py-3 transition">
+                        <img src="<?= base_url('images/dokumenJabatan.png') ?>" alt="Dashboard Icon"
+                            class="w-6 h-6 filter invert">
+                        <span>Dokumen Direksi</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('umum/dokumen-bersama') ?>"
+                        class="flex items-center gap-4 text-white hover:bg-[#2B364F] hover:text-white rounded-md px-3 py-3 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-users-icon lucide-users">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                            <circle cx="9" cy="7" r="4" />
+                        </svg>
+                        <span>Share Folder</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= site_url('hrd/dokumen-umum') ?>"
+                        class="flex items-center gap-4 text-white hover:bg-[#2B364F] hover:text-white rounded-md px-3 py-3 transition">
+                        <img src="<?= base_url('images/dokumenUmum.png') ?>" alt="Dokumen Bersama Icon"
+                            class="w-6 h-6 filter invert">
+                        <span>Dokumen Umum</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= site_url('hrd/aktivitas') ?>"
+                        class="flex items-center gap-4 text-white hover:bg-[#2B364F] hover:text-white rounded-md px-3 py-3 transition">
+                        <img src="<?= base_url('images/clock.png') ?>" alt="Dokumen Umum Icon"
+                            class="w-6 h-6 filter invert">
+                        <span>Aktivitas</span>
+                    </a>
+                </li>
+            </ul>
 
             <?php elseif ($currentRole === 'staff'): ?>
                 <ul class="space-y-1 text-base flex-1">
@@ -640,7 +656,7 @@
                     class="flex-1 px-4 py-2 text-gray-700 bg-gray-100 border border-gray-300 rounded-lg hover:bg-gray-200 transition-colors duration-200">
                     Batal
                 </button>
-                <button onclick="confirmDeleteFolder()"
+                <button onclick="confirmDeleteItem()"
                     class="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors duration-200">
                     Hapus
                 </button>

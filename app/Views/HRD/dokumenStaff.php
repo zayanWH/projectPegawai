@@ -1,4 +1,4 @@
-<?= $this->extend('layout/hrd') ?>
+<?= $this->extend('layout/main') ?>
 
 <?= $this->section('content') ?>
 <!-- Header Dashboard -->
@@ -152,7 +152,6 @@
             <?php endif; ?>
         </tbody>
     </table>
-</div>
 </div>
 
 <script>
@@ -696,6 +695,5 @@
         }
     });
 </script>
-
 
 <?= $this->endSection() ?>

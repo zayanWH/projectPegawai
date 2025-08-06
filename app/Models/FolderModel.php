@@ -244,18 +244,23 @@ class FolderModel extends Model
 
         $builder->groupStart(); // Mulai grup untuk semua kondisi OR
 
-            // Kondisi 1: Folder adalah milik user yang login
-            $builder->orWhere('owner_id', $currentUserId);
-
-            // Kondisi 2: Folder adalah 'public' (dibagikan ke semua orang)
-            $builder->orWhere('shared_type', 'public');
-
-            // Kondisi 3: Folder dibagikan ke peran tertentu (is_shared = 1 dan role ada di access_roles)
+            // Kondisi 1: Folder milik user lain yang di-share ke user ini (bukan folder personal milik sendiri)
             $builder->orGroupStart();
+                $builder->where('owner_id !=', $currentUserId); // Bukan milik user yang login
                 $builder->where('is_shared', 1);
                 $builder->where('access_roles IS NOT NULL');
                 $builder->where(new RawSql("JSON_CONTAINS(access_roles, '\"{$currentUserRole}\"')"));
             $builder->groupEnd();
+
+            // Kondisi 2: Folder milik user sendiri yang di-share (folder_type = 'shared')
+            $builder->orGroupStart();
+                $builder->where('owner_id', $currentUserId);
+                $builder->where('folder_type', 'shared'); // Hanya folder dengan tipe 'shared'
+                $builder->where('is_shared', 1);
+            $builder->groupEnd();
+
+            // Kondisi 3: Folder adalah 'public' (dibagikan ke semua orang)
+            $builder->orWhere('shared_type', 'public');
 
         $builder->groupEnd();
 
@@ -321,6 +326,32 @@ class FolderModel extends Model
         $builder->orderBy('name', 'ASC');
 
         return $builder->get()->getResultArray();
+    }
+
+    public function getSubfoldersWithDetails(int $parentId, int $currentUserId = null, string $currentUserRole = null): array
+    {
+        $builder = $this->select('folders.*, users.name as owner_name, roles.name as owner_role')
+            ->join('users', 'users.id = folders.owner_id', 'left')
+            ->join('roles', 'roles.id = users.role_id', 'left');
+
+        $builder->where('folders.parent_id', $parentId);
+
+        // Tambahkan kondisi otorisasi jika perlu, sesuai dengan logika di getSharedFoldersForUser
+        if ($currentUserId !== null) {
+            $builder->groupStart();
+            $builder->where('folders.owner_id', $currentUserId);
+            $builder->orWhere('folders.shared_type', 'public');
+            $builder->orGroupStart();
+            $builder->where('folders.is_shared', 1);
+            $builder->where('folders.access_roles IS NOT NULL');
+            $builder->where(new RawSql("JSON_CONTAINS(folders.access_roles, '\"{$currentUserRole}\"')"));
+            $builder->groupEnd();
+            $builder->groupEnd();
+        }
+
+        $builder->orderBy('folders.name', 'ASC');
+
+        return $builder->findAll();
     }
 }
 

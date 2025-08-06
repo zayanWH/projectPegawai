@@ -7,7 +7,7 @@ const renameOption = document.getElementById('renameOption');
 const infoDetailOption = document.getElementById('infoDetailOption');
 const deleteOption = document.getElementById('deleteOption');
 
-let currentFolderData = null;
+let currentFileData = null;
 let isModalOpening = false; // Flag untuk mencegah penutupan saat modal sedang dibuka
 
 // Fungsi untuk menutup semua modal dan popup yang terbuka
@@ -51,7 +51,6 @@ function closeAllModalsAndPopups() {
 
 // Fungsi untuk menampilkan/menyembunyikan menu konteks (titik tiga)
 function toggleMenu(button) {
-    // Prevent event bubbling
     event.stopPropagation();
     
     const row = button.closest('tr');
@@ -60,20 +59,56 @@ function toggleMenu(button) {
         return;
     }
 
-    // Tangkap data dari data-attributes pada baris tabel yang diklik
-    currentFolderData = {
-        path: row.dataset.folderPath,
-        id: row.dataset.folderId,
-        name: row.dataset.folderName,
-        folder_type: row.dataset.folderType,
-        isShared: row.dataset.folderIsShared,
-        sharedType: row.dataset.folderSharedType,
-        ownerId: row.dataset.folderOwnerId,
-        ownerName: row.dataset.folderOwnerName, 
-        createdAt: row.dataset.folderCreatedAt,
-        updatedAt: row.dataset.folderUpdatedAt
-    };
+    // DEBUG: Log semua data attributes
+    console.log('=== DEBUG DATA ATTRIBUTES ===');
+    console.log('Item Type:', row.dataset.itemType);
+    console.log('File ID:', row.dataset.fileId);
+    console.log('File Name:', row.dataset.fileName);
+    console.log('File Size:', row.dataset.fileSize);
+    console.log('File Type:', row.dataset.fileType);
+    console.log('File Path:', row.dataset.filePath);
+    console.log('File Owner ID:', row.dataset.fileOwnerId);
+    console.log('File Created At:', row.dataset.fileCreatedAt);
+    console.log('File Updated At:', row.dataset.fileUpdatedAt);
+    console.log('=== END DEBUG ===');
 
+    const itemType = row.dataset.itemType;
+    
+    if (itemType === 'file') {
+        // Perbaikan: Ambil data FILE dari data-attributes yang benar
+        currentFileData = {
+            id: row.dataset.fileId,
+            name: row.dataset.fileName,
+            size: row.dataset.fileSize,
+            path: row.dataset.filePath,
+            ownerId: row.dataset.fileOwnerId,
+            ownerName: row.dataset.fileOwnerName,
+            createdAt: row.dataset.fileCreatedAt,
+            updatedAt: row.dataset.fileUpdatedAt,
+            type: 'file'
+        };
+        
+        // DEBUG: Log currentFileData setelah diset
+        console.log('=== DEBUG CURRENT FILE DATA ===');
+        console.log(currentFileData);
+        console.log('=== END DEBUG ===');
+    } else {
+        // Logika untuk folder tetap sama...
+        currentFileData = {
+            id: row.dataset.folderId,
+            name: row.dataset.folderName,
+            folder_type: row.dataset.folderType,
+            isShared: row.dataset.folderIsShared,
+            sharedType: row.dataset.folderSharedType,
+            ownerId: row.dataset.folderOwnerId,
+            ownerName: row.dataset.folderOwnerName,
+            createdAt: row.dataset.folderCreatedAt,
+            updatedAt: row.dataset.folderUpdatedAt,
+            type: 'folder'
+        };
+    }
+
+    // Tampilkan menu...
     closeAllModalsAndPopups();
 
     if (!floatingMenu) {
@@ -81,29 +116,6 @@ function toggleMenu(button) {
         return;
     }
 
-     // Pastikan elemen opsi menu ditemukan sebelum mencoba memanipulasi kelasnya
-    if (renameOption) {
-        if (currentFolderData.sharedType === 'read') {
-            renameOption.classList.add('hidden'); // Sembunyikan jika hanya baca
-        } else {
-            renameOption.classList.remove('hidden'); // Tampilkan jika akses penuh atau bukan shared
-        }
-    }
-
-    if (deleteOption) {
-        if (currentFolderData.sharedType === 'read') {
-            deleteOption.classList.add('hidden'); // Sembunyikan jika hanya baca
-        } else {
-            deleteOption.classList.remove('hidden'); // Tampilkan jika akses penuh atau bukan shared
-        }
-    }
-
-    // Informasi Detail harus selalu terlihat
-    if (infoDetailOption) {
-        infoDetailOption.classList.remove('hidden');
-    }
-
-    // Hitung posisi menu
     const rect = button.getBoundingClientRect();
     const menuHeight = floatingMenu.offsetHeight || 170;
     const viewportBottom = window.innerHeight;
@@ -120,7 +132,6 @@ function toggleMenu(button) {
     floatingMenu.style.top = `${topPosition}px`;
     floatingMenu.style.left = `${leftPosition}px`;
 
-    // Tampilkan menu dengan transisi
     floatingMenu.classList.remove('hidden', 'opacity-0', 'scale-95');
     requestAnimationFrame(() => {
         floatingMenu.classList.add('opacity-100', 'scale-100');
@@ -199,29 +210,64 @@ if (modalDeleteConfirm) {
 
 // --- Modal Ganti Nama ---
 function showRenameModal() {
-    event.stopPropagation(); // Prevent bubbling
+    // Perbaikan: Tambahkan log di awal fungsi
+    console.log('showRenameModal function entered.');
+    event.stopPropagation();
     isModalOpening = true;
     
-    setTimeout(() => {
-        closeAllModalsAndPopups();
-        
-        if (currentFolderData && newFileNameInput) {
-            newFileNameInput.value = currentFolderData.name;
+    // Perbaikan: Tambahkan pemeriksaan untuk memastikan data sudah tersedia
+    try {
+        if (!currentFileData || !currentFileData.name || !newFileNameInput) {
+            console.error('currentFileData atau newFileNameInput tidak tersedia saat membuka modal ganti nama.');
+            showNotification('Gagal membuka modal ganti nama. Silakan coba lagi.', 'error');
+            isModalOpening = false;
+            return;
         }
+
+        // DEBUG: Log data saat modal akan dibuka
+        console.log('=== DEBUG SHOW RENAME MODAL ===');
+        console.log('currentFileData:', currentFileData);
+        console.log('newFileNameInput:', newFileNameInput);
+        console.log('currentFileData.name:', currentFileData.name);
+        console.log('=== END DEBUG ===');
         
-        if (modalRename) {
-            modalRename.classList.remove('hidden');
-            requestAnimationFrame(() => {
-                const content = modalRename.querySelector('.bg-white');
-                if (content) {
-                    content.classList.remove('scale-95', 'opacity-0');
-                    content.classList.add('scale-100', 'opacity-100');
+        setTimeout(() => {
+            closeAllModalsAndPopups();
+            
+            console.log('Setting input value to:', currentFileData.name);
+            newFileNameInput.value = currentFileData.name;
+            
+            // DEBUG: Cek apakah value benar-benar di-set
+            console.log('Input value after setting:', newFileNameInput.value);
+            
+            // Update title modal berdasarkan tipe item
+            const modalTitle = modalRename.querySelector('h2');
+            if (modalTitle) {
+                if (currentFileData.itemType === 'file') {
+                    modalTitle.textContent = 'Ganti Nama File';
+                } else {
+                    modalTitle.textContent = 'Ganti Nama Folder';
                 }
-            });
-        }
-        
-        isModalOpening = false;
-    }, 100);
+            }
+            
+            if (modalRename) {
+                modalRename.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    const content = modalRename.querySelector('.bg-white');
+                    if (content) {
+                        content.classList.remove('scale-95', 'opacity-0');
+                        content.classList.add('scale-100', 'opacity-100');
+                    }
+                });
+            }
+            
+            isModalOpening = false;
+        }, 100);
+    } catch (e) {
+        // Perbaikan: Tangkap dan log error secara eksplisit
+        console.error('An unexpected error occurred in showRenameModal:', e);
+        showNotification('Terjadi kesalahan tak terduga saat membuka modal. Silakan periksa konsol.', 'error');
+    }
 }
 
 function closeRenameModal() {
@@ -245,7 +291,7 @@ function closeRenameModal() {
 
 function submitRename() {
     if (!newFileNameInput) {
-        alert('Elemen input nama file baru tidak ditemukan.');
+        alert('Elemen input nama baru tidak ditemukan.');
         return;
     }
     
@@ -255,34 +301,40 @@ function submitRename() {
         return;
     }
 
-    if (!currentFolderData || !currentFolderData.id) {
-        alert('Tidak ada folder yang dipilih untuk diganti namanya.');
+    if (!currentFileData || !currentFileData.id) {
+        alert('Tidak ada item yang dipilih untuk diganti namanya.');
         return;
     }
 
     // Disable button untuk prevent double submit
-    const submitButton = document.querySelector('#modalRename button[onclick="submitRename()"]');
+    const submitButton = document.querySelector('#modalRename button[type="submit"]');
     if (submitButton) {
         submitButton.disabled = true;
         submitButton.innerHTML = 'Menyimpan...';
     }
 
+    // PERBAIKAN: Tentukan endpoint berdasarkan tipe item
+    let endpoint, bodyParams;
+    
+    if (currentFileData.type === 'file') {
+        endpoint = '/file/rename'; // Sesuaikan dengan route Anda
+        bodyParams = `file_id=${currentFileData.id}&new_name=${encodeURIComponent(newName)}`;
+    } else {
+        endpoint = '/folders/rename';
+        bodyParams = `folder_id=${currentFileData.id}&new_name=${encodeURIComponent(newName)}`;
+    }
+
     // Kirim AJAX request
-    fetch('/folders/rename', {
+    fetch(endpoint, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
             'X-Requested-With': 'XMLHttpRequest'
-            // --- PENTING: Tambahkan CSRF token jika CodeIgniter kamu menggunakannya ---
-            // 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token-name-in-html"]').getAttribute('content') 
-            // Sesuaikan 'csrf-token-name-in-html' dengan nama meta tag atau input hidden di HTML kamu
         },
-        body: `folder_id=${currentFolderData.id}&new_name=${encodeURIComponent(newName)}`
+        body: bodyParams
     })
     .then(response => {
-        // Cek jika response tidak OK (misal HTTP 400, 500)
         if (!response.ok) {
-            // Coba parse JSON error dari server jika ada
             return response.json().then(err => {
                 throw new Error(err.message || 'Server error occurred with status ' + response.status);
             });
@@ -291,16 +343,12 @@ function submitRename() {
     })
     .then(data => {
         if (data.status === 'success') {
-            // --- SIMPAN NOTIFIKASI KE SESSION STORAGE SEBELUM RELOAD ---
-            sessionStorage.setItem('notificationMessage', 'Nama folder berhasil diubah!');
+            const itemType = currentFileData.itemType === 'file' ? 'file' : 'folder';
+            sessionStorage.setItem('notificationMessage', `Nama ${itemType} berhasil diubah!`);
             sessionStorage.setItem('notificationType', 'success');
-            
-            // --- RELOAD HALAMAN ---
-            location.reload(); 
-            // Setelah ini, semua kode di bawahnya tidak akan dieksekusi sampai halaman baru dimuat
+            location.reload();
         } else {
-            // Tampilkan pesan error jika server merespon 'fail'
-            let errorMessage = 'Gagal mengubah nama folder.';
+            let errorMessage = 'Gagal mengubah nama.';
             if (data.messages && typeof data.messages === 'object') {
                 errorMessage = Object.values(data.messages).join(', ');
             } else if (data.message) {
@@ -310,12 +358,10 @@ function submitRename() {
         }
     })
     .catch(error => {
-        // Tangani error jaringan atau error dari throw di .then() sebelumnya
         console.error('Error:', error);
-        showNotification('Terjadi kesalahan saat mengubah nama folder: ' + error.message, 'error');
+        showNotification('Terjadi kesalahan saat mengubah nama: ' + error.message, 'error');
     })
     .finally(() => {
-        // Enable button kembali
         if (submitButton) {
             submitButton.disabled = false;
             submitButton.innerHTML = 'Simpan';
@@ -380,8 +426,9 @@ function showInfoDetailModal() {
     event.stopPropagation(); // Prevent bubbling
     isModalOpening = true;
 
-    if (!currentFolderData || !currentFolderData.id) {
-        alert('Tidak ada data folder yang dipilih.');
+    // PERBAIKAN: Cek currentFileData bukan currentFileData
+    if (!currentFileData || !currentFileData.id) {
+        alert('Tidak ada data file/folder yang dipilih.');
         isModalOpening = false;
         return;
     }
@@ -405,22 +452,37 @@ function showInfoDetailModal() {
     }, 100);
 }
 
+// PERBAIKAN: Ganti semua currentFileData menjadi currentFileData
 function fillModalWithCurrentData() {
     const nameElement = document.getElementById('detailName');
     if (nameElement) {
-        nameElement.textContent = currentFolderData.name || 'N/A';
+        nameElement.textContent = currentFileData.name || 'N/A';
     }
 
     let jenisText = 'N/A';
-    if (currentFolderData.folder_type === 'personal') {
-        jenisText = 'Folder Personal';
-    } else if (currentFolderData.folder_type === 'shared' || currentFolderData.isShared == '1') {
-        jenisText = 'Folder Berbagi';
-        if (currentFolderData.sharedType) {
-            jenisText += ` (${currentFolderData.sharedType === 'full' ? 'Akses Penuh' : 'Hanya Baca'})`;
+    
+    // PERBAIKAN: Cek itemType untuk membedakan file atau folder
+    if (currentFileData.itemType === 'file') {
+        // Untuk file, tampilkan jenis file berdasarkan ekstensi
+        if (currentFileData.type) {
+            jenisText = currentFileData.type.toUpperCase() + ' File';
+        } else {
+            // Ambil ekstensi dari nama file
+            const extension = currentFileData.name.split('.').pop().toUpperCase();
+            jenisText = extension + ' File';
         }
     } else {
-        jenisText = 'Folder Biasa';
+        // Untuk folder
+        if (currentFileData.folder_type === 'personal') {
+            jenisText = 'Folder Personal';
+        } else if (currentFileData.folder_type === 'shared' || currentFileData.isShared == '1') {
+            jenisText = 'Folder Berbagi';
+            if (currentFileData.sharedType) {
+                jenisText += ` (${currentFileData.sharedType === 'full' ? 'Akses Penuh' : 'Hanya Baca'})`;
+            }
+        } else {
+            jenisText = 'Folder Biasa';
+        }
     }
     
     const jenisElement = document.getElementById('detailJenis');
@@ -430,17 +492,32 @@ function fillModalWithCurrentData() {
 
     const ukuranElement = document.getElementById('detailUkuran');
     if (ukuranElement) {
-        ukuranElement.textContent = 'Menghitung...';
-        calculateFolderSize(currentFolderData.id);
+        if (currentFileData.itemType === 'file') {
+            // Untuk file, tampilkan ukuran file
+            if (currentFileData.size) {
+                ukuranElement.textContent = formatFileSize(currentFileData.size);
+            } else {
+                ukuranElement.textContent = 'N/A';
+            }
+        } else {
+            // Untuk folder, hitung ukuran folder
+            ukuranElement.textContent = 'Menghitung...';
+            calculateFolderSize(currentFileData.id);
+        }
     }
 
     const pemilikElement = document.getElementById('detailPemilik');
     if (pemilikElement) {
-        if (currentFolderData.ownerName && currentFolderData.ownerName !== 'Unknown') {
-            pemilikElement.textContent = currentFolderData.ownerName;
-        } else if (currentFolderData.ownerId) {
-            pemilikElement.textContent = 'Memuat...';
-            fetchUserName(currentFolderData.ownerId);
+        console.log('Owner check:', {
+            ownerName: currentFileData.ownerName,
+            ownerId: currentFileData.ownerId
+        });
+        
+        // SEDERHANA: Langsung gunakan ownerName dari data attribute
+        if (currentFileData.ownerName && currentFileData.ownerName !== 'Unknown' && currentFileData.ownerName !== '' && currentFileData.ownerName !== 'null') {
+            pemilikElement.textContent = currentFileData.ownerName;
+        } else if (currentFileData.ownerId && currentFileData.ownerId !== '' && currentFileData.ownerId !== '0') {
+            pemilikElement.textContent = 'User ID: ' + currentFileData.ownerId;
         } else {
             pemilikElement.textContent = 'Tidak diketahui';
         }
@@ -448,8 +525,8 @@ function fillModalWithCurrentData() {
 
     const dibuatElement = document.getElementById('detailDibuat');
     if (dibuatElement) {
-        if (currentFolderData.createdAt) {
-            const createdDate = new Date(currentFolderData.createdAt);
+        if (currentFileData.createdAt) {
+            const createdDate = new Date(currentFileData.createdAt);
             dibuatElement.textContent = createdDate.toLocaleDateString('id-ID', {
                 year: 'numeric',
                 month: 'long',
@@ -464,8 +541,8 @@ function fillModalWithCurrentData() {
 
     const updatedElement = document.getElementById('detailUpdated');
     if (updatedElement) {
-        if (currentFolderData.updatedAt) {
-            const updatedDate = new Date(currentFolderData.updatedAt);
+        if (currentFileData.updatedAt) {
+            const updatedDate = new Date(currentFileData.updatedAt);
             updatedElement.textContent = updatedDate.toLocaleDateString('id-ID', {
                 year: 'numeric',
                 month: 'long',
@@ -590,16 +667,35 @@ function fetchDetailFromServer() {
 
 // Fungsi untuk menampilkan modal konfirmasi delete
 function showDeleteConfirmModal() {
+
+    console.log('Menampilkan modal delete untuk:', currentFileData);
     event.stopPropagation();
     isModalOpening = true;
     
     setTimeout(() => {
         closeAllModalsAndPopups();
         
-        // Set nama folder yang akan dihapus
-        const folderNameSpan = document.getElementById('deleteConfirmFolderName');
-        if (folderNameSpan && currentFolderData) {
-            folderNameSpan.textContent = currentFolderData.name;
+        // Set nama file/folder yang akan dihapus
+        const itemNameSpan = document.getElementById('deleteConfirmFolderName');
+        if (itemNameSpan && currentFileData) {
+            itemNameSpan.textContent = currentFileData.name;
+        }
+        
+        // Update text modal berdasarkan tipe item
+        const modalTitle = document.querySelector('#modalDeleteConfirm h3');
+        const modalMessage = document.querySelector('#modalDeleteConfirm p');
+        const deleteButton = document.querySelector('#modalDeleteConfirm button[onclick="confirmDeleteItem()"]');
+        
+        if (currentFileData && currentFileData.type) {
+            if (currentFileData.type === 'folder') {
+                if (modalTitle) modalTitle.textContent = 'Konfirmasi Hapus Folder';
+                if (modalMessage) modalMessage.innerHTML = `Apakah Anda yakin ingin menghapus folder <strong id="deleteConfirmFolderName">${currentFileData.name}</strong>? Tindakan ini tidak dapat dibatalkan.`;
+                if (deleteButton) deleteButton.textContent = 'Hapus Folder';
+            } else {
+                if (modalTitle) modalTitle.textContent = 'Konfirmasi Hapus File';
+                if (modalMessage) modalMessage.innerHTML = `Apakah Anda yakin ingin menghapus file <strong id="deleteConfirmFolderName">${currentFileData.name}</strong>? Tindakan ini tidak dapat dibatalkan.`;
+                if (deleteButton) deleteButton.textContent = 'Hapus File';
+            }
         }
         
         if (modalDeleteConfirm) {
@@ -637,29 +733,42 @@ function closeDeleteConfirmModal() {
     }
 }
 
-// Fungsi untuk konfirmasi dan menjalankan delete
-function confirmDeleteFolder() {
-    if (!currentFolderData || !currentFolderData.id) {
-        alert('Tidak ada folder yang dipilih untuk dihapus.');
+// Fungsi untuk konfirmasi dan menjalankan delete (file atau folder)
+function confirmDeleteItem() {
+    if (!currentFileData || !currentFileData.id) {
+        alert('Tidak ada item yang dipilih untuk dihapus.');
         return;
     }
 
+    // Tentukan route dan parameter berdasarkan tipe
+    let route, bodyParam, itemType;
+    if (currentFileData.type === 'folder') {
+        route = '/folders/delete';
+        bodyParam = `folder_id=${currentFileData.id}`;
+        itemType = 'Folder';
+    } else {
+        route = '/file/delete';
+        bodyParam = `file_id=${currentFileData.id}`;
+        itemType = 'File';
+    }
+
     // Disable button untuk prevent double submit
-    const deleteButton = document.querySelector('#modalDeleteConfirm button[onclick="confirmDeleteFolder()"]');
+    const deleteButton = document.querySelector('#modalDeleteConfirm button[onclick="confirmDeleteItem()"]');
     if (deleteButton) {
         deleteButton.disabled = true;
-        deleteButton.innerHTML = 'Menghapus...';
+        deleteButton.innerHTML = `Menghapus ${itemType}...`;
     }
 
     // Kirim AJAX request
-    fetch('/folders/delete', {
+    fetch(route, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
             'X-Requested-With': 'XMLHttpRequest'
             // Tambahkan CSRF token jika diperlukan
+            // 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         },
-        body: `folder_id=${currentFolderData.id}`
+        body: bodyParam
     })
     .then(response => {
         if (!response.ok) {
@@ -671,15 +780,18 @@ function confirmDeleteFolder() {
     })
     .then(data => {
         if (data.status === 'success') {
+            // Tutup modal terlebih dahulu
+            closeDeleteConfirmModal();
+            
             // Simpan notifikasi ke session storage
-            sessionStorage.setItem('notificationMessage', 'Folder berhasil dihapus!');
+            sessionStorage.setItem('notificationMessage',` ${itemType} berhasil dihapus!`);
             sessionStorage.setItem('notificationType', 'success');
             
             // Reload halaman
             location.reload();
         } else {
             // Tampilkan pesan error
-            let errorMessage = 'Gagal menghapus folder.';
+            let errorMessage = `Gagal menghapus ${itemType.toLowerCase()}.`;
             if (data.messages && typeof data.messages === 'object') {
                 errorMessage = Object.values(data.messages).join(', ');
             } else if (data.message) {
@@ -690,13 +802,13 @@ function confirmDeleteFolder() {
     })
     .catch(error => {
         console.error('Error:', error);
-        showNotification('Terjadi kesalahan saat menghapus folder: ' + error.message, 'error');
+        showNotification(`Terjadi kesalahan saat menghapus ${itemType.toLowerCase()}: ` + error.message, 'error');
     })
     .finally(() => {
         // Enable button kembali
         if (deleteButton) {
             deleteButton.disabled = false;
-            deleteButton.innerHTML = 'Hapus';
+            deleteButton.innerHTML = currentFileData.type === 'folder' ? 'Hapus Folder' : 'Hapus File';
         }
     });
 }

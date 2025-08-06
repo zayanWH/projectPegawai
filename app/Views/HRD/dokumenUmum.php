@@ -1,4 +1,4 @@
-<?= $this->extend('layout/hrd') ?>
+<?= $this->extend('layout/main') ?>
 
 <?= $this->section('content') ?>
 <!-- Header Dokumen -->

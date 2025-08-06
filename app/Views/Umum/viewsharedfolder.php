@@ -127,8 +127,19 @@
 
                     <?php if (!empty($sharedFiles)): ?>
                         <?php foreach ($sharedFiles as $file): ?>
-                            <tr class="hover:bg-gray-50 item-row file-row" data-item-type="file"
-                                data-item-name="<?= esc($file['file_name']) ?>">
+                            <tr class="hover:bg-gray-50 item-with-context-menu"
+                                data-item-type="file"
+                                data-item-id="<?= esc($file['id']) ?>"
+                                data-item-name="<?= esc($file['file_name']) ?>"
+                                data-file-id="<?= esc($file['id']) ?>"
+                                data-file-name="<?= esc($file['file_name']) ?>"
+                                data-file-size="<?= esc($file['file_size'] ?? '0') ?>"
+                                data-file-type="<?= esc($file['file_type'] ?? '') ?>"
+                                data-file-path="<?= esc($file['file_path'] ?? '') ?>"
+                                data-file-owner-id="<?= esc($file['uploader_id'] ?? '') ?>"
+                                data-file-owner-name="<?= esc($file['uploader_name'] ?? '') ?>"
+                                data-file-created-at="<?= esc($file['created_at']) ?>"
+                                data-file-updated-at="<?= esc($file['updated_at'] ?? '') ?>">
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <a href="<?= base_url('staff/view-file/' . $file['id']) ?>" target="_blank"
                                         class="block h-full w-full text-sm text-gray-900 hover:text-blue-700 hover:underline">

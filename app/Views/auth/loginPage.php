@@ -71,13 +71,6 @@
           Login
         </button>
       </form>
-
-      <!-- Lupa password -->
-      <div class="mt-4 text-right">
-        <a href="<?= site_url('forget-password') ?>" class="font-poppins text-sm text-blue-600 hover:underline">
-          Forgot your password?
-        </a>
-      </div>
     </div>
   </body>
 </html>

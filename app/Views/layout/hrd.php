@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -62,7 +62,7 @@
                 </li>
 
                 <li>
-                    <a href="<?= site_url('direksi/dokumen-direksi') ?>"
+                    <a href="<?= site_url('hrd/dokumen-direksi') ?>"
                         class="flex items-center gap-4 text-white hover:bg-[#2B364F] hover:text-white rounded-md px-3 py-3 transition">
                         <img src="<?= base_url('images/dokumenJabatan.png') ?>" alt="Dashboard Icon"
                             class="w-6 h-6 filter invert">
@@ -204,4 +204,4 @@
 
 </body>
 
-</html>
+</html> -->
