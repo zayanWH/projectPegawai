@@ -20,49 +20,7 @@
     </div>
 </div>
 
-<div class="relative inline-block text-left mb-6">
-    <button id="newButton"
-        class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium flex items-center space-x-2">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-        </svg>
-        <span>Baru</span>
-    </button>
 
-    <div id="newDropdown" class="absolute z-10 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
-        <a href="#" id="createFolderLink" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">📁 Buat Sub-Folder</a>
-        <a href="#" id="uploadFileLink" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">⬆️ Upload File</a>
-    </div>
-</div>
-
-<div id="modalUploadFile"
-    class="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-sm hidden">
-    <div class="bg-white p-6 rounded-lg shadow-xl w-full max-w-md transition-all duration-300 ease-in-out">
-        <h2 class="text-xl font-semibold mb-4">Upload File Baru</h2>
-        <input type="file" id="fileInput" />
-
-        <div class="flex justify-end space-x-4">
-            <button id="cancelUploadFileModal" class="text-blue-500 hover:text-blue-700">Batal</button>
-            <button id="submitUploadFile"
-                class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md">Upload</button>
-        </div>
-    </div>
-</div>
-
-<div id="modalCreateFolder"
-    class="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-sm hidden">
-    <div class="bg-white p-6 rounded-lg shadow-xl w-full max-w-md transition-all duration-300 ease-in-out">
-        <h2 class="text-xl font-semibold mb-4">Buat Folder Baru</h2>
-        <label class="block text-sm font-medium">Nama Folder</label>
-        <input type="text" id="newFolderNameInput" placeholder="Masukan nama folder"
-            class="w-full border rounded-lg px-3 py-2 mb-4">
-        <div class="flex justify-end space-x-4">
-            <button id="cancelCreateFolderModal" class="text-blue-500 hover:text-blue-700">Batal</button>
-            <button id="submitCreateFolder"
-                class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md">Buat</button>
-        </div>
-    </div>
-</div>
 
 <div id="modalRename"
     class="fixed inset-0 z-[10000] flex items-center justify-center bg-black/20 backdrop-blur-sm hidden">

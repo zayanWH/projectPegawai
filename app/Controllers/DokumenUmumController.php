@@ -23,7 +23,7 @@ class DokumenUmumController extends BaseController
             'parent_id' => $parentId
         ];
 
-        return view('HRD/dokumenUmum', $data);
+        return view('Umum/dokumenUmum', $data);
     }
 
     /**

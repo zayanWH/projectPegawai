@@ -99,11 +99,11 @@ $routes->group('umum', ['filter' => 'auth:2,3,4,5,6'], function ($routes) {
     $routes->get('dokumen-umum-staff', 'DokumenControllerStaff::dokumenUmum');
     $routes->get('view-shared-folder/(:num)', 'Staff::viewSharedFolder/$1');
     $routes->get('dokumen-umum', 'DokumenControllerHRD::dokumenUmum');
-    $routes->get('dokumen-umum/folder/(:num)', 'DokumenControllerHRD::dokumenUmumFolder/$1');
-    $routes->post('dokumen-umum/create-folder', 'DokumenControllerHRD::createFolderUmum');
-    $routes->post('dokumen-umum/upload-file', 'DokumenControllerHRD::uploadFileUmum');
-});
+    $routes->get('dokumen-umum/folder/(:num)', 'DokumenControllerStaff::viewFolder/$1');
+    $routes->post('create-folder', 'dokumenControllerStaff::createFolder');
+    $routes->post('upload-file', 'DokumenControllerStaff::uploadFile');
 
+});
 
 // Routes untuk SPV
 $routes->group('supervisor', ['filter' => 'auth:5'], function ($routes) {
@@ -121,6 +121,8 @@ $routes->group('supervisor', ['filter' => 'auth:5'], function ($routes) {
     $routes->get('view-staff-folder/(:num)', 'DokumenControllerSPV::viewStaffFolder/$1');
     $routes->post('search', 'DokumenControllerSPV::search');
     $routes->post('searchStaff', 'DokumenControllerSPV::searchStaff');
+    $routes->get('dokumen-umum', 'DokumenControllerSPV::dokumenUmum');
+    $routes->post('upload-from-folder', 'DokumenControllerSPV::uploadFromFolder');
 });
 
 // Routes untuk Manager
@@ -143,6 +145,9 @@ $routes->group('manager', ['filter' => 'auth:4'], function ($routes) {
     $routes->post('search', 'DokumenControllerManager::search');
     $routes->post('searchStaff', 'DokumenControllerManager::searchStaff');
     $routes->post('searchSPV', 'DokumenControllerManager::searchSPV');
+    $routes->get('dokumen-umum', 'DokumenControllerManager::dokumenUmum');
+    $routes->get('dokumen-umum/folder/(:num)', 'DokumenControllerManager::viewFolder/$1');
+    $routes->post('manager/upload-from-folder', 'DokumenControllerManager::uploadFromFolder');
 });
 
 // Routes untuk Direksi
@@ -169,6 +174,8 @@ $routes->group('direksi', ['filter' => 'auth:3'], function ($routes) {
     $routes->post('searchStaff', 'DokumenControllerDireksi::searchStaff');
     $routes->post('searchSPV', 'DokumenControllerDireksi::searchSPV');
     $routes->post('searchManager', 'DokumenControllerDireksi::searchManager');
+    $routes->get('dokumen-umum', 'DokumenControllerDireksi::dokumenUmum');
+    $routes->get('dokumen-umum/folder/(:num)', 'DokumenControllerDireksi::viewFolder/$1');
 });
 
 $routes->group('staff', ['filter' => 'auth:6'], function ($routes) {
@@ -184,7 +191,7 @@ $routes->group('staff', ['filter' => 'auth:6'], function ($routes) {
     $routes->get('download-file/(:num)', 'DokumenControllerStaff::downloadFile/$1');
     $routes->get('delete-file/(:num)', 'DokumenControllerStaff::deleteFile/$1');
     $routes->get('dokumen-umum', 'DokumenControllerStaff::dokumenUmum');
-    $routes->get('dokumen-umum/folder/(:num)', 'DokumenControllerHRD::dokumenUmumFolder/$1');
+    $routes->get('dokumen-umum/folder/(:num)', 'DokumenControllerHRD::viewStaffFolder/$1');
     $routes->post('dokumen-umum/create-folder', 'DokumenControllerHRD::createFolderUmum');
     $routes->post('dokumen-umum/upload-file', 'DokumenControllerHRD::uploadFileUmum');
 });

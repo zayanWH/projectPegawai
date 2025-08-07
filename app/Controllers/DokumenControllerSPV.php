@@ -205,9 +205,9 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
         $isNativePreviewable = in_array($fileExtension, ['pdf', 'png', 'jpg', 'jpeg', 'gif', 'txt', 'html']);
 
         $data = [
-            'fileId'     => $fileId,
-            'fileName'   => $file['file_name'],
-            'file'       => $file, // Kirim objek file lengkap untuk info lain
+            'fileId' => $fileId,
+            'fileName' => $file['file_name'],
+            'file' => $file, // Kirim objek file lengkap untuk info lain
             // 'creator'    => $creator, // Jika Anda ingin menampilkan info pembuat
         ];
 
@@ -250,7 +250,7 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
         return $this->response;
     }
 
-     public function dokumenBersama()
+    public function dokumenBersama()
     {
         $userId = $this->session->get('user_id');
         $roleId = $this->session->get('role_id'); // Dapatkan role ID
@@ -261,7 +261,7 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
         if (!$userId) {
             return redirect()->to(base_url('login'))->with('error', 'Anda harus login untuk mengakses dokumen bersama.');
         }
-        
+
         // Handle case where role name might not be found (though unlikely if roleId exists)
         if (!$userRoleName) {
             log_message('error', 'DokumenControllerSPV: Role name not found for role_id: ' . $roleId);
@@ -286,7 +286,10 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
 
     public function dokumenUmum()
     {
-        return view('Umum/dokumenUmum');
+        $hrdDocumentModel = new \App\Models\HrdDocumentModel();
+        $data['documents'] = $hrdDocumentModel->getByParent(null); // Mengambil dokumen root level
+        $data['parent_id'] = null;
+        return view('Umum/dokumenUmum', $data);
     }
 
     public function dashboard()
@@ -327,14 +330,14 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
         // --- Ambil Tanggal Terakhir Upload berdasarkan role_id = 6 ---
         // Folder
         $latestFolderUpload = $folderModel->selectMax('created_at')
-                                          ->whereIn('owner_id', $staffUserIds)
-                                          ->first();
+            ->whereIn('owner_id', $staffUserIds)
+            ->first();
         $latestFolderDate = $latestFolderUpload['created_at'] ?? null;
 
         // File
         $latestFileUpload = $fileModel->selectMax('created_at')
-                                      ->whereIn('uploader_id', $staffUserIds)
-                                      ->first();
+            ->whereIn('uploader_id', $staffUserIds)
+            ->first();
         $latestFileDate = $latestFileUpload['created_at'] ?? null;
 
         // Tentukan tanggal upload paling terbaru dari kedua jenis item
@@ -353,48 +356,48 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
         // --- Ambil 10 Item Terbaru (file dan folder) berdasarkan role_id = 6 ---
         // Folders
         $folders = $folderModel->select("id, name, created_at, owner_id as uploader_id, 'folder' as type")
-                               ->whereIn('owner_id', $staffUserIds)
-                               ->orderBy('created_at', 'DESC')
-                               ->findAll();
-        
+            ->whereIn('owner_id', $staffUserIds)
+            ->orderBy('created_at', 'DESC')
+            ->findAll();
+
         // Files
         $files = $fileModel->select("id, file_name as name, created_at, uploader_id, 'file' as type")
-                           ->whereIn('uploader_id', $staffUserIds)
-                           ->orderBy('created_at', 'DESC')
-                           ->findAll();
-        
+            ->whereIn('uploader_id', $staffUserIds)
+            ->orderBy('created_at', 'DESC')
+            ->findAll();
+
         $recentItems = array_merge($folders, $files);
-        
+
         // Urutkan gabungan item berdasarkan tanggal pembuatan
-        usort($recentItems, function($a, $b) {
+        usort($recentItems, function ($a, $b) {
             return strtotime($b['created_at']) - strtotime($a['created_at']);
         });
-        
+
         // Ambil hanya 10 item teratas
         $recentItems = array_slice($recentItems, 0, 10);
 
         // --- Ambil semua personal folders untuk user yang sedang login (Tidak berubah, tetap personal) ---
         $personalFolders = $folderModel->where('owner_id', $userId)
-                                       ->where('folder_type', 'personal')
-                                       ->findAll();
+            ->where('folder_type', 'personal')
+            ->findAll();
 
         // --- Ambil file yang tidak terkait dengan folder (orphan files) oleh user Staff ---
         $orphanFiles = $fileModel->where('folder_id IS NULL')
-                                 ->whereIn('uploader_id', $staffUserIds) // Pastikan ini juga difilter
-                                 ->findAll();
+            ->whereIn('uploader_id', $staffUserIds) // Pastikan ini juga difilter
+            ->findAll();
 
         $data = [
-            'personalFolders'    => $personalFolders,
-            'folderId'           => null, // Sesuaikan jika ada logika untuk ini
-            'folderType'         => null, // Sesuaikan jika ada logika untuk ini
-            'isShared'           => null, // Sesuaikan jika ada logika untuk ini
-            'sharedType'         => null, // Sesuaikan jika ada logika untuk ini
-            'orphanFiles'        => $orphanFiles,
-            'totalFolders'       => $totalFolders,
-            'totalFiles'         => $totalFiles,
-            'latestUploadDate'   => $formattedLatestUpload,
-            'recentItems'        => $recentItems,
-            'currentRoleName'    => $userRole
+            'personalFolders' => $personalFolders,
+            'folderId' => null, // Sesuaikan jika ada logika untuk ini
+            'folderType' => null, // Sesuaikan jika ada logika untuk ini
+            'isShared' => null, // Sesuaikan jika ada logika untuk ini
+            'sharedType' => null, // Sesuaikan jika ada logika untuk ini
+            'orphanFiles' => $orphanFiles,
+            'totalFolders' => $totalFolders,
+            'totalFiles' => $totalFiles,
+            'latestUploadDate' => $formattedLatestUpload,
+            'recentItems' => $recentItems,
+            'currentRoleName' => $userRole
         ];
 
         return view('Supervisor/dashboard', $data);
@@ -444,11 +447,10 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
         }
         // --- Akhir Logic akses ---
 
-        $subFolders = $this->folderModel->where('parent_id', $folderId)->findAll();
-        $filesInFolder = $this->fileModel->where('folder_id', $folderId)->findAll();
-
-        // Breadcrumbs untuk folder Supervisor/Shared:
+        $subFolders = $this->folderModel->getSubfoldersWithDetails($folderId, $userId, $userRole);
+        $filesInFolder = $this->fileModel->getFilesByFolderWithUploader($folderId);
         $breadcrumbs = $this->folderModel->getBreadcrumbs($folderId);
+        
         foreach ($breadcrumbs as &$crumb) {
             if ($crumb['id'] !== null) {
                 // Penting: Pastikan URL mengarah ke route folder SPV
@@ -478,7 +480,7 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
         return view('Supervisor/viewFolder', $data);
     }
 
-    
+
 
 
     // Tambahkan method createFolder, uploadFile, downloadFile, deleteFile sesuai dengan kebutuhan SPV
@@ -489,7 +491,7 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
             return $this->response->setStatusCode(405)->setJSON(['status' => 'error', 'message' => 'Metode tidak diizinkan.']);
         }
 
-        $userId = $this->session->get('user_id');
+        $userId = $this->session->get('user_id'); // ID Manager yang sedang login
         if (!$userId) {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Unauthorized. User not logged in.']);
         }
@@ -502,6 +504,7 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
         $isShared = $input['is_shared'] ?? 0;
         $sharedType = $input['shared_type'] ?? null;
         $accessRoles = $input['access_roles'] ?? null;
+        $targetUserId = $input['target_user_id'] ?? $userId; // Default owner adalah user yang login, bisa di-override jika ada target_user_id
 
         $rules = [
             'name' => 'required|min_length[3]|max_length[255]',
@@ -510,9 +513,14 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
             return $this->response->setJSON(['status' => 'error', 'message' => 'Validasi gagal.', 'errors' => $this->validator->getErrors()]);
         }
 
+        // Jika parent_id ada, ambil info dari parent folder untuk menentukan folder_type, is_shared, dll.
         if ($parentId) {
             $parentFolder = $this->folderModel->find($parentId);
             if ($parentFolder) {
+                // Jika membuat subfolder di dalam folder personal Staff/Supervisor,
+                // maka owner_id dari subfolder baru harus mengikuti owner_id dari parent folder.
+                // folder_type juga harus mengikuti parent.
+                $targetUserId = $parentFolder['owner_id'];
                 $folderType = $parentFolder['folder_type'];
                 $isShared = $parentFolder['is_shared'];
                 $sharedType = $parentFolder['shared_type'];
@@ -525,7 +533,7 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
         $data = [
             'name' => $folderName,
             'parent_id' => $parentId,
-            'owner_id' => $userId,
+            'owner_id' => $targetUserId, // Gunakan targetUserId (bisa ID Manager, Staff, atau SPV)
             'folder_type' => $folderType,
             'is_shared' => (int) $isShared,
             'shared_type' => ((int) $isShared === 1) ? $sharedType : null,
@@ -535,8 +543,9 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
         ];
 
         if ($this->folderModel->insert($data)) {
-            // Setelah insert, buat folder fisik di server
             $newFolderId = $this->folderModel->insertID();
+            // Perlu perbaikan di getFolderPath jika path bergantung pada owner_id
+            // Untuk saat ini, asumsikan getFolderPath bisa menangani owner_id yang berbeda
             $relativePath = $this->folderModel->getFolderPath($newFolderId);
             $folderPath = WRITEPATH . 'uploads/' . $relativePath;
             if (!is_dir($folderPath)) {
@@ -551,7 +560,7 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
         }
     }
 
-    
+
 
     public function uploadFile()
     {
@@ -642,7 +651,57 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
         }
     }
 
-   public function downloadFile($fileId)
+
+    public function uploadFromFolder()
+    {
+        $userId = $this->session->get('user_id');
+        if (!$userId) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Unauthorized'], 401);
+        }
+
+        $file = $this->request->getFile('file');
+        $relativePath = $this->request->getPost('relativePath');
+        $parentIdPost = $this->request->getPost('parent_id');
+        $rootParentId = ($parentIdPost === 'null' || $parentIdPost === null || $parentIdPost === '') ? null : $parentIdPost;
+
+        if (!$file || !$file->isValid() || empty($relativePath)) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'File atau path tidak valid.'], 400);
+        }
+
+        $pathParts = explode('/', $relativePath);
+        $fileName = array_pop($pathParts);
+        $folderPath = implode('/', $pathParts);
+
+        // Cari atau buat folder tujuan
+        $targetFolderId = $this->folderModel->findOrCreateByPath($folderPath, $rootParentId, $userId);
+
+        if ($targetFolderId === null) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal membuat struktur folder di server.'], 500);
+        }
+
+        // Ambil info SEBELUM memindahkan file
+        $fileMimeType = $file->getMimeType();
+        $fileSize = $file->getSize();
+        $newName = $file->getRandomName();
+
+        // Simpan file
+        if ($file->move(WRITEPATH . 'uploads', $newName)) {
+            $data = [
+                'folder_id' => $targetFolderId,
+                'uploader_id' => $userId,
+                'file_name' => $fileName,
+                'file_path' => $newName,
+                'file_size' => $fileSize,
+                'file_type' => $fileMimeType,
+            ];
+            $this->fileModel->insert($data);
+            return $this->response->setJSON(['status' => 'success']);
+        }
+
+        return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal memindahkan file.'], 500);
+    }
+
+    public function downloadFile($fileId)
     {
         log_message('info', 'Mencoba mengunduh file dengan ID: ' . $fileId);
 
@@ -760,7 +819,7 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
         return $this->response->setJSON($results);
     }
 
-   public function searchStaff()
+    public function searchStaff()
     {
         if (!$this->request->isAJAX()) {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Invalid request.']);

@@ -24,7 +24,7 @@
     </div>
 </div>
 
-
+<!-- Tombol Baru -->
 
 
 <!-- Modal -->
@@ -161,7 +161,7 @@
                                     <?php endif; ?>
                                     <div>
                                         <?php if ($doc['type'] === 'folder'): ?>
-                                            <a href="<?= base_url('Umum/dokumen-umum/folder/' . $doc['id']) ?>" class="text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline cursor-pointer">
+                                            <a href="<?= base_url('hrd/dokumen-umum/folder/' . $doc['id']) ?>" class="text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline cursor-pointer">
                                                 <?= esc($doc['name']) ?>
                                             </a>
                                         <?php else: ?>

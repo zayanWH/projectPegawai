@@ -78,7 +78,7 @@
                 $isManagerDisabled = true;
                 $isDireksiDisabled = true;
                 break;
-            case 'Manager':
+            case 'Manajer':
                 $isDireksiDisabled = true;
                 break;
             case 'Direksi':
@@ -247,8 +247,39 @@
     document.addEventListener('DOMContentLoaded', function () {
         // Definisi variabel global dari PHP
         window.currentFolderId = <?= json_encode($currentFolderId ?? null) ?>;
-        window.currentUserId = <?= json_encode($currentUserId ?? null) ?>; // Pastikan ini dilewatkan dari controller
-        window.currentUserRole = <?= json_encode($userRoleName ?? null) ?>; // Pastikan ini dilewatkan dari controller
+        window.currentUserId = <?= json_encode($currentUserId ?? null) ?>;
+        window.currentUserRole = <?= json_encode($userRoleName ?? null) ?>;
+
+        // Tentukan URL API secara dinamis berdasarkan peran pengguna
+        let createFolderApiUrl = '';
+        let uploadFileApiUrl = '';
+        let uploadFromFolderApiUrl = '';
+        
+        const userRole = window.currentUserRole ? window.currentUserRole.toLowerCase() : 'staff';
+        
+        // Menentukan URL API berdasarkan peran pengguna
+        if (userRole === 'manajer') {
+            createFolderApiUrl = '<?= base_url('manager/create-folder') ?>';
+            uploadFileApiUrl = '<?= base_url('manager/upload-file') ?>';
+            uploadFromFolderApiUrl = '<?= base_url('manager/upload-from-folder') ?>';
+        } else if (userRole === 'direksi') {
+            createFolderApiUrl = '<?= base_url('direksi/create-folder') ?>';
+            uploadFileApiUrl = '<?= base_url('direksi/upload-file') ?>';
+            uploadFromFolderApiUrl = '<?= base_url('direksi/upload-from-folder') ?>';
+        } else if (userRole === 'supervisor') {
+            createFolderApiUrl = '<?= base_url('supervisor/create-folder') ?>';
+            uploadFileApiUrl = '<?= base_url('supervisor/upload-file') ?>';
+            uploadFromFolderApiUrl = '<?= base_url('supervisor/upload-from-folder') ?>';
+        } else if (userRole === 'hrd') {
+            createFolderApiUrl = '<?= base_url('hrd/create-folder') ?>';
+            uploadFileApiUrl = '<?= base_url('hrd/upload-file') ?>';
+            uploadFromFolderApiUrl = '<?= base_url('hrd/upload-from-folder') ?>';
+        } else {
+            // Default untuk Staff atau peran lain
+            createFolderApiUrl = '<?= base_url('staff/create-folder') ?>';
+            uploadFileApiUrl = '<?= base_url('staff/upload-file') ?>';
+            uploadFromFolderApiUrl = '<?= base_url('staff/upload-from-folder') ?>';
+        }
 
         // --- Elemen-elemen untuk Dropdown "Baru" dan Modal "Buat Folder" ---
         const dropdownButton = document.getElementById('dropdownButton');
@@ -315,15 +346,12 @@
         if (dropdownButton && dropdownMenu) {
             dropdownButton.addEventListener('click', function (e) {
                 e.preventDefault();
-                e.stopPropagation(); // ⭐ KUNCI: Mencegah event mencapai document
+                e.stopPropagation();
 
-                // Tutup semua menu dropdown tabel yang mungkin terbuka
                 document.querySelectorAll('.menu-dropdown').forEach(otherMenu => {
-                    // Asumsi ada class 'menu-dropdown' untuk menu tabel
                     hideDropdown(otherMenu);
                 });
 
-                // Toggle dropdown "Baru"
                 const isVisible = dropdownMenu.classList.contains('visible');
                 if (isVisible) {
                     hideDropdown(dropdownMenu);
@@ -344,9 +372,9 @@
         if (openCreateFolder && modalCreateFolder) {
             openCreateFolder.addEventListener('click', function (e) {
                 e.preventDefault();
-                hideDropdown(dropdownMenu); // Tutup dropdown "Baru"
-                resetCreateFolderForm(); // Reset form sebelum membuka
-                showModal(modalCreateFolder); // Tampilkan modal folder
+                hideDropdown(dropdownMenu);
+                resetCreateFolderForm();
+                showModal(modalCreateFolder);
             });
         }
 
@@ -354,9 +382,9 @@
         if (openUploadFile && modalUploadFile) {
             openUploadFile.addEventListener('click', function (e) {
                 e.preventDefault();
-                hideDropdown(dropdownMenu); // Tutup dropdown "Baru"
-                resetUploadFileForm(); // Reset form sebelum membuka
-                showModal(modalUploadFile); // Tampilkan modal upload
+                hideDropdown(dropdownMenu);
+                resetUploadFileForm();
+                showModal(modalUploadFile);
             });
         }
 
@@ -374,7 +402,6 @@
                     return;
                 }
 
-                // Simple progress indicator
                 const progressDiv = document.createElement('div');
                 progressDiv.className = 'fixed bottom-4 right-4 bg-blue-600 text-white p-4 rounded-lg shadow-lg';
                 progressDiv.textContent = `Mengunggah 0 dari ${files.length} file...`;
@@ -385,11 +412,10 @@
                     const formData = new FormData();
                     formData.append('file', files[i]);
                     formData.append('relativePath', files[i].webkitRelativePath);
-                    // Karena ini dokumenBersama, asumsikan parent_id adalah null atau ID folder bersama jika ada konteksnya
                     formData.append('parent_id', window.currentFolderId || null);
 
                     try {
-                        const response = await fetch('<?= base_url('staff/upload-from-folder') ?>', { // Sesuaikan URL API jika berbeda untuk dokumen bersama
+                        const response = await fetch(uploadFromFolderApiUrl, {
                             method: 'POST',
                             body: formData,
                             headers: {
@@ -398,7 +424,6 @@
                         });
                         const result = await response.json();
                         if (result.status !== 'success') {
-                            // Stop on first error and alert user
                             alert(`Gagal mengunggah ${files[i].name}: ${result.message}`);
                             document.body.removeChild(progressDiv);
                             return;
@@ -494,7 +519,7 @@
                     return;
                 }
 
-                fetch('<?= base_url('staff/create-folder') ?>', { // Sesuaikan URL API jika berbeda untuk dokumen bersama
+                fetch(createFolderApiUrl, { // PENTING: Menggunakan URL dinamis
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -507,7 +532,7 @@
                         shared_type: folderType === 'shared' ? folderAccess : null,
                         owner_id: window.currentUserId,
                         access_roles: folderType === 'shared' ? selectedAccessRoles : null,
-                        parent_id: window.currentFolderId // Akan null jika di root folder staff
+                        parent_id: window.currentFolderId
                     })
                 })
                     .then(response => {
@@ -561,7 +586,7 @@
                 formData.append('parent_id', window.currentFolderId);
                 formData.append('user_id', window.currentUserId);
 
-                fetch('<?= base_url('staff/upload-file') ?>', { // Sesuaikan URL API jika berbeda untuk dokumen bersama
+                fetch(uploadFileApiUrl, { // PENTING: Menggunakan URL dinamis
                     method: 'POST',
                     headers: {
                         'X-Requested-With': 'XMLHttpRequest'
@@ -627,7 +652,6 @@
                     }
                 });
 
-                // Kelola tampilan baris "tidak ada hasil"
                 if (searchEmptyRow) {
                     if (visibleRowsCount === 0) {
                         searchEmptyRow.style.display = '';
@@ -636,13 +660,11 @@
                     }
                 }
 
-                // Kelola tampilan baris "Tidak ada folder yang di-share"
                 if (noFoldersRow) {
                     noFoldersRow.style.display = 'none';
                 }
             });
 
-            // Event listener untuk saat searchInput dikosongkan
             searchInput.addEventListener('input', function () {
                 if (this.value.trim() === '') {
                     tableRows.forEach(row => row.style.display = '');

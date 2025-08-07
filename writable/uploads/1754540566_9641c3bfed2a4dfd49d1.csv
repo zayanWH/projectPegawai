@@ -1,0 +1,501 @@
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               8.0.30 - MySQL Community Server - GPL
+-- Server OS:                    Win64
+-- HeidiSQL Version:             12.1.0.6537
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+-- Dumping structure for table cloudapp.activity_logs
+CREATE TABLE IF NOT EXISTS `activity_logs` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint DEFAULT NULL,
+  `action` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `target_type` enum('file','folder') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `target_id` bigint NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `activity_logs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table cloudapp.activity_logs: ~0 rows (approximately)
+
+-- Dumping structure for table cloudapp.files
+CREATE TABLE IF NOT EXISTS `files` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `folder_id` bigint DEFAULT NULL,
+  `uploader_id` bigint DEFAULT NULL,
+  `file_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `server_file_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `file_size` int NOT NULL,
+  `file_type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `download_count` int DEFAULT '0',
+  `file_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `folder_id` (`folder_id`),
+  KEY `uploader_id` (`uploader_id`),
+  CONSTRAINT `files_ibfk_1` FOREIGN KEY (`folder_id`) REFERENCES `folders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `files_ibfk_2` FOREIGN KEY (`uploader_id`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=138 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table cloudapp.files: ~123 rows (approximately)
+REPLACE INTO `files` (`id`, `folder_id`, `uploader_id`, `file_name`, `server_file_name`, `file_size`, `file_type`, `created_at`, `updated_at`, `download_count`, `file_path`) VALUES
+	(1, 1, 6, 'kira.jpg', '', 167639, 'image/jpeg', '2025-07-23 06:52:43', '2025-07-23 06:52:43', 0, '1753253563_499b6c61c1969facf64c.jpg'),
+	(2, 1, 6, 'Laporan_Frontend_Project.docx', '', 690918, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', '2025-07-23 08:28:56', '2025-07-23 08:28:56', 0, '1753259336_00f972bdea6c3f392c5b.docx'),
+	(3, 1, 6, 'PBTGM 1.docx', '', 700129, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', '2025-07-23 08:33:06', '2025-07-23 08:33:06', 0, '1753259586_a3d2db134d3d3667ce74.docx'),
+	(4, 3, 6, 'Screenshot 2025-07-21 082015.png', '', 274924, 'image/png', '2025-07-24 01:43:51', '2025-07-24 01:43:51', 0, '1753321431_8ed83ccc7b4a6dabb96f.png'),
+	(5, 3, 6, 'TUGAS PBTGM 1 ZAYAN.docx', '', 1494719, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', '2025-07-24 02:28:37', '2025-07-24 02:28:37', 0, '1753324117_f3b21589fc240f5c10bc.docx'),
+	(6, 3, 6, 'PPT USAHA KECIL.pdf', '', 226297, 'application/pdf', '2025-07-24 06:24:47', '2025-07-24 06:24:47', 0, '1753338287_cc53b37855310b2b8028.pdf'),
+	(7, 15, 8, 'appcloud (1).sql', '', 15118, 'text/plain', '2025-07-25 01:41:25', '2025-07-25 01:41:25', 0, '1753407685_a80ac8f4e4ac3d381109.csv'),
+	(8, 15, 8, 'AppCloud.sql', '', 1470, 'text/plain', '2025-07-25 01:41:26', '2025-07-25 01:41:26', 0, '1753407686_12852a872821cded13a7.csv'),
+	(9, 15, 8, 'AppCloudd.sql', '', 1470, 'text/plain', '2025-07-25 01:41:26', '2025-07-25 01:41:26', 0, '1753407686_7cf9ab84a7e00da3f3a0.csv'),
+	(10, 15, 8, 'app_cloud.sql', '', 15555, 'text/plain', '2025-07-25 01:41:26', '2025-07-25 01:41:26', 0, '1753407686_c6ab3596e9c94af775db.csv'),
+	(11, 15, 8, 'Cloud.sql', '', 22952, 'text/plain', '2025-07-25 01:41:26', '2025-07-25 01:41:26', 0, '1753407686_59aa0641fdd0e493d274.csv'),
+	(12, 15, 8, 'CloudApp.sql', '', 22952, 'text/plain', '2025-07-25 01:41:26', '2025-07-25 01:41:26', 0, '1753407686_3fde1696e308db53221a.csv'),
+	(13, 15, 8, 'ddd.sql', '', 1470, 'text/plain', '2025-07-25 01:41:27', '2025-07-25 01:41:27', 0, '1753407687_71047fba12b9821ce995.csv'),
+	(14, 18, 6, 'TUGAS PBTGM 1 ZAYAN (7).docx', '', 1494719, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', '2025-07-25 03:59:39', '2025-07-25 03:59:39', 0, '1753415979_ee9555f9e74652426e13.docx'),
+	(15, 35, 6, 'appcloud (1).sql', '', 15118, 'text/plain', '2025-07-28 01:43:43', '2025-07-28 01:43:43', 0, '1753667023_eed00678c586e56bab2d.csv'),
+	(16, 35, 6, 'AppCloud.sql', '', 1470, 'text/plain', '2025-07-28 01:43:43', '2025-07-28 01:43:43', 0, '1753667023_841f1fe3ac19294e2624.csv'),
+	(17, 35, 6, 'AppCloudd.sql', '', 1470, 'text/plain', '2025-07-28 01:43:43', '2025-07-28 01:43:43', 0, '1753667023_c9e4114a2b7fec8b2ea2.csv'),
+	(18, 35, 6, 'app_cloud.sql', '', 15555, 'text/plain', '2025-07-28 01:43:43', '2025-07-28 01:43:43', 0, '1753667023_3147b34b337731016c51.csv'),
+	(19, 35, 6, 'Cloud.sql', '', 22952, 'text/plain', '2025-07-28 01:43:44', '2025-07-28 01:43:44', 0, '1753667024_f0ef77c5c481968ee567.csv'),
+	(20, 35, 6, 'CloudApp.sql', '', 22952, 'text/plain', '2025-07-28 01:43:44', '2025-07-28 01:43:44', 0, '1753667024_3ccfec69b5c51d4f8e32.csv'),
+	(21, 35, 6, 'ddd.sql', '', 1470, 'text/plain', '2025-07-28 01:43:44', '2025-07-28 01:43:44', 0, '1753667024_5cc911d8fe8ea857367b.csv'),
+	(22, 43, 6, 'cursor-free-vip-main.zip', '', 8037992, 'application/zip', '2025-07-28 06:14:01', '2025-07-28 06:14:01', 0, '1753683241_593bc0ec436eac3eb965.zip'),
+	(23, 44, 6, '.env', '', 32, 'text/plain', '2025-07-28 06:14:01', '2025-07-28 06:14:01', 0, '1753683241_d225910b8cd2fe7b7abc.csv'),
+	(24, 44, 6, '.gitignore', '', 529, 'text/plain', '2025-07-28 06:14:02', '2025-07-28 06:14:02', 0, '1753683242_f96d5fe017ef84cdede1.csv'),
+	(25, 44, 6, '.SRCINFO', '', 680, 'text/plain', '2025-07-28 06:14:02', '2025-07-28 06:14:02', 0, '1753683242_b7d67b95f5333562ad57.csv'),
+	(26, 44, 6, 'account_manager.py', '', 3988, 'text/x-script.python', '2025-07-28 06:14:02', '2025-07-28 06:14:02', 0, '1753683242_876000994dfcebf899c7.py'),
+	(27, 44, 6, 'block_domain.txt', '', 1856, 'text/plain', '2025-07-28 06:14:02', '2025-07-28 06:14:02', 0, '1753683242_793ac851d6febbd746f4.txt'),
+	(28, 44, 6, 'build.bat', '', 1754, 'text/x-msdos-batch', '2025-07-28 06:14:02', '2025-07-28 06:14:02', 0, '1753683242_d64353f7e284ff4de245.bat'),
+	(29, 44, 6, 'build.mac.command', '', 685, 'text/x-shellscript', '2025-07-28 06:14:02', '2025-07-28 06:14:02', 0, '1753683242_dbfd9e2c27f89ac8e366.command'),
+	(30, 44, 6, 'build.py', '', 3392, 'text/x-script.python', '2025-07-28 06:14:03', '2025-07-28 06:14:03', 0, '1753683243_39dca672608599ab161d.py'),
+	(31, 44, 6, 'build.sh', '', 1911, 'text/x-shellscript', '2025-07-28 06:14:03', '2025-07-28 06:14:03', 0, '1753683243_2d546beed751c6e61cdd.sh'),
+	(32, 44, 6, 'build.spec', '', 1386, 'text/x-script.python', '2025-07-28 06:14:03', '2025-07-28 06:14:03', 0, '1753683243_3cfa290e38dda6ab301b.spec'),
+	(33, 44, 6, 'bypass_token_limit.py', '', 8598, 'text/x-script.python', '2025-07-28 06:14:03', '2025-07-28 06:14:03', 0, '1753683243_84fc025717dfcc76a237.py'),
+	(34, 44, 6, 'bypass_version.py', '', 7167, 'text/x-script.python', '2025-07-28 06:14:03', '2025-07-28 06:14:03', 0, '1753683243_a728d1c48a5f88a1da3b.py'),
+	(35, 44, 6, 'CHANGELOG.md', '', 30562, 'text/plain', '2025-07-28 06:14:03', '2025-07-28 06:14:03', 0, '1753683243_c7f0b4ad57a19465f26b.csv'),
+	(36, 44, 6, 'check_user_authorized.py', '', 10788, 'text/x-script.python', '2025-07-28 06:14:03', '2025-07-28 06:14:03', 0, '1753683243_93c252ff5bdeb353f7db.py'),
+	(37, 44, 6, 'config.py', '', 23492, 'text/x-script.python', '2025-07-28 06:14:04', '2025-07-28 06:14:04', 0, '1753683244_a8848b5f3a1d88f57d9f.py'),
+	(38, 44, 6, 'cursor_acc_info.py', '', 20909, 'text/x-script.python', '2025-07-28 06:14:04', '2025-07-28 06:14:04', 0, '1753683244_2be47f2240358479faf0.py'),
+	(39, 44, 6, 'cursor_auth.py', '', 7429, 'text/x-script.python', '2025-07-28 06:14:04', '2025-07-28 06:14:04', 0, '1753683244_da4f337a2d86715bd84f.py'),
+	(40, 44, 6, 'cursor_register_manual.py', '', 13389, 'text/x-script.python', '2025-07-28 06:14:04', '2025-07-28 06:14:04', 0, '1753683244_079843d059440d068742.py'),
+	(41, 44, 6, 'delete_cursor_google.py', '', 20784, 'text/x-script.python', '2025-07-28 06:14:04', '2025-07-28 06:14:04', 0, '1753683244_81688a7a4e9b49a4ac1d.py'),
+	(42, 44, 6, 'disable_auto_update.py', '', 14425, 'text/x-script.python', '2025-07-28 06:14:04', '2025-07-28 06:14:04', 0, '1753683244_e3cc4c806135e1e24fed.py'),
+	(43, 44, 6, 'fill_missing_translations.py', '', 14685, 'text/plain', '2025-07-28 06:14:04', '2025-07-28 06:14:04', 0, '1753683244_16b5ecd0a003a74b3513.csv'),
+	(44, 44, 6, 'get_user_token.py', '', 5301, 'text/x-script.python', '2025-07-28 06:14:04', '2025-07-28 06:14:04', 0, '1753683244_144ed77e7e2a4ec6a868.py'),
+	(45, 44, 6, 'LICENSE.md', '', 17529, 'text/plain', '2025-07-28 06:14:05', '2025-07-28 06:14:05', 0, '1753683245_13b85be9cdaf789d665e.csv'),
+	(46, 44, 6, 'logo.py', '', 4408, 'text/x-script.python', '2025-07-28 06:14:05', '2025-07-28 06:14:05', 0, '1753683245_54709647431da4fd3b74.py'),
+	(47, 44, 6, 'main.py', '', 35812, 'text/x-script.python', '2025-07-28 06:14:05', '2025-07-28 06:14:05', 0, '1753683245_487875183e96215f74f2.py'),
+	(48, 44, 6, 'manual_custom_auth.py', '', 6710, 'text/plain', '2025-07-28 06:14:05', '2025-07-28 06:14:05', 0, '1753683245_a57336182334874da3b5.csv'),
+	(49, 44, 6, 'new_signup.py', '', 30825, 'text/x-script.python', '2025-07-28 06:14:05', '2025-07-28 06:14:05', 0, '1753683245_06862ca91aee91aa3083.py'),
+	(50, 44, 6, 'oauth_auth.py', '', 67399, 'text/x-script.python', '2025-07-28 06:14:05', '2025-07-28 06:14:05', 0, '1753683245_8e0cff7a9ddbcea978ba.py'),
+	(51, 44, 6, 'PKGBUILD', '', 1278, 'text/plain', '2025-07-28 06:14:05', '2025-07-28 06:14:05', 0, '1753683245_8627df63973fccf1756c.csv'),
+	(52, 44, 6, 'quit_cursor.py', '', 3440, 'text/x-script.python', '2025-07-28 06:14:05', '2025-07-28 06:14:05', 0, '1753683245_f2ed5ab515090599e5fb.py'),
+	(53, 44, 6, 'README.md', '', 10168, 'text/html', '2025-07-28 06:14:05', '2025-07-28 06:14:05', 0, '1753683245_747c7330cd88d28b3133.html'),
+	(54, 44, 6, 'requirements.txt', '', 200, 'text/plain', '2025-07-28 06:14:06', '2025-07-28 06:14:06', 0, '1753683246_d06f4fbe84079fc2da7d.txt'),
+	(55, 44, 6, 'reset_machine_manual.py', '', 38514, 'text/x-script.python', '2025-07-28 06:14:06', '2025-07-28 06:14:06', 0, '1753683246_ee1936511f1b0cd30e87.py'),
+	(56, 44, 6, 'restore_machine_id.py', '', 17823, 'text/x-script.python', '2025-07-28 06:14:06', '2025-07-28 06:14:06', 0, '1753683246_e9226990562d80d7a592.py'),
+	(57, 44, 6, 'totally_reset_cursor.py', '', 38172, 'text/x-script.python', '2025-07-28 06:14:06', '2025-07-28 06:14:06', 0, '1753683246_a54775086cea22afd5bb.py'),
+	(58, 44, 6, 'utils.py', '', 9797, 'text/x-script.python', '2025-07-28 06:14:06', '2025-07-28 06:14:06', 0, '1753683246_47f117346b11e9926137.py'),
+	(59, 45, 6, 'install.ps1', '', 9204, 'text/plain', '2025-07-28 06:14:06', '2025-07-28 06:14:06', 0, '1753683246_b821ec717d703eef600c.csv'),
+	(60, 45, 6, 'install.sh', '', 7906, 'text/x-shellscript', '2025-07-28 06:14:06', '2025-07-28 06:14:06', 0, '1753683246_451bb2730fabed55526c.sh'),
+	(61, 45, 6, 'reset.ps1', '', 5142, 'text/plain', '2025-07-28 06:14:06', '2025-07-28 06:14:06', 0, '1753683246_4f9923997aeb7493fc2e.csv'),
+	(62, 46, 6, 'ar.json', '', 73348, 'application/json', '2025-07-28 06:14:07', '2025-07-28 06:14:07', 0, '1753683247_516db60139715d8efa1c.json'),
+	(63, 46, 6, 'bg.json', '', 87549, 'application/json', '2025-07-28 06:14:07', '2025-07-28 06:14:07', 0, '1753683247_076fde4f4f61f608540c.json'),
+	(64, 46, 6, 'de.json', '', 61447, 'application/json', '2025-07-28 06:14:07', '2025-07-28 06:14:07', 0, '1753683247_861150f5acc49eebe325.json'),
+	(65, 46, 6, 'en.json', '', 54440, 'application/json', '2025-07-28 06:14:07', '2025-07-28 06:14:07', 0, '1753683247_a5d2088d5b570519b2e7.json'),
+	(66, 46, 6, 'es.json', '', 63101, 'application/json', '2025-07-28 06:14:07', '2025-07-28 06:14:07', 0, '1753683247_2854cc202dafdb3c6654.json'),
+	(67, 46, 6, 'fr.json', '', 64436, 'application/json', '2025-07-28 06:14:07', '2025-07-28 06:14:07', 0, '1753683247_1b130e1f06c6d21c01ef.json'),
+	(68, 46, 6, 'it.json', '', 61086, 'application/json', '2025-07-28 06:14:07', '2025-07-28 06:14:07', 0, '1753683247_22496339c8372b547b2e.json'),
+	(69, 46, 6, 'ja.json', '', 69410, 'application/json', '2025-07-28 06:14:07', '2025-07-28 06:14:07', 0, '1753683247_d572fbac1846ec197bc7.json'),
+	(70, 46, 6, 'nl.json', '', 58391, 'application/json', '2025-07-28 06:14:08', '2025-07-28 06:14:08', 0, '1753683248_b91af9a0c76389ad482e.json'),
+	(71, 46, 6, 'pt.json', '', 61305, 'application/json', '2025-07-28 06:14:08', '2025-07-28 06:14:08', 0, '1753683248_f50fb98b23b3d807592a.json'),
+	(72, 46, 6, 'ru.json', '', 81871, 'application/json', '2025-07-28 06:14:08', '2025-07-28 06:14:08', 0, '1753683248_171604d76d97122ed25c.json'),
+	(73, 46, 6, 'tr.json', '', 60107, 'application/json', '2025-07-28 06:14:08', '2025-07-28 06:14:08', 0, '1753683248_30228be177fe78913557.json'),
+	(74, 46, 6, 'vi.json', '', 64593, 'application/json', '2025-07-28 06:14:08', '2025-07-28 06:14:08', 0, '1753683248_846b60dcdfa79aa69d5f.json'),
+	(75, 46, 6, 'zh_cn.json', '', 52176, 'application/json', '2025-07-28 06:14:08', '2025-07-28 06:14:08', 0, '1753683248_db6587d39af2dc846d7d.json'),
+	(76, 46, 6, 'zh_tw.json', '', 52965, 'application/json', '2025-07-28 06:14:08', '2025-07-28 06:14:08', 0, '1753683248_8af82fbe5c825fa06850.json'),
+	(77, 47, 6, 'cloudflare_2025-02-12_13-43-21.png', '', 294707, 'image/png', '2025-07-28 06:14:08', '2025-07-28 06:14:08', 0, '1753683248_f0ad8e59d058ee4a8115.png'),
+	(78, 47, 6, 'fix_2025-01-14_21-30-43.png', '', 258027, 'image/png', '2025-07-28 06:14:09', '2025-07-28 06:14:09', 0, '1753683249_473685d2af8e494abcce.png'),
+	(79, 47, 6, 'free_2025-01-14_14-59-15.png', '', 558649, 'image/png', '2025-07-28 06:14:09', '2025-07-28 06:14:09', 0, '1753683249_81a78cb1230d7b521085.png'),
+	(80, 47, 6, 'locale_2025-01-15_13-40-08.png', '', 52982, 'image/png', '2025-07-28 06:14:09', '2025-07-28 06:14:09', 0, '1753683249_c51ec75a08e3910b9c05.png'),
+	(81, 47, 6, 'logo.png', '', 1494, 'image/png', '2025-07-28 06:14:09', '2025-07-28 06:14:09', 0, '1753683249_f1e2c64aa805df2ac850.png'),
+	(82, 47, 6, 'new107_2025-01-15_13-53-56.png', '', 56509, 'image/png', '2025-07-28 06:14:09', '2025-07-28 06:14:09', 0, '1753683249_a04901a891f332e6ddf7.png'),
+	(83, 47, 6, 'new_2025-02-27_10-42-44.png', '', 119014, 'image/png', '2025-07-28 06:14:09', '2025-07-28 06:14:09', 0, '1753683249_be529c6594bc3e82b076.png'),
+	(84, 47, 6, 'new_2025-03-19_00-19-09.png', '', 90579, 'image/png', '2025-07-28 06:14:09', '2025-07-28 06:14:09', 0, '1753683249_58dca6cdd413c2400304.png'),
+	(85, 47, 6, 'new_2025-03-22_19-53-10.png', '', 114351, 'image/png', '2025-07-28 06:14:09', '2025-07-28 06:14:09', 0, '1753683249_f6bbfeccc3ede0fd1f3e.png'),
+	(86, 47, 6, 'pass_2025-02-08_21-48-36.png', '', 139888, 'image/png', '2025-07-28 06:14:09', '2025-07-28 06:14:09', 0, '1753683249_47bae85d2413ce61775f.png'),
+	(87, 47, 6, 'paypal.png', '', 32583, 'image/png', '2025-07-28 06:14:10', '2025-07-28 06:14:10', 0, '1753683250_2e45b78075acf4814a5d.png'),
+	(88, 47, 6, 'product_2025-04-16_10-40-21.png', '', 173894, 'image/png', '2025-07-28 06:14:10', '2025-07-28 06:14:10', 0, '1753683250_bbea95c296ab3a3c8277.png'),
+	(89, 47, 6, 'pronew_2025-02-13_15-01-32.png', '', 67320, 'image/png', '2025-07-28 06:14:10', '2025-07-28 06:14:10', 0, '1753683250_5a59f95cc9546459ac1b.png'),
+	(90, 47, 6, 'provi-code.jpg', '', 126266, 'image/jpeg', '2025-07-28 06:14:10', '2025-07-28 06:14:10', 0, '1753683250_23551d096914c3f8ea03.jpg'),
+	(91, 47, 6, 'pro_2025-01-11_00-50-40.png', '', 36778, 'image/png', '2025-07-28 06:14:10', '2025-07-28 06:14:10', 0, '1753683250_58fa216dfae3bda123c6.png'),
+	(92, 47, 6, 'pro_2025-01-11_00-51-07.png', '', 16883, 'image/png', '2025-07-28 06:14:10', '2025-07-28 06:14:10', 0, '1753683250_3bea5613136aedc822dc.png'),
+	(93, 47, 6, 'pro_2025-01-11_16-24-03.png', '', 57404, 'image/png', '2025-07-28 06:14:10', '2025-07-28 06:14:10', 0, '1753683250_4a745bdbdb231d277c52.png'),
+	(94, 47, 6, 'pro_2025-01-11_22-33-09.gif', '', 568118, 'image/gif', '2025-07-28 06:14:10', '2025-07-28 06:14:10', 0, '1753683250_a8807979870784f9a999.gif'),
+	(95, 47, 6, 'pro_2025-01-13_13-49-55.png', '', 21525, 'image/png', '2025-07-28 06:14:10', '2025-07-28 06:14:10', 0, '1753683250_a0bf593836bced731838.png'),
+	(96, 47, 6, 'pro_2025-01-14_14-40-37.png', '', 48706, 'image/png', '2025-07-28 06:14:11', '2025-07-28 06:14:11', 0, '1753683251_f1ece6fd603c43882fb4.png'),
+	(97, 47, 6, 'pro_2025-04-05_18-47-56.png', '', 77744, 'image/png', '2025-07-28 06:14:11', '2025-07-28 06:14:11', 0, '1753683251_97742f300b90f1f8a426.png'),
+	(98, 47, 6, 'what_2025-01-13_13-32-54.png', '', 5991, 'image/png', '2025-07-28 06:14:11', '2025-07-28 06:14:11', 0, '1753683251_df7c42b372111cf9e53e.png'),
+	(99, 48, 6, 'email_tab_interface.py', '', 712, 'text/x-script.python', '2025-07-28 06:14:11', '2025-07-28 06:14:11', 0, '1753683251_934ca8ae99ae054d4df2.py'),
+	(100, 48, 6, 'tempmail_plus_tab.py', '', 8848, 'text/x-script.python', '2025-07-28 06:14:11', '2025-07-28 06:14:11', 0, '1753683251_13f5e55e4a6d6801e106.py'),
+	(101, 51, 6, 'main.js.map', '', 1742001, 'text/plain', '2025-07-28 06:14:11', '2025-07-28 06:14:11', 0, '1753683251_3e0a771a6be6650de3b3.csv'),
+	(102, 53, 6, 'workbench.desktop.main.js.map', '', 25155566, 'text/plain', '2025-07-28 06:14:16', '2025-07-28 06:14:16', 0, '1753683256_e8c2e07cba47f281a8dd.csv'),
+	(103, 55, 6, 'build.yml', '', 11616, 'text/plain', '2025-07-28 06:14:16', '2025-07-28 06:14:16', 0, '1753683256_039e5b62e445e84809ec.csv'),
+	(104, 56, 6, 'cn_bug_report.yml', '', 2322, 'text/plain', '2025-07-28 06:14:16', '2025-07-28 06:14:16', 0, '1753683256_c2931fa29d1a37c43a04.csv'),
+	(105, 56, 6, 'cn_feature_request.yml', '', 2263, 'text/plain', '2025-07-28 06:14:16', '2025-07-28 06:14:16', 0, '1753683256_b1157e3e0d3d58a885e2.csv'),
+	(106, 56, 6, 'cn_question.yml', '', 2384, 'text/plain', '2025-07-28 06:14:17', '2025-07-28 06:14:17', 0, '1753683257_5506c14c4e1b41fd538e.csv'),
+	(107, 56, 6, 'en_bug_report.yml', '', 2447, 'text/plain', '2025-07-28 06:14:17', '2025-07-28 06:14:17', 0, '1753683257_28441c769a9dcc1966b1.csv'),
+	(108, 56, 6, 'en_feature_request.yml', '', 2360, 'text/plain', '2025-07-28 06:14:17', '2025-07-28 06:14:17', 0, '1753683257_8781589695213b39f606.csv'),
+	(109, 56, 6, 'en_question.yml', '', 2562, 'text/plain', '2025-07-28 06:14:17', '2025-07-28 06:14:17', 0, '1753683257_eae3bfe8b63912216d07.csv'),
+	(110, 29, 6, 'Screenshot 2025-07-21 080615.png', '', 155470, 'image/png', '2025-07-28 07:36:53', '2025-07-28 07:36:53', 0, '1753688213_75fb0befd47736b71ab3.png'),
+	(111, 29, 6, 'Screenshot 2025-07-21 082015.png', '', 274924, 'image/png', '2025-07-28 07:42:16', '2025-07-28 07:42:16', 0, '1753688536_68f61a4909338cc191a6.png'),
+	(112, 62, 10, 'appcloud (1).sql', '', 15118, 'text/plain', '2025-07-28 08:14:10', '2025-07-28 08:14:10', 0, '1753690450_99df15da76a5f3611576.csv'),
+	(113, 62, 10, 'AppCloud.sql', '', 1470, 'text/plain', '2025-07-28 08:14:10', '2025-07-28 08:14:10', 0, '1753690450_cd3c99e38c0d039e0ccd.csv'),
+	(114, 62, 10, 'AppCloudd.sql', '', 1470, 'text/plain', '2025-07-28 08:14:10', '2025-07-28 08:14:10', 0, '1753690450_b2c8c3e0b19e5a752ea2.csv'),
+	(115, 62, 10, 'app_cloud.sql', '', 15555, 'text/plain', '2025-07-28 08:14:10', '2025-07-28 08:14:10', 0, '1753690450_76fe67fd28306588b1d4.csv'),
+	(116, 62, 10, 'Cloud.sql', '', 22952, 'text/plain', '2025-07-28 08:14:10', '2025-07-28 08:14:10', 0, '1753690450_3b4a5b55edc9703cfc2d.csv'),
+	(117, 62, 10, 'CloudApp.sql', '', 22952, 'text/plain', '2025-07-28 08:14:10', '2025-07-28 08:14:10', 0, '1753690450_dea922f854daef11179f.csv'),
+	(118, 62, 10, 'ddd.sql', '', 1470, 'text/plain', '2025-07-28 08:14:10', '2025-07-28 08:14:10', 0, '1753690450_f383e0f09d3668925823.csv'),
+	(119, 62, 10, 'appcloud (1).sql', '', 15118, 'text/plain', '2025-07-28 08:14:43', '2025-07-28 08:14:43', 0, '1753690483_1f3b704cb93e5a3212f9.csv'),
+	(120, 62, 10, 'AppCloud.sql', '', 1470, 'text/plain', '2025-07-28 08:14:43', '2025-07-28 08:14:43', 0, '1753690483_de1d2cde83ad0375cd4e.csv'),
+	(121, 62, 10, 'AppCloudd.sql', '', 1470, 'text/plain', '2025-07-28 08:14:43', '2025-07-28 08:14:43', 0, '1753690483_a3572ec440056ca0512b.csv'),
+	(122, 62, 10, 'app_cloud.sql', '', 15555, 'text/plain', '2025-07-28 08:14:44', '2025-07-28 08:14:44', 0, '1753690484_811cbc1ad890f5bb6808.csv'),
+	(123, 62, 10, 'Cloud.sql', '', 22952, 'text/plain', '2025-07-28 08:14:44', '2025-07-28 08:14:44', 0, '1753690484_4bb45681ef9aed14ed57.csv'),
+	(124, 62, 10, 'CloudApp.sql', '', 22952, 'text/plain', '2025-07-28 08:14:45', '2025-07-28 08:14:45', 0, '1753690485_713ad1ac16732cdc4663.csv'),
+	(125, 62, 10, 'ddd.sql', '', 1470, 'text/plain', '2025-07-28 08:14:45', '2025-07-28 08:14:45', 0, '1753690485_91be328ebefa62145117.csv'),
+	(126, 62, 10, 'appcloud (1).sql', '', 15118, 'text/plain', '2025-07-28 08:28:42', '2025-07-28 08:28:42', 0, '1753691322_f118166e83b22b348afd.csv'),
+	(127, 62, 10, 'AppCloud.sql', '', 1470, 'text/plain', '2025-07-28 08:28:42', '2025-07-28 08:28:42', 0, '1753691322_767fa68141683355a898.csv'),
+	(128, 62, 10, 'AppCloudd.sql', '', 1470, 'text/plain', '2025-07-28 08:28:43', '2025-07-28 08:28:43', 0, '1753691323_3c39eb5eb04fa179087b.csv'),
+	(129, 62, 10, 'app_cloud.sql', '', 15555, 'text/plain', '2025-07-28 08:28:43', '2025-07-28 08:28:43', 0, '1753691323_80d8c3796cfc6129a0c4.csv'),
+	(130, 62, 10, 'Cloud.sql', '', 22952, 'text/plain', '2025-07-28 08:28:43', '2025-07-28 08:28:43', 0, '1753691323_cac0c93a6f84d952fff1.csv'),
+	(131, 62, 10, 'CloudApp.sql', '', 22952, 'text/plain', '2025-07-28 08:28:44', '2025-07-28 08:28:44', 0, '1753691324_95a948d22dd65656181c.csv'),
+	(132, 62, 10, 'ddd.sql', '', 1470, 'text/plain', '2025-07-28 08:28:44', '2025-07-28 08:28:44', 0, '1753691324_7d1b0a06aa8b5b6fe847.csv'),
+	(133, 40, 9, 'Screenshot 2025-07-21 101343.png', '', 182210, 'image/png', '2025-07-30 02:27:45', '2025-07-30 02:27:45', 0, '1753842465_31acff70212e6d860542.png'),
+	(134, 61, 3, 'Screenshot 2025-07-22 142925.png', '', 115765, 'image/png', '2025-07-30 02:58:39', '2025-07-30 02:58:39', 0, '1753844319_e80458addba7375b3dbd.png'),
+	(135, 82, 6, 'Screenshot 2025-07-21 080615.png', '', 155470, 'image/png', '2025-07-30 07:15:54', '2025-07-30 07:15:54', 0, '1753859754_cb13a34801cd278064ad.png'),
+	(136, 29, 6, 'Ruang Lingkup Aplikasi Dokumentasi Publikasi_Rev_1.pdf', '', 562313, 'application/pdf', '2025-07-30 07:27:42', '2025-07-30 07:27:42', 0, '1753860462_c1f51d9ead9d26cb64b6.pdf'),
+	(137, 94, 6, 'Ruang Lingkup Aplikasi Dokumentasi Publikasi_Rev_1.pdf', '', 562313, 'application/pdf', '2025-07-31 03:11:19', '2025-07-31 03:11:19', 0, '1753931479_f39f8adb7365ea304c9a.pdf');
+
+-- Dumping structure for table cloudapp.folders
+CREATE TABLE IF NOT EXISTS `folders` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `full_path_physical` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `parent_id` bigint DEFAULT NULL,
+  `owner_id` bigint DEFAULT NULL,
+  `access_roles` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `is_shared` tinyint(1) NOT NULL DEFAULT '0',
+  `shared_type` enum('full','read') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `folder_type` enum('personal','shared') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'personal',
+  `owner_role` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `parent_id` (`parent_id`),
+  KEY `owner_id` (`owner_id`),
+  CONSTRAINT `folders_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `folders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `folders_ibfk_2` FOREIGN KEY (`owner_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table cloudapp.folders: ~116 rows (approximately)
+REPLACE INTO `folders` (`id`, `name`, `path`, `full_path_physical`, `parent_id`, `owner_id`, `access_roles`, `is_shared`, `shared_type`, `created_at`, `updated_at`, `folder_type`, `owner_role`) VALUES
+	(1, 'wado', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-23 06:51:44', '2025-07-25 13:41:57', 'personal', NULL),
+	(2, 'messi not goat', NULL, NULL, 1, 6, NULL, 0, NULL, '2025-07-23 06:52:01', '2025-07-23 13:52:01', 'personal', NULL),
+	(3, 'zayan', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-24 01:43:28', '2025-07-24 08:43:28', 'personal', NULL),
+	(4, 'DariHrd', NULL, NULL, 3, 8, NULL, 0, NULL, '2025-07-24 03:45:23', '2025-07-24 10:45:23', 'personal', NULL),
+	(5, 'SubFolder DariHrd', NULL, NULL, 4, 8, NULL, 0, NULL, '2025-07-24 03:45:45', '2025-07-24 10:45:45', 'personal', NULL),
+	(6, 'tes dari hrd', NULL, NULL, 3, 9, NULL, 0, NULL, '2025-07-24 06:27:55', '2025-07-24 13:27:55', 'personal', NULL),
+	(7, 'tes', NULL, NULL, 1, 9, NULL, 0, NULL, '2025-07-24 07:17:08', '2025-07-24 14:17:08', 'personal', NULL),
+	(8, 'hallo', NULL, NULL, 3, 8, NULL, 0, NULL, '2025-07-24 07:54:01', '2025-07-24 14:54:01', 'personal', NULL),
+	(9, 'bisa', NULL, NULL, 1, 8, NULL, 0, NULL, '2025-07-24 08:32:58', '2025-07-24 15:32:58', 'personal', NULL),
+	(12, 'zazaza', NULL, NULL, NULL, 9, NULL, 0, NULL, '2025-07-24 09:17:19', '2025-07-24 16:17:19', 'personal', NULL),
+	(13, 'pessi', NULL, NULL, NULL, 10, NULL, 0, NULL, '2025-07-24 09:20:44', '2025-07-24 16:20:44', 'personal', NULL),
+	(14, 'tesaja', NULL, NULL, NULL, 8, NULL, 0, NULL, '2025-07-25 01:12:36', '2025-07-25 08:12:36', 'personal', NULL),
+	(15, 'Database File', NULL, NULL, NULL, 8, NULL, 0, NULL, '2025-07-25 01:41:25', '2025-07-25 08:41:25', 'personal', NULL),
+	(16, 'bisa?', NULL, NULL, 3, 8, NULL, 0, NULL, '2025-07-25 01:42:28', '2025-07-25 08:42:28', 'personal', NULL),
+	(17, 'bismmillah', NULL, NULL, 3, 8, NULL, 0, NULL, '2025-07-25 01:44:45', '2025-07-25 08:44:45', 'personal', NULL),
+	(18, 'owner', NULL, NULL, NULL, 9, NULL, 0, NULL, '2025-07-25 03:20:30', '2025-07-25 10:20:30', 'personal', NULL),
+	(19, 'owner role', NULL, NULL, NULL, 9, NULL, 0, NULL, '2025-07-25 03:23:42', '2025-07-25 10:23:42', 'personal', NULL),
+	(20, 'owneridtes', NULL, NULL, NULL, 8, NULL, 0, NULL, '2025-07-25 03:29:36', '2025-07-25 10:29:36', 'personal', NULL),
+	(21, 'ownerguys', NULL, NULL, NULL, 8, NULL, 0, NULL, '2025-07-25 03:35:40', '2025-07-25 10:35:40', 'personal', NULL),
+	(22, 'yyy', NULL, NULL, NULL, 8, NULL, 0, NULL, '2025-07-25 03:36:46', '2025-07-25 10:36:46', 'personal', NULL),
+	(23, 'hajess', NULL, NULL, NULL, 8, NULL, 0, NULL, '2025-07-25 03:40:46', '2025-07-25 10:40:46', 'personal', NULL),
+	(24, 'anajsnjjnjahbh', NULL, NULL, NULL, 9, NULL, 0, NULL, '2025-07-25 04:01:27', '2025-07-25 11:01:27', 'personal', NULL),
+	(25, 'DariStaff', NULL, NULL, 24, 6, NULL, 0, NULL, '2025-07-25 04:02:01', '2025-07-25 11:02:01', 'personal', NULL),
+	(26, 'wado', NULL, NULL, NULL, 10, NULL, 0, NULL, '2025-07-25 06:53:01', '2025-07-25 13:53:01', 'personal', NULL),
+	(27, 'zayan', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-25 07:30:20', '2025-07-25 14:30:20', 'personal', NULL),
+	(28, 'hey', NULL, NULL, NULL, 6, '["Staff"]', 1, 'full', '2025-07-25 08:09:40', '2025-07-25 15:09:40', 'shared', NULL),
+	(29, 'hajess', NULL, NULL, NULL, 6, '["Staff"]', 1, 'full', '2025-07-25 08:22:05', '2025-07-25 15:22:05', 'shared', NULL),
+	(30, 'zazaza', NULL, NULL, NULL, 6, '["Staff"]', 1, 'full', '2025-07-25 08:30:17', '2025-07-25 15:30:17', 'shared', NULL),
+	(31, 'hajess', NULL, NULL, NULL, 6, '["Staff"]', 1, 'full', '2025-07-25 08:41:57', '2025-07-25 15:41:57', 'shared', NULL),
+	(32, 'tes', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-25 08:47:55', '2025-07-25 15:47:55', 'personal', NULL),
+	(33, 'tes share', NULL, NULL, NULL, 6, '["Staff"]', 1, 'read', '2025-07-28 01:42:16', '2025-07-28 08:42:16', 'shared', NULL),
+	(34, 'tes dari hadabi', NULL, NULL, NULL, 10, '["Staff"]', 1, 'read', '2025-07-28 01:43:04', '2025-07-28 08:43:04', 'shared', NULL),
+	(35, 'Database File', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-28 01:43:42', '2025-07-28 08:43:42', 'personal', NULL),
+	(36, 'Bisa?', NULL, NULL, NULL, 6, '["Supervisor"]', 1, 'full', '2025-07-28 01:55:56', '2025-07-28 08:55:56', 'shared', NULL),
+	(37, 'Bisa?', NULL, NULL, NULL, 6, '["Staff"]', 1, 'full', '2025-07-28 01:56:09', '2025-07-28 08:56:09', 'shared', NULL),
+	(38, 'Bisaaaaa', NULL, NULL, NULL, 6, '["Staff"]', 1, 'full', '2025-07-28 01:56:23', '2025-07-28 08:56:23', 'shared', NULL),
+	(39, 'spv', NULL, NULL, NULL, 6, '["Supervisor"]', 1, 'full', '2025-07-28 01:56:43', '2025-07-28 08:56:43', 'shared', NULL),
+	(40, 'sjnsjnd', NULL, NULL, NULL, 10, '["Staff"]', 1, 'read', '2025-07-28 04:12:43', '2025-07-28 11:12:43', 'shared', NULL),
+	(41, 'ASAS', NULL, NULL, 28, 10, '["Staff"]', 1, 'full', '2025-07-28 04:20:08', '2025-07-28 11:20:08', 'shared', NULL),
+	(42, 'vshare', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-28 04:46:34', '2025-07-28 11:46:34', 'personal', NULL),
+	(43, 'cursor-free-vip-main', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-28 06:14:01', '2025-07-28 13:14:01', 'personal', NULL),
+	(44, 'cursor-free-vip-main', NULL, NULL, 43, 6, NULL, 0, NULL, '2025-07-28 06:14:01', '2025-07-28 13:14:01', 'personal', NULL),
+	(45, 'scripts', NULL, NULL, 44, 6, NULL, 0, NULL, '2025-07-28 06:14:06', '2025-07-28 13:14:06', 'personal', NULL),
+	(46, 'locales', NULL, NULL, 44, 6, NULL, 0, NULL, '2025-07-28 06:14:07', '2025-07-28 13:14:07', 'personal', NULL),
+	(47, 'images', NULL, NULL, 44, 6, NULL, 0, NULL, '2025-07-28 06:14:08', '2025-07-28 13:14:08', 'personal', NULL),
+	(48, 'email_tabs', NULL, NULL, 44, 6, NULL, 0, NULL, '2025-07-28 06:14:11', '2025-07-28 13:14:11', 'personal', NULL),
+	(49, 'cursor-source-map', NULL, NULL, 44, 6, NULL, 0, NULL, '2025-07-28 06:14:11', '2025-07-28 13:14:11', 'personal', NULL),
+	(50, '0.50.5', NULL, NULL, 49, 6, NULL, 0, NULL, '2025-07-28 06:14:11', '2025-07-28 13:14:11', 'personal', NULL),
+	(51, 'core', NULL, NULL, 50, 6, NULL, 0, NULL, '2025-07-28 06:14:11', '2025-07-28 13:14:11', 'personal', NULL),
+	(52, 'vs', NULL, NULL, 51, 6, NULL, 0, NULL, '2025-07-28 06:14:15', '2025-07-28 13:14:15', 'personal', NULL),
+	(53, 'workbench', NULL, NULL, 52, 6, NULL, 0, NULL, '2025-07-28 06:14:15', '2025-07-28 13:14:15', 'personal', NULL),
+	(54, '.github', NULL, NULL, 44, 6, NULL, 0, NULL, '2025-07-28 06:14:16', '2025-07-28 13:14:16', 'personal', NULL),
+	(55, 'workflows', NULL, NULL, 54, 6, NULL, 0, NULL, '2025-07-28 06:14:16', '2025-07-28 13:14:16', 'personal', NULL),
+	(56, 'ISSUE_TEMPLATE', NULL, NULL, 54, 6, NULL, 0, NULL, '2025-07-28 06:14:16', '2025-07-28 13:14:16', 'personal', NULL),
+	(57, 'SubShare', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-28 06:44:32', '2025-07-28 13:44:32', 'personal', NULL),
+	(58, 'BismilahShare', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-28 07:03:09', '2025-07-28 14:03:09', 'personal', NULL),
+	(59, 'losss', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-28 07:29:01', '2025-07-28 14:29:01', 'personal', NULL),
+	(60, 'sharebos', NULL, NULL, NULL, 6, NULL, 0, NULL, '2025-07-28 07:32:45', '2025-07-28 14:32:45', 'personal', NULL),
+	(61, 'BISA SHARE', NULL, NULL, 29, 6, '["Staff"]', 1, 'full', '2025-07-28 07:36:25', '2025-07-28 14:36:25', 'shared', NULL),
+	(62, 'Database File', NULL, NULL, NULL, 10, NULL, 0, NULL, '2025-07-28 08:14:10', '2025-07-28 15:14:10', 'personal', NULL),
+	(63, 'DireksiShare', NULL, NULL, NULL, 6, '["Staff","Direksi"]', 1, 'full', '2025-07-29 01:25:49', '2025-07-29 08:25:49', 'shared', NULL),
+	(64, 'HrdSHare', NULL, NULL, NULL, 8, '["Staff","Manager","Supervisor","Direksi"]', 1, 'read', '2025-07-29 03:51:30', '2025-07-29 10:51:30', 'shared', NULL),
+	(65, 'nizarmm', NULL, NULL, NULL, 5, NULL, 0, NULL, '2025-07-29 04:25:03', '2025-07-29 11:25:12', 'personal', NULL),
+	(66, 'niizarrr', NULL, NULL, NULL, 4, NULL, 0, NULL, '2025-07-29 04:33:44', '2025-07-29 11:33:44', 'personal', NULL),
+	(67, 'nbzxux', NULL, NULL, 66, 4, NULL, 0, NULL, '2025-07-29 04:33:56', '2025-07-29 11:33:56', 'personal', NULL),
+	(68, 'nizardireksi', NULL, NULL, NULL, 3, NULL, 0, NULL, '2025-07-29 04:38:09', '2025-07-29 11:38:09', 'personal', NULL),
+	(69, 'hadabidireksi', NULL, NULL, 68, 3, NULL, 0, NULL, '2025-07-29 04:38:20', '2025-07-29 11:38:20', 'personal', NULL),
+	(70, 'tes dari direksi', NULL, NULL, NULL, 3, '["Staff","Manager","Supervisor","Direksi"]', 1, 'read', '2025-07-29 07:12:29', '2025-07-29 14:12:29', 'shared', NULL),
+	(71, 'share spv', NULL, NULL, NULL, 5, '["Staff","Manager","Supervisor","Direksi"]', 1, 'full', '2025-07-29 07:47:24', '2025-07-29 14:47:24', 'shared', NULL),
+	(72, 'anajsnjjnja', NULL, NULL, NULL, 5, '["Staff"]', 1, 'full', '2025-07-29 07:48:08', '2025-07-29 14:48:08', 'shared', NULL),
+	(73, 'DARI HRD', NULL, NULL, NULL, 9, '["Staff","Manager","Supervisor","Direksi"]', 1, 'full', '2025-07-29 07:55:09', '2025-07-29 14:55:09', 'shared', NULL),
+	(74, 'DARI DIREKSI', NULL, NULL, NULL, 5, '["Staff","Manager","Supervisor","Direksi"]', 1, 'read', '2025-07-29 07:55:49', '2025-07-29 14:55:49', 'shared', NULL),
+	(75, 'DARI DIREKSI2', NULL, NULL, NULL, 3, '["Staff","Manager","Supervisor","Direksi"]', 1, 'read', '2025-07-29 07:56:39', '2025-07-29 14:56:39', 'shared', NULL),
+	(76, 'sdsdasdqwwdsvdfv', NULL, NULL, NULL, 8, '["Staff","Manager","Supervisor","Direksi"]', 1, 'read', '2025-07-29 08:24:26', '2025-07-29 15:24:26', 'shared', NULL),
+	(77, 'password', NULL, NULL, NULL, 6, '["Manager","Supervisor","Direksi"]', 1, 'read', '2025-07-29 08:33:43', '2025-07-29 15:33:43', 'shared', NULL),
+	(78, 'HRD BISAAAAAAAAAA', NULL, NULL, NULL, 9, '["Staff","Manager","Supervisor","Direksi"]', 1, 'read', '2025-07-29 08:36:11', '2025-07-29 15:36:11', 'shared', NULL),
+	(79, 'tessajaaa', NULL, NULL, NULL, 9, '["Staff","Manager","Supervisor","Direksi"]', 1, 'read', '2025-07-30 01:14:17', '2025-07-30 08:14:17', 'shared', NULL),
+	(80, 'HRD buat', NULL, NULL, 40, 9, '["Staff"]', 1, 'read', '2025-07-30 02:27:21', '2025-07-30 09:27:21', 'shared', NULL),
+	(81, 'DireksiShare', NULL, NULL, 61, 3, '["Staff"]', 1, 'full', '2025-07-30 02:58:26', '2025-07-30 09:58:26', 'shared', NULL),
+	(82, 'nizartest', NULL, NULL, NULL, 3, '["Staff","Supervisor"]', 1, 'read', '2025-07-30 07:04:04', '2025-07-30 14:04:04', 'shared', NULL),
+	(83, 'nizartest2', NULL, NULL, NULL, 4, '["Direksi"]', 1, 'full', '2025-07-30 07:04:45', '2025-07-30 14:04:45', 'shared', NULL),
+	(84, 'hhhhh', NULL, NULL, 28, 6, '["Staff"]', 1, 'full', '2025-07-30 07:10:36', '2025-07-30 14:10:36', 'shared', NULL),
+	(85, 'zanbgu', NULL, NULL, 82, 6, '["Staff","Supervisor"]', 1, 'read', '2025-07-30 07:14:00', '2025-07-30 14:14:00', 'shared', NULL),
+	(86, 'hahahah', NULL, NULL, 72, 6, '["Staff"]', 1, 'full', '2025-07-30 07:14:22', '2025-07-30 14:14:22', 'shared', NULL),
+	(87, 'manager', NULL, NULL, NULL, 4, '["Staff","Supervisor"]', 1, 'full', '2025-07-30 07:16:40', '2025-07-30 14:16:40', 'shared', NULL),
+	(88, 'direksiii', NULL, NULL, NULL, 3, '["Manager"]', 1, 'full', '2025-07-30 07:18:01', '2025-07-30 14:18:01', 'shared', NULL),
+	(89, 'Bisa?', NULL, NULL, NULL, 6, '["Staff"]', 1, 'full', '2025-07-31 01:09:28', '2025-07-31 08:09:28', 'shared', NULL),
+	(90, 'Bisa tes', NULL, NULL, NULL, 6, '["Staff"]', 1, 'full', '2025-07-31 01:10:17', '2025-07-31 08:10:17', 'shared', NULL),
+	(91, 'tes buat', NULL, NULL, NULL, 6, NULL, 1, NULL, '2025-07-31 01:10:53', '2025-07-31 08:10:53', 'shared', NULL),
+	(92, 'bisa donk', NULL, NULL, NULL, 6, '["Staff"]', 1, 'full', '2025-07-31 01:36:32', '2025-07-31 08:36:32', 'shared', NULL),
+	(93, 'bisa donk', NULL, NULL, NULL, 6, '["Staff"]', 1, 'full', '2025-07-31 01:36:56', '2025-07-31 08:36:56', 'shared', NULL),
+	(94, 'Alamahoy', NULL, NULL, NULL, 6, '["Staff"]', 1, 'read', '2025-07-31 01:41:46', '2025-07-31 08:41:46', 'shared', NULL),
+	(95, 'HALLLO', NULL, NULL, NULL, 6, NULL, 1, NULL, '2025-07-31 01:42:17', '2025-07-31 08:42:17', 'shared', NULL),
+	(96, 'dsadas', NULL, NULL, NULL, 6, NULL, 1, NULL, '2025-07-31 02:02:10', '2025-07-31 09:02:10', 'shared', NULL),
+	(97, 'dm qd k', NULL, NULL, NULL, 6, NULL, 1, NULL, '2025-07-31 02:04:48', '2025-07-31 09:04:48', 'shared', NULL),
+	(98, 'zayanvcvcvcv', NULL, NULL, NULL, 6, NULL, 1, NULL, '2025-07-31 02:26:22', '2025-07-31 09:26:22', 'shared', NULL),
+	(99, 'nizarewq', NULL, NULL, 1, 6, NULL, 0, NULL, '2025-07-31 02:32:07', '2025-07-31 09:32:07', 'personal', NULL),
+	(100, 'tesrowa', NULL, NULL, NULL, 6, NULL, 1, NULL, '2025-07-31 02:35:32', '2025-07-31 09:35:32', 'shared', NULL),
+	(101, 'zxcvbnm', NULL, NULL, 94, 6, '["Staff"]', 1, 'read', '2025-07-31 02:46:04', '2025-07-31 09:46:04', 'shared', NULL),
+	(102, 'zizizi', NULL, NULL, 30, 6, '["Staff"]', 1, 'full', '2025-07-31 02:48:19', '2025-07-31 09:48:19', 'shared', NULL),
+	(103, 'zuzuzu', NULL, NULL, 102, 6, '["Staff"]', 1, 'full', '2025-07-31 02:58:50', '2025-07-31 09:58:50', 'shared', NULL),
+	(104, 'zuzuzu', NULL, NULL, 102, 6, '["Staff"]', 1, 'full', '2025-07-31 02:58:53', '2025-07-31 09:58:53', 'shared', NULL),
+	(105, 'zuzuzu', NULL, NULL, 102, 6, '["Staff"]', 1, 'full', '2025-07-31 02:59:04', '2025-07-31 09:59:04', 'shared', NULL),
+	(106, 'zuzuzu', NULL, NULL, 30, 6, '["Staff"]', 1, 'full', '2025-07-31 03:00:12', '2025-07-31 10:00:12', 'shared', NULL),
+	(107, 'zezeze', NULL, NULL, 106, 6, '["Staff"]', 1, 'full', '2025-07-31 03:00:27', '2025-07-31 10:00:27', 'shared', NULL),
+	(108, 'zozozo', NULL, NULL, 107, 6, '["Staff"]', 1, 'full', '2025-07-31 03:02:32', '2025-07-31 10:02:32', 'shared', NULL),
+	(109, 'xaxaxa', NULL, NULL, 108, 6, '["Staff"]', 1, 'full', '2025-07-31 03:03:06', '2025-07-31 10:03:06', 'shared', NULL),
+	(110, 'xixixi', NULL, NULL, 108, 6, '["Staff"]', 1, 'full', '2025-07-31 03:03:20', '2025-07-31 10:03:20', 'shared', NULL),
+	(111, 'hebfewbf', NULL, NULL, 108, 6, '["Staff"]', 1, 'full', '2025-07-31 03:10:52', '2025-07-31 10:10:52', 'shared', NULL),
+	(112, 'tanpa eror', NULL, NULL, 94, 6, '["Staff"]', 1, 'read', '2025-07-31 03:15:09', '2025-07-31 10:15:09', 'shared', NULL),
+	(113, 'qqq', NULL, NULL, 112, 6, '["Staff"]', 1, 'read', '2025-07-31 03:15:24', '2025-07-31 10:15:24', 'shared', NULL),
+	(114, 'xcvbnm', NULL, NULL, 113, 6, '["Staff"]', 1, 'read', '2025-07-31 03:30:26', '2025-07-31 10:30:26', 'shared', NULL),
+	(116, 'qwerty', NULL, NULL, 74, 3, '["Staff","Manager","Supervisor","Direksi"]', 1, 'read', '2025-07-31 03:38:14', '2025-07-31 10:38:14', 'shared', NULL),
+	(118, 'ftgvbb bbjbjjn', NULL, NULL, 78, 3, '["Staff","Manager","Supervisor","Direksi"]', 1, 'read', '2025-07-31 03:38:57', '2025-07-31 10:38:57', 'shared', NULL),
+	(122, 'ddsknjsdbhbsdhbabd', NULL, NULL, 78, 3, '["Staff","Manager","Supervisor","Direksi"]', 1, 'read', '2025-07-31 03:43:00', '2025-07-31 10:43:00', 'shared', NULL),
+	(123, 'aduabsdudbu', NULL, NULL, 78, 3, '["Staff","Manager","Supervisor","Direksi"]', 1, 'read', '2025-07-31 03:43:29', '2025-07-31 10:43:29', 'shared', NULL);
+
+-- Dumping structure for table cloudapp.folder_permissions
+CREATE TABLE IF NOT EXISTS `folder_permissions` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `folder_id` bigint DEFAULT NULL,
+  `role_id` bigint DEFAULT NULL,
+  `access_type` enum('read-only','read-write') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `folder_id` (`folder_id`),
+  KEY `role_id` (`role_id`),
+  CONSTRAINT `folder_permissions_ibfk_1` FOREIGN KEY (`folder_id`) REFERENCES `folders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `folder_permissions_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table cloudapp.folder_permissions: ~0 rows (approximately)
+
+-- Dumping structure for table cloudapp.hrd_documents
+CREATE TABLE IF NOT EXISTS `hrd_documents` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `file_id` bigint DEFAULT NULL,
+  `category` enum('SOP','SK','Pengumuman') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `file_id` (`file_id`),
+  CONSTRAINT `hrd_documents_ibfk_1` FOREIGN KEY (`file_id`) REFERENCES `files` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table cloudapp.hrd_documents: ~0 rows (approximately)
+
+-- Dumping structure for table cloudapp.log_akses_file
+CREATE TABLE IF NOT EXISTS `log_akses_file` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint NOT NULL,
+  `role` varchar(255) NOT NULL,
+  `file_id` bigint NOT NULL,
+  `file_name` varchar(255) NOT NULL,
+  `aksi` enum('preview','download') NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `file_id` (`file_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table cloudapp.log_akses_file: ~15 rows (approximately)
+REPLACE INTO `log_akses_file` (`id`, `user_id`, `role`, `file_id`, `file_name`, `aksi`, `timestamp`) VALUES
+	(1, 6, 'Staff', 14, 'TUGAS PBTGM 1 ZAYAN (7).docx', 'preview', '2025-07-25 04:32:43'),
+	(2, 6, 'Staff', 6, 'PPT USAHA KECIL.pdf', 'preview', '2025-07-25 04:32:51'),
+	(3, 6, 'Staff', 110, 'Screenshot 2025-07-21 080615.png', 'preview', '2025-07-28 07:45:34'),
+	(4, 6, 'Staff', 110, 'Screenshot 2025-07-21 080615.png', 'preview', '2025-07-28 07:49:30'),
+	(5, 10, 'Staff', 110, 'Screenshot 2025-07-21 080615.png', 'preview', '2025-07-28 07:49:56'),
+	(6, 6, 'Staff', 4, 'Screenshot 2025-07-21 082015.png', 'preview', '2025-07-30 01:33:30'),
+	(7, 6, 'Staff', 6, 'PPT USAHA KECIL.pdf', 'preview', '2025-07-30 01:33:57'),
+	(8, 6, 'Staff', 5, 'TUGAS PBTGM 1 ZAYAN.docx', 'preview', '2025-07-30 01:34:48'),
+	(9, 9, 'HRD', 110, 'Screenshot 2025-07-21 080615.png', 'preview', '2025-07-30 04:30:04'),
+	(10, 5, 'Supervisor', 110, 'Screenshot 2025-07-21 080615.png', 'preview', '2025-07-30 06:35:34'),
+	(11, 6, 'Staff', 135, 'Screenshot 2025-07-21 080615.png', 'preview', '2025-07-30 07:16:00'),
+	(12, 6, 'Staff', 136, 'Ruang Lingkup Aplikasi Dokumentasi Publikasi_Rev_1.pdf', 'preview', '2025-07-30 07:27:46'),
+	(13, 6, 'Staff', 136, 'Ruang Lingkup Aplikasi Dokumentasi Publikasi_Rev_1.pdf', 'preview', '2025-07-30 07:28:25'),
+	(14, 6, 'Staff', 136, 'Ruang Lingkup Aplikasi Dokumentasi Publikasi_Rev_1.pdf', 'preview', '2025-07-30 07:29:20'),
+	(15, 6, 'Staff', 136, 'Ruang Lingkup Aplikasi Dokumentasi Publikasi_Rev_1.pdf', 'preview', '2025-07-30 07:32:11'),
+	(16, 6, 'Staff', 137, 'Ruang Lingkup Aplikasi Dokumentasi Publikasi_Rev_1.pdf', 'preview', '2025-07-31 03:11:25');
+
+-- Dumping structure for table cloudapp.migrations
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `version` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `class` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `group` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `namespace` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `time` int NOT NULL,
+  `batch` int unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table cloudapp.migrations: ~0 rows (approximately)
+
+-- Dumping structure for table cloudapp.notifications
+CREATE TABLE IF NOT EXISTS `notifications` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `is_read` tinyint(1) DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `is_emailed` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table cloudapp.notifications: ~0 rows (approximately)
+
+-- Dumping structure for table cloudapp.password_resets
+CREATE TABLE IF NOT EXISTS `password_resets` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `idx_email` (`email`),
+  KEY `idx_token` (`token`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table cloudapp.password_resets: ~0 rows (approximately)
+
+-- Dumping structure for table cloudapp.roles
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `level` int NOT NULL,
+  `max_upload_size_mb` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table cloudapp.roles: ~6 rows (approximately)
+REPLACE INTO `roles` (`id`, `name`, `level`, `max_upload_size_mb`) VALUES
+	(1, 'Admin', 1, 1000),
+	(2, 'HRD', 2, 80),
+	(3, 'Direksi', 3, 1024),
+	(4, 'Manajer', 4, 500),
+	(5, 'Supervisor', 5, 250),
+	(6, 'Staff', 6, 100);
+
+-- Dumping structure for table cloudapp.storage_usages
+CREATE TABLE IF NOT EXISTS `storage_usages` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint NOT NULL,
+  `total_used_mb` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_user_id` (`user_id`),
+  CONSTRAINT `storage_usages_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table cloudapp.storage_usages: ~0 rows (approximately)
+
+-- Dumping structure for table cloudapp.users
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `password_hash` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `role_id` bigint DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`),
+  KEY `role_id` (`role_id`),
+  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table cloudapp.users: ~8 rows (approximately)
+REPLACE INTO `users` (`id`, `name`, `email`, `password_hash`, `role_id`, `is_active`, `created_at`, `updated_at`) VALUES
+	(1, 'admin_uss', 'admin@uss.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1, 1, '2025-07-16 00:17:30', '0000-00-00 00:00:00'),
+	(3, 'direksi_budi', 'budi.direksi@uss.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3, 1, '2025-07-16 00:17:30', '0000-00-00 00:00:00'),
+	(4, 'manager_dina', 'dina.manager@uss.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 4, 1, '2025-07-16 00:17:30', '0000-00-00 00:00:00'),
+	(5, 'spv_eko', 'eko.spv@uss.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 5, 1, '2025-07-16 00:17:30', '0000-00-00 00:00:00'),
+	(6, 'staff_fitri', 'fitri.staff@uss.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 6, 1, '2025-07-16 00:17:30', '0000-00-00 00:00:00'),
+	(8, 'olvy', 'olvy.hrd@uss.com', '$2y$10$3gFnJbcdO8hhR3fjCQpUx.aL2PdyUUhxzBbZRWmqrN8bhWghcs.hG', 2, 1, '2025-07-23 08:45:44', '2025-07-23 08:45:44'),
+	(9, 'citra', 'citra.hrd@uss.com', '$2y$10$we4SmIRIX8wTIs7UKzsHbONVzd9fwNXpVXch0cv5rGQIxIKEIAHUq', 2, 1, '2025-07-24 01:38:04', '2025-07-24 01:38:04'),
+	(10, 'nizar', 'hadabi@uss.com', '$2y$10$jS6YtVJnqiL2DXDoVTZTS.XvG1bVDbjqUtGNqonGI3oVUCiUL0Tqm', 6, 1, '2025-07-24 09:18:55', '2025-07-30 01:18:38');
+
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;

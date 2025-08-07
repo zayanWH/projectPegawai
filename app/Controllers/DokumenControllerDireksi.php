@@ -116,6 +116,55 @@ class DokumenControllerDireksi extends BaseController
         }
     }
 
+    public function uploadFromFolder()
+    {
+        $userId = $this->session->get('user_id');
+        if (!$userId) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Unauthorized'], 401);
+        }
+
+        $file = $this->request->getFile('file');
+        $relativePath = $this->request->getPost('relativePath');
+        $parentIdPost = $this->request->getPost('parent_id');
+        $rootParentId = ($parentIdPost === 'null' || $parentIdPost === null || $parentIdPost === '') ? null : $parentIdPost;
+
+        if (!$file || !$file->isValid() || empty($relativePath)) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'File atau path tidak valid.'], 400);
+        }
+
+        $pathParts = explode('/', $relativePath);
+        $fileName = array_pop($pathParts);
+        $folderPath = implode('/', $pathParts);
+
+        // Cari atau buat folder tujuan
+        $targetFolderId = $this->folderModel->findOrCreateByPath($folderPath, $rootParentId, $userId);
+
+        if ($targetFolderId === null) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal membuat struktur folder di server.'], 500);
+        }
+
+        // Ambil info SEBELUM memindahkan file
+        $fileMimeType = $file->getMimeType();
+        $fileSize = $file->getSize();
+        $newName = $file->getRandomName();
+
+        // Simpan file
+        if ($file->move(WRITEPATH . 'uploads', $newName)) {
+            $data = [
+                'folder_id' => $targetFolderId,
+                'uploader_id' => $userId,
+                'file_name' => $fileName,
+                'file_path' => $newName,
+                'file_size' => $fileSize,
+                'file_type' => $fileMimeType,
+            ];
+            $this->fileModel->insert($data);
+            return $this->response->setJSON(['status' => 'success']);
+        }
+
+        return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal memindahkan file.'], 500);
+    }
+
     public function dashboard()
     {
         $session = session();
@@ -311,7 +360,10 @@ class DokumenControllerDireksi extends BaseController
 
     public function dokumenUmum()
     {
-        return view('Umum/dokumenUmum');
+        $hrdDocumentModel = new \App\Models\HrdDocumentModel();
+        $data['documents'] = $hrdDocumentModel->getByParent(null); // Mengambil dokumen root level
+        $data['parent_id'] = null;
+        return view('Umum/dokumenUmum', $data);
     }
 
     public function viewFolder($folderId = null) // Tambahkan parameter $folderId
@@ -326,27 +378,38 @@ class DokumenControllerDireksi extends BaseController
             return redirect()->to(base_url('login'))->with('error', 'Anda harus login untuk mengakses folder.');
         }
 
+        // ✅ PERBAIKAN DI SINI: Dapatkan nama peran (role_name) dari sesi
+        // atau dari database jika sesi hanya menyimpan role_id
+        $userRoleName = $this->session->get('role_name');
+        // Jika sesi hanya menyimpan role_id, Anda perlu mengambil nama dari database:
+        // $userRoleId = $this->session->get('role_id');
+        // $userRoleData = $this->roleModel->find($userRoleId);
+        // $userRoleName = $userRoleData['name'] ?? 'Guest'; // Fallback jika tidak ditemukan
+
         $currentFolder = $this->folderModel->find($folderId);
 
         if (!$currentFolder) {
             throw PageNotFoundException::forPageNotFound('Folder tidak ditemukan.');
         }
 
+        // Validasi akses untuk folder personal Manager
         if ($currentFolder['folder_type'] === 'personal' && $currentFolder['owner_id'] !== $userId) {
             return redirect()->to(base_url('direksi/dokumen-direksi'))->with('error', 'Anda tidak memiliki akses ke folder personal ini.');
         }
 
-        if ($currentFolder['folder_type'] === 'shared' && $currentFolder['owner_id'] !== $userId) {
-            $userRole = $this->session->get('user_role');
+        // Validasi akses untuk folder shared
+        if ($currentFolder['folder_type'] === 'shared') {
             $accessRoles = json_decode($currentFolder['access_roles'] ?? '[]', true);
 
-            if (empty($accessRoles) || !in_array($userRole, $accessRoles)) {
+            // ✅ Gunakan $userRoleName di sini
+            if (empty($accessRoles) || !in_array($userRoleName, $accessRoles)) {
                 return redirect()->to(base_url('direksi/dokumen-direksi'))->with('error', 'Anda tidak memiliki izin untuk folder shared ini.');
             }
         }
 
-        $subFolders = $this->folderModel->where('parent_id', $folderId)->findAll();
-        $filesInFolder = $this->fileModel->where('folder_id', $folderId)->findAll();
+        // ✅ Gunakan $userRoleName saat memanggil model
+        $subFolders = $this->folderModel->getSubfoldersWithDetails($folderId, $userId, $userRoleName);
+        $filesInFolder = $this->fileModel->getFilesByFolderWithUploader($folderId);
         $breadcrumbs = $this->folderModel->getBreadcrumbs($folderId);
 
         $data = [
@@ -360,9 +423,8 @@ class DokumenControllerDireksi extends BaseController
             'filesInFolder' => $filesInFolder,
             'breadcrumbs' => $breadcrumbs,
             'isStaffFolder' => false,
-            'isSupervisorFolder' => false,
-            'isManagerFolder' => false, // NEW: Add this if you want to use it in view
-            'canDireksiFolder' => true, // Ini untuk memberi tahu view Direksi bisa mengelola fitur Direksi
+            'isSupervisorFolder' => false, // Tambahkan ini jika belum ada
+            'canManageFolder' => true,
         ];
 
         return view('Direksi/viewFolder', $data);

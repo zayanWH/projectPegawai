@@ -24,62 +24,7 @@
     </div>
 </div>
 
-<div class="bg-white rounded-lg shadow-sm p-6 mb-6">
-    <form action="<?= url_to('hrd_activity_logs') ?>" method="GET">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-start gap-4">
-            <div class="relative">
-                <label for="startDate" class="sr-only">Tanggal Awal</label>
-                <input type="text"
-                    id="startDate"
-                    name="start_date"
-                    placeholder="Dari Tanggal"
-                    class="w-40 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer pr-10"
-                    value="<?= esc($startDate ?? '') ?>">
-                <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h.01M12 11h.01M15 11h.01M7 15h.01M11 15h.01M15 15h.01M17 19H7a2 2 0 01-2-2V5a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2z"></path>
-                    </svg>
-                </div>
-            </div>
 
-            <div class="flex-shrink-0">
-                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                </svg>
-            </div>
-
-            <div class="relative">
-                <label for="endDate" class="sr-only">Tanggal Akhir</label>
-                <input type="text"
-                    id="endDate"
-                    name="end_date"
-                    placeholder="Ke Tanggal"
-                    class="w-40 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer pr-10"
-                    value="<?= esc($endDate ?? '') ?>">
-                <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h.01M12 11h.01M15 11h.01M7 15h.01M11 15h.01M15 15h.01M17 19H7a2 2 0 01-2-2V5a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2z"></path>
-                    </svg>
-                </div>
-            </div>
-
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 text-sm flex items-center gap-1 flex-shrink-0">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V19a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
-                </svg>
-                Filter
-            </button>
-            <?php if (!empty($startDate) || !empty($endDate) || !empty($searchQuery)): ?>
-                <a href="<?= url_to('hrd_activity_logs') ?>" class="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500 text-sm flex items-center gap-1 flex-shrink-0">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                    Reset Filter
-                </a>
-            <?php endif; ?>
-        </div>
-    </form>
-</div>
 
 <div class="bg-white rounded-lg shadow-sm">
     <div class="p-6 border-b border-gray-200">

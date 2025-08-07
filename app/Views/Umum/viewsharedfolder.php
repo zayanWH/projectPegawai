@@ -320,7 +320,7 @@
                     return;
                 }
 
-                fetch('<?= base_url('staff/create-folder') ?>', {
+                fetch('<?= base_url('umum/create-folder') ?>', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -363,7 +363,7 @@
                 formData.append('file_upload', file);
                 formData.append('folder_id', window.currentFolderId); // Unggah ke folder yang sedang dilihat
 
-                fetch('<?= base_url('staff/upload-file') ?>', {
+                fetch('<?= base_url('umum/upload-file') ?>', {
                     method: 'POST',
                     body: formData,
                     headers: {

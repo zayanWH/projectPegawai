@@ -63,14 +63,14 @@ class DokumenControllerManager extends BaseController
         // --- Ambil Tanggal Terakhir Upload berdasarkan role_id = 6 ---
         // Folder
         $latestFolderUpload = $folderModel->selectMax('created_at')
-                                          ->whereIn('owner_id', $staffUserIds)
-                                          ->first();
+            ->whereIn('owner_id', $staffUserIds)
+            ->first();
         $latestFolderDate = $latestFolderUpload['created_at'] ?? null;
 
         // File
         $latestFileUpload = $fileModel->selectMax('created_at')
-                                      ->whereIn('uploader_id', $staffUserIds)
-                                      ->first();
+            ->whereIn('uploader_id', $staffUserIds)
+            ->first();
         $latestFileDate = $latestFileUpload['created_at'] ?? null;
 
         // Tentukan tanggal upload paling terbaru dari kedua jenis item
@@ -89,55 +89,55 @@ class DokumenControllerManager extends BaseController
         // --- Ambil 10 Item Terbaru (file dan folder) berdasarkan role_id = 6 ---
         // Folders
         $folders = $folderModel->select("id, name, created_at, owner_id as uploader_id, 'folder' as type")
-                               ->whereIn('owner_id', $staffUserIds)
-                               ->orderBy('created_at', 'DESC')
-                               ->findAll();
-        
+            ->whereIn('owner_id', $staffUserIds)
+            ->orderBy('created_at', 'DESC')
+            ->findAll();
+
         // Files
         $files = $fileModel->select("id, file_name as name, created_at, uploader_id, 'file' as type")
-                           ->whereIn('uploader_id', $staffUserIds)
-                           ->orderBy('created_at', 'DESC')
-                           ->findAll();
-        
+            ->whereIn('uploader_id', $staffUserIds)
+            ->orderBy('created_at', 'DESC')
+            ->findAll();
+
         $recentItems = array_merge($folders, $files);
-        
+
         // Urutkan gabungan item berdasarkan tanggal pembuatan
-        usort($recentItems, function($a, $b) {
+        usort($recentItems, function ($a, $b) {
             return strtotime($b['created_at']) - strtotime($a['created_at']);
         });
-        
+
         // Ambil hanya 10 item teratas
         $recentItems = array_slice($recentItems, 0, 10);
 
         // --- Ambil semua personal folders untuk user yang sedang login (Tidak berubah, tetap personal) ---
         $personalFolders = $folderModel->where('owner_id', $userId)
-                                       ->where('folder_type', 'personal')
-                                       ->findAll();
+            ->where('folder_type', 'personal')
+            ->findAll();
 
         // --- Ambil file yang tidak terkait dengan folder (orphan files) oleh user Staff ---
         $orphanFiles = $fileModel->where('folder_id IS NULL')
-                                 ->whereIn('uploader_id', $staffUserIds) // Pastikan ini juga difilter
-                                 ->findAll();
+            ->whereIn('uploader_id', $staffUserIds) // Pastikan ini juga difilter
+            ->findAll();
 
         $data = [
-            'personalFolders'    => $personalFolders,
-            'folderId'           => null, // Sesuaikan jika ada logika untuk ini
-            'folderType'         => null, // Sesuaikan jika ada logika untuk ini
-            'isShared'           => null, // Sesuaikan jika ada logika untuk ini
-            'sharedType'         => null, // Sesuaikan jika ada logika untuk ini
-            'orphanFiles'        => $orphanFiles,
-            'totalFolders'       => $totalFolders,
-            'totalFiles'         => $totalFiles,
-            'latestUploadDate'   => $formattedLatestUpload,
-            'recentItems'        => $recentItems,
-            'currentRoleName'    => $userRole
+            'personalFolders' => $personalFolders,
+            'folderId' => null, // Sesuaikan jika ada logika untuk ini
+            'folderType' => null, // Sesuaikan jika ada logika untuk ini
+            'isShared' => null, // Sesuaikan jika ada logika untuk ini
+            'sharedType' => null, // Sesuaikan jika ada logika untuk ini
+            'orphanFiles' => $orphanFiles,
+            'totalFolders' => $totalFolders,
+            'totalFiles' => $totalFiles,
+            'latestUploadDate' => $formattedLatestUpload,
+            'recentItems' => $recentItems,
+            'currentRoleName' => $userRole
         ];
 
         return view('Manager/dashboard', $data);
     }
 
-    
-    
+
+
 
     public function dokumenManager()
     {
@@ -148,22 +148,22 @@ class DokumenControllerManager extends BaseController
         }
 
         $personalFolders = $this->folderModel->where('owner_id', $userId)
-                                             ->where('parent_id', NULL)
-                                             ->where('folder_type', 'personal')
-                                             ->findAll();
+            ->where('parent_id', NULL)
+            ->where('folder_type', 'personal')
+            ->findAll();
 
         $orphanFiles = $this->fileModel->where('uploader_id', $userId)
-                                         ->where('folder_id', NULL)
-                                         ->findAll();
+            ->where('folder_id', NULL)
+            ->findAll();
 
         $data = [
-            'title'           => 'Dokumen Saya',
+            'title' => 'Dokumen Saya',
             'personalFolders' => $personalFolders,
-            'orphanFiles'     => $orphanFiles,
-            'isStaffFolder'   => false,      // Bukan folder staff
+            'orphanFiles' => $orphanFiles,
+            'isStaffFolder' => false,      // Bukan folder staff
             'isSupervisorFolder' => false,   // Bukan folder supervisor
             'canManageFolder' => true,       // Manager bisa mengelola folder pribadinya
-            'folderId'        => null,       // Root folder, jadi tidak ada folderId spesifik
+            'folderId' => null,       // Root folder, jadi tidak ada folderId spesifik
         ];
 
         return view('Manager/dokumenManager', $data);
@@ -176,7 +176,10 @@ class DokumenControllerManager extends BaseController
 
     public function dokumenUmum()
     {
-        return view('Umum/dokumenUmum');
+        $hrdDocumentModel = new \App\Models\HrdDocumentModel();
+        $data['documents'] = $hrdDocumentModel->getByParent(null); // Mengambil dokumen root level
+        $data['parent_id'] = null;
+        return view('Umum/dokumenUmum', $data);
     }
 
     public function viewFolder($folderId = null)
@@ -191,6 +194,14 @@ class DokumenControllerManager extends BaseController
             return redirect()->to(base_url('login'))->with('error', 'Anda harus login untuk mengakses folder.');
         }
 
+        // ✅ PERBAIKAN DI SINI: Dapatkan nama peran (role_name) dari sesi
+        // atau dari database jika sesi hanya menyimpan role_id
+        $userRoleName = $this->session->get('role_name');
+        // Jika sesi hanya menyimpan role_id, Anda perlu mengambil nama dari database:
+        // $userRoleId = $this->session->get('role_id');
+        // $userRoleData = $this->roleModel->find($userRoleId);
+        // $userRoleName = $userRoleData['name'] ?? 'Guest'; // Fallback jika tidak ditemukan
+
         $currentFolder = $this->folderModel->find($folderId);
 
         if (!$currentFolder) {
@@ -199,37 +210,37 @@ class DokumenControllerManager extends BaseController
 
         // Validasi akses untuk folder personal Manager
         if ($currentFolder['folder_type'] === 'personal' && $currentFolder['owner_id'] !== $userId) {
-            // Jika mencoba akses folder personal orang lain, arahkan ke dashboard Manager
             return redirect()->to(base_url('manager/dokumen-manager'))->with('error', 'Anda tidak memiliki akses ke folder personal ini.');
         }
 
         // Validasi akses untuk folder shared
         if ($currentFolder['folder_type'] === 'shared') {
-            $userRole = $this->session->get('role_id'); // Mengambil role_id dari sesi
             $accessRoles = json_decode($currentFolder['access_roles'] ?? '[]', true);
 
-            if (empty($accessRoles) || !in_array($userRole, $accessRoles)) {
+            // ✅ Gunakan $userRoleName di sini
+            if (empty($accessRoles) || !in_array($userRoleName, $accessRoles)) {
                 return redirect()->to(base_url('manager/dokumen-manager'))->with('error', 'Anda tidak memiliki izin untuk folder shared ini.');
             }
         }
 
-        $subFolders = $this->folderModel->where('parent_id', $folderId)->findAll();
-        $filesInFolder = $this->fileModel->where('folder_id', $folderId)->findAll();
+        // ✅ Gunakan $userRoleName saat memanggil model
+        $subFolders = $this->folderModel->getSubfoldersWithDetails($folderId, $userId, $userRoleName);
+        $filesInFolder = $this->fileModel->getFilesByFolderWithUploader($folderId);
         $breadcrumbs = $this->folderModel->getBreadcrumbs($folderId);
 
         $data = [
-            'title'           => 'Folder: ' . $currentFolder['name'],
-            'folderName'      => $currentFolder['name'],
-            'folderId'        => $currentFolder['id'],
-            'isShared'        => (bool)$currentFolder['is_shared'],
-            'sharedType'      => $currentFolder['shared_type'],
-            'folderType'      => $currentFolder['folder_type'],
-            'subFolders'      => $subFolders,
-            'filesInFolder'   => $filesInFolder,
-            'breadcrumbs'     => $breadcrumbs,
-            'isStaffFolder'   => false,         // Bukan folder staff
-            'isSupervisorFolder' => false,      // Bukan folder supervisor
-            'canManageFolder' => true,          // Manager bisa mengelola folder pribadinya
+            'title' => 'Folder: ' . $currentFolder['name'],
+            'folderName' => $currentFolder['name'],
+            'folderId' => $currentFolder['id'],
+            'isShared' => (bool) $currentFolder['is_shared'],
+            'sharedType' => $currentFolder['shared_type'],
+            'folderType' => $currentFolder['folder_type'],
+            'subFolders' => $subFolders,
+            'filesInFolder' => $filesInFolder,
+            'breadcrumbs' => $breadcrumbs,
+            'isStaffFolder' => false,
+            'isSupervisorFolder' => false, // Tambahkan ini jika belum ada
+            'canManageFolder' => true,
         ];
 
         return view('Manager/viewFolder', $data);
@@ -250,15 +261,15 @@ class DokumenControllerManager extends BaseController
         $staffUserIds = array_column($staffUsers, 'id');
 
         $data = [
-            'title'             => 'Dokumen Seluruh Staff',
-            'personalFolders'   => [],
-            'orphanFiles'       => [],
-            'currentUserId'     => $userId,
-            'currentRole'       => $this->session->get('user_role'),
-            'isStaffFolder'     => true, // Ini adalah halaman daftar dokumen staff
+            'title' => 'Dokumen Seluruh Staff',
+            'personalFolders' => [],
+            'orphanFiles' => [],
+            'currentUserId' => $userId,
+            'currentRole' => $this->session->get('user_role'),
+            'isStaffFolder' => true, // Ini adalah halaman daftar dokumen staff
             'isSupervisorFolder' => false, // Bukan halaman daftar dokumen supervisor
-            'canManageFolder'   => false, // Manager tidak mengelola di halaman daftar ini
-            'folderId'          => null, // Tidak ada folder spesifik di halaman daftar
+            'canManageFolder' => false, // Manager tidak mengelola di halaman daftar ini
+            'folderId' => null, // Tidak ada folder spesifik di halaman daftar
         ];
 
         if (!empty($staffUserIds)) {
@@ -300,15 +311,15 @@ class DokumenControllerManager extends BaseController
         $spvUserIds = array_column($spvUsers, 'id');
 
         $data = [
-            'title'              => 'Dokumen Seluruh Supervisor',
-            'personalFolders'    => [],
-            'orphanFiles'        => [],
-            'currentUserId'      => $userId,
-            'currentRole'        => $this->session->get('user_role'),
-            'isStaffFolder'      => false, // Bukan halaman daftar dokumen staff
+            'title' => 'Dokumen Seluruh Supervisor',
+            'personalFolders' => [],
+            'orphanFiles' => [],
+            'currentUserId' => $userId,
+            'currentRole' => $this->session->get('user_role'),
+            'isStaffFolder' => false, // Bukan halaman daftar dokumen staff
             'isSupervisorFolder' => true,  // Ini adalah halaman daftar dokumen supervisor
-            'canManageFolder'    => false, // Manager tidak mengelola di halaman daftar ini
-            'folderId'           => null, // Tidak ada folder spesifik di halaman daftar
+            'canManageFolder' => false, // Manager tidak mengelola di halaman daftar ini
+            'folderId' => null, // Tidak ada folder spesifik di halaman daftar
         ];
 
         if (!empty($spvUserIds)) {
@@ -384,19 +395,19 @@ class DokumenControllerManager extends BaseController
         }
 
         $data = [
-            'title'              => 'Folder Staff: ' . $currentFolder['name'],
-            'folderName'         => $currentFolder['name'],
-            'folderId'           => $currentFolder['id'],
-            'isShared'           => (bool)$currentFolder['is_shared'],
-            'sharedType'         => $currentFolder['shared_type'],
-            'folderType'         => $currentFolder['folder_type'],
-            'subFolders'         => $subFolders,
-            'filesInFolder'      => $filesInFolder,
-            'breadcrumbs'        => $breadcrumbs,
-            'isStaffFolder'      => true,       // Flag ini menyatakan ini adalah folder Staff
+            'title' => 'Folder Staff: ' . $currentFolder['name'],
+            'folderName' => $currentFolder['name'],
+            'folderId' => $currentFolder['id'],
+            'isShared' => (bool) $currentFolder['is_shared'],
+            'sharedType' => $currentFolder['shared_type'],
+            'folderType' => $currentFolder['folder_type'],
+            'subFolders' => $subFolders,
+            'filesInFolder' => $filesInFolder,
+            'breadcrumbs' => $breadcrumbs,
+            'isStaffFolder' => true,       // Flag ini menyatakan ini adalah folder Staff
             'isSupervisorFolder' => false,      // Bukan folder Supervisor
-            'canManageFolder'    => false,      // Manager tidak bisa mengelola (hanya lihat) folder Personal Staff
-            'targetUserId'       => $currentFolder['owner_id'], // ID Staff yang memiliki folder ini
+            'canManageFolder' => false,      // Manager tidak bisa mengelola (hanya lihat) folder Personal Staff
+            'targetUserId' => $currentFolder['owner_id'], // ID Staff yang memiliki folder ini
         ];
 
         return view('Manager/viewFolder', $data);
@@ -451,19 +462,19 @@ class DokumenControllerManager extends BaseController
         }
 
         $data = [
-            'title'              => 'Folder Supervisor: ' . $currentFolder['name'],
-            'folderName'         => $currentFolder['name'],
-            'folderId'           => $currentFolder['id'],
-            'isShared'           => (bool)$currentFolder['is_shared'],
-            'sharedType'         => $currentFolder['shared_type'],
-            'folderType'         => $currentFolder['folder_type'],
-            'subFolders'         => $subFolders,
-            'filesInFolder'      => $filesInFolder,
-            'breadcrumbs'        => $breadcrumbs,
-            'isStaffFolder'      => false,      // Bukan folder Staff
+            'title' => 'Folder Supervisor: ' . $currentFolder['name'],
+            'folderName' => $currentFolder['name'],
+            'folderId' => $currentFolder['id'],
+            'isShared' => (bool) $currentFolder['is_shared'],
+            'sharedType' => $currentFolder['shared_type'],
+            'folderType' => $currentFolder['folder_type'],
+            'subFolders' => $subFolders,
+            'filesInFolder' => $filesInFolder,
+            'breadcrumbs' => $breadcrumbs,
+            'isStaffFolder' => false,      // Bukan folder Staff
             'isSupervisorFolder' => true,       // Flag ini menyatakan ini adalah folder Supervisor
-            'canManageFolder'    => false,      // Manager tidak bisa mengelola (hanya lihat) folder Personal Supervisor
-            'targetUserId'       => $currentFolder['owner_id'], // ID Supervisor yang memiliki folder ini
+            'canManageFolder' => false,      // Manager tidak bisa mengelola (hanya lihat) folder Personal Supervisor
+            'targetUserId' => $currentFolder['owner_id'], // ID Supervisor yang memiliki folder ini
         ];
 
         return view('Manager/viewFolder', $data);
@@ -515,15 +526,15 @@ class DokumenControllerManager extends BaseController
         }
 
         $data = [
-            'name'         => $folderName,
-            'parent_id'    => $parentId,
-            'owner_id'     => $targetUserId, // Gunakan targetUserId (bisa ID Manager, Staff, atau SPV)
-            'folder_type'  => $folderType,
-            'is_shared'    => (int)$isShared,
-            'shared_type'  => ((int)$isShared === 1) ? $sharedType : null,
-            'access_roles' => ((int)$isShared === 1 && !empty($accessRoles)) ? json_encode($accessRoles) : null,
-            'created_at'   => date('Y-m-d H:i:s'),
-            'updated_at'   => date('Y-m-d H:i:s'),
+            'name' => $folderName,
+            'parent_id' => $parentId,
+            'owner_id' => $targetUserId, // Gunakan targetUserId (bisa ID Manager, Staff, atau SPV)
+            'folder_type' => $folderType,
+            'is_shared' => (int) $isShared,
+            'shared_type' => ((int) $isShared === 1) ? $sharedType : null,
+            'access_roles' => ((int) $isShared === 1 && !empty($accessRoles)) ? json_encode($accessRoles) : null,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
         ];
 
         if ($this->folderModel->insert($data)) {
@@ -599,15 +610,15 @@ class DokumenControllerManager extends BaseController
         // Pindahkan file
         if ($file->move($targetFolderPath, $newName)) {
             $data = [
-                'file_name'     => $originalName,
+                'file_name' => $originalName,
                 'server_file_name' => $newName,
-                'file_type'     => $mimeType,
-                'file_size'     => $fileSize,
-                'folder_id'     => $folderId,
-                'uploader_id'   => $userId,      // Uploader adalah Manager yang login
-                'owner_id'      => $targetUserId, // Owner bisa Staff/Supervisor jika di folder mereka
-                'created_at'    => date('Y-m-d H:i:s'),
-                'updated_at'    => date('Y-m-d H:i:s'),
+                'file_type' => $mimeType,
+                'file_size' => $fileSize,
+                'folder_id' => $folderId,
+                'uploader_id' => $userId,      // Uploader adalah Manager yang login
+                'owner_id' => $targetUserId, // Owner bisa Staff/Supervisor jika di folder mereka
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ];
 
             if ($this->fileModel->insert($data)) {
@@ -621,6 +632,55 @@ class DokumenControllerManager extends BaseController
         } else {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal memindahkan file ke direktori upload.']);
         }
+    }
+
+    public function uploadFromFolder()
+    {
+        $userId = $this->session->get('user_id');
+        if (!$userId) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Unauthorized'], 401);
+        }
+
+        $file = $this->request->getFile('file');
+        $relativePath = $this->request->getPost('relativePath');
+        $parentIdPost = $this->request->getPost('parent_id');
+        $rootParentId = ($parentIdPost === 'null' || $parentIdPost === null || $parentIdPost === '') ? null : $parentIdPost;
+
+        if (!$file || !$file->isValid() || empty($relativePath)) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'File atau path tidak valid.'], 400);
+        }
+
+        $pathParts = explode('/', $relativePath);
+        $fileName = array_pop($pathParts);
+        $folderPath = implode('/', $pathParts);
+
+        // Cari atau buat folder tujuan
+        $targetFolderId = $this->folderModel->findOrCreateByPath($folderPath, $rootParentId, $userId);
+
+        if ($targetFolderId === null) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal membuat struktur folder di server.'], 500);
+        }
+
+        // Ambil info SEBELUM memindahkan file
+        $fileMimeType = $file->getMimeType();
+        $fileSize = $file->getSize();
+        $newName = $file->getRandomName();
+
+        // Simpan file
+        if ($file->move(WRITEPATH . 'uploads', $newName)) {
+            $data = [
+                'folder_id' => $targetFolderId,
+                'uploader_id' => $userId,
+                'file_name' => $fileName,
+                'file_path' => $newName,
+                'file_size' => $fileSize,
+                'file_type' => $fileMimeType,
+            ];
+            $this->fileModel->insert($data);
+            return $this->response->setJSON(['status' => 'success']);
+        }
+
+        return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal memindahkan file.'], 500);
     }
 
     public function search()
@@ -757,8 +817,8 @@ class DokumenControllerManager extends BaseController
         }
 
         return $this->response->setJSON($formattedResults);
-    } 
-    
+    }
+
     public function downloadFile($fileId)
     {
         log_message('info', 'Mencoba mengunduh file dengan ID: ' . $fileId);
@@ -858,9 +918,9 @@ class DokumenControllerManager extends BaseController
         $isNativePreviewable = in_array($fileExtension, ['pdf', 'png', 'jpg', 'jpeg', 'gif', 'txt', 'html']);
 
         $data = [
-            'fileId'     => $fileId,
-            'fileName'   => $file['file_name'],
-            'file'       => $file, // Kirim objek file lengkap untuk info lain
+            'fileId' => $fileId,
+            'fileName' => $file['file_name'],
+            'file' => $file, // Kirim objek file lengkap untuk info lain
             // 'creator'    => $creator, // Jika Anda ingin menampilkan info pembuat
         ];
 

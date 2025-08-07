@@ -454,28 +454,33 @@ function showInfoDetailModal() {
 
 // PERBAIKAN: Ganti semua currentFileData menjadi currentFileData
 function fillModalWithCurrentData() {
+    console.log('DEBUG: Fungsi fillModalWithCurrentData dipanggil');
+    console.log('DEBUG: currentFileData saat modal dibuka', currentFileData);
+
     const nameElement = document.getElementById('detailName');
     if (nameElement) {
         nameElement.textContent = currentFileData.name || 'N/A';
     }
 
     let jenisText = 'N/A';
-    
-    // PERBAIKAN: Cek itemType untuk membedakan file atau folder
-    if (currentFileData.itemType === 'file') {
-        // Untuk file, tampilkan jenis file berdasarkan ekstensi
-        if (currentFileData.type) {
-            jenisText = currentFileData.type.toUpperCase() + ' File';
-        } else {
-            // Ambil ekstensi dari nama file
+
+    // Pastikan type sudah diset dengan benar saat data diambil
+    // Misal: currentFileData.type = 'file' atau 'folder'
+
+    if (currentFileData.type === 'file') {
+        // UNTUK FILE
+        // Ambil ekstensi dari nama file. Ini adalah cara yang paling andal.
+        if (currentFileData.name) {
             const extension = currentFileData.name.split('.').pop().toUpperCase();
             jenisText = extension + ' File';
+        } else {
+            jenisText = 'Jenis File Tidak Diketahui';
         }
-    } else {
-        // Untuk folder
+    } else if (currentFileData.type === 'folder') {
+        // UNTUK FOLDER
         if (currentFileData.folder_type === 'personal') {
             jenisText = 'Folder Personal';
-        } else if (currentFileData.folder_type === 'shared' || currentFileData.isShared == '1') {
+        } else if (currentFileData.folder_type === 'shared' || currentFileData.isShared === '1') {
             jenisText = 'Folder Berbagi';
             if (currentFileData.sharedType) {
                 jenisText += ` (${currentFileData.sharedType === 'full' ? 'Akses Penuh' : 'Hanya Baca'})`;
@@ -484,25 +489,29 @@ function fillModalWithCurrentData() {
             jenisText = 'Folder Biasa';
         }
     }
-    
-    const jenisElement = document.getElementById('detailJenis');
-    if (jenisElement) {
-        jenisElement.textContent = jenisText;
-    }
+
+const jenisElement = document.getElementById('detailJenis');
+if (jenisElement) {
+    jenisElement.textContent = jenisText;
+}
 
     const ukuranElement = document.getElementById('detailUkuran');
-    if (ukuranElement) {
-        if (currentFileData.itemType === 'file') {
-            // Untuk file, tampilkan ukuran file
-            if (currentFileData.size) {
-                ukuranElement.textContent = formatFileSize(currentFileData.size);
+    
+    if (ukuranElement) { // Pastikan elemen ditemukan
+        if (currentFileData.type === 'file') {
+            const fileSize = Number(currentFileData.size);
+            
+            // Log ini untuk memastikan nilai fileSize sudah menjadi angka
+            console.log('DEBUG: Nilai fileSize setelah konversi:', fileSize);
+            
+            if (fileSize > 0) {
+                ukuranElement.textContent = formatFileSize(fileSize);
             } else {
-                ukuranElement.textContent = 'N/A';
+                ukuranElement.textContent = '0 KB';
             }
         } else {
-            // Untuk folder, hitung ukuran folder
-            ukuranElement.textContent = 'Menghitung...';
-            calculateFolderSize(currentFileData.id);
+            ukuranElement.textContent = 'Tidak tersedia';
+            // atau 'Menghitung...' jika kamu memiliki logika untuk folder
         }
     }
 
@@ -554,6 +563,16 @@ function fillModalWithCurrentData() {
             updatedElement.textContent = 'N/A';
         }
     }
+}
+
+function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
 }
 
 // Fungsi untuk mengambil nama user berdasarkan ID

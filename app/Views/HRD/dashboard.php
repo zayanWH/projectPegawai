@@ -7,7 +7,6 @@
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-4">
             <h1 class="text-2xl font-semibold text-gray-800">Dashboard HRD</h1>
-            <span class="text-sm text-gray-500">Selamat datang, <?= esc($userName) ?></span>
         </div>
         
         <!-- Notification Badge -->
