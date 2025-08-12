@@ -9,6 +9,7 @@ use CodeIgniter\Controller; // Jika DokumenControllerSPV bukan turunan BaseContr
 use CodeIgniter\Session\Session; // Import Session class jika belum
 use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\I18n\Time;
+use CodeIgniter\Database\RawSql;
 
 class DokumenControllerDireksi extends BaseController
 {
@@ -279,24 +280,70 @@ class DokumenControllerDireksi extends BaseController
     public function dokumenDireksi()
     {
         $userId = $this->session->get('user_id');
+        $userRoleId = $this->session->get('role_id');
+        $userRoleName = $this->session->get('role_name');
 
         if (!$userId) {
-            return redirect()->to(base_url('login'))->with('error', 'Anda harus login untuk mengakses dokumen.');
+            return redirect()->to(base_url('login'))->with('error', 'Anda harus login untuk mengakses dokumen pribadi Anda.');
         }
 
-        $personalFolders = $this->folderModel->where('owner_id', $userId)
-            ->where('parent_id', NULL)
-            ->where('folder_type', 'personal')
-            ->findAll();
+        // Ambil ID peran HRD dan Manager dari database
+        $hrdRole = $this->roleModel->where('name', 'HRD')->first();
+        $hrdRoleId = $hrdRole ? $hrdRole['id'] : null;
 
-        $orphanFiles = $this->fileModel->where('uploader_id', $userId)
+        $direksiRole = $this->roleModel->where('name', 'Direksi')->first();
+        $direksiRoleId = $direksiRole ? $direksiRole['id'] : null;
+
+        // Ambil semua ID user yang memiliki peran HRD
+        $hrdUserIds = [];
+        if ($hrdRoleId) {
+            $hrdUsers = $this->userModel->where('role_id', $hrdRoleId)->findAll();
+            $hrdUserIds = array_column($hrdUsers, 'id');
+        }
+
+        // --- Mulai Builder Query untuk Mengambil Folder ---
+        $builder = $this->folderModel
+            ->select('folders.*, owner_user.name as owner_display, owner_role.name as owner_role_name')
+            // ✅ Perbaikan: Gunakan alias yang unik untuk tabel users dan roles
+            ->join('users owner_user', 'owner_user.id = folders.owner_id', 'left')
+            ->join('roles owner_role', 'owner_role.id = folders.owner_role', 'left')
+            ->where('folders.parent_id', NULL);
+
+        $builder->groupStart();
+        // Kondisi 1: Folder personal milik Manajer sendiri
+        $builder->where('folders.owner_id', $userId);
+
+        // Kondisi 2: Folder yang dibuat HRD DAN owner_role-nya adalah Manajer
+        $builder->orGroupStart()
+            ->whereIn('folders.owner_id', $hrdUserIds)
+            ->where('folders.owner_role', $direksiRoleId)
+            ->groupEnd();
+
+        // Kondisi 3: Folder yang di-share ke peran Manajer
+        $builder->orGroupStart()
+            ->where('folders.is_shared', 1)
+            ->where(new RawSql("JSON_CONTAINS(folders.access_roles, '\"{$userRoleId}\"')"))
+            ->groupEnd();
+
+        // Kondisi 4: Folder public
+        $builder->orWhere('folders.folder_type', 'public');
+        $builder->groupEnd();
+
+        $personalFolders = $builder->findAll();
+
+        $orphanFiles = $this->fileModel
+            ->where('uploader_id', $userId)
             ->where('folder_id', NULL)
+            ->orderBy('file_name', 'ASC')
             ->findAll();
 
         $data = [
-            'title' => 'Dokumen Saya',
+            'title' => 'Dokumen Pribadi Saya (Manager)',
             'personalFolders' => $personalFolders,
             'orphanFiles' => $orphanFiles,
+            'currentFolderId' => null,
+            'currentUserId' => $userId,
+            'userRoleName' => $userRoleName,
         ];
 
         return view('Direksi/dokumenDireksi', $data);
@@ -366,25 +413,20 @@ class DokumenControllerDireksi extends BaseController
         return view('Umum/dokumenUmum', $data);
     }
 
-    public function viewFolder($folderId = null) // Tambahkan parameter $folderId
+    public function viewFolder($folderId = null)
     {
+        // Cek folder ID
         if ($folderId === null) {
             throw PageNotFoundException::forPageNotFound('Folder ID tidak ditentukan.');
         }
 
         $userId = $this->session->get('user_id');
+        $userRoleId = $this->session->get('role_id'); // Ambil role_id dari sesi
+        $userRoleName = $this->session->get('role_name');// Fallback jika tidak ditemukan
 
         if (!$userId) {
             return redirect()->to(base_url('login'))->with('error', 'Anda harus login untuk mengakses folder.');
         }
-
-        // ✅ PERBAIKAN DI SINI: Dapatkan nama peran (role_name) dari sesi
-        // atau dari database jika sesi hanya menyimpan role_id
-        $userRoleName = $this->session->get('role_name');
-        // Jika sesi hanya menyimpan role_id, Anda perlu mengambil nama dari database:
-        // $userRoleId = $this->session->get('role_id');
-        // $userRoleData = $this->roleModel->find($userRoleId);
-        // $userRoleName = $userRoleData['name'] ?? 'Guest'; // Fallback jika tidak ditemukan
 
         $currentFolder = $this->folderModel->find($folderId);
 
@@ -392,39 +434,77 @@ class DokumenControllerDireksi extends BaseController
             throw PageNotFoundException::forPageNotFound('Folder tidak ditemukan.');
         }
 
-        // Validasi akses untuk folder personal Manager
-        if ($currentFolder['folder_type'] === 'personal' && $currentFolder['owner_id'] !== $userId) {
-            return redirect()->to(base_url('direksi/dokumen-direksi'))->with('error', 'Anda tidak memiliki akses ke folder personal ini.');
+        $ownerRoleId = $currentFolder['owner_role'] ?? null;
+        $hasAccess = false;
+        $canManageFolder = false;
+
+        // --- LOGIKA OTORISASI UNIVERSAL ---
+
+        // Kondisi 1: Pengguna adalah pemilik folder itu sendiri, tidak peduli folder_type-nya apa
+        if ((int) $currentFolder['owner_id'] === (int) $userId) {
+            $hasAccess = true;
+            $canManageFolder = true; // Pemilik selalu bisa manage
         }
-
-        // Validasi akses untuk folder shared
-        if ($currentFolder['folder_type'] === 'shared') {
+        // Kondisi 2: Folder dibagikan (is_shared = 1) dan peran pengguna ada di access_roles
+        else if ((int) $currentFolder['is_shared'] === 1) {
             $accessRoles = json_decode($currentFolder['access_roles'] ?? '[]', true);
+            $canManageFolder = true;
 
-            // ✅ Gunakan $userRoleName di sini
-            if (empty($accessRoles) || !in_array($userRoleName, $accessRoles)) {
-                return redirect()->to(base_url('direksi/dokumen-direksi'))->with('error', 'Anda tidak memiliki izin untuk folder shared ini.');
+            // Pastikan semua role ID di access_roles adalah string untuk perbandingan yang konsisten
+            $stringAccessRoles = is_array($accessRoles) ? array_map('strval', $accessRoles) : [];
+
+            // Cek apakah userRoleId (sebagai string) ada di access_roles
+            if (in_array((string) $userRoleId, $stringAccessRoles)) {
+                $hasAccess = true;
+
+                // Logika canManageFolder untuk shared folder
+                // Asumsi: shared_type 'write' atau 'full_access' memungkinkan manajemen
+                if ($currentFolder['shared_type'] === 'write' || $currentFolder['shared_type'] === 'full_access') {
+                    $canManageFolder = true;
+                }
             }
         }
+        // Kondisi 3: Folder bersifat public
+        else if ($currentFolder['folder_type'] === 'public') {
+            $hasAccess = true;
+            $canManageFolder = false; // Public folder tidak bisa dimanage oleh semua orang
+        }
 
-        // ✅ Gunakan $userRoleName saat memanggil model
-        $subFolders = $this->folderModel->getSubfoldersWithDetails($folderId, $userId, $userRoleName);
+        // Jika tidak ada akses, redirect ke halaman dokumen utama role tersebut
+        if (!$hasAccess) {
+            // Redirect ke halaman dokumen utama SPV
+            return redirect()->to(base_url('supervisor/dokumen-supervisor'))->with('error', 'Anda tidak memiliki akses ke folder ini.');
+        }
+
+        // --- AKHIR LOGIKA OTORISASI ---
+
+        // Mengambil data untuk folder dan file
+        // Menggunakan $userRoleId karena fungsi model membutuhkan ID peran (integer)
+        $subFolders = $this->folderModel->getSubfoldersWithDetails($folderId, $userId, $userRoleId);
         $filesInFolder = $this->fileModel->getFilesByFolderWithUploader($folderId);
         $breadcrumbs = $this->folderModel->getBreadcrumbs($folderId);
 
+        // Menyesuaikan URL breadcrumbs untuk Direksi
+        foreach ($breadcrumbs as &$crumb) {
+            $crumb['url'] = base_url('direksi/folder/' . $crumb['id']);
+        }
+        unset($crumb); // Sangat penting untuk unset reference setelah loop
+
         $data = [
-            'title' => 'Folder: ' . $currentFolder['name'],
-            'folderName' => $currentFolder['name'],
-            'folderId' => $currentFolder['id'],
-            'isShared' => (bool) $currentFolder['is_shared'],
-            'sharedType' => $currentFolder['shared_type'],
-            'folderType' => $currentFolder['folder_type'],
-            'subFolders' => $subFolders,
-            'filesInFolder' => $filesInFolder,
-            'breadcrumbs' => $breadcrumbs,
-            'isStaffFolder' => false,
-            'isSupervisorFolder' => false, // Tambahkan ini jika belum ada
-            'canManageFolder' => true,
+            'title'              => 'Folder: ' . $currentFolder['name'],
+            'folderName'         => $currentFolder['name'],
+            'folderId'           => $currentFolder['id'],
+            'isShared'           => (bool) $currentFolder['is_shared'],
+            'sharedType'         => $currentFolder['shared_type'],
+            'folderType'         => $currentFolder['folder_type'],
+            'subFolders'         => $subFolders,
+            'filesInFolder'      => $filesInFolder,
+            'breadcrumbs'        => $breadcrumbs,
+            'isStaffFolder'      => false,
+            'isSupervisorFolder' => false,
+            'isManagerFolder'    => false,// Menandakan ini adalah folder untuk Direksi
+            'canDireksiFolder'    => $canManageFolder,
+            'userRoleName'       => $userRoleName,
         ];
 
         return view('Direksi/viewFolder', $data);

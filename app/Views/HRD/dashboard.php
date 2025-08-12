@@ -134,71 +134,7 @@
         </div>
     </div>
     
-    <!-- Quick Actions & System Status -->
-    <div class="space-y-6">
-        <!-- Quick Actions -->
-        <div class="bg-white rounded-lg shadow-sm p-6">
-            <h2 class="text-lg font-semibold text-gray-800 mb-4">Aksi Cepat</h2>
-            <div class="space-y-3">
-                <a href="<?= base_url('hrd/dokumen-umum') ?>" class="flex items-center p-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-gray-50 border border-gray-200">
-                    <svg class="w-5 h-5 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
-                    </svg>
-                    Kelola Dokumen
-                </a>
-                
-                <a href="<?= base_url('hrd/notifications/dashboard') ?>" class="flex items-center p-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-gray-50 border border-gray-200">
-                    <svg class="w-5 h-5 text-green-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5-5-5h5V3h0z"></path>
-                    </svg>
-                    Test Notifikasi
-                </a>
-                
-                <button onclick="testNotificationSystem()" class="w-full flex items-center p-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-gray-50 border border-gray-200">
-                    <svg class="w-5 h-5 text-yellow-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                    </svg>
-                    Test WebSocket
-                </button>
-            </div>
-        </div>
-        
-        <!-- System Status -->
-        <div class="bg-white rounded-lg shadow-sm p-6">
-            <h2 class="text-lg font-semibold text-gray-800 mb-4">Status Sistem</h2>
-            <div class="space-y-3">
-                <div class="flex items-center justify-between">
-                    <span class="text-sm text-gray-600">WebSocket</span>
-                    <span id="websocket-status" class="text-sm text-red-500">🔴 Terputus</span>
-                </div>
-                <div class="flex items-center justify-between">
-                    <span class="text-sm text-gray-600">Database</span>
-                    <span class="text-sm text-green-500">🟢 Aktif</span>
-                </div>
-                <div class="flex items-center justify-between">
-                    <span class="text-sm text-gray-600">Email Service</span>
-                    <span class="text-sm text-yellow-500">🟡 Siap</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Notification System Info -->
-        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <div class="flex">
-                <div class="flex-shrink-0">
-                    <svg class="h-5 w-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                </div>
-                <div class="ml-3">
-                    <h3 class="text-sm font-medium text-blue-800">Sistem Notifikasi Realtime</h3>
-                    <div class="mt-2 text-sm text-blue-700">
-                        <p>Sistem notifikasi WebSocket dan email Gmail telah diaktifkan. Upload file akan otomatis mengirim notifikasi ke semua user.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </div>
 
 <script>

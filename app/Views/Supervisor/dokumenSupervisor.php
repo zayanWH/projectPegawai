@@ -475,7 +475,7 @@
                         return;
                     }
 
-                    fetch('<?= base_url('supervisor/create-folder') ?>', {
+                    fetch('<?= base_url('folders/create') ?>', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

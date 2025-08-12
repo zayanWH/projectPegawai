@@ -8,12 +8,14 @@
         </div>
         <div class="flex items-center space-x-4">
             <div class="relative">
-                <input type="text" 
-                       placeholder="Masukkan file dokumen..." 
-                       class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <input type="text"
+                    id="searchInput"
+                    placeholder="Masukkan file dokumen..."
+                    class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                 <svg class="absolute right-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
+                <div id="searchResults" class="absolute z-20 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-lg hidden"></div>
             </div>
             <img src="<?= base_url('images/logo.png') ?>" alt="Logo USSI" class="h-10 w-auto rounded-lg">
         </div>
@@ -117,32 +119,35 @@
         <table class="w-full">
             <thead class="bg-blue-600">
                 <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Nama Folder</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Tipe Folder</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Tanggal Dibuat</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Nama Folder
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Tipe Folder
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Tanggal
+                        Dibuat</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
                 <?php if (!empty($personalFolders)): ?>
                     <?php foreach ($personalFolders as $folder): ?>
-                        <tr class="hover:bg-gray-50"
-                            data-folder-id="<?= esc($folder['id']) ?>"
-                            data-folder-name="<?= esc($folder['name']) ?>"
-                            data-folder-type="<?= esc($folder['folder_type']) ?>"
+                        <tr class="hover:bg-gray-50" data-folder-id="<?= esc($folder['id']) ?>"
+                            data-folder-name="<?= esc($folder['name']) ?>" data-folder-type="<?= esc($folder['folder_type']) ?>"
                             data-folder-is-shared="<?= esc($folder['is_shared'] ?? 0) ?>"
                             data-folder-shared-type="<?= esc($folder['shared_type'] ?? '') ?>"
                             data-folder-owner-id="<?= esc($folder['owner_id']) ?>"
-                            data-folder-owner-name="<?= esc($folder['owner_display'] ?? 'Unknown') ?>" data-folder-created-at="<?= esc($folder['created_at']) ?>"
+                            data-folder-owner-name="<?= esc($folder['owner_display'] ?? 'Unknown') ?>"
+                            data-folder-created-at="<?= esc($folder['created_at']) ?>"
                             data-folder-updated-at="<?= esc($folder['updated_at']) ?>"
                             data-folder-path="<?= esc($folder['path'] ?? $folder['name']) ?>">
 
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <a href="<?= base_url('manager/view-folder/' . $folder['id']) ?>"
+                                <a href="<?= base_url('hrd/view-manager-folder/' . $folder['id']) ?>"
                                     class="block h-full w-full text-sm text-gray-900 hover:text-blue-700 hover:underline">
                                     <div class="flex items-center">
                                         <svg class="w-5 h-5 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"></path>
+                                            <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z">
+                                            </path>
                                         </svg>
                                         <?= esc($folder['name']) ?>
                                     </div>
@@ -171,117 +176,13 @@
         </table>
     </div>
 
-    <?php if (!empty($orphanFiles)): ?>
-        <div class="bg-white rounded-lg shadow-sm mt-6">
-            <div class="p-6 border-b border-gray-200">
-                <h2 class="text-lg font-semibold text-gray-800 flex items-center">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                    </svg>
-                    File Tanpa Folder
-                </h2>
-            </div>
-            <div class="overflow-x-auto">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-blue-600">
-                        <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Nama File</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Diupload Oleh</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Jenis</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Ukuran</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Tanggal Unggah</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        <?php foreach ($orphanFiles as $file): ?>
-                            <tr class="hover:bg-gray-50">
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <?php
-                                        $fileExtension = pathinfo($file['original_name'] ?? $file['file_name'], PATHINFO_EXTENSION);
-                                        $iconSvg = '';
-                                        switch (strtolower($fileExtension)) {
-                                            case 'pdf':
-                                                $iconSvg = '<svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"></path></svg>';
-                                                break;
-                                            case 'doc':
-                                            case 'docx':
-                                                $iconSvg = '<svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a2 2 0 00-2 2v4a2 2 0 002 2h2a2 2 0 002-2V4a2 2 0 00-2-2H9z"></path><path d="M5 9a2 2 0 00-2 2v4a2 2 0 002 2h10a2 2 0 002-2v-4a2 2 0 00-2-2H5z"></path></svg>';
-                                                break;
-                                            case 'xls':
-                                            case 'xlsx':
-                                                $iconSvg = '<svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM6 8v6h2V8H6zm4 0v6h2V8h-2zm4 0v6h2V8h-2z"></path></svg>';
-                                                break;
-                                            case 'png':
-                                            case 'jpg':
-                                            case 'jpeg':
-                                            case 'gif':
-                                                $iconSvg = '<svg class="w-5 h-5 text-purple-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-4 4 4 4-4v4z" clip-rule="evenodd"></path></svg>';
-                                                break;
-                                            default:
-                                                $iconSvg = '<svg class="w-5 h-5 text-gray-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>';
-                                                break;
-                                        }
-                                        echo $iconSvg;
-                                        ?>
-                                        <span class="text-sm text-gray-900"><?= esc($file['original_name'] ?? $file['file_name']) ?></span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                    <div class="flex items-center">
-                                        <div class="flex-shrink-0 h-6 w-6">
-                                            <div class="h-6 w-6 rounded-full bg-green-500 flex items-center justify-center">
-                                                <span class="text-xs font-medium text-white">
-                                                    <?= strtoupper(substr($file['uploader_display'] ?? 'U', 0, 1)) ?> </span>
-                                            </div>
-                                        </div>
-                                        <div class="ml-2">
-                                            <div class="text-sm font-medium text-gray-900">
-                                                <?= esc($file['uploader_display'] ?? 'Unknown') ?> </div>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                    <?= esc(strtoupper($fileExtension)) ?> File
-                                </td>
-
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                    <?= esc(round($file['file_size'] / 1024, 2)) ?> KB
-                                </td>
-
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                    <?= date('d M Y', strtotime($file['created_at'])) ?>
-                                </td>
-
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    <a href="<?= base_url('manager/download-file/' . $file['id']) ?>"
-                                        class="text-blue-600 hover:text-blue-900 mr-2">Unduh</a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    <?php endif; ?>
 
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Definisi variabel global dari PHP
-    // Pastikan variabel ini benar-benar ada dan dikirim dari controller Anda
-    // Misalnya, di DokumenControllerManager.php di method dokumenManager:
-    // $data = [
-    //     ...,
-    //     'currentFolderId' => $currentFolderId ?? null, // Sesuaikan jika ada parent folder
-    //     'currentUserId' => $userId,
-    //     'userRoleName' => $userRoleName,
-    //     'roleIds' => $roleIds // Jika Anda ingin menyediakan map role_name ke role_id
-    // ];
+
     window.currentFolderId = <?= json_encode($currentFolderId ?? null) ?>;
     window.currentUserId = <?= json_encode($currentUserId ?? null) ?>;
     window.currentUserRole = <?= json_encode($userRoleName ?? null) ?>;
@@ -545,7 +446,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            fetch('<?= base_url('manager/create-folder') ?>', {
+            fetch('<?= base_url('hrd/create-folder-manager') ?>', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -674,7 +575,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            fetch('<?= site_url('staff/search') ?>', {
+            fetch('<?= site_url('manager/search') ?>', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -690,12 +591,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         const a = document.createElement('a');
                         let url = '#';
                         if (item.type === 'folder') {
-                            url = `<?= site_url('staff/folder/') ?>${item.id}`;
+                            url = `<?= site_url('manager/view-folder/') ?>${item.id}`;
                         } else {
                             if (item.folder_id) {
-                                url = `<?= site_url('staff/folder/') ?>${item.folder_id}`;
+                                url = `<?= site_url('manager/view-folder/') ?>${item.folder_id}`;
                             } else {
-                                url = `<?= site_url('staff/dokumen-staff') ?>`;
+                                url = `<?= site_url('manager/dokumen-manager') ?>`;
                             }
                         }
                         a.href = url;

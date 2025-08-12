@@ -27,77 +27,82 @@ class Folder extends Controller
         if (!$this->request->isAJAX()) {
             return $this->failForbidden('Akses ditolak: Hanya melalui AJAX.');
         }
+
         $json = $this->request->getJSON();
         if (empty($json)) {
             return $this->failValidationErrors(['data' => 'Tidak ada data JSON yang diterima.']);
         }
+
         $ownerId = session()->get('user_id');
+        $ownerRoleId = session()->get('role_id');
+
         if (!$ownerId) {
             return $this->failUnauthorized('Pengguna tidak terautentikasi.');
         }
+
         $rules = [
             'name' => 'required|min_length[3]|max_length[255]',
             'folder_type' => 'required|in_list[personal,shared]',
-            'is_shared' => 'required|in_list[0,1]',
-            'owner_id' => 'required|integer',
+            'parent_id' => 'permit_empty|integer',
         ];
 
-        if (isset($json->folder_type) && $json->folder_type === 'shared') {
-            $rules['shared_type'] = 'required|in_list[full,read]';
-            $rules['access_roles'] = 'permit_empty|array';
-        } else {
-            $rules['shared_type'] = 'permit_empty';
-            $rules['access_roles'] = 'permit_empty';
-        }
-        $validationData = (array) $json;
-        $validationData['owner_id'] = $ownerId;
-
+        $validationData = (array)$json;
         if (!$this->validate($rules, [], $validationData)) {
             return $this->failValidationErrors($this->validator->getErrors());
         }
 
+        // Asumsi ID Role HRD adalah 2
+        $hrdRoleId = 2;
+
         $dataToSave = [
             'name' => $json->name,
+            'parent_id' => $json->parent_id ?? null,
             'folder_type' => $json->folder_type,
-            'is_shared' => $json->is_shared,
-            'shared_type' => ($json->folder_type === 'shared') ? $json->shared_type : null,
             'owner_id' => $ownerId,
-            'access_roles' => null,
+            'owner_role' => $ownerRoleId,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
         ];
 
-        if ($json->folder_type === 'shared' && isset($json->access_roles) && is_array($json->access_roles)) {
-            $dataToSave['access_roles'] = json_encode($json->access_roles);
+        // Logika utama perbaikan
+        if ($json->folder_type === 'personal') {
+            $dataToSave['is_shared'] = 1;
+            $dataToSave['shared_type'] = 'role_based';
+
+            // 🔥 PERBAIKAN DI SINI: Cast ID role ke string sebelum dimasukkan ke array
+            $dataToSave['access_roles'] = json_encode([(string)$ownerRoleId, (string)$hrdRoleId]);
+        } else {
+            $isShared = ($json->folder_type === 'shared') ? 1 : 0;
+            $dataToSave['is_shared'] = $isShared;
+            $dataToSave['shared_type'] = $json->shared_type ?? 'read_write';
+
+            if (isset($json->access_roles) && is_array($json->access_roles)) {
+                // Perbaiki juga di sini jika ada kemungkinan nilai integer
+                $stringAccessRoles = array_map('strval', $json->access_roles);
+                $dataToSave['access_roles'] = json_encode($stringAccessRoles);
+            } else {
+                $dataToSave['access_roles'] = null;
+            }
         }
 
-        $folderModel = new FolderModel();
-
+        $folderModel = new \App\Models\FolderModel();
         try {
             if ($folderModel->insert($dataToSave)) {
-                // Setelah insert, buat folder fisik di server
                 $newFolderId = $folderModel->getInsertID();
                 $relativePath = $folderModel->getFolderPath($newFolderId);
-                log_message('debug', 'getFolderPath menghasilkan: ' . $relativePath);
                 $folderPath = WRITEPATH . 'uploads/' . $relativePath;
-                log_message('debug', 'Akan membuat folder di: ' . $folderPath);
                 if (!is_dir($folderPath)) {
                     if (!mkdir($folderPath, 0777, true)) {
-                        log_message('error', 'mkdir gagal untuk: ' . $folderPath);
-                        return $this->fail('Gagal membuat folder fisik di server: ' . $folderPath, 500);
-                    } else {
-                        log_message('debug', 'mkdir sukses untuk: ' . $folderPath);
+                        $folderModel->delete($newFolderId);
+                        return $this->fail('Gagal membuat folder fisik di server.', 500);
                     }
                 }
-
-                // 🔥 LOG ACTIVITY - FOLDER CREATED
-                // KODE DIPERBARUI: Menambahkan nama folder ($json->name) ke log
-                $this->activityLogsModel->logActivity($ownerId, 'create_folder', 'folder', $newFolderId, $json->name);
                 return $this->respondCreated(['status' => 'success', 'message' => 'Folder berhasil dibuat.']);
             } else {
                 $errors = $folderModel->errors();
                 return $this->fail('Gagal membuat folder: ' . implode(', ', $errors), 500);
             }
         } catch (\Exception $e) {
-            log_message('error', 'Error creating folder: ' . $e->getMessage());
             return $this->fail('Terjadi kesalahan server saat membuat folder.', 500);
         }
     }

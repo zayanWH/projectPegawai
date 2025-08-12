@@ -27,23 +27,16 @@ class DokumenControllerAdmin extends BaseController
 
     public function index()
     {
-        // Mendapatkan total jumlah folder
         $totalFolders = $this->folderModel->countAllResults();
 
-        // Mendapatkan total jumlah file
         $totalFiles = $this->fileModel->countAllResults();
 
-        // Mendapatkan total jumlah user
         $totalUsers = $this->userModel->countAllResults();
 
-        // --- Perhitungan Total Penyimpanan Terpakai ---
         $totalUsedStorageKB = 0;
-        
-        // Cek apakah method getTotalFileSize ada di FileModel
+
         if (method_exists($this->fileModel, 'getTotalFileSize')) {
-            // Asumsi method ini mengembalikan total dalam bytes
             $totalUsedStorageBytes = $this->fileModel->getTotalFileSize();
-            // Perbaiki konversi dari bytes ke KB
             $totalUsedStorageKB = $totalUsedStorageBytes / 1024;
         } else {
             // Jika method belum ada, gunakan perhitungan manual atau dummy data

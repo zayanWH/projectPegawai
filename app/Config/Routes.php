@@ -77,6 +77,7 @@ $routes->group('hrd', ['filter' => 'auth:2'], function ($routes) {
     $routes->get('file/download/(:num)', 'DokumenControllerHRD::downloadFile/$1');
     $routes->get('file/serve/(:num)', 'DokumenControllerHRD::serveFile/$1');
     $routes->get('file/view/(:num)', 'DokumenControllerHRD::viewFile/$1');
+    $routes->get('file/viewFile/(:num)', 'DokumenControllerHRD::viewFile/$1'); // Rute yang ditambahkan
     $routes->post('hrd/createFolder', 'DokumenControllerHRD::createFolder');
     $routes->post('upload-from-folder', 'DokumenControllerHRD::uploadFromFolder');
     $routes->post('view-staff-folder/(:num)/api/upload-file', 'DokumenControllerHRD::uploadFile');
@@ -84,6 +85,13 @@ $routes->group('hrd', ['filter' => 'auth:2'], function ($routes) {
     $routes->get('dokumen-umum/folder/(:num)', 'DokumenControllerHRD::dokumenUmumFolder/$1');
     $routes->post('dokumen-umum/create-folder', 'DokumenControllerHRD::createFolderUmum');
     $routes->post('dokumen-umum/upload-file', 'DokumenControllerHRD::uploadFileUmum');
+    $routes->post('create-folder-staff', 'DokumenControllerHRD::createPersonalFolderForStaff');
+    $routes->post('create-folder-spv', 'DokumenControllerHRD::createPersonalFolderForSPV');
+    $routes->post('create-folder-manager', 'DokumenControllerHRD::createPersonalFolderForManager');
+    $routes->post('create-folder-direksi', 'DokumenControllerHRD::createPersonalFolderForDireksi');
+    $routes->get('view-supervisor-folder/(:num)', 'DokumenControllerHRD::viewSupervisorFolder/$1');
+    $routes->get('view-manager-folder/(:num)', 'DokumenControllerHRD::viewManagerFolder/$1');
+    $routes->get('view-direksi-folder/(:num)', 'DokumenControllerHRD::viewDireksiFolder/$1');
 
     // Notification Routes - HRD Only
     $routes->get('notifications/dashboard', 'NotificationController::dashboard');

@@ -5011,3 +5011,1695 @@ DEBUG - 2025-08-07 11:24:16 --> DokumenControllerStaff::dokumenBersama(): User I
 DEBUG - 2025-08-07 11:24:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2025-08-07 11:24:38 --> User logged out. Session destroyed.
 DEBUG - 2025-08-07 11:24:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:14:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:16:43 --> Login proses method called
+INFO - 2025-08-07 13:16:43 --> Email: olvy.hrd@uss.com
+INFO - 2025-08-07 13:16:43 --> Password length: 8
+INFO - 2025-08-07 13:16:44 --> User found: YES
+INFO - 2025-08-07 13:16:44 --> User role_id: 2
+INFO - 2025-08-07 13:16:44 --> Password verified successfully
+DEBUG - 2025-08-07 13:16:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:16:44 --> Session set for user_id: 8
+INFO - 2025-08-07 13:16:44 --> Redirecting to hrd dashboard
+DEBUG - 2025-08-07 13:16:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:16:44 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:16:44 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:16:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:16:48 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:16:48 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:16:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:16:49 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:16:49 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:16:49 --> DokumenControllerStaff::dokumenBersama(): User ID: 8, Role ID: 2, Nama Role: HRD
+DEBUG - 2025-08-07 13:16:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:16:51 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:16:51 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:16:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:16:52 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:16:52 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:16:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:16:53 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:16:53 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:19:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:19:51 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:19:51 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-07 13:19:52 --> ErrorException: Undefined variable $personalFolders
+[Method: GET, Route: hrd/dokumen-manager]
+in APPPATH\Views\HRD\dokumenManager.php on line 121.
+ 1 APPPATH\Views\HRD\dokumenManager.php(121): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $personalFolders', 'C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenManager.php', 121)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenManager.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('hrd/dokumenManager', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(1097): view('hrd/dokumenManager', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenManager()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-07 13:21:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:21:40 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:21:40 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:22:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:22:17 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:22:17 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:22:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:22:33 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:22:33 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:22:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:22:36 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:22:36 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:22:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:22:51 --> User logged out. Session destroyed.
+DEBUG - 2025-08-07 13:22:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:23:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:23:10 --> AuthFilter: User not logged in. Redirecting to /login
+DEBUG - 2025-08-07 13:23:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:23:18 --> Login proses method called
+INFO - 2025-08-07 13:23:18 --> Email: dina.manager@uss.com
+INFO - 2025-08-07 13:23:18 --> Password length: 8
+INFO - 2025-08-07 13:23:18 --> User found: YES
+INFO - 2025-08-07 13:23:18 --> User role_id: 4
+INFO - 2025-08-07 13:23:18 --> Password verified successfully
+DEBUG - 2025-08-07 13:23:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:23:18 --> Session set for user_id: 4
+INFO - 2025-08-07 13:23:18 --> Redirecting to manager dashboard
+DEBUG - 2025-08-07 13:23:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:23:18 --> AuthFilter: User is logged in. Current role_id: 4
+INFO - 2025-08-07 13:23:18 --> AuthFilter: User with role_id 4 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:23:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:23:20 --> AuthFilter: User is logged in. Current role_id: 4
+INFO - 2025-08-07 13:23:20 --> AuthFilter: User with role_id 4 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:23:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:23:22 --> AuthFilter: User is logged in. Current role_id: 4
+INFO - 2025-08-07 13:23:22 --> AuthFilter: User with role_id 4 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:23:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:23:23 --> AuthFilter: User is logged in. Current role_id: 4
+INFO - 2025-08-07 13:23:23 --> AuthFilter: User with role_id 4 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:23:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:23:50 --> AuthFilter: User is logged in. Current role_id: 4
+INFO - 2025-08-07 13:23:50 --> AuthFilter: User with role_id 4 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:24:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:24:16 --> AuthFilter: User is logged in. Current role_id: 4
+INFO - 2025-08-07 13:24:16 --> AuthFilter: User with role_id 4 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:24:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:24:18 --> AuthFilter: User is logged in. Current role_id: 4
+INFO - 2025-08-07 13:24:18 --> AuthFilter: User with role_id 4 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:24:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:24:19 --> AuthFilter: User is logged in. Current role_id: 4
+INFO - 2025-08-07 13:24:19 --> AuthFilter: User with role_id 4 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:24:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:24:21 --> AuthFilter: User is logged in. Current role_id: 4
+INFO - 2025-08-07 13:24:21 --> AuthFilter: User with role_id 4 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:24:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:24:37 --> AuthFilter: User is logged in. Current role_id: 4
+INFO - 2025-08-07 13:24:37 --> AuthFilter: User with role_id 4 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:24:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:24:40 --> AuthFilter: User is logged in. Current role_id: 4
+INFO - 2025-08-07 13:24:40 --> AuthFilter: User with role_id 4 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:24:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:24:49 --> User logged out. Session destroyed.
+DEBUG - 2025-08-07 13:24:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:24:57 --> Login proses method called
+INFO - 2025-08-07 13:24:57 --> Email: olvy.hrd@uss.com
+INFO - 2025-08-07 13:24:57 --> Password length: 8
+INFO - 2025-08-07 13:24:57 --> User found: YES
+INFO - 2025-08-07 13:24:57 --> User role_id: 2
+INFO - 2025-08-07 13:24:57 --> Password verified successfully
+DEBUG - 2025-08-07 13:24:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:24:57 --> Session set for user_id: 8
+INFO - 2025-08-07 13:24:57 --> Redirecting to hrd dashboard
+DEBUG - 2025-08-07 13:24:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:24:57 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:24:57 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:25:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:25:00 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:25:00 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:25:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:25:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:25:16 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:25:16 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:25:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:25:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:25:27 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:25:27 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:26:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:26:19 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:26:19 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:26:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:26:38 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:26:38 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:26:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:26:53 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:26:53 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:26:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:26:55 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:26:55 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:26:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:26:56 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:26:56 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:27:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:27:17 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:27:17 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:27:17 --> DokumenControllerHRD::dokumenStaff(): User ID: 8, Role Name: 
+DEBUG - 2025-08-07 13:27:17 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 126
+DEBUG - 2025-08-07 13:27:17 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 20
+DEBUG - 2025-08-07 13:27:17 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"205","folder_id":null,"uploader_id":"5","file_name":"PPT USAHA KECIL.pdf","server_file_name":"","file_size":"226297","file_type":"application\/pdf","created_at":"2025-08-06 15:29:15","updated_at":"2025-08-06 15:29:15","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-07 13:27:17 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL
+WARNING - 2025-08-07 13:27:17 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:27:17 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:27:17 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:27:17 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:27:17 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:27:17 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-07 13:27:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:27:35 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:27:35 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:27:35 --> DokumenControllerHRD::dokumenStaff(): User ID: 8, Role Name: 
+DEBUG - 2025-08-07 13:27:35 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 126
+DEBUG - 2025-08-07 13:27:35 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 20
+DEBUG - 2025-08-07 13:27:35 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"205","folder_id":null,"uploader_id":"5","file_name":"PPT USAHA KECIL.pdf","server_file_name":"","file_size":"226297","file_type":"application\/pdf","created_at":"2025-08-06 15:29:15","updated_at":"2025-08-06 15:29:15","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-07 13:27:35 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL
+WARNING - 2025-08-07 13:27:35 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:27:35 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:27:35 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:27:35 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:27:35 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:27:35 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-07 13:27:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:27:36 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:27:36 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:27:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:27:37 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:27:37 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:27:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:27:43 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:27:43 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:27:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:27:54 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:27:54 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:27:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:27:56 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:27:56 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:28:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:28:03 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:28:03 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:28:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:28:04 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:28:04 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:28:04 --> DokumenControllerHRD::dokumenStaff(): User ID: 8, Role Name: 
+DEBUG - 2025-08-07 13:28:04 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 127
+DEBUG - 2025-08-07 13:28:04 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 20
+DEBUG - 2025-08-07 13:28:04 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"205","folder_id":null,"uploader_id":"5","file_name":"PPT USAHA KECIL.pdf","server_file_name":"","file_size":"226297","file_type":"application\/pdf","created_at":"2025-08-06 15:29:15","updated_at":"2025-08-06 15:29:15","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-07 13:28:04 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL
+WARNING - 2025-08-07 13:28:04 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:28:04 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:28:04 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:28:04 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:28:04 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:28:04 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-07 13:32:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:32:59 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:32:59 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:32:59 --> DokumenControllerHRD::dokumenStaff(): User ID: 8, Role Name: 
+DEBUG - 2025-08-07 13:32:59 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 127
+DEBUG - 2025-08-07 13:32:59 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 20
+DEBUG - 2025-08-07 13:32:59 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"205","folder_id":null,"uploader_id":"5","file_name":"PPT USAHA KECIL.pdf","server_file_name":"","file_size":"226297","file_type":"application\/pdf","created_at":"2025-08-06 15:29:15","updated_at":"2025-08-06 15:29:15","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-07 13:32:59 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL
+WARNING - 2025-08-07 13:32:59 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:32:59 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:32:59 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:32:59 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:32:59 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:32:59 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-07 13:33:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:33:02 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:33:02 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:33:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:33:16 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:33:16 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:33:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:33:19 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:33:19 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:34:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:34:15 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:34:15 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:34:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:34:33 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:34:33 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:34:33 --> DokumenControllerHRD::dokumenStaff(): User ID: 8, Role Name: 
+DEBUG - 2025-08-07 13:34:34 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 128
+DEBUG - 2025-08-07 13:34:34 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 20
+DEBUG - 2025-08-07 13:34:34 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"205","folder_id":null,"uploader_id":"5","file_name":"PPT USAHA KECIL.pdf","server_file_name":"","file_size":"226297","file_type":"application\/pdf","created_at":"2025-08-06 15:29:15","updated_at":"2025-08-06 15:29:15","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-07 13:34:34 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL
+WARNING - 2025-08-07 13:34:34 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:34:34 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:34:34 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:34:34 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:34:34 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:34:34 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-07 13:34:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:34:35 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:34:35 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:36:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:36:20 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:36:20 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:37:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:37:18 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:37:18 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-07 13:37:18 --> ErrorException: Undefined property: App\Controllers\DokumenControllerHRD::$session
+[Method: GET, Route: hrd/dokumen-manager]
+in APPPATH\Controllers\DokumenControllerHRD.php on line 1082.
+ 1 APPPATH\Controllers\DokumenControllerHRD.php(1082): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\DokumenControllerHRD::$session', 'C:\\laragon\\www\\projectPegawai-master\\app\\Controllers\\DokumenControllerHRD.php', 1082)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenManager()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-07 13:37:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:37:31 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:37:31 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:40:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:40:59 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:40:59 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:41:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:41:01 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:41:01 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:41:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:41:10 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:41:10 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:41:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:41:12 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:41:12 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:41:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:41:15 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:41:15 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:41:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:41:25 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:41:25 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:41:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:41:28 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:41:28 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:41:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:41:39 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:41:39 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:43:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:43:40 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:43:40 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:43:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:43:54 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:43:54 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:44:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:44:02 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:44:02 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:46:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:46:12 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:46:12 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:46:12 --> DokumenControllerHRD::dokumenStaff(): User ID: 8, Role Name: 
+DEBUG - 2025-08-07 13:46:12 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 129
+DEBUG - 2025-08-07 13:46:12 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 20
+DEBUG - 2025-08-07 13:46:12 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"205","folder_id":null,"uploader_id":"5","file_name":"PPT USAHA KECIL.pdf","server_file_name":"","file_size":"226297","file_type":"application\/pdf","created_at":"2025-08-06 15:29:15","updated_at":"2025-08-06 15:29:15","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-07 13:46:12 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL
+WARNING - 2025-08-07 13:46:12 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:46:12 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:46:12 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:46:12 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:46:12 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 13:46:12 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-07 13:49:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:49:44 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:49:44 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-07 13:49:44 --> TypeError: App\Models\FolderModel::getManagerFolders(): Argument #2 ($currentUserRole) must be of type int, null given, called in C:\laragon\www\projectPegawai-master\app\Controllers\DokumenControllerHRD.php on line 1089
+[Method: GET, Route: hrd/dokumen-manager]
+in APPPATH\Models\FolderModel.php on line 301.
+ 1 APPPATH\Controllers\DokumenControllerHRD.php(1089): App\Models\FolderModel->getManagerFolders(8, null)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenManager()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-07 13:50:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:50:38 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:50:38 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:50:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:50:49 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:50:49 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:51:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:51:05 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:51:05 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:51:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:51:07 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:51:07 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:51:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:51:21 --> User logged out. Session destroyed.
+DEBUG - 2025-08-07 13:51:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:51:30 --> Login proses method called
+INFO - 2025-08-07 13:51:30 --> Email: diana.manager@uss.com
+INFO - 2025-08-07 13:51:30 --> Password length: 8
+INFO - 2025-08-07 13:51:30 --> User found: NO
+INFO - 2025-08-07 13:51:30 --> Login failed: User not found for email: diana.manager@uss.com
+DEBUG - 2025-08-07 13:51:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:51:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:51:37 --> Login proses method called
+INFO - 2025-08-07 13:51:37 --> Email: diana.manager@uss.com
+INFO - 2025-08-07 13:51:37 --> Password length: 8
+INFO - 2025-08-07 13:51:37 --> User found: NO
+INFO - 2025-08-07 13:51:37 --> Login failed: User not found for email: diana.manager@uss.com
+DEBUG - 2025-08-07 13:51:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:51:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:51:46 --> Login proses method called
+INFO - 2025-08-07 13:51:46 --> Email: dina.manager@uss.com
+INFO - 2025-08-07 13:51:46 --> Password length: 8
+INFO - 2025-08-07 13:51:46 --> User found: YES
+INFO - 2025-08-07 13:51:46 --> User role_id: 4
+INFO - 2025-08-07 13:51:46 --> Password verified successfully
+DEBUG - 2025-08-07 13:51:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:51:46 --> Session set for user_id: 4
+INFO - 2025-08-07 13:51:46 --> Redirecting to manager dashboard
+DEBUG - 2025-08-07 13:51:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:51:46 --> AuthFilter: User is logged in. Current role_id: 4
+INFO - 2025-08-07 13:51:46 --> AuthFilter: User with role_id 4 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:51:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:51:48 --> AuthFilter: User is logged in. Current role_id: 4
+INFO - 2025-08-07 13:51:48 --> AuthFilter: User with role_id 4 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:52:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:52:26 --> AuthFilter: User is logged in. Current role_id: 4
+INFO - 2025-08-07 13:52:26 --> AuthFilter: User with role_id 4 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:52:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:52:59 --> AuthFilter: User is logged in. Current role_id: 4
+INFO - 2025-08-07 13:52:59 --> AuthFilter: User with role_id 4 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:53:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:53:00 --> AuthFilter: User is logged in. Current role_id: 4
+INFO - 2025-08-07 13:53:00 --> AuthFilter: User with role_id 4 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:53:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:53:03 --> User logged out. Session destroyed.
+DEBUG - 2025-08-07 13:53:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:53:13 --> Login proses method called
+INFO - 2025-08-07 13:53:13 --> Email: olvy.hrd@uss.com
+INFO - 2025-08-07 13:53:13 --> Password length: 8
+INFO - 2025-08-07 13:53:13 --> User found: YES
+INFO - 2025-08-07 13:53:13 --> User role_id: 2
+INFO - 2025-08-07 13:53:13 --> Password verified successfully
+DEBUG - 2025-08-07 13:53:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:53:13 --> Session set for user_id: 8
+INFO - 2025-08-07 13:53:13 --> Redirecting to hrd dashboard
+DEBUG - 2025-08-07 13:53:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:53:13 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:53:13 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:53:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:53:16 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:53:16 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:53:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:53:27 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 13:53:27 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:53:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:53:43 --> User logged out. Session destroyed.
+DEBUG - 2025-08-07 13:53:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:53:54 --> Login proses method called
+INFO - 2025-08-07 13:53:54 --> Email: eko.spv@uss.com
+INFO - 2025-08-07 13:53:54 --> Password length: 8
+INFO - 2025-08-07 13:53:54 --> User found: YES
+INFO - 2025-08-07 13:53:54 --> User role_id: 5
+INFO - 2025-08-07 13:53:54 --> Password verified successfully
+DEBUG - 2025-08-07 13:53:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:53:54 --> Session set for user_id: 5
+INFO - 2025-08-07 13:53:54 --> Redirecting to supervisor dashboard
+DEBUG - 2025-08-07 13:53:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:53:55 --> AuthFilter: User is logged in. Current role_id: 5
+DEBUG - 2025-08-07 13:53:55 --> AuthFilter: Allowed roles for this route: array (
+  0 => '5',
+)
+INFO - 2025-08-07 13:53:55 --> AuthFilter: User with role_id 5 is allowed. Proceeding.
+DEBUG - 2025-08-07 13:53:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:53:58 --> User logged out. Session destroyed.
+DEBUG - 2025-08-07 13:53:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:54:08 --> Login proses method called
+INFO - 2025-08-07 13:54:08 --> Email: budi.direksi@uss.com
+INFO - 2025-08-07 13:54:08 --> Password length: 8
+INFO - 2025-08-07 13:54:08 --> User found: YES
+INFO - 2025-08-07 13:54:08 --> User role_id: 3
+INFO - 2025-08-07 13:54:08 --> Password verified successfully
+DEBUG - 2025-08-07 13:54:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 13:54:08 --> Session set for user_id: 3
+INFO - 2025-08-07 13:54:08 --> Redirecting to direksi dashboard
+DEBUG - 2025-08-07 13:54:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:54:08 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 13:54:08 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:54:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:54:10 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 13:54:10 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:59:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:59:07 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 13:59:07 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 13:59:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 13:59:11 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 13:59:11 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:02:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:02:39 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:02:39 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:02:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:02:42 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:02:42 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:04:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:04:07 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:04:07 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:04:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:04:09 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:04:09 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:04:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:04:10 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:04:10 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:04:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:04:12 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:04:12 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:04:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:04:13 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:04:13 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:04:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:04:14 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:04:14 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:04:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:04:15 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:04:15 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:04:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:04:16 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:04:16 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:04:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:04:18 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:04:18 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:06:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:06:10 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:06:10 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:06:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:06:19 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:06:19 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:06:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:06:21 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:06:21 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:06:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:06:23 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:06:23 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:06:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:06:24 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:06:24 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:06:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:06:29 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:06:29 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:06:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:06:30 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:06:30 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:06:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:06:38 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:06:38 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:06:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:06:42 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:06:42 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:07:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:07:10 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:07:10 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:07:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:07:11 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:07:11 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:07:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:07:13 --> AuthFilter: User is logged in. Current role_id: 3
+INFO - 2025-08-07 14:07:13 --> AuthFilter: User with role_id 3 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:07:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 14:07:16 --> User logged out. Session destroyed.
+DEBUG - 2025-08-07 14:07:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 14:07:23 --> Login proses method called
+INFO - 2025-08-07 14:07:23 --> Email: olvy.hrd@uss.com
+INFO - 2025-08-07 14:07:23 --> Password length: 8
+INFO - 2025-08-07 14:07:23 --> User found: YES
+INFO - 2025-08-07 14:07:23 --> User role_id: 2
+INFO - 2025-08-07 14:07:23 --> Password verified successfully
+DEBUG - 2025-08-07 14:07:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 14:07:23 --> Session set for user_id: 8
+INFO - 2025-08-07 14:07:23 --> Redirecting to hrd dashboard
+DEBUG - 2025-08-07 14:07:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:07:23 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:07:23 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:07:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:07:25 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:07:25 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:07:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:07:52 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:07:52 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:07:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:07:54 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:07:54 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:08:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:08:19 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:08:19 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:08:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:08:50 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:08:50 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:08:51 --> DokumenControllerHRD::dokumenStaff(): User ID: 8, Role Name: 
+DEBUG - 2025-08-07 14:08:51 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 132
+DEBUG - 2025-08-07 14:08:51 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 20
+DEBUG - 2025-08-07 14:08:51 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"205","folder_id":null,"uploader_id":"5","file_name":"PPT USAHA KECIL.pdf","server_file_name":"","file_size":"226297","file_type":"application\/pdf","created_at":"2025-08-06 15:29:15","updated_at":"2025-08-06 15:29:15","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-07 14:08:51 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL
+WARNING - 2025-08-07 14:08:51 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:08:51 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:08:51 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:08:51 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:08:51 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:08:51 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-07 14:09:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:09:29 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:09:29 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:09:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:09:32 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:09:32 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:09:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:09:40 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:09:40 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-07 14:09:40 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\FolderModel::orgavgsavgderBy
+[Method: GET, Route: hrd/dokumen-manager]
+in SYSTEMPATH\Model.php on line 930.
+ 1 APPPATH\Controllers\DokumenControllerHRD.php(1105): CodeIgniter\Model->__call('orgavgsavgderBy', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenManager()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-07 14:09:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:09:47 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:09:47 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:34:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:34:43 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:34:43 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:34:43 --> DokumenControllerHRD::dokumenStaff(): User ID: 8, Role Name: 
+DEBUG - 2025-08-07 14:34:43 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 132
+DEBUG - 2025-08-07 14:34:43 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 20
+DEBUG - 2025-08-07 14:34:43 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"205","folder_id":null,"uploader_id":"5","file_name":"PPT USAHA KECIL.pdf","server_file_name":"","file_size":"226297","file_type":"application\/pdf","created_at":"2025-08-06 15:29:15","updated_at":"2025-08-06 15:29:15","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-07 14:34:43 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL
+WARNING - 2025-08-07 14:34:43 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:34:43 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:34:43 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:34:43 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:34:43 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:34:43 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-07 14:34:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:34:57 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:34:57 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:34:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:34:59 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:34:59 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:34:59 --> DokumenControllerHRD::dokumenStaff(): User ID: 8, Role Name: 
+DEBUG - 2025-08-07 14:34:59 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 133
+DEBUG - 2025-08-07 14:34:59 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 20
+DEBUG - 2025-08-07 14:34:59 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"205","folder_id":null,"uploader_id":"5","file_name":"PPT USAHA KECIL.pdf","server_file_name":"","file_size":"226297","file_type":"application\/pdf","created_at":"2025-08-06 15:29:15","updated_at":"2025-08-06 15:29:15","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-07 14:34:59 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL
+WARNING - 2025-08-07 14:34:59 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:34:59 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:34:59 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:34:59 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:34:59 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:34:59 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-07 14:35:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:35:01 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:35:01 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:36:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:36:06 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:36:06 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:36:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:36:18 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:36:18 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:36:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:36:21 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:36:21 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:37:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:37:55 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:37:55 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:37:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:37:58 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:37:58 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:38:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:38:03 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:38:03 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:39:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:39:47 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:39:47 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:39:47 --> DokumenControllerHRD::dokumenStaff(): User ID: 8, Role Name: 
+DEBUG - 2025-08-07 14:39:47 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 134
+DEBUG - 2025-08-07 14:39:47 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 20
+DEBUG - 2025-08-07 14:39:47 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"205","folder_id":null,"uploader_id":"5","file_name":"PPT USAHA KECIL.pdf","server_file_name":"","file_size":"226297","file_type":"application\/pdf","created_at":"2025-08-06 15:29:15","updated_at":"2025-08-06 15:29:15","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-07 14:39:47 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL
+WARNING - 2025-08-07 14:39:47 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:39:47 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:39:47 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:39:47 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:39:47 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-07 14:39:47 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\HRD\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\HRD\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\HRD\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('HRD/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerHRD.php(265): view('HRD/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerHRD->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerHRD))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-07 14:39:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:39:49 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:39:49 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:40:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:40:29 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:40:29 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:40:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:40:49 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:40:49 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:40:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:40:51 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:40:51 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:41:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:41:03 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:41:03 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:41:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:41:32 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:41:32 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+CRITICAL - 2025-08-07 14:41:32 --> ParseError: syntax error, unexpected token ">"
+[Method: GET, Route: hrd/dokumen-spv]
+in APPPATH\Controllers\DokumenControllerHRD.php on line 1507.
+ 1 VENDORPATH\composer\ClassLoader.php(428): Composer\Autoload\includeFile('C:\\laragon\\www\\projectPegawai-master\\vendor\\composer/../../app/Controllers/DokumenControllerHRD.php')
+ 2 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Controllers\\DokumenControllerHRD')
+ 3 SYSTEMPATH\CodeIgniter.php(885): class_exists('\\App\\Controllers\\DokumenControllerHRD', true)
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->startController()
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-07 14:41:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:41:38 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:41:38 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:41:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:41:58 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:41:58 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:42:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:42:00 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:42:00 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:43:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:43:49 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:43:49 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:43:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:43:52 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:43:52 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:51:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:51:28 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:51:28 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:51:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:51:30 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:51:30 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:51:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:51:41 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:51:41 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:51:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:51:43 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:51:43 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 14:51:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 14:51:53 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 14:51:53 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 15:01:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 15:01:39 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 15:01:39 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 15:01:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 15:01:41 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 15:01:41 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:10:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 16:10:25 --> Login proses method called
+INFO - 2025-08-07 16:10:25 --> Email: olvy.hrd@uss.com
+INFO - 2025-08-07 16:10:25 --> Password length: 8
+INFO - 2025-08-07 16:10:25 --> User found: YES
+INFO - 2025-08-07 16:10:25 --> User role_id: 2
+INFO - 2025-08-07 16:10:25 --> Password verified successfully
+DEBUG - 2025-08-07 16:10:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-07 16:10:25 --> Session set for user_id: 8
+INFO - 2025-08-07 16:10:25 --> Redirecting to hrd dashboard
+DEBUG - 2025-08-07 16:10:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:10:26 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:10:26 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:10:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:10:31 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:10:31 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:10:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:10:33 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:10:33 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:10:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:10:37 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:10:37 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:10:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:10:43 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:10:43 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:11:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:11:05 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:11:05 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:11:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:11:13 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:11:13 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+INFO - 2025-08-07 16:11:13 --> Mencoba mengunduh file dengan ID: 147
+INFO - 2025-08-07 16:11:13 --> User ID yang login: 8, Role: hrd
+INFO - 2025-08-07 16:11:13 --> Izin diberikan karena user mengunggah file.
+INFO - 2025-08-07 16:11:13 --> Berhasil: File siap diunduh.
+CRITICAL - 2025-08-07 16:11:13 --> CodeIgniter\Files\Exceptions\FileNotFoundException: File not found: "C:\laragon\www\projectPegawai-master\writable\uploads/"
+[Method: GET, Route: direksi/download-file/147]
+in SYSTEMPATH\Files\File.php on line 51.
+ 1 SYSTEMPATH\Files\File.php(51): CodeIgniter\Files\Exceptions\FileNotFoundException::forFileNotFound('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/')
+ 2 SYSTEMPATH\HTTP\DownloadResponse.php(106): CodeIgniter\Files\File->__construct('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/', true)
+ 3 SYSTEMPATH\HTTP\ResponseTrait.php(745): CodeIgniter\HTTP\DownloadResponse->setFilePath('C:\\laragon\\www\\projectPegawai-master\\writable\\uploads/')
+ 4 APPPATH\Controllers\DokumenControllerDireksi.php(1139): CodeIgniter\HTTP\Response->download('', null)
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerDireksi->downloadFile('147')
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerDireksi))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-07 16:11:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:11:34 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:11:34 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:14:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:14:35 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:14:35 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:14:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:14:51 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:14:51 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:14:51 --> DokumenControllerStaff::viewFolder: Fungsi dimulai untuk Folder ID: 259
+DEBUG - 2025-08-07 16:14:51 --> DokumenControllerStaff::viewFolder: User ID dari sesi: 8
+DEBUG - 2025-08-07 16:14:51 --> DokumenControllerStaff::viewFolder: Folder ditemukan: {"id":"259","name":"staffdua","path":null,"full_path_physical":null,"parent_id":null,"owner_id":"8","access_roles":null,"is_shared":"0","shared_type":null,"created_at":"2025-08-07 14:51:41","updated_at":"2025-08-07 14:51:41","folder_type":"personal","owner_role":null}
+DEBUG - 2025-08-07 16:14:51 --> DokumenControllerStaff::viewFolder: User Role dari sesi: 2
+DEBUG - 2025-08-07 16:14:51 --> DokumenControllerStaff::viewFolder: Owner Role ID dari folder (kolom owner_role): NULL
+DEBUG - 2025-08-07 16:14:51 --> DokumenControllerStaff::viewFolder: Owner Role ID (fallback dari userModel): 2
+DEBUG - 2025-08-07 16:14:51 --> DokumenControllerStaff::viewFolder: Tipe folder: PERSONAL
+DEBUG - 2025-08-07 16:14:51 --> DokumenControllerStaff::viewFolder: Akses diberikan: Pengguna adalah pemilik folder.
+DEBUG - 2025-08-07 16:14:51 --> DokumenControllerStaff::viewFolder: Subfolders ditemukan: 0
+DEBUG - 2025-08-07 16:14:51 --> DokumenControllerStaff::viewFolder: Files ditemukan: 0
+DEBUG - 2025-08-07 16:14:51 --> DokumenControllerStaff::viewFolder: Breadcrumbs: [{"id":"259","name":"staffdua"}]
+DEBUG - 2025-08-07 16:14:51 --> DokumenControllerStaff::viewFolder: Mengirim data ke view staff/viewFolder.
+DEBUG - 2025-08-07 16:14:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:14:53 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:14:53 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:15:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:15:26 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:15:26 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:15:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:15:41 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:15:41 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:15:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:15:52 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:15:52 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:15:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:15:53 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:15:53 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:16:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:16:01 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:16:01 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:17:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:17:41 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:17:41 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:17:41 --> DokumenControllerHRD::dokumenStaff(): User ID: 8, Role Name: 
+DEBUG - 2025-08-07 16:17:41 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 44
+DEBUG - 2025-08-07 16:17:41 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 20
+DEBUG - 2025-08-07 16:17:41 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"205","folder_id":null,"uploader_id":"5","file_name":"PPT USAHA KECIL.pdf","server_file_name":"","file_size":"226297","file_type":"application\/pdf","created_at":"2025-08-06 15:29:15","updated_at":"2025-08-06 15:29:15","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-07 16:17:41 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL
+DEBUG - 2025-08-07 16:17:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:17:58 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:17:58 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:17:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:17:58 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:17:58 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:17:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:17:59 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:17:59 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:17:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:17:59 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:17:59 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:18:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:18:00 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:18:00 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:18:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:18:02 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:18:02 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:18:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:18:02 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:18:02 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:18:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:18:04 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:18:04 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:18:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:18:07 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:18:07 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:21:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:21:15 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:21:15 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:21:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:21:26 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:21:26 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:21:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:21:27 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:21:27 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:21:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:21:56 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:21:56 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:21:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:21:59 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:21:59 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:23:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:23:30 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:23:30 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:23:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:23:40 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:23:40 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:23:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:23:41 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:23:41 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:23:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:23:44 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:23:44 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:23:44 --> DokumenControllerHRD::dokumenStaff(): User ID: 8, Role Name: 
+DEBUG - 2025-08-07 16:23:44 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 47
+DEBUG - 2025-08-07 16:23:44 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 20
+DEBUG - 2025-08-07 16:23:44 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"205","folder_id":null,"uploader_id":"5","file_name":"PPT USAHA KECIL.pdf","server_file_name":"","file_size":"226297","file_type":"application\/pdf","created_at":"2025-08-06 15:29:15","updated_at":"2025-08-06 15:29:15","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-07 16:23:44 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL
+DEBUG - 2025-08-07 16:29:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:29:47 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:29:47 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:29:47 --> DokumenControllerHRD::dokumenStaff(): User ID: 8, Role Name: 
+DEBUG - 2025-08-07 16:29:47 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 47
+DEBUG - 2025-08-07 16:29:47 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 20
+DEBUG - 2025-08-07 16:29:47 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"205","folder_id":null,"uploader_id":"5","file_name":"PPT USAHA KECIL.pdf","server_file_name":"","file_size":"226297","file_type":"application\/pdf","created_at":"2025-08-06 15:29:15","updated_at":"2025-08-06 15:29:15","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-07 16:29:48 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL
+DEBUG - 2025-08-07 16:29:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:29:59 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:29:59 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:30:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:30:01 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:30:01 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:30:01 --> DokumenControllerHRD::dokumenStaff(): User ID: 8, Role Name: 
+DEBUG - 2025-08-07 16:30:01 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 48
+DEBUG - 2025-08-07 16:30:01 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 20
+DEBUG - 2025-08-07 16:30:01 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"205","folder_id":null,"uploader_id":"5","file_name":"PPT USAHA KECIL.pdf","server_file_name":"","file_size":"226297","file_type":"application\/pdf","created_at":"2025-08-06 15:29:15","updated_at":"2025-08-06 15:29:15","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-07 16:30:01 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL
+DEBUG - 2025-08-07 16:30:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:30:29 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:30:29 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:30:29 --> DokumenControllerHRD::dokumenStaff(): User ID: 8, Role Name: 
+DEBUG - 2025-08-07 16:30:29 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 48
+DEBUG - 2025-08-07 16:30:29 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 20
+DEBUG - 2025-08-07 16:30:29 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"205","folder_id":null,"uploader_id":"5","file_name":"PPT USAHA KECIL.pdf","server_file_name":"","file_size":"226297","file_type":"application\/pdf","created_at":"2025-08-06 15:29:15","updated_at":"2025-08-06 15:29:15","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-07 16:30:29 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL
+DEBUG - 2025-08-07 16:30:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:30:39 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:30:39 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:30:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:30:58 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:30:58 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:30:58 --> DokumenControllerHRD::dokumenStaff(): User ID: 8, Role Name: 
+DEBUG - 2025-08-07 16:30:59 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 49
+DEBUG - 2025-08-07 16:30:59 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 20
+DEBUG - 2025-08-07 16:30:59 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"205","folder_id":null,"uploader_id":"5","file_name":"PPT USAHA KECIL.pdf","server_file_name":"","file_size":"226297","file_type":"application\/pdf","created_at":"2025-08-06 15:29:15","updated_at":"2025-08-06 15:29:15","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-07 16:30:59 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL
+DEBUG - 2025-08-07 16:31:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:31:10 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:31:10 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:31:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:31:14 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:31:14 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:31:14 --> DokumenControllerHRD::dokumenStaff(): User ID: 8, Role Name: 
+DEBUG - 2025-08-07 16:31:14 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 50
+DEBUG - 2025-08-07 16:31:14 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 20
+DEBUG - 2025-08-07 16:31:14 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"205","folder_id":null,"uploader_id":"5","file_name":"PPT USAHA KECIL.pdf","server_file_name":"","file_size":"226297","file_type":"application\/pdf","created_at":"2025-08-06 15:29:15","updated_at":"2025-08-06 15:29:15","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-07 16:31:14 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL
+DEBUG - 2025-08-07 16:31:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:31:34 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:31:34 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:31:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:31:47 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:31:47 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:31:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:31:51 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:31:51 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:32:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:32:55 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:32:55 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:33:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:33:05 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:33:05 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:33:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:33:07 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:33:07 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:40:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:40:19 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:40:19 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:40:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:40:28 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:40:28 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:40:28 --> DokumenControllerHRD::dokumenStaff(): User ID: 8, Role Name: 
+DEBUG - 2025-08-07 16:40:28 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 52
+DEBUG - 2025-08-07 16:40:28 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 20
+DEBUG - 2025-08-07 16:40:28 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"205","folder_id":null,"uploader_id":"5","file_name":"PPT USAHA KECIL.pdf","server_file_name":"","file_size":"226297","file_type":"application\/pdf","created_at":"2025-08-06 15:29:15","updated_at":"2025-08-06 15:29:15","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-07 16:40:28 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL
+DEBUG - 2025-08-07 16:45:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:45:33 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:45:33 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:45:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:45:36 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:45:36 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:46:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:46:19 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:46:19 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:46:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:46:20 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:46:20 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:46:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:46:31 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:46:31 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:46:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:46:32 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:46:32 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:46:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-07 16:46:36 --> AuthFilter: User is logged in. Current role_id: 2
+INFO - 2025-08-07 16:46:36 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-07 16:46:36 --> DokumenControllerHRD::dokumenStaff(): User ID: 8, Role Name: 
+DEBUG - 2025-08-07 16:46:36 --> DokumenControllerHRD::dokumenStaff(): Fetched Personal Folders count: 53
+DEBUG - 2025-08-07 16:46:36 --> DokumenControllerHRD::dokumenStaff(): Fetched Files count: 20
+DEBUG - 2025-08-07 16:46:36 --> DokumenControllerHRD::dokumenStaff(): First Fetched File: {"id":"205","folder_id":null,"uploader_id":"5","file_name":"PPT USAHA KECIL.pdf","server_file_name":"","file_size":"226297","file_type":"application\/pdf","created_at":"2025-08-06 15:29:15","updated_at":"2025-08-06 15:29:15","download_count":"0","file_path":null,"is_shared":"0"}
+DEBUG - 2025-08-07 16:46:36 --> DokumenControllerHRD::dokumenStaff(): Data prepared for view. Current Folder ID: NULL

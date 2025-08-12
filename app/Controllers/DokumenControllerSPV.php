@@ -9,6 +9,7 @@ use CodeIgniter\Controller; // Jika DokumenControllerSPV bukan turunan BaseContr
 use CodeIgniter\Session\Session; // Import Session class jika belum
 use CodeIgniter\Exceptions\PageNotFoundException;
 use App\Models\RoleModel;
+use CodeIgniter\Database\RawSql;
 
 
 class DokumenControllerSPV extends BaseController // Atau extends Controller jika tidak pakai BaseController
@@ -35,35 +36,71 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
 
     public function dokumenSPV()
     {
-        $userId = $this->session->get('user_id'); // Mengambil ID SPV yang sedang login
+        $userId = $this->session->get('user_id');
+        $userRoleId = $this->session->get('role_id');
+        $userRoleName = $this->session->get('role_name');
 
         if (!$userId) {
-            // Jika ID pengguna tidak ditemukan di sesi, arahkan kembali ke login
             return redirect()->to(base_url('login'))->with('error', 'Anda harus login untuk mengakses dokumen pribadi Anda.');
         }
 
-        // Mengambil folder pribadi milik SPV yang sedang login
-        $personalFolders = $this->folderModel
-            ->where('owner_id', $userId)      // Filter berdasarkan ID pemilik
-            ->where('parent_id', NULL)      // Hanya folder root
-            ->where('folder_type', 'personal') // Asumsi folder pribadi adalah 'personal'
-            ->orderBy('name', 'ASC')         // Urutkan berdasarkan nama
-            ->findAll();
+        $hrdRole = $this->roleModel->where('name', 'HRD')->first();
+        $hrdRoleId = $hrdRole ? $hrdRole['id'] : null;
 
-        // Mengambil file tanpa folder yang diunggah oleh SPV yang sedang login
+        $spvRole = $this->roleModel->where('name', 'Supervisor')->first(); // PERBAIKAN: Gunakan nama peran yang benar dari tabel roles
+        $spvRoleId = $spvRole ? $spvRole['id'] : null;
+
+        $hrdUserIds = [];
+        if ($hrdRoleId) {
+            $hrdUsers = $this->userModel->where('role_id', $hrdRoleId)->findAll();
+            $hrdUserIds = array_column($hrdUsers, 'id');
+        }
+
+        // --- Mulai Builder Query untuk Mengambil Folder ---
+        $builder = $this->folderModel
+            ->select('folders.*, users.name as owner_display, roles.name as owner_role_name')
+            ->join('users', 'users.id = folders.owner_id', 'left')
+            ->join('roles', 'roles.id = folders.owner_role', 'left')
+            ->where('folders.parent_id', NULL);
+
+        // Tambahkan kondisi OR yang lebih jelas untuk menghindari kesalahan
+        $builder->groupStart();
+        // Kondisi 1: Folder personal milik SPV sendiri
+        $builder->where('folders.owner_id', $userId);
+
+        // Kondisi 2: Folder yang dibuat HRD (owner_id 2 atau 8) DAN owner_role-nya adalah SPV (5)
+        $builder->orGroupStart()
+            ->whereIn('folders.owner_id', $hrdUserIds)
+            ->where('folders.owner_role', $spvRoleId)
+            ->groupEnd();
+
+        // Kondisi 3: Folder yang di-share ke peran SPV
+        $builder->orGroupStart()
+            ->where('folders.is_shared', 1)
+            ->where(new RawSql("JSON_CONTAINS(folders.access_roles, '\"{$userRoleId}\"')"))
+            ->groupEnd();
+
+        // Kondisi 4: Folder public
+        $builder->orWhere('folders.folder_type', 'public');
+        $builder->groupEnd();
+
+        $personalFolders = $builder->findAll();
+
         $orphanFiles = $this->fileModel
-            ->where('uploader_id', $userId) // Filter berdasarkan ID pengunggah
-            ->where('folder_id', NULL)     // Hanya file tanpa folder
-            ->orderBy('file_name', 'ASC')  // Urutkan berdasarkan nama file
+            ->where('uploader_id', $userId)
+            ->where('folder_id', NULL)
+            ->orderBy('file_name', 'ASC')
             ->findAll();
 
         $data = [
-            'title' => 'Dokumen Pribadi Saya (SPV)', // Judul halaman
+            'title' => 'Dokumen Pribadi Saya (SPV)',
             'personalFolders' => $personalFolders,
             'orphanFiles' => $orphanFiles,
+            'currentFolderId' => null,
+            'currentUserId' => $userId,
+            'userRoleName' => $userRoleName,
         ];
 
-        // Memuat view yang akan menampilkan dokumen pribadi SPV
         return view('Supervisor/dokumenSupervisor', $data);
     }
 
@@ -403,18 +440,19 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
         return view('Supervisor/dashboard', $data);
     }
 
-    public function viewFolder($folderId = null) // Tambahkan parameter $folderId
+    public function viewFolder($folderId = null)
     {
+        // Cek folder ID
         if ($folderId === null) {
             throw PageNotFoundException::forPageNotFound('Folder ID tidak ditentukan.');
         }
 
         $userId = $this->session->get('user_id');
-        $userRole = $this->session->get('role_id'); // Mengambil 'role_id' dari sesi
+        $userRoleId = $this->session->get('role_id'); // Ambil role_id dari sesi
+        $userRoleName = $this->session->get('role_name');
 
         if (!$userId) {
             return redirect()->to(base_url('login'))->with('error', 'Anda harus login untuk mengakses folder.');
-            (log_message('info', 'Redirecting to login: User ID not found.'));
         }
 
         $currentFolder = $this->folderModel->find($folderId);
@@ -423,45 +461,59 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
             throw PageNotFoundException::forPageNotFound('Folder tidak ditemukan.');
         }
 
-        // --- Logic akses folder personal SPV dan shared folder ---
-        $canManageFolder = false; // Default: tidak bisa mengelola
+        $ownerRoleId = $currentFolder['owner_role'] ?? null; // Dapatkan owner_role dari folder
+        $hasAccess = false;
+        $canManageFolder = false;
 
-        if ($currentFolder['folder_type'] === 'personal') {
-            if ($currentFolder['owner_id'] !== $userId) {
-                return redirect()->to(base_url('supervisor/dokumen-supervisor'))->with('error', 'Anda tidak memiliki akses ke folder personal ini.');
-            }
-            $canManageFolder = true; // Bisa mengelola folder personalnya sendiri
-        } elseif ($currentFolder['folder_type'] === 'shared') {
+        // 🔥 LOGIKA OTORISASI UNIVERSAL DAN KONSISTEN 🔥
+
+        // Kondisi 1: Pengguna adalah pemilik folder itu sendiri, tidak peduli folder_type-nya apa
+        if ((int) $currentFolder['owner_id'] === (int) $userId) {
+            $hasAccess = true;
+            $canManageFolder = true; // Pemilik selalu bisa manage
+        }
+        // Kondisi 2: Folder dibagikan (is_shared = 1) dan peran pengguna ada di access_roles
+        else if ((int) $currentFolder['is_shared'] === 1) {
             $accessRoles = json_decode($currentFolder['access_roles'] ?? '[]', true);
+            $canManageFolder = true;
 
-            if (empty($accessRoles) || !in_array($userRole, $accessRoles)) {
-                return redirect()->to(base_url('supervisor/dokumen-supervisor'))->with('error', 'Anda tidak memiliki izin untuk folder shared ini.');
-            }
+            // Pastikan semua role ID di access_roles adalah string untuk perbandingan yang konsisten
+            $stringAccessRoles = is_array($accessRoles) ? array_map('strval', $accessRoles) : [];
 
-            // Cek shared_type untuk hak manajemen
-            if ($currentFolder['shared_type'] === 'write' || $currentFolder['shared_type'] === 'full_access') {
-                $canManageFolder = true;
-            } else {
-                $canManageFolder = false; // Hanya baca
+            // Cek apakah userRoleId (sebagai string) ada di access_roles
+            if (in_array((string) $userRoleId, $stringAccessRoles)) {
+                $hasAccess = true;
+
+                // Logika canManageFolder untuk shared folder
+                // Asumsi: shared_type 'write' atau 'full_access' memungkinkan manajemen
+                if ($currentFolder['shared_type'] === 'write' || $currentFolder['shared_type'] === 'full_access') {
+                    $canManageFolder = true;
+                }
             }
         }
-        // --- Akhir Logic akses ---
+        // Kondisi 3: Folder bersifat public
+        else if ($currentFolder['folder_type'] === 'public') {
+            $hasAccess = true;
+            $canManageFolder = false; // Public folder tidak bisa dimanage oleh semua orang
+        }
+        
 
-        $subFolders = $this->folderModel->getSubfoldersWithDetails($folderId, $userId, $userRole);
+        // Jika tidak ada akses, redirect ke halaman dokumen utama role tersebut
+        if (!$hasAccess) {
+            // Redirect ke halaman dokumen utama SPV
+            return redirect()->to(base_url('supervisor/dokumen-supervisor'))->with('error', 'Anda tidak memiliki akses ke folder ini.');
+        }
+
+        // --- AKHIR LOGIKA OTORISASI ---
+
+        $subFolders = $this->folderModel->getSubfoldersWithDetails($folderId, $userId, $userRoleId);
         $filesInFolder = $this->fileModel->getFilesByFolderWithUploader($folderId);
         $breadcrumbs = $this->folderModel->getBreadcrumbs($folderId);
-        
-        foreach ($breadcrumbs as &$crumb) {
-            if ($crumb['id'] !== null) {
-                // Penting: Pastikan URL mengarah ke route folder SPV
-                $crumb['url'] = base_url('supervisor/folder/' . $crumb['id']);
-            } else {
-                // Contoh: crumb pertama 'Home' atau 'My Documents' bisa ke dashboard SPV
-                $crumb['url'] = base_url('supervisor/dashboard');
-            }
-        }
-        unset($crumb); // Putuskan referensi
 
+        foreach ($breadcrumbs as &$crumb) {
+            $crumb['url'] = base_url('supervisor/folder/' . $crumb['id']);
+        }
+        unset($crumb);
 
         $data = [
             'title' => 'Folder: ' . $currentFolder['name'],
@@ -473,8 +525,9 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
             'subFolders' => $subFolders,
             'filesInFolder' => $filesInFolder,
             'breadcrumbs' => $breadcrumbs,
-            'isStaffFolder' => false,      // Flag ini menyatakan ini bukan folder Staff
-            'canManageFolder' => $canManageFolder // Disesuaikan berdasarkan hak akses
+            'isStaffFolder' => false,
+            'canManageFolder' => $canManageFolder,
+            'userRoleName' => $userRoleName,
         ];
 
         return view('Supervisor/viewFolder', $data);

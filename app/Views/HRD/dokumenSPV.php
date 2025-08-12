@@ -163,7 +163,7 @@
                             data-folder-path="<?= esc($folder['path'] ?? $folder['name']) ?>">
 
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <a href="<?= base_url('supervisor/folder/' . $folder['id']) ?>"
+                                <a href="<?= base_url('hrd/view-supervisor-folder/' . $folder['id']) ?>"
                                     class="block h-full w-full text-sm text-gray-900 hover:text-blue-700 hover:underline">
                                     <div class="flex items-center">
                                         <svg class="w-5 h-5 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -475,7 +475,7 @@
                         return;
                     }
 
-                    fetch('<?= base_url('supervisor/create-folder') ?>', {
+                    fetch('<?= base_url('hrd/create-folder-spv') ?>', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -484,6 +484,7 @@
                         body: JSON.stringify({
                             name: folderName,
                             folder_type: folderType,
+                            context_role: 5,
                             is_shared: folderType === 'shared' ? 1 : 0,
                             shared_type: folderType === 'shared' ? folderAccess : null,
                             owner_id: window.currentUserId,
@@ -569,7 +570,7 @@
                                 if (data.errors) {
                                     let errorMessages = '';
                                     for (const key in data.errors) {
-                                        errorMessages += `${data.errors[key]}\n`;
+                                        errorMessages +=  `${data.errors[key]}\n`;
                                     }
                                     alert('Validasi Unggah Gagal:\n' + errorMessages);
                                 }

@@ -412,9 +412,6 @@
 
         // Load data saat halaman dimuat
         loadStorageData();
-
-        // Refresh data setiap 30 detik
-        setInterval(loadStorageData, 30000);
     });
 </script>
 <?= $this->endSection() ?>
