@@ -93,6 +93,11 @@ $routes->group('hrd', ['filter' => 'auth:2'], function ($routes) {
     $routes->get('view-manager-folder/(:num)', 'DokumenControllerHRD::viewManagerFolder/$1');
     $routes->get('view-direksi-folder/(:num)', 'DokumenControllerHRD::viewDireksiFolder/$1');
 
+    $routes->post('searchDireksi', 'DokumenControllerHRD::searchDireksi');
+    $routes->post('searchStaff', 'DokumenControllerHRD::searchStaff');
+    $routes->post('searchSPV', 'DokumenControllerHRD::searchSPV');
+    $routes->post('searchManager', 'DokumenControllerHRD::searchManager');
+
     // Notification Routes - HRD Only
     $routes->get('notifications/dashboard', 'NotificationController::dashboard');
     $routes->post('notifications/test-system', 'NotificationController::testSystem');
@@ -106,6 +111,7 @@ $routes->group('umum', ['filter' => 'auth:2,3,4,5,6'], function ($routes) {
     $routes->get('dokumen-bersama', 'DokumenControllerStaff::dokumenBersama');
     $routes->get('dokumen-umum-staff', 'DokumenControllerStaff::dokumenUmum');
     $routes->get('view-shared-folder/(:num)', 'Staff::viewSharedFolder/$1');
+    $routes->get('view-shared-file/(:num)', 'Staff::viewSharedFile/$1');
     $routes->get('dokumen-umum', 'DokumenControllerHRD::dokumenUmum');
     $routes->get('dokumen-umum/folder/(:num)', 'DokumenControllerStaff::viewFolder/$1');
     $routes->post('create-folder', 'dokumenControllerStaff::createFolder');

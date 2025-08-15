@@ -20,7 +20,7 @@
 
     <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg w-full max-w-sm sm:max-w-md">
       <!-- Logo -->
-      <img src="/images/logo.png" alt="Logo" class="w-32 sm:w-40 mx-auto mb-6 sm:mb-10" />
+      <img src="/images/logo.jpg" alt="Logo" class="w-32 sm:w-40 mx-auto mb-6 sm:mb-10" />
 
       <!-- Judul -->
       <h1 class="font-poppins text-xl sm:text-2xl font-semibold text-center">Welcome</h1>

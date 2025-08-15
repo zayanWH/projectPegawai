@@ -138,10 +138,7 @@
                                     <a href="<?= site_url('hrd/view-staff-folder/' . $subFolder['id']) ?>"
                                         class="block h-full w-full text-sm text-gray-900 hover:text-blue-700 hover:underline">
                                         <div class="flex items-center">
-                                            <svg class="w-5 h-5 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                                <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z">
-                                                </path>
-                                            </svg>
+                                            <img src="<?= base_url('images/folder.png') ?>" alt="Folder Icon" class="w-5 h-5 mr-2">
                                             <?= esc($subFolder['name']) ?>
                                         </div>
                                     </a>
@@ -171,36 +168,40 @@
                                 data-file-updated-at="<?= esc($file['updated_at'] ?? $file['created_at']) ?>"
                                 data-file-path="<?= esc($file['server_file_name']) ?>">
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <a href="<?= site_url('hrd/file/view/' . $file['id']) ?>" target="_blank"
+                                    <a href="<?= site_url('umum/view-shared-file/' . $file['id']) ?>" target="_blank"
                                         class="block h-full w-full text-sm text-gray-900 hover:text-blue-700 hover:underline">
                                         <div class="flex items-center">
                                             <?php
                                             $fileExtension = pathinfo($file['file_name'], PATHINFO_EXTENSION);
-                                            $iconSvg = '';
+                                            $iconSrc = '';
+
                                             switch (strtolower($fileExtension)) {
                                                 case 'pdf':
-                                                    $iconSvg = '<svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"></path></svg>';
+                                                    $iconSrc = base_url('images/pdf.png');
                                                     break;
                                                 case 'doc':
                                                 case 'docx':
-                                                    $iconSvg = '<svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a2 2 0 00-2 2v4a2 2 0 002 2h2a2 2 0 002-2V4a2 2 0 00-2-2H9z"></path><path d="M5 9a2 2 0 00-2 2v4a2 2 0 002 2h10a2 2 0 002-2v-4a2 2 0 00-2-2H5z"></path></svg>';
+                                                    $iconSrc = base_url('images/word.png');
                                                     break;
                                                 case 'xls':
                                                 case 'xlsx':
-                                                    $iconSvg = '<svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM6 8v6h2V8H6zm4 0v6h2V8h-2zm4 0v6h2V8h-2z"></path></svg>';
+                                                    $iconSrc = base_url('images/excel.png');
+                                                    break;
+                                                case 'pptx':
+                                                    $iconSrc = base_url('images/ppt.png');
                                                     break;
                                                 case 'png':
                                                 case 'jpg':
                                                 case 'jpeg':
                                                 case 'gif':
-                                                    $iconSvg = '<svg class="w-5 h-5 text-purple-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-4 4 4 4-4v4z" clip-rule="evenodd"></path></svg>';
+                                                    $iconSrc = base_url('images/image.png');
                                                     break;
                                                 default:
-                                                    $iconSvg = '<svg class="w-5 h-5 text-gray-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>';
+                                                    $iconSrc = base_url('images/file-default.png');
                                                     break;
                                             }
-                                            echo $iconSvg;
                                             ?>
+                                            <img src="<?= $iconSrc ?>" alt="File Icon" class="w-5 h-5 mr-2">
                                             <span class="text-sm text-gray-900"><?= esc($file['file_name']) ?></span>
                                         </div>
                                     </a>
@@ -211,11 +212,13 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                     <?= date('d M Y', strtotime($file['created_at'])) ?>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    <button
-                                        onclick="showFloatingMenu(event, 'file', '<?= esc($file['id']) ?>', '<?= esc($file['file_name']) ?>')"
-                                        class="text-blue-600 hover:text-blue-900">⋮</button>
-                                </td>
+                                <?php if (($currentUserRole['id'] ?? 0) == 2): ?>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <button
+                                            onclick="showFloatingMenu(event, 'file', '<?= esc($file['id']) ?>', '<?= esc($file['file_name']) ?>')"
+                                            class="text-blue-600 hover:text-blue-900">⋮</button>
+                                    </td>
+                                <?php endif; ?>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>

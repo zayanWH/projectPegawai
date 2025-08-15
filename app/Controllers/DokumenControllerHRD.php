@@ -318,6 +318,258 @@ class DokumenControllerHRD extends BaseController
         return $this->response->setJSON($results);
     }
 
+    public function searchStaff()
+    {
+        if (!$this->request->isAJAX()) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Invalid request.']);
+        }
+
+        $query = $this->request->getVar('q');
+
+        if (!$query) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Query pencarian tidak boleh kosong.']);
+        }
+
+        $hrdUserId = $this->session->get('user_id'); // User ID HRD yang sedang login
+        $hrdRoleId = $this->session->get('role_id'); // Role ID HRD yang sedang login
+
+        // Asumsi ID role Staff
+        $staffRoleId = 6; // Ganti dengan ID role Staff yang sesuai di database Anda.
+
+        // --- Perbaikan Query Folder ---
+        $folderModel = new FolderModel();
+        $folderBuilder = $folderModel->builder();
+        $folderBuilder->select("folders.id, folders.name, 'folder' as type, folders.owner_id, folders.folder_type, folders.is_shared, folders.shared_type, folders.access_roles");
+        $folderBuilder->like('folders.name', $query);
+
+        // A. Folder yang pemiliknya adalah Staff
+        $folderBuilder->groupStart();
+        $folderBuilder->where('folders.owner_role', $staffRoleId); // Menggunakan owner_role
+
+        // B. Folder yang dibuat oleh HRD (atau role lain) TAPI dibagikan ke Staff
+        // Ini termasuk folder yang dibuat HRD di bawah struktur Staff dan shared ke Staff
+        $folderBuilder->orGroupStart()
+            ->where('folders.is_shared', 1)
+            ->where('folders.access_roles IS NOT NULL')
+            // Cek jika ID role Staff ada di access_roles
+            ->where("JSON_CONTAINS(folders.access_roles, '\"{$staffRoleId}\"')")
+            ->groupEnd();
+
+        // C. Opsional: Jika ada folder tipe 'staff' yang dibuat oleh HRD tetapi tidak di-shared secara eksplisit
+        // Jika Anda memiliki folder_type khusus 'staff' untuk folder yang dibuat oleh HRD di bagian Staff
+        // dan ingin folder tersebut tetap muncul, Anda bisa tambahkan kondisi ini.
+        // Misalnya: $folderBuilder->orWhere('folders.folder_type', 'staff'); 
+
+        $folderBuilder->groupEnd(); // Menutup group A dan B (dan C jika ada)
+
+        $folders = $folderBuilder->get()->getResultArray();
+
+        // --- Perbaikan Query File ---
+        $fileModel = new FileModel();
+        $fileBuilder = $fileModel->builder();
+        $fileBuilder->select("files.id, files.file_name as name, 'file' as type, files.folder_id");
+        $fileBuilder->like('files.file_name', $query);
+
+        // A. File yang diunggah oleh Staff
+        $fileBuilder->groupStart();
+        $fileBuilder->join('users', 'users.id = files.uploader_id'); // Join ke users untuk mendapatkan role_id uploader
+        $fileBuilder->where('users.role_id', $staffRoleId);
+
+        $fileBuilder->groupEnd(); // Menutup group A
+
+        $files = $fileBuilder->get()->getResultArray();
+
+        $results = array_merge($folders, $files);
+        $formattedResults = [];
+        foreach ($results as $item) {
+            $formattedResults[] = [
+                'id' => $item['id'],
+                'name' => $item['name'],
+                'type' => $item['type'],
+                'folder_id' => $item['type'] === 'file' ? $item['folder_id'] : null,
+            ];
+        }
+
+        return $this->response->setJSON($formattedResults);
+    }
+
+    public function searchSPV()
+    {
+        if (!$this->request->isAJAX()) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Invalid request.']);
+        }
+
+        $query = $this->request->getVar('q');
+
+        if (!$query) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Query pencarian tidak boleh kosong.']);
+        }
+
+        $hrdUserId = $this->session->get('user_id'); // User ID HRD yang sedang login
+        $hrdRoleId = $this->session->get('role_id'); // Role ID HRD yang sedang login
+
+        $spvRoleId = 5; // Ganti dengan ID role SPV yang sesuai di database Anda.
+
+        // --- Perbaikan Query Folder ---
+        $folderModel = new FolderModel();
+        $folderBuilder = $folderModel->builder();
+        $folderBuilder->select("folders.id, folders.name, 'folder' as type, folders.owner_id, folders.folder_type, folders.is_shared, folders.shared_type, folders.access_roles");
+        $folderBuilder->like('folders.name', $query);
+
+        $folderBuilder->groupStart();
+        $folderBuilder->where('folders.owner_role', $spvRoleId); // Folder yang pemiliknya adalah SPV
+
+        $folderBuilder->orGroupStart() // Folder yang dibagikan ke SPV
+            ->where('folders.is_shared', 1)
+            ->where('folders.access_roles IS NOT NULL')
+            ->where("JSON_CONTAINS(folders.access_roles, '\"{$spvRoleId}\"')")
+            ->groupEnd();
+        $folderBuilder->groupEnd();
+
+        $folders = $folderBuilder->get()->getResultArray();
+
+        // --- Perbaikan Query File ---
+        $fileModel = new FileModel();
+        $fileBuilder = $fileModel->builder();
+        $fileBuilder->select("files.id, files.file_name as name, 'file' as type, files.folder_id");
+        $fileBuilder->like('files.file_name', $query);
+        $fileBuilder->join('users', 'users.id = files.uploader_id');
+        $fileBuilder->where('users.role_id', $spvRoleId); // Hanya file milik SPV
+
+        $files = $fileBuilder->get()->getResultArray();
+
+        $results = array_merge($folders, $files);
+        $formattedResults = [];
+        foreach ($results as $item) {
+            $formattedResults[] = [
+                'id' => $item['id'],
+                'name' => $item['name'],
+                'type' => $item['type'],
+                'folder_id' => $item['type'] === 'file' ? $item['folder_id'] : null,
+            ];
+        }
+
+        return $this->response->setJSON($formattedResults);
+    }
+
+    public function searchManager()
+    {
+        if (!$this->request->isAJAX()) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Invalid request.']);
+        }
+
+        $query = $this->request->getVar('q');
+
+        if (!$query) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Query pencarian tidak boleh kosong.']);
+        }
+
+        $hrdUserId = $this->session->get('user_id');
+        $hrdRoleId = $this->session->get('role_id');
+
+        $managerRoleId = 4; // Ganti dengan ID role Manager yang sesuai di database Anda.
+
+        // --- Perbaikan Query Folder ---
+        $folderModel = new FolderModel();
+        $folderBuilder = $folderModel->builder();
+        $folderBuilder->select("folders.id, folders.name, 'folder' as type, folders.owner_id, folders.folder_type, folders.is_shared, folders.shared_type, folders.access_roles");
+        $folderBuilder->like('folders.name', $query);
+
+        $folderBuilder->groupStart();
+        $folderBuilder->where('folders.owner_role', $managerRoleId); // Folder yang pemiliknya adalah Manager
+
+        $folderBuilder->orGroupStart() // Folder yang dibagikan ke Manager
+            ->where('folders.is_shared', 1)
+            ->where('folders.access_roles IS NOT NULL')
+            ->where("JSON_CONTAINS(folders.access_roles, '\"{$managerRoleId}\"')")
+            ->groupEnd();
+        $folderBuilder->groupEnd();
+
+        $folders = $folderBuilder->get()->getResultArray();
+
+        // --- Perbaikan Query File ---
+        $fileModel = new FileModel();
+        $fileBuilder = $fileModel->builder();
+        $fileBuilder->select("files.id, files.file_name as name, 'file' as type, files.folder_id");
+        $fileBuilder->like('files.file_name', $query);
+        $fileBuilder->join('users', 'users.id = files.uploader_id');
+        $fileBuilder->where('users.role_id', $managerRoleId); // Hanya file milik Manager
+
+        $files = $fileBuilder->get()->getResultArray();
+
+        $results = array_merge($folders, $files);
+        $formattedResults = [];
+        foreach ($results as $item) {
+            $formattedResults[] = [
+                'id' => $item['id'],
+                'name' => $item['name'],
+                'type' => $item['type'],
+                'folder_id' => $item['type'] === 'file' ? $item['folder_id'] : null,
+            ];
+        }
+
+        return $this->response->setJSON($formattedResults);
+    }
+
+    public function searchDireksi()
+    {
+        if (!$this->request->isAJAX()) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Invalid request.']);
+        }
+
+        $query = $this->request->getVar('q');
+
+        if (!$query) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Query pencarian tidak boleh kosong.']);
+        }
+
+        $hrdUserId = $this->session->get('user_id');
+        $hrdRoleId = $this->session->get('role_id');
+
+        $direksiRoleId = 3; // Ganti dengan ID role Direksi yang sesuai di database Anda.
+
+        // --- Perbaikan Query Folder ---
+        $folderModel = new FolderModel();
+        $folderBuilder = $folderModel->builder();
+        $folderBuilder->select("folders.id, folders.name, 'folder' as type, folders.owner_id, folders.folder_type, folders.is_shared, folders.shared_type, folders.access_roles");
+        $folderBuilder->like('folders.name', $query);
+
+        $folderBuilder->groupStart();
+        $folderBuilder->where('folders.owner_role', $direksiRoleId); // Folder yang pemiliknya adalah Direksi
+
+        $folderBuilder->orGroupStart() // Folder yang dibagikan ke Direksi
+            ->where('folders.is_shared', 1)
+            ->where('folders.access_roles IS NOT NULL')
+            ->where("JSON_CONTAINS(folders.access_roles, '\"{$direksiRoleId}\"')")
+            ->groupEnd();
+        $folderBuilder->groupEnd();
+
+        $folders = $folderBuilder->get()->getResultArray();
+
+        // --- Perbaikan Query File ---
+        $fileModel = new FileModel();
+        $fileBuilder = $fileModel->builder();
+        $fileBuilder->select("files.id, files.file_name as name, 'file' as type, files.folder_id");
+        $fileBuilder->like('files.file_name', $query);
+        $fileBuilder->join('users', 'users.id = files.uploader_id');
+        $fileBuilder->where('users.role_id', $direksiRoleId); // Hanya file milik Direksi
+
+        $files = $fileBuilder->get()->getResultArray();
+
+        $results = array_merge($folders, $files);
+        $formattedResults = [];
+        foreach ($results as $item) {
+            $formattedResults[] = [
+                'id' => $item['id'],
+                'name' => $item['name'],
+                'type' => $item['type'],
+                'folder_id' => $item['type'] === 'file' ? $item['folder_id'] : null,
+            ];
+        }
+
+        return $this->response->setJSON($formattedResults);
+    }
+
     public function viewStaffFolder($folderId)
     {
         $folder = $this->folderModel->find($folderId);
@@ -339,6 +591,11 @@ class DokumenControllerHRD extends BaseController
             'folderId' => $folderId,
             'folderType' => $folder['folder_type'] ?? 'personal',
             'isShared' => $folder['is_shared'] ?? 0,
+            'isStaffFolder' => true,
+            'isSupervisorFolder' => false,
+            'isManagerFolder' => false,
+            'isDireksiFolder' => false,
+            
         ];
 
         return view('HRD/viewFolderContent', $data);
@@ -361,6 +618,10 @@ class DokumenControllerHRD extends BaseController
             'folderId' => $folderId,
             'folderType' => $folder['folder_type'] ?? 'personal',
             'isShared' => $folder['is_shared'] ?? 0,
+            'isStaffFolder' => false,
+            'isSupervisorFolder' => true,
+            'isManagerFolder' => false,
+            'isDireksiFolder' => false,
         ];
         return view('HRD/viewFolderContent', $data);
     }
@@ -382,6 +643,10 @@ class DokumenControllerHRD extends BaseController
             'folderId' => $folderId,
             'folderType' => $folder['folder_type'] ?? 'personal',
             'isShared' => $folder['is_shared'] ?? 0,
+            'isStaffFolder' => false,
+            'isSupervisorFolder' => false,
+            'isManagerFolder' => true,
+            'isDireksiFolder' => false,
         ];
         return view('HRD/viewFolderContent', $data);
     }
@@ -403,17 +668,26 @@ class DokumenControllerHRD extends BaseController
             'folderId' => $folderId,
             'folderType' => $folder['folder_type'] ?? 'personal',
             'isShared' => $folder['is_shared'] ?? 0,
+            'isStaffFolder' => false,
+            'isSupervisorFolder' => false,
+            'isManagerFolder' => false,
+            'isDireksiFolder' => true,
         ];
         return view('HRD/viewFolderContent', $data);
     }
 
     public function createFolder()
     {
+        // Pastikan request adalah AJAX
         if (!$this->request->isAJAX()) {
             return $this->response->setStatusCode(405)->setJSON(['status' => 'error', 'message' => 'Metode tidak diizinkan.']);
         }
-        $userId = $this->session->get('user_id');
-        $userRoleId = $this->session->get('role_id');
+
+        // Properti $this->session sekarang sudah terdefinisi dan bisa digunakan
+        $userId = $this->session->get('user_id'); 
+        $userRoleId = $this->session->get('role_id'); // ID role user yang sedang login
+
+        // Periksa apakah user sudah login
         if (!$userId) {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Unauthorized. User not logged in.']);
         }
@@ -421,24 +695,39 @@ class DokumenControllerHRD extends BaseController
         $input = $this->request->getJSON(true);
         $folderName = $input['name'] ?? null;
         $parentId = $input['parent_id'] ?? null;
-        $initialFolderType = $input['folder_type'] ?? 'personal';
-        $initialAccessRoles = $input['access_roles'] ?? [];
+        
+        // Ambil folder_type dan access_roles dari input frontend.
+        // Asumsi folder_type bisa 'personal', 'shared', atau 'public'.
+        // access_roles diharapkan berupa array role ID (misal: [5, 2]).
+        $initialFolderType = $input['folder_type'] ?? 'personal'; 
+        $initialAccessRoles = $input['access_roles'] ?? []; 
+
+        // Aturan validasi untuk nama folder
         $rules = [
             'name' => 'required|min_length[3]|max_length[255]',
-            'folder_type' => 'permit_empty|in_list[personal,shared,public]'
+            // Pastikan folder_type yang dikirim frontend sesuai dengan validasi model
+            'folder_type' => 'permit_empty|in_list[personal,shared,public]' 
         ];
+        
+        // Jalankan validasi
         if (!$this->validate($rules, ['name' => ['required' => 'Nama folder tidak boleh kosong.']])) {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Validasi gagal.', 'errors' => $this->validator->getErrors()]);
         }
+
+        // Variabel untuk menyimpan nilai akhir
         $newOwnerRole = $userRoleId;
         $isShared = 0;
         $sharedType = null;
-        $finalAccessRoles = [];
-        $folderType = $initialFolderType;
+        $finalAccessRoles = []; // Array untuk access_roles final (akan berisi string role IDs)
+        $folderType = $initialFolderType; // Default, akan di-override jika ada parent
+
+        // Logika penentuan properti folder berdasarkan apakah ini folder root atau subfolder
         if ($parentId === null) {
+            // Ini adalah folder root
             if ($folderType === 'shared') {
                 $isShared = 1;
                 $sharedType = 'role_based';
+                // Konversi role ID dari input ke string untuk disimpan
                 $finalAccessRoles = array_values(array_unique(array_map('strval', $initialAccessRoles)));
             } else if ($folderType === 'personal') {
                 $isShared = 0;
@@ -446,48 +735,61 @@ class DokumenControllerHRD extends BaseController
             } else if ($folderType === 'public') {
                 $isShared = 1;
                 $sharedType = 'public';
-                $finalAccessRoles = [];
+                $finalAccessRoles = []; // Folder public tidak butuh role spesifik di access_roles
             }
         } else {
+            // Ini adalah subfolder, mewarisi properti dari folder induk
             $parentFolder = $this->folderModel->find($parentId);
             if (!$parentFolder) {
                 return $this->response->setJSON(['status' => 'error', 'message' => 'Parent folder tidak ditemukan.']);
             }
-
-            $folderType = $parentFolder['folder_type'];
+            
+            // Mewarisi semua properti penting dari folder induk
+            $folderType = $parentFolder['folder_type']; 
             $isShared = (int) $parentFolder['is_shared'];
             $sharedType = $parentFolder['shared_type'];
+            
+            // Decode access_roles dari induk, lalu pastikan elemennya string
             $decodedParentAccessRoles = json_decode($parentFolder['access_roles'] ?? '[]', true);
             $finalAccessRoles = array_values(array_unique(array_map('strval', $decodedParentAccessRoles)));
-
+            
             $newOwnerRole = (int) $parentFolder['owner_role'];
         }
+
+        // Pengecekan nama folder duplikat di lokasi yang sama (parent_id dan owner_id)
         if ($this->folderModel->isNameExists($folderName, $parentId, $userId)) {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Nama folder sudah ada di lokasi yang sama.']);
         }
 
+        // Siapkan data untuk disimpan ke database
         $data = [
             'name' => $folderName,
             'parent_id' => $parentId,
             'owner_id' => $userId,
             'owner_role' => $newOwnerRole,
-            'folder_type' => $folderType,
+            'folder_type' => $folderType, 
             'is_shared' => $isShared,
             'shared_type' => ($isShared === 1) ? ($sharedType ?? 'role_based') : null,
+            // access_roles sudah berupa array of string, langsung encode ke JSON
             'access_roles' => !empty($finalAccessRoles) ? json_encode($finalAccessRoles) : null,
         ];
+
+        // Coba insert data folder ke database
         if ($this->folderModel->insert($data)) {
             $newFolderId = $this->folderModel->insertID();
-            $relativePath = $this->folderModel->getFolderPath($newFolderId);
+            $relativePath = $this->folderModel->getFolderPath($newFolderId); 
             $folderPath = WRITEPATH . 'uploads/' . $relativePath;
+            
+            // Buat folder fisik di server jika belum ada
             if (!is_dir($folderPath)) {
                 if (!mkdir($folderPath, 0777, true)) {
                     return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal membuat folder fisik di server.']);
                 }
             }
-
+            
             return $this->response->setJSON(['status' => 'success', 'message' => 'Folder berhasil dibuat!', 'new_folder_id' => $newFolderId, 'created_data' => $data]);
         } else {
+            // Jika ada error saat insert ke database
             $errors = $this->folderModel->errors();
             return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal membuat folder.', 'errors' => $errors]);
         }
@@ -1102,10 +1404,10 @@ class DokumenControllerHRD extends BaseController
         if ($isNativePreviewable) {
             // Untuk PDF, Gambar, Teks: tampilkan di iframe
             $data['previewUrl'] = site_url('staff/serve-file/' . $fileId); // Pastikan serve-file punya otorisasi
-            return view('Staff/view_file_wrapper', $data);
+            return view('Umum/view_file_wrapper', $data);
         } else {
             // Untuk DOCX, PPTX, XLSX, dll.: tampilkan halaman info dan tombol unduh
-            return view('Staff/view_file_khusus', $data);
+            return view('Umum/view_file_khusus', $data);
         }
     }
 

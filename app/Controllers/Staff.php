@@ -330,10 +330,46 @@ use App\Exceptions\AccessDeniedException;
             'userRole' => $userRole,
             'currentFolderId' => $folderId,
             'title' => ($isRoot ? 'Dokumen Bersama' : 'Isi Folder: ' . $currentFolder['name']),
+            'folderName' => ($isRoot ? 'Dokumen Bersama' : $currentFolder['name']),
             'currentFolderSharedType' => $effectiveSharedType, // INI YANG PENTING DIKIRIM KE VIEW
         ];
 
         return view('Umum/viewsharedfolder', $data);
+    }
+
+     public function viewSharedFile($fileId)
+    {
+        $file = $this->fileModel->find($fileId);
+
+        if (!$file) {
+            throw PageNotFoundException::forPageNotFound('File tidak ditemukan.');
+        }
+
+        // Pastikan Anda mendapatkan data pembuat/user dari relasi atau model lain jika diperlukan
+        // Contoh: $userModel = new \App\Models\UserModel();
+        // $creator = $userModel->find($file['uploaded_by']); // Asumsi ada kolom 'uploaded_by' di tabel file
+
+        $filePath = WRITEPATH . 'uploads/' . $file['file_path'];
+        $fileExtension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
+
+        // Daftar ekstensi yang bisa di-preview secara native oleh browser
+        $isNativePreviewable = in_array($fileExtension, ['pdf', 'png', 'jpg', 'jpeg', 'gif', 'txt', 'html']);
+
+        $data = [
+            'fileId' => $fileId,
+            'fileName' => $file['file_name'],
+            'file' => $file, // Kirim objek file lengkap untuk info lain
+            // 'creator'    => $creator, // Jika Anda ingin menampilkan info pembuat
+        ];
+
+        if ($isNativePreviewable) {
+            // Untuk PDF, Gambar, Teks: tampilkan di iframe
+            $data['previewUrl'] = site_url('staff/serve-file/' . $fileId); // Pastikan serve-file punya otorisasi
+            return view('Umum/view_file_wrapper', $data);
+        } else {
+            // Untuk DOCX, PPTX, XLSX, dll.: tampilkan halaman info dan tombol unduh
+            return view('Umum/view_file_khusus', $data);
+        }
     }
 
     /**

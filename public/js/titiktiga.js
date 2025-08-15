@@ -53,57 +53,53 @@ function closeAllModalsAndPopups() {
 function toggleMenu(button) {
     event.stopPropagation();
     
-    const row = button.closest('tr');
-    if (!row) {
+    const parentItem = button.closest('[data-folder-id], [data-file-id]');
+    if (!parentItem) {
         console.error('Tidak dapat menemukan elemen <tr> terdekat.');
         return;
     }
 
     // DEBUG: Log semua data attributes
+    // DEBUG: Log semua data attributes
     console.log('=== DEBUG DATA ATTRIBUTES ===');
-    console.log('Item Type:', row.dataset.itemType);
-    console.log('File ID:', row.dataset.fileId);
-    console.log('File Name:', row.dataset.fileName);
-    console.log('File Size:', row.dataset.fileSize);
-    console.log('File Type:', row.dataset.fileType);
-    console.log('File Path:', row.dataset.filePath);
-    console.log('File Owner ID:', row.dataset.fileOwnerId);
-    console.log('File Created At:', row.dataset.fileCreatedAt);
-    console.log('File Updated At:', row.dataset.fileUpdatedAt);
+    console.log('Item Type:', parentItem.dataset.itemType);
+    console.log('File ID:', parentItem.dataset.fileId);
+    console.log('File Name:', parentItem.dataset.fileName);
+    console.log('File Size:', parentItem.dataset.fileSize);
+    console.log('File Type:', parentItem.dataset.fileType);
+    console.log('File Path:', parentItem.dataset.filePath);
+    console.log('File Owner ID:', parentItem.dataset.fileOwnerId);
+    console.log('File Created At:', parentItem.dataset.fileCreatedAt);
+    console.log('File Updated At:', parentItem.dataset.fileUpdatedAt);
     console.log('=== END DEBUG ===');
 
-    const itemType = row.dataset.itemType;
+    const itemType = parentItem.dataset.itemType;
     
     if (itemType === 'file') {
-        // Perbaikan: Ambil data FILE dari data-attributes yang benar
+        // Perbaikan: Ganti 'row' menjadi 'parentItem' di sini
         currentFileData = {
-            id: row.dataset.fileId,
-            name: row.dataset.fileName,
-            size: row.dataset.fileSize,
-            path: row.dataset.filePath,
-            ownerId: row.dataset.fileOwnerId,
-            ownerName: row.dataset.fileOwnerName,
-            createdAt: row.dataset.fileCreatedAt,
-            updatedAt: row.dataset.fileUpdatedAt,
+            id: parentItem.dataset.fileId,
+            name: parentItem.dataset.fileName,
+            size: parentItem.dataset.fileSize,
+            path: parentItem.dataset.filePath,
+            ownerId: parentItem.dataset.fileOwnerId,
+            ownerName: parentItem.dataset.fileOwnerName,
+            createdAt: parentItem.dataset.fileCreatedAt,
+            updatedAt: parentItem.dataset.fileUpdatedAt,
             type: 'file'
         };
-        
-        // DEBUG: Log currentFileData setelah diset
-        console.log('=== DEBUG CURRENT FILE DATA ===');
-        console.log(currentFileData);
-        console.log('=== END DEBUG ===');
     } else {
-        // Logika untuk folder tetap sama...
+        // Perbaikan: Ganti 'row' menjadi 'parentItem' di sini
         currentFileData = {
-            id: row.dataset.folderId,
-            name: row.dataset.folderName,
-            folder_type: row.dataset.folderType,
-            isShared: row.dataset.folderIsShared,
-            sharedType: row.dataset.folderSharedType,
-            ownerId: row.dataset.folderOwnerId,
-            ownerName: row.dataset.folderOwnerName,
-            createdAt: row.dataset.folderCreatedAt,
-            updatedAt: row.dataset.folderUpdatedAt,
+            id: parentItem.dataset.folderId,
+            name: parentItem.dataset.folderName,
+            folder_type: parentItem.dataset.folderType,
+            isShared: parentItem.dataset.folderIsShared,
+            sharedType: parentItem.dataset.folderSharedType,
+            ownerId: parentItem.dataset.folderOwnerId,
+            ownerName: parentItem.dataset.folderOwnerName,
+            createdAt: parentItem.dataset.folderCreatedAt,
+            updatedAt: parentItem.dataset.folderUpdatedAt,
             type: 'folder'
         };
     }

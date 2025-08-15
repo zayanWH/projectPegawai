@@ -140,40 +140,43 @@
                 <td class="px-6 py-4 whitespace-nowrap">
                     <div class="flex items-center">
                         <?php if ($doc['type'] === 'folder'): ?>
-                            <a href="<?= base_url('hrd/view-hrd-folder/' . $doc['id']) ?>"
+                            <a href="<?= base_url('hrd/dokumen-umum/folder/' . $doc['id']) ?>"
                                 class="flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline cursor-pointer">
-                                <svg class="w-5 h-5 text-blue-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"></path>
-                                </svg>
-                                <?= esc($doc['name']) ?>
+                                 <img src="<?= base_url('images/folder.png') ?>" alt="Folder Icon"
+                                                    class="w-5 h-5 mr-2">
+                                                <?= esc($doc['name']) ?>
                             </a>
                         <?php else: ?>
                             <?php
                             $fileExtension = pathinfo($doc['file_name'] ?? $doc['name'], PATHINFO_EXTENSION);
                             $iconSvg = '';
                             switch (strtolower($fileExtension)) {
-                                case 'pdf':
-                                    $iconSvg = '<svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"></path></svg>';
-                                    break;
-                                case 'doc':
-                                case 'docx':
-                                    $iconSvg = '<svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a2 2 0 00-2 2v4a2 2 0 002 2h2a2 2 0 002-2V4a2 2 0 00-2-2H9z"></path><path d="M5 9a2 2 0 00-2 2v4a2 2 0 002 2h10a2 2 0 002-2v-4a2 2 0 00-2-2H5z"></path></svg>';
-                                    break;
-                                case 'xls':
-                                case 'xlsx':
-                                    $iconSvg = '<svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM6 8v6h2V8H6zm4 0v6h2V8h-2zm4 0v6h2V8h-2z"></path></svg>';
-                                    break;
-                                case 'png':
-                                case 'jpg':
-                                case 'jpeg':
-                                case 'gif':
-                                    $iconSvg = '<svg class="w-5 h-5 text-purple-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-4 4 4 4-4v4z" clip-rule="evenodd"></path></svg>';
-                                    break;
-                                default:
-                                    $iconSvg = '<svg class="w-5 h-5 text-gray-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>';
-                                    break;
-                            }
-                            ?>
+                                                    case 'pdf':
+                                                        $iconSrc = base_url('images/pdf.png');
+                                                        break;
+                                                    case 'doc':
+                                                    case 'docx':
+                                                        $iconSrc = base_url('images/word.png');
+                                                        break;
+                                                    case 'xls':
+                                                    case 'xlsx':
+                                                        $iconSrc = base_url('images/excel.png');
+                                                        break;
+                                                    case 'pptx':
+                                                        $iconSrc = base_url('images/ppt.png');
+                                                        break;
+                                                    case 'png':
+                                                    case 'jpg':
+                                                    case 'jpeg':
+                                                    case 'gif':
+                                                        $iconSrc = base_url('images/image.png');
+                                                        break;
+                                                    default:
+                                                        $iconSrc = base_url('images/file-default.png');
+                                                        break;
+                                                }
+                                                ?>
+                                                <img src="<?= $iconSrc ?>" alt="File Icon" class="w-5 h-5 mr-2">
                             <a href="<?= base_url('hrd/file/viewFile/' . $doc['id']) ?>"
                                 class="flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline cursor-pointer">
                                 <?= $iconSvg ?>
@@ -202,8 +205,7 @@
                     <?= date('d M Y', strtotime($doc['created_at'])) ?>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    <button
-                        onclick="showFloatingMenu(event, '<?= esc($doc['type']) ?>', '<?= esc($doc['id']) ?>', '<?= esc($doc['name']) ?>')"
+                    <button onclick="toggleMenu(this, event);"
                         class="text-blue-600 hover:text-blue-900">⋮</button>
                 </td>
             </tr>

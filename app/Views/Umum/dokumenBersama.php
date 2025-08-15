@@ -1,42 +1,222 @@
 <?= $this->extend('layout/main') ?>
 
+<?= $this->section('pageTitle') ?>
+Share Folder
+<?= $this->endSection() ?>
+
+<?= $this->section('pageLogo') ?>
+<img src="<?= base_url('images/logo.jpg') ?>" alt="Logo USSI" class="h-10 w-auto rounded-lg">
+<?= $this->endSection() ?>
+
 <?= $this->section('content') ?>
-<div class="bg-white rounded-lg shadow-sm p-6 mb-6">
-    <div class="flex items-center justify-between">
-        <div class="flex items-center space-x-4">
-            <h1 class="text-2xl font-semibold text-gray-800">Shared Folder</h1>
-        </div>
-        <div class="flex items-center space-x-4">
-            <div class="relative">
-                <input type="text" id="searchInput" placeholder="Masukkan file dokumen..."
-                    class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                <svg class="absolute right-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
+
+<div class="hidden md:block">
+    <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <h1 class="text-2xl font-semibold text-gray-800">Shared Folder</h1>
             </div>
-            <img src="<?= base_url('images/logo.png') ?>" alt="Logo USSI" class="h-10 w-auto rounded-lg">
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <input type="text" id="searchInput" placeholder="Masukkan file dokumen..."
+                        class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <svg class="absolute right-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+                <img src="<?= base_url('images/logo.jpg') ?>" alt="Logo USSI" class="h-10 w-auto rounded-lg">
+            </div>
+        </div>
+    </div>
+
+    <div class="relative inline-block text-left mb-6">
+        <button id="dropdownButton"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+                </path>
+            </svg>
+            <span>Baru</span>
+        </button>
+
+        <div id="dropdownMenu"
+            class="absolute z-10 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible transform scale-95 transition-all duration-200 ease-out">
+            <a href="#" id="openCreateFolder" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">📁 Buat Folder</a>
+        </div>
+    </div>
+
+    <input type="file" id="folderUploadInput" webkitdirectory style="display: none;" />
+
+    <div class="bg-white rounded-lg shadow-sm">
+        <div class="p-6 border-b border-gray-200">
+            <h2 class="text-lg font-semibold text-gray-800 flex items-center">
+                Dokumen Bersama
+            </h2>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full" id="sharedFoldersTable">
+                <thead class="bg-blue-600">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Nama
+                            Folder
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Dari
+                            Jabatan
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                            Pengunggah
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Ke
+                            Jabatan
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Akses
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Aksi
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    <?php if (empty($sharedFolders)): ?>
+                        <tr class="hover:bg-gray-50 empty-state-row" id="noFoldersRow">
+                            <td colspan="6" class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                                Tidak ada folder yang di-share untuk Anda.
+                            </td>
+                        </tr>
+                    <?php else: ?>
+                        <?php foreach ($sharedFolders as $folder): ?>
+                            <tr class="hover:bg-gray-50 folder-row" data-folder-id="<?= esc($folder['id']) ?>"
+                                data-folder-name="<?= esc($folder['name']) ?>"
+                                data-folder-path="<?= esc($folder['path'] ?? $folder['id']) ?>"
+                                data-folder-type="<?= esc($folder['folder_type'] ?? 'personal') ?>"
+                                data-folder-is-shared="<?= esc($folder['is_shared'] ? '1' : '0') ?>"
+                                data-folder-shared-type="<?= esc($folder['shared_type'] ?? '') ?>"
+                                data-folder-owner-id="<?= esc($folder['owner_id']) ?>"
+                                data-folder-owner-name="<?= esc($folder['owner_name'] ?? 'Unknown') ?>"
+                                data-folder-created-at="<?= esc($folder['created_at'] ?? '') ?>"
+                                data-folder-updated-at="<?= esc($folder['updated_at'] ?? '') ?>">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <a href="<?= base_url('umum/view-shared-folder/' . $folder['id']) ?>"
+                                        class="block h-full w-full text-sm text-gray-900 hover:text-blue-700 hover:underline">
+                                        <div class="flex items-center">
+                                            <img src="<?= base_url('images/folder.png') ?>" alt="Folder Icon"
+                                                class="w-5 h-5 mr-2">
+                                            <?= esc($folder['name']) ?>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <?= esc($folder['owner_role']) ?>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <?= esc($folder['owner_name']) ?>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <?= esc($folder['access_roles'] ? implode(', ', json_decode($folder['access_roles'])) : '-') ?>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <?= esc(ucfirst($folder['shared_type'])) ?>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <?php if (($folder['folder_type'] ?? '') === 'shared' && ($folder['shared_type'] ?? '') !== 'read'): ?>
+                                        <button
+                                            onclick="showFloatingMenu(event, '<?= esc($folder['folder_type'] ?? '') ?>', '<?= esc($folder['id']) ?>', '<?= esc($folder['name']) ?>')"
+                                            class="text-blue-600 hover:text-blue-900">⋮</button>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    <tr class="hover:bg-gray-50 search-empty-row" style="display: none;">
+                        <td colspan="6" class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                            Tidak ada folder yang cocok dengan pencarian Anda.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
 
-<div class="relative inline-block text-left mb-6">
-    <button id="dropdownButton"
-        class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium flex items-center space-x-2">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-        </svg>
-        <span>Baru</span>
-    </button>
+<div class="block md:hidden">
+    <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+        <div class="relative">
+            <input type="text" id="searchInputMobile" placeholder="Masukkan file dokumen..."
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            <svg class="absolute right-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+            <div id="searchResultsMobile"
+                class="absolute z-20 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-lg hidden"></div>
+        </div>
+    </div>
 
-    <div id="dropdownMenu"
-        class="absolute z-10 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible transform scale-95 transition-all duration-200 ease-out">
-        <a href="#" id="openCreateFolder" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">📁 Buat Folder</a>
+    <div class="relative inline-block text-left mb-6">
+        <button id="dropdownButtonMobile"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+                </path>
+            </svg>
+            <span>Baru</span>
+        </button>
+
+        <div id="dropdownMenuMobile"
+            class="absolute z-10 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible transform scale-95 transition-all duration-200 ease-out">
+            <a href="#" id="openCreateFolderMobile" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">📁 Buat
+                Folder</a>
+        </div>
+    </div>
+
+    <input type="file" id="folderUploadInput" webkitdirectory style="display: none;" />
+
+    <div class="bg-white rounded-lg shadow-sm mb-6">
+        <div class="p-4 border-b border-gray-200">
+            <h2 class="text-lg font-semibold text-gray-800">Folder Terbaru</h2>
+        </div>
+        <div class="divide-y divide-gray-200">
+            <?php if (!empty($sharedFolders)): ?>
+                <?php foreach ($sharedFolders as $folder): ?>
+                    <div class="relative flex items-center justify-between px-4 py-3 hover:bg-gray-50"
+                        data-folder-id="<?= esc($folder['id']) ?>" data-folder-name="<?= esc($folder['name']) ?>"
+                        data-folder-type="<?= esc($folder['folder_type']) ?>"
+                        data-folder-is-shared="<?= esc($folder['is_shared'] ?? 0) ?>"
+                        data-folder-shared-type="<?= esc($folder['shared_type'] ?? '') ?>"
+                        data-folder-owner-id="<?= esc($folder['owner_id']) ?>"
+                        data-folder-owner-name="<?= esc($folder['owner_display'] ?? $folder['owner_name'] ?? 'Unknown') ?>"
+                        data-folder-created-at="<?= esc($folder['created_at']) ?>"
+                        data-folder-updated-at="<?= esc($folder['updated_at']) ?>"
+                        data-folder-path="<?= esc($folder['path'] ?? $folder['name']) ?>">
+                        <div class="flex items-center space-x-4">
+                            <img src="<?= base_url('images/folder.png') ?>" alt="Folder Icon" class="w-6 h-6">
+                            <div>
+                                <a href="<?= base_url('umum/view-shared-folder/' . $folder['id']) ?>"
+                                    class="block font-medium text-gray-900 hover:text-blue-700 hover:underline">
+                                    <?= esc($folder['name']) ?>
+                                </a>
+                                <div class="text-gray-500 text-xs">
+                                    <?= 'Dari ' . esc($folder['owner_role']) ?>
+                                </div>
+                            </div>
+                        </div>
+                        <?php if (($folder['shared_type'] ?? '') !== 'read'): ?>
+                            <button onclick="toggleMenu(this)" class="text-gray-600 hover:text-black  -900">⋮</button>
+                        <?php endif; ?>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="flex items-center justify-center px-6 py-4 text-gray-500">
+                    Tidak ada folder yang tersedia.
+                </div>
+            <?php endif; ?>
+        </div>
     </div>
 </div>
 
-<input type="file" id="folderUploadInput" webkitdirectory style="display: none;" />
 <div id="modalCreateFolder"
     class="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-sm hidden">
     <div class="bg-white p-6 rounded-lg shadow-xl w-full max-w-md transition-all duration-300 ease-in-out">
@@ -46,7 +226,6 @@
         <div class="relative mb-4">
             <select id="folderType" class="w-full border rounded-lg px-3 py-2 pr-10 appearance-none">
                 <option disabled selected value="">Pilih jenis folder</option>
-                <option value="personal">Personal Folder</option>
                 <option value="shared">Shared Folder</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
@@ -57,11 +236,8 @@
         </div>
 
         <?php
-        // Pastikan $userRoleName tersedia dari controller
-// Jika belum, Anda harus mengambilnya dari session di view ini (kurang disarankan)
-// atau memastikan controller melewatkannya seperti yang sudah dibahas
-        $loggedInRole = $userRoleName ?? ''; // Ambil nama peran pengguna yang sedang login
-        
+        $loggedInRole = $userRoleName ?? '';
+
         // Tentukan apakah setiap checkbox harus disabled
         $isStaffDisabled = false;
         $isSupervisorDisabled = false;
@@ -155,89 +331,8 @@
     </div>
 </div>
 
-<div class="bg-white rounded-lg shadow-sm">
-    <div class="p-6 border-b border-gray-200">
-        <h2 class="text-lg font-semibold text-gray-800 flex items-center">
-            Dokumen Bersama
-        </h2>
-    </div>
 
-    <div class="overflow-x-auto">
-        <table class="w-full" id="sharedFoldersTable">
-            <thead class="bg-blue-600">
-                <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Nama Folder
-                    </th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Dari Jabatan
-                    </th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Pengunggah
-                    </th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Ke Jabatan
-                    </th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Akses</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Aksi</th>
-                </tr>
-            </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-                <?php if (empty($sharedFolders)): ?>
-                    <tr class="hover:bg-gray-50 empty-state-row" id="noFoldersRow">
-                        <td colspan="6" class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
-                            Tidak ada folder yang di-share untuk Anda.
-                        </td>
-                    </tr>
-                <?php else: ?>
-                    <?php foreach ($sharedFolders as $folder): ?>
-                        <tr class="hover:bg-gray-50 folder-row" data-folder-id="<?= esc($folder['id']) ?>"
-                            data-folder-name="<?= esc($folder['name']) ?>"
-                            data-folder-path="<?= esc($folder['path'] ?? $folder['id']) ?>"
-                            data-folder-type="<?= esc($folder['folder_type'] ?? 'personal') ?>"
-                            data-folder-is-shared="<?= esc($folder['is_shared'] ? '1' : '0') ?>"
-                            data-folder-shared-type="<?= esc($folder['shared_type'] ?? '') ?>"
-                            data-folder-owner-id="<?= esc($folder['owner_id']) ?>"
-                            data-folder-owner-name="<?= esc($folder['owner_name'] ?? 'Unknown') ?>"
-                            data-folder-created-at="<?= esc($folder['created_at'] ?? '') ?>"
-                            data-folder-updated-at="<?= esc($folder['updated_at'] ?? '') ?>">
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="flex items-center">
-                                    <svg class="w-5 h-5 text-gray-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"></path>
-                                    </svg>
-                                    <a href="<?= base_url('umum/view-shared-folder/' . $folder['id']) ?>"
-                                        class="text-blue-500 hover:underline">
-                                        <i class="fas fa-folder"></i> <?= esc($folder['name']) ?>
-                                    </a>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                <?= esc($folder['owner_role']) ?>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="flex items-center">
-                                    <div class="w-5 h-5 bg-blue-500 rounded-full mr-2"></div>
-                                    <span class="text-sm text-gray-900"><?= esc($folder['owner_name']) ?></span>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                <?= esc($folder['access_roles'] ? implode(', ', json_decode($folder['access_roles'])) : '-') ?>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                <?= esc(ucfirst($folder['shared_type'])) ?>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                <button onclick="toggleMenu(this)" class="text-blue-600 hover:text-blue-900">⋮</button>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-                <tr class="hover:bg-gray-50 search-empty-row" style="display: none;">
-                    <td colspan="6" class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
-                        Tidak ada folder yang cocok dengan pencarian Anda.
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+
 <?= $this->endSection() ?>
 
 
@@ -254,9 +349,9 @@
         let createFolderApiUrl = '';
         let uploadFileApiUrl = '';
         let uploadFromFolderApiUrl = '';
-        
+
         const userRole = window.currentUserRole ? window.currentUserRole.toLowerCase() : 'staff';
-        
+
         // Menentukan URL API berdasarkan peran pengguna
         if (userRole === 'manajer') {
             createFolderApiUrl = '<?= base_url('manager/create-folder') ?>';
@@ -285,6 +380,9 @@
         const dropdownButton = document.getElementById('dropdownButton');
         const dropdownMenu = document.getElementById('dropdownMenu');
         const openCreateFolder = document.getElementById('openCreateFolder');
+        const dropdownButtonMobile = document.getElementById('dropdownButtonMobile');
+        const dropdownMenuMobile = document.getElementById('dropdownMenuMobile');
+        const openCreateFolderMobile = document.getElementById('openCreateFolderMobile');
         const modalCreateFolder = document.getElementById('modalCreateFolder');
         const cancelModal = document.getElementById('cancelModal');
         const createFolderBtn = document.getElementById('createFolderBtn');
@@ -368,11 +466,45 @@
             }
         });
 
+        if (dropdownButtonMobile && dropdownMenuMobile) {
+            dropdownButtonMobile.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                document.querySelectorAll('.menu-dropdown').forEach(otherMenu => {
+                    hideDropdown(otherMenu);
+                });
+
+                const isVisible = dropdownMenuMobile.classList.contains('visible');
+                if (isVisible) {
+                    hideDropdown(dropdownMenuMobile);
+                } else {
+                    showDropdown(dropdownMenuMobile);
+                }
+            });
+        }
+
+        // Tutup dropdown "Baru" jika pengguna mengklik di luar area dropdown atau tombol
+        document.addEventListener('click', function (event) {
+            if (dropdownButtonMobile && dropdownMenuMobile && !dropdownButtonMobile.contains(event.target) && !dropdownMenuMobile.contains(event.target)) {
+                hideDropdown(dropdownMenuMobile);
+            }
+        });
+
         // Event Listener untuk link "Buat Folder" di dropdown
         if (openCreateFolder && modalCreateFolder) {
             openCreateFolder.addEventListener('click', function (e) {
                 e.preventDefault();
                 hideDropdown(dropdownMenu);
+                resetCreateFolderForm();
+                showModal(modalCreateFolder);
+            });
+        }
+
+        if (openCreateFolderMobile && modalCreateFolder) {
+            openCreateFolderMobile.addEventListener('click', function (e) {
+                e.preventDefault();
+                hideDropdown(dropdownMenuMobile);
                 resetCreateFolderForm();
                 showModal(modalCreateFolder);
             });
@@ -673,6 +805,46 @@
                     }
                     if (tableRows.length === 0 && noFoldersRow) {
                         noFoldersRow.style.display = '';
+                    }
+                }
+            });
+        }
+
+        const searchInputMobile = document.getElementById('searchInputMobile');
+        // Selektor ini akan mencari semua DIV yang berfungsi sebagai baris folder
+        const folderRowsMobile = document.querySelectorAll('.block.md\\:hidden .flex.items-center.justify-between');
+        const noFoldersRowMobile = document.querySelector('.block.md\\:hidden .flex.items-center.justify-center');
+
+        if (searchInputMobile) {
+            searchInputMobile.addEventListener('keyup', function (event) {
+                const searchTerm = event.target.value.toLowerCase();
+                let visibleRowsCount = 0;
+
+                folderRowsMobile.forEach(row => {
+                    // Ambil teks dari elemen <a> (nama folder)
+                    const folderName = row.querySelector('a').textContent.toLowerCase();
+                    // Ambil teks dari div di bawahnya (dari jabatan)
+                    const dariJabatan = row.querySelector('.text-gray-500.text-xs').textContent.toLowerCase();
+
+                    // Cek apakah ada kecocokan
+                    if (folderName.includes(searchTerm) || dariJabatan.includes(searchTerm)) {
+                        row.style.display = 'flex'; // Tampilkan baris folder
+                        visibleRowsCount++;
+                    } else {
+                        row.style.display = 'none'; // Sembunyikan baris folder
+                    }
+                });
+
+                if (noFoldersRowMobile) {
+                    noFoldersRowMobile.style.display = (visibleRowsCount === 0) ? 'flex' : 'none';
+                }
+            });
+
+            searchInputMobile.addEventListener('input', function () {
+                if (this.value.trim() === '') {
+                    folderRowsMobile.forEach(row => row.style.display = 'flex');
+                    if (noFoldersRowMobile && folderRowsMobile.length === 0) {
+                        noFoldersRowMobile.style.display = 'flex';
                     }
                 }
             });

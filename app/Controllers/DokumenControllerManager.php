@@ -11,11 +11,13 @@ use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\I18n\Time;
 use CodeIgniter\Database\RawSql;
 use App\Models\RoleModel;
+use App\Models\LogAksesModel;
 class DokumenControllerManager extends BaseController
 {
     protected $folderModel;
     protected $fileModel;
     protected $userModel;
+    protected $logAksesModel;
     protected $session;
     protected $roleModel;
 
@@ -23,6 +25,7 @@ class DokumenControllerManager extends BaseController
     {
         $this->folderModel = new FolderModel();
         $this->fileModel = new FileModel();
+        $this->logAksesModel = new LogAksesModel();
         $this->userModel = new UserModel();
         $this->roleModel = new RoleModel();
         $this->session = \Config\Services::session();
@@ -144,7 +147,7 @@ class DokumenControllerManager extends BaseController
 
     // File: app/Controllers/DokumenControllerHRD.php
 
-public function dokumenManager()
+    public function dokumenManager()
     {
         $userId = $this->session->get('user_id');
         $userRoleId = $this->session->get('role_id');
@@ -221,6 +224,36 @@ public function dokumenManager()
         return view('Umum/dokumenBersama');
     }
 
+    protected function logAkses(?int $userId, array $fileData, string $aksi)
+    {
+        $roleName = 'Guest'; // Default value jika user tidak ditemukan atau tidak login
+
+        if ($userId) {
+            // Ambil data user beserta role_id-nya
+            $user = $this->userModel->find($userId);
+
+            if ($user && $user['role_id']) {
+                // Ambil nama role berdasarkan role_id
+                $role = $this->roleModel->find($user['role_id']);
+                if ($role) {
+                    $roleName = $role['name'];
+                }
+            }
+        }
+
+        $dataToLog = [
+            'user_id' => $userId, // Bisa null jika Guest
+            'role' => $roleName, // Nama role yang sudah didapatkan
+            'file_id' => $fileData['id'],
+            'file_name' => $fileData['file_name'],
+            'aksi' => $aksi,
+            // 'timestamp' akan otomatis diisi oleh model karena useTimestamps = true
+        ];
+
+        // Simpan data log
+        $this->logAksesModel->insert($dataToLog);
+    }
+
     public function dokumenUmum()
     {
         $hrdDocumentModel = new \App\Models\HrdDocumentModel();
@@ -254,9 +287,9 @@ public function dokumenManager()
         $hasAccess = false;
         $canManageFolder = false;
 
-        // --- LOGIKA OTORISASI UNIVERSAL ---
+        // 🔥 LOGIKA OTORISASI UNIVERSAL DAN KONSISTEN 🔥
 
-        // Kondisi 1: Pengguna adalah pemilik folder itu sendiri
+        // Kondisi 1: Pengguna adalah pemilik folder itu sendiri, tidak peduli folder_type-nya apa
         if ((int) $currentFolder['owner_id'] === (int) $userId) {
             $hasAccess = true;
             $canManageFolder = true; // Pemilik selalu bisa manage
@@ -266,8 +299,7 @@ public function dokumenManager()
             $accessRoles = json_decode($currentFolder['access_roles'] ?? '[]', true);
             $canManageFolder = true;
 
-            // Pastikan semua role ID di access_roles adalah string untuk perbandingan
-            // ini diperlukan jika di database disimpan sebagai string JSON, misalnya "['1', '6']"
+            // Pastikan semua role ID di access_roles adalah string untuk perbandingan yang konsisten
             $stringAccessRoles = is_array($accessRoles) ? array_map('strval', $accessRoles) : [];
 
             // Cek apakah userRoleId (sebagai string) ada di access_roles
@@ -286,13 +318,13 @@ public function dokumenManager()
             $hasAccess = true;
             $canManageFolder = false; // Public folder tidak bisa dimanage oleh semua orang
         }
+        
 
-        // Jika tidak ada akses, redirect ke halaman dokumen utama role Manager
+        // Jika tidak ada akses, redirect ke halaman dokumen utama role tersebut
         if (!$hasAccess) {
+            // Redirect ke halaman dokumen utama SPV
             return redirect()->to(base_url('manager/dokumen-manager'))->with('error', 'Anda tidak memiliki akses ke folder ini.');
         }
-
-        // --- AKHIR LOGIKA OTORISASI ---
 
         // Mengambil data untuk folder dan file
         $subFolders = $this->folderModel->getSubfoldersWithDetails($folderId, $userId, $userRoleId);
@@ -635,84 +667,94 @@ public function dokumenManager()
 
     public function uploadFile()
     {
-        if (!$this->request->isAJAX()) {
-            return $this->response->setStatusCode(405)->setJSON(['status' => 'error', 'message' => 'Metode tidak diizinkan.']);
-        }
+        $userId = $this->session->get('user_id');
 
-        $userId = $this->session->get('user_id'); // ID Manager yang sedang login
         if (!$userId) {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Unauthorized. User not logged in.']);
         }
 
-        $file = $this->request->getFile('file_upload');
+        $validationRule = [
+            'file_upload' => [
+                'label' => 'File',
+                'rules' => 'uploaded[file_upload]|max_size[file_upload,10240]|ext_in[file_upload,pdf,doc,docx,xls,xlsx,jpg,jpeg,png,gif]',
+                'errors' => [
+                    'uploaded' => 'Harus ada file yang diupload.',
+                    'max_size' => 'Ukuran file terlalu besar (maks 10MB).',
+                    'ext_in' => 'Format file tidak didukung.',
+                ],
+            ],
+            'folder_id' => [
+                'label' => 'Folder ID',
+                'rules' => 'permit_empty|is_natural_no_zero',
+            ],
+        ];
+
+        if (!$this->validate($validationRule)) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Validasi gagal.',
+                'errors' => $this->validator->getErrors(),
+            ]);
+        }
+
+        $uploadedFile = $this->request->getFile('file_upload');
         $folderId = $this->request->getPost('folder_id');
-        $folderType = $this->request->getPost('folder_type');
-        $targetUserId = $this->request->getPost('target_user_id') ?? $userId; // Owner file adalah target_user_id jika ada, atau user yang login
 
-        if (!$file || !$file->isValid() || $file->hasMoved()) {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal mengunggah file. Pastikan file valid dan belum dipindahkan.']);
-        }
+        if ($uploadedFile->isValid() && !$uploadedFile->hasMoved()) {
+            // Ambil info SEBELUM memindahkan file
+            $fileMimeType = $uploadedFile->getMimeType();
+            $fileSize = $uploadedFile->getSize();
+            $fileName = $uploadedFile->getName();
+            $newName = $uploadedFile->getRandomName();
 
-        // Validasi ukuran file (misalnya, dari role_id atau konfigurasi)
-        // Anda perlu implementasi ini jika belum ada.
-        // $maxUploadSize = $this->userModel->getMaxUploadSize($userId); // Contoh
-        // if ($file->getSize() > $maxUploadSize) { ... }
+            $targetDirectory = WRITEPATH . 'uploads/';
 
-        $originalName = $file->getName();
-        $newName = $file->getRandomName(); // Generate unique name
-        $mimeType = $file->getMimeType();
-        $fileSize = $file->getSize();
+            if (!is_dir($targetDirectory)) {
+                mkdir($targetDirectory, 0777, true);
+            }
 
-        // Dapatkan path folder fisik di server
-        $targetFolderPath = WRITEPATH . 'uploads/';
-        if ($folderId) {
-            $currentFolder = $this->folderModel->find($folderId);
-            if ($currentFolder) {
-                $relativePath = $this->folderModel->getFolderPath($folderId); // Dapatkan path relatif
-                $targetFolderPath .= $relativePath;
+            if ($uploadedFile->move($targetDirectory, $newName)) {
+                $data = [
+                    'folder_id' => empty($folderId) ? null : $folderId,
+                    'uploader_id' => $userId,
+                    'file_name' => $fileName,
+                    'file_path' => $newName,
+                    'file_size' => $fileSize,
+                    'file_type' => $fileMimeType,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ];
+
+                if ($this->fileModel->insert($data)) {
+                    return $this->response->setJSON([
+                        'status' => 'success',
+                        'message' => 'File berhasil diunggah.'
+                    ]);
+                } else {
+                    // Hapus file jika insert DB gagal
+                    unlink($targetDirectory . $newName);
+                    return $this->response->setJSON([
+                        'status' => 'error',
+                        'message' => 'Gagal menyimpan data file ke database.',
+                        'errors' => $this->fileModel->errors()
+                    ]);
+                }
             } else {
-                return $this->response->setJSON(['status' => 'error', 'message' => 'Folder tujuan tidak ditemukan.']);
+                return $this->response->setJSON([
+                    'status' => 'error',
+                    'message' => 'Gagal memindahkan file yang diunggah.',
+                    'errors' => $uploadedFile->getErrorString() . '(' . $uploadedFile->getError() . ')'
+                ]);
             }
         } else {
-            // Jika tidak ada folderId, asumsikan upload ke root personal folder user yang punya targetUserId
-            $targetFolderPath .= 'personal/' . $targetUserId . '/';
-        }
-
-        // Pastikan folder fisik ada
-        if (!is_dir($targetFolderPath)) {
-            if (!mkdir($targetFolderPath, 0777, true)) {
-                return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal membuat direktori upload.']);
-            }
-        }
-
-        // Pindahkan file
-        if ($file->move($targetFolderPath, $newName)) {
-            $data = [
-                'file_name' => $originalName,
-                'server_file_name' => $newName,
-                'file_type' => $mimeType,
-                'file_size' => $fileSize,
-                'folder_id' => $folderId,
-                'uploader_id' => $userId,      // Uploader adalah Manager yang login
-                'owner_id' => $targetUserId, // Owner bisa Staff/Supervisor jika di folder mereka
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
-            ];
-
-            if ($this->fileModel->insert($data)) {
-                return $this->response->setJSON(['status' => 'success', 'message' => 'File berhasil diunggah!']);
-            } else {
-                // Jika gagal insert ke DB, hapus file yang sudah terupload
-                unlink($targetFolderPath . $newName);
-                $errors = $this->fileModel->errors();
-                return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal menyimpan info file ke database.', 'errors' => $errors]);
-            }
-        } else {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal memindahkan file ke direktori upload.']);
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'File tidak valid atau sudah dipindahkan.',
+            ]);
         }
     }
 
-    public function uploadFromFolder()
+   public function uploadFromFolder()
     {
         $userId = $this->session->get('user_id');
         if (!$userId) {
@@ -970,6 +1012,8 @@ public function dokumenManager()
             log_message('error', 'Gagal: File tidak ditemukan di server pada path: ' . $filePath);
             throw PageNotFoundException::forPageNotFound('File tidak ditemukan di server.');
         }
+
+        $this->logAkses($userId, $file, 'download');
 
         $this->fileModel->update($fileId, ['download_count' => ($file['download_count'] ?? 0) + 1]);
 

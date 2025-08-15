@@ -802,6 +802,8 @@ class DokumenControllerStaff extends BaseController
             return redirect()->back()->with('error', 'Anda tidak memiliki izin untuk mengunduh file ini.');
         }
 
+        $this->logAkses($userId, $file, 'download');
+
         $this->fileModel->update($fileId, ['download_count' => ($file['download_count'] ?? 0) + 1]);
 
         $filePath = WRITEPATH . 'uploads/' . $file['file_path'];

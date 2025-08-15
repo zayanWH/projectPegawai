@@ -10,12 +10,14 @@ use CodeIgniter\Session\Session; // Import Session class jika belum
 use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\I18n\Time;
 use CodeIgniter\Database\RawSql;
+use App\Models\LogAksesModel;
 
 class DokumenControllerDireksi extends BaseController
 {
 
     protected $folderModel;
     protected $fileModel;
+    protected $logAksesModel;
     protected $userModel;
     protected $session;
 
@@ -23,6 +25,7 @@ class DokumenControllerDireksi extends BaseController
     {
         $this->folderModel = new FolderModel();
         $this->fileModel = new FileModel();
+        $this->logAksesModel = new LogAksesModel();
         $this->userModel = new UserModel();
         $this->session = \Config\Services::session();
         $this->roleModel = new \App\Models\RoleModel();
@@ -491,20 +494,20 @@ class DokumenControllerDireksi extends BaseController
         unset($crumb); // Sangat penting untuk unset reference setelah loop
 
         $data = [
-            'title'              => 'Folder: ' . $currentFolder['name'],
-            'folderName'         => $currentFolder['name'],
-            'folderId'           => $currentFolder['id'],
-            'isShared'           => (bool) $currentFolder['is_shared'],
-            'sharedType'         => $currentFolder['shared_type'],
-            'folderType'         => $currentFolder['folder_type'],
-            'subFolders'         => $subFolders,
-            'filesInFolder'      => $filesInFolder,
-            'breadcrumbs'        => $breadcrumbs,
-            'isStaffFolder'      => false,
+            'title' => 'Folder: ' . $currentFolder['name'],
+            'folderName' => $currentFolder['name'],
+            'folderId' => $currentFolder['id'],
+            'isShared' => (bool) $currentFolder['is_shared'],
+            'sharedType' => $currentFolder['shared_type'],
+            'folderType' => $currentFolder['folder_type'],
+            'subFolders' => $subFolders,
+            'filesInFolder' => $filesInFolder,
+            'breadcrumbs' => $breadcrumbs,
+            'isStaffFolder' => false,
             'isSupervisorFolder' => false,
-            'isManagerFolder'    => false,// Menandakan ini adalah folder untuk Direksi
-            'canDireksiFolder'    => $canManageFolder,
-            'userRoleName'       => $userRoleName,
+            'isManagerFolder' => false,// Menandakan ini adalah folder untuk Direksi
+            'canDireksiFolder' => $canManageFolder,
+            'userRoleName' => $userRoleName,
         ];
 
         return view('Direksi/viewFolder', $data);
@@ -1213,6 +1216,8 @@ class DokumenControllerDireksi extends BaseController
             throw PageNotFoundException::forPageNotFound('File tidak ditemukan di server.');
         }
 
+        $this->logAkses($userId, $file, 'download');
+
         $this->fileModel->update($fileId, ['download_count' => ($file['download_count'] ?? 0) + 1]);
 
         log_message('info', 'Berhasil: File siap diunduh.');
@@ -1280,5 +1285,35 @@ class DokumenControllerDireksi extends BaseController
             ->setBody(file_get_contents($filePath));
 
         return $this->response;
+    }
+
+    protected function logAkses(?int $userId, array $fileData, string $aksi)
+    {
+        $roleName = 'Guest'; // Default value jika user tidak ditemukan atau tidak login
+
+        if ($userId) {
+            // Ambil data user beserta role_id-nya
+            $user = $this->userModel->find($userId);
+
+            if ($user && $user['role_id']) {
+                // Ambil nama role berdasarkan role_id
+                $role = $this->roleModel->find($user['role_id']);
+                if ($role) {
+                    $roleName = $role['name'];
+                }
+            }
+        }
+
+        $dataToLog = [
+            'user_id' => $userId, // Bisa null jika Guest
+            'role' => $roleName, // Nama role yang sudah didapatkan
+            'file_id' => $fileData['id'],
+            'file_name' => $fileData['file_name'],
+            'aksi' => $aksi,
+            // 'timestamp' akan otomatis diisi oleh model karena useTimestamps = true
+        ];
+
+        // Simpan data log
+        $this->logAksesModel->insert($dataToLog);
     }
 }

@@ -19,12 +19,10 @@
                     </svg>
                 </button>
             </form>
-            <img src="<?= base_url('images/logo.png') ?>" alt="Logo USSI" class="h-10 w-auto rounded-lg">
+            <img src="<?= base_url('images/logo.jpg') ?>" alt="Logo USSI" class="h-10 w-auto rounded-lg">
         </div>
     </div>
 </div>
-
-
 
 <div class="bg-white rounded-lg shadow-sm">
     <div class="p-6 border-b border-gray-200">
@@ -59,11 +57,14 @@
                                 <span class="text-sm text-gray-900"><?= esc($log['role_name'] ?? 'N/A') ?></span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <!-- 🔥 KODE BARU: Menampilkan action dengan lebih deskriptif -->
                                 <?php
                                 $actionText = ucfirst($log['action'] ?? 'N/A');
-                                if ($log['action'] === 'rename') {
-                                    $actionText = 'rename';
+                                if ($log['action'] === 'rename_folder') {
+                                    $actionText = 'Rename Folder';
+                                } elseif ($log['action'] === 'create_folder') {
+                                    $actionText = 'Buat Folder';
+                                } elseif ($log['action'] === 'delete_folder') {
+                                    $actionText = 'Hapus Folder';
                                 }
                                 ?>
                                 <span class="text-sm text-gray-900"><?= esc($actionText) ?></span>
@@ -71,15 +72,22 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
                                     <?php if (isset($log['target_type']) && $log['target_type'] == 'file'): ?>
-                                        <svg class="w-5 h-5 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"></path>
-                                        </svg>
+                                        <?php
+                                        $fileExtension = pathinfo($log['target_name'] ?? '', PATHINFO_EXTENSION);
+                                        $iconSrc = '';
+                                        switch (strtolower($fileExtension)) {
+                                            case 'pdf': $iconSrc = base_url('images/pdf.png'); break;
+                                            case 'doc': case 'docx': $iconSrc = base_url('images/word.png'); break;
+                                            case 'xls': case 'xlsx': $iconSrc = base_url('images/excel.png'); break;
+                                            case 'pptx': $iconSrc = base_url('images/ppt.png'); break;
+                                            case 'png': case 'jpg': case 'jpeg': case 'gif': $iconSrc = base_url('images/image.png'); break;
+                                            default: $iconSrc = base_url('images/file-default.png'); break;
+                                        }
+                                        ?>
+                                        <img src="<?= $iconSrc ?>" alt="File Icon" class="w-5 h-5 mr-2">
                                         <span class="text-sm text-gray-900"><?= esc($log['target_name'] ?? 'Tidak Ditemukan') ?></span>
                                     <?php elseif (isset($log['target_type']) && $log['target_type'] == 'folder'): ?>
-                                        <svg class="w-5 h-5 text-yellow-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"></path>
-                                        </svg>
-                                        <!-- 🔥 KODE BARU: Mengambil detail untuk log rename -->
+                                        <img src="<?= base_url('images/folder.png') ?>" alt="Folder Icon" class="w-5 h-5 mr-2">
                                         <?php
                                         $targetName = $log['target_name'] ?? 'Tidak Ditemukan';
                                         if ($log['action'] === 'rename_folder' && !empty($log['details'])) {

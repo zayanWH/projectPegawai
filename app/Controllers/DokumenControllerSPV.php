@@ -10,6 +10,7 @@ use CodeIgniter\Session\Session; // Import Session class jika belum
 use CodeIgniter\Exceptions\PageNotFoundException;
 use App\Models\RoleModel;
 use CodeIgniter\Database\RawSql;
+use App\Models\LogAksesModel;
 
 
 class DokumenControllerSPV extends BaseController // Atau extends Controller jika tidak pakai BaseController
@@ -17,6 +18,7 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
     protected $folderModel;
     protected $fileModel;
     protected $userModel;
+    protected $logAksesModel;
     protected $session;
     protected $roleModel;
 
@@ -25,6 +27,7 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
         $this->folderModel = new FolderModel();
         $this->fileModel = new FileModel();
         $this->userModel = new UserModel();
+        $this->logAksesModel = new LogAksesModel();
         $this->session = \Config\Services::session(); // Inisialisasi session
         $this->roleModel = new \App\Models\RoleModel();
     }
@@ -258,6 +261,36 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
         }
     }
 
+    protected function logAkses(?int $userId, array $fileData, string $aksi)
+    {
+        $roleName = 'Guest'; // Default value jika user tidak ditemukan atau tidak login
+
+        if ($userId) {
+            // Ambil data user beserta role_id-nya
+            $user = $this->userModel->find($userId);
+
+            if ($user && $user['role_id']) {
+                // Ambil nama role berdasarkan role_id
+                $role = $this->roleModel->find($user['role_id']);
+                if ($role) {
+                    $roleName = $role['name'];
+                }
+            }
+        }
+
+        $dataToLog = [
+            'user_id' => $userId, // Bisa null jika Guest
+            'role' => $roleName, // Nama role yang sudah didapatkan
+            'file_id' => $fileData['id'],
+            'file_name' => $fileData['file_name'],
+            'aksi' => $aksi,
+            // 'timestamp' akan otomatis diisi oleh model karena useTimestamps = true
+        ];
+
+        // Simpan data log
+        $this->logAksesModel->insert($dataToLog);
+    }
+
     public function serveFile($fileId)
     {
         $file = $this->fileModel->find($fileId);
@@ -273,7 +306,7 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
             throw PageNotFoundException::forPageNotFound('File tidak ada di server.');
         }
 
-        // $this->logAkses($userId, $file, 'preview');
+        $this->logAkses($userId, $file, 'preview');
 
         // Tentukan Content-Type berdasarkan ekstensi file
         $mime = mime_content_type($filePath);
@@ -827,6 +860,8 @@ class DokumenControllerSPV extends BaseController // Atau extends Controller jik
             log_message('error', 'Gagal: File tidak ditemukan di server pada path: ' . $filePath);
             throw PageNotFoundException::forPageNotFound('File tidak ditemukan di server.');
         }
+
+        $this->logAkses($userId, $file, 'download');
 
         $this->fileModel->update($fileId, ['download_count' => ($file['download_count'] ?? 0) + 1]);
 

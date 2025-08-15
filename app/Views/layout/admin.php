@@ -7,16 +7,16 @@
     <title>Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="<?= base_url('css/output.css') ?>" rel="stylesheet">
 </head>
 
 <body class="bg-gray-100 font-poppins">
     <div class="flex h-screen overflow-hidden">
-        <!-- Sidebar -->
-        <aside class="w-64 bg-[#161F32] flex-shrink-0 p-4 flex flex-col">
-            <!-- Avatar Inisial Akun -->
+        <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden hidden"></div>
+
+        <aside id="sidebar"
+            class="w-64 bg-[#161F32] flex-shrink-0 p-4 flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out fixed md:relative z-50">
             <div
                 class="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
                 A
@@ -65,25 +65,31 @@
                 </li>
             </ul>
 
-            <!-- Logout Button -->
             <a href="<?= site_url('logout') ?>"
                 class="bg-red-600 hover:bg-red-700 text-white text-center font-medium py-2 rounded-md mt-4">
                 Logout
             </a>
         </aside>
 
-        <!-- Main content -->
         <div class="flex flex-col flex-1">
+            <header class="bg-white p-4 shadow-sm md:hidden flex items-center justify-between z-40">
+                <button id="mobileMenuButton" class="text-gray-800">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <span class="text-lg font-semibold text-gray-800">Dashboard</span>
+                <div class="w-6 h-6"></div> </header>
+
             <main class="flex-1 overflow-y-auto p-6">
                 <?= $this->renderSection('content') ?>
             </main>
-            <footer class="bg-[#1E293B] p-4 text-center text-sm text-white">
+            <footer class="bg-[#1E293B] p-4 text-center text-sm text-white flex-shrink-0">
                 &copy; <?= date('Y') ?> - Dashboard Footer
             </footer>
         </div>
     </div>
 
-    <!-- Floating Dropdown -->
     <div id="floatingMenu"
         class="fixed w-48 bg-white rounded-xl shadow-lg hidden transition ease-out duration-200 transform scale-95 opacity-0 z-[9998]">
         <ul class="text-sm text-gray-700 divide-y divide-gray-100">
@@ -148,6 +154,21 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // === LOGIKA SIDEBAR RESPONSIVE ===
+            const sidebar = document.getElementById('sidebar');
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+            mobileMenuButton.addEventListener('click', () => {
+                sidebar.classList.toggle('-translate-x-full');
+                sidebarOverlay.classList.toggle('hidden');
+            });
+
+            sidebarOverlay.addEventListener('click', () => {
+                sidebar.classList.add('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            });
+
             // === MODAL TAMBAH USER ===
             const openAddUserModalBtn = document.getElementById('openAddUserModal');
             const modalAddUser = document.getElementById('modalAddUser');
@@ -265,11 +286,7 @@
                         '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.879 16.121zm-.707.707l-2.828-2.828a1 1 0 00-1.414 0l-2.828 2.828M9.5 7.5a2 2 0 10-4 0 2 2 0 004 0z"></path>';
                 });
             });
-        });
-    </script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
             // === MODAL TAMBAH JABATAN ===
             const openAddJabatanModalBtn = document.getElementById('openAddJabatanModal');
             const modalAddJabatan = document.getElementById('modalAddJabatan');
@@ -375,7 +392,6 @@
             }
         });
     </script>
-
 </body>
 
 </html>

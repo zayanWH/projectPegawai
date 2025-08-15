@@ -64,12 +64,9 @@ class Folder extends Controller
             'updated_at' => date('Y-m-d H:i:s'),
         ];
 
-        // Logika utama perbaikan
         if ($json->folder_type === 'personal') {
             $dataToSave['is_shared'] = 1;
             $dataToSave['shared_type'] = 'role_based';
-
-            // 🔥 PERBAIKAN DI SINI: Cast ID role ke string sebelum dimasukkan ke array
             $dataToSave['access_roles'] = json_encode([(string)$ownerRoleId, (string)$hrdRoleId]);
         } else {
             $isShared = ($json->folder_type === 'shared') ? 1 : 0;
@@ -77,7 +74,6 @@ class Folder extends Controller
             $dataToSave['shared_type'] = $json->shared_type ?? 'read_write';
 
             if (isset($json->access_roles) && is_array($json->access_roles)) {
-                // Perbaiki juga di sini jika ada kemungkinan nilai integer
                 $stringAccessRoles = array_map('strval', $json->access_roles);
                 $dataToSave['access_roles'] = json_encode($stringAccessRoles);
             } else {
@@ -85,21 +81,32 @@ class Folder extends Controller
             }
         }
 
-        $folderModel = new \App\Models\FolderModel();
         try {
-            if ($folderModel->insert($dataToSave)) {
-                $newFolderId = $folderModel->getInsertID();
-                $relativePath = $folderModel->getFolderPath($newFolderId);
+            if ($this->folderModel->insert($dataToSave)) {
+                $newFolderId = $this->folderModel->getInsertID();
+                $relativePath = $this->folderModel->getFolderPath($newFolderId);
                 $folderPath = WRITEPATH . 'uploads/' . $relativePath;
+                
+                // Buat folder fisik
                 if (!is_dir($folderPath)) {
                     if (!mkdir($folderPath, 0777, true)) {
-                        $folderModel->delete($newFolderId);
+                        $this->folderModel->delete($newFolderId);
                         return $this->fail('Gagal membuat folder fisik di server.', 500);
                     }
                 }
+                
+                // CATAT AKTIVITAS DI SINI
+                $this->activityLogsModel->logActivity(
+                    $ownerId,
+                    'create_folder',
+                    'folder',
+                    $newFolderId,
+                    $json->name
+                );
+
                 return $this->respondCreated(['status' => 'success', 'message' => 'Folder berhasil dibuat.']);
             } else {
-                $errors = $folderModel->errors();
+                $errors = $this->folderModel->errors();
                 return $this->fail('Gagal membuat folder: ' . implode(', ', $errors), 500);
             }
         } catch (\Exception $e) {

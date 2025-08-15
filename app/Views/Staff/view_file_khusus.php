@@ -10,9 +10,6 @@
 <body class="bg-gray-100 flex flex-col min-h-screen">
     <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-10 h-16 flex items-center justify-between px-6">
         <div class="flex items-center space-x-4 min-w-0">
-            <button id="backButton" title="Kembali" aria-label="Kembali" class="text-gray-600 hover:text-gray-900 flex-shrink-0">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-            </button>
             <h1 class="text-lg font-semibold text-gray-800 truncate" title="<?= esc($fileName) ?>">
                 <?= esc($fileName) ?>
             </h1>

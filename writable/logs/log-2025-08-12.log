@@ -3458,3 +3458,320 @@ INFO - 2025-08-12 14:16:32 --> AuthFilter: User with role_id 2 has absolute acce
 DEBUG - 2025-08-12 14:16:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-08-12 14:16:34 --> AuthFilter: User is logged in. Current role_id: 2
 INFO - 2025-08-12 14:16:34 --> AuthFilter: User with role_id 2 has absolute access. Proceeding.
+DEBUG - 2025-08-12 15:35:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-12 15:35:58 --> Login proses method called
+INFO - 2025-08-12 15:35:58 --> Email: fitri.staff@uss.com
+INFO - 2025-08-12 15:35:58 --> Password length: 8
+INFO - 2025-08-12 15:35:59 --> User found: YES
+INFO - 2025-08-12 15:35:59 --> User role_id: 6
+INFO - 2025-08-12 15:35:59 --> Password verified successfully
+DEBUG - 2025-08-12 15:35:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-12 15:35:59 --> Session set for user_id: 6
+INFO - 2025-08-12 15:35:59 --> Redirecting to staff dashboard
+DEBUG - 2025-08-12 15:35:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-12 15:35:59 --> AuthFilter: User is logged in. Current role_id: 6
+DEBUG - 2025-08-12 15:35:59 --> AuthFilter: Allowed roles for this route: array (
+  0 => '6',
+)
+INFO - 2025-08-12 15:35:59 --> AuthFilter: User with role_id 6 is allowed. Proceeding.
+DEBUG - 2025-08-12 15:36:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-12 15:36:01 --> AuthFilter: User is logged in. Current role_id: 6
+DEBUG - 2025-08-12 15:36:01 --> AuthFilter: Allowed roles for this route: array (
+  0 => '6',
+)
+INFO - 2025-08-12 15:36:01 --> AuthFilter: User with role_id 6 is allowed. Proceeding.
+WARNING - 2025-08-12 15:36:01 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Staff\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\Staff\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('staff/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(381): view('staff/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-12 15:36:01 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Staff\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\Staff\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('staff/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(381): view('staff/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-12 15:36:01 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Staff\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\Staff\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('staff/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(381): view('staff/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-12 15:36:01 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Staff\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\Staff\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('staff/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(381): view('staff/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-12 15:36:01 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Staff\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\Staff\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('staff/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(381): view('staff/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-12 15:36:01 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Staff\dokumenStaff.php on line 152.
+ 1 APPPATH\Views\Staff\dokumenStaff.php(152): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Staff\\dokumenStaff.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('staff/dokumenStaff', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(381): view('staff/dokumenStaff', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenStaff()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-12 15:36:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-12 15:36:04 --> AuthFilter: User is logged in. Current role_id: 6
+DEBUG - 2025-08-12 15:36:04 --> AuthFilter: Allowed roles for this route: array (
+  0 => '6',
+)
+INFO - 2025-08-12 15:36:04 --> AuthFilter: User with role_id 6 is allowed. Proceeding.
+DEBUG - 2025-08-12 15:36:04 --> DokumenControllerStaff::viewFolder: Fungsi dimulai untuk Folder ID: 1
+DEBUG - 2025-08-12 15:36:04 --> DokumenControllerStaff::viewFolder: User ID dari sesi: 6
+DEBUG - 2025-08-12 15:36:04 --> DokumenControllerStaff::viewFolder: Folder ditemukan: {"id":"1","name":"wado","path":null,"full_path_physical":null,"parent_id":null,"owner_id":"6","access_roles":null,"is_shared":"0","shared_type":null,"created_at":"2025-07-23 13:51:44","updated_at":"2025-07-25 13:41:57","folder_type":"personal","owner_role":null}
+DEBUG - 2025-08-12 15:36:04 --> DokumenControllerStaff::viewFolder: User Role dari sesi: 6
+DEBUG - 2025-08-12 15:36:04 --> DokumenControllerStaff::viewFolder: Owner Role ID dari folder: NULL
+DEBUG - 2025-08-12 15:36:04 --> DokumenControllerStaff::viewFolder: Akses diberikan: Pengguna adalah pemilik folder.
+DEBUG - 2025-08-12 15:36:04 --> DokumenControllerStaff::viewFolder: Mengirim data ke view staff/viewFolder.
+DEBUG - 2025-08-12 16:46:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-12 16:46:55 --> AuthFilter: User is logged in. Current role_id: 6
+DEBUG - 2025-08-12 16:46:55 --> AuthFilter: Allowed roles for this route: array (
+  0 => '2',
+  1 => '3',
+  2 => '4',
+  3 => '5',
+  4 => '6',
+)
+INFO - 2025-08-12 16:46:55 --> AuthFilter: User with role_id 6 is allowed. Proceeding.
+DEBUG - 2025-08-12 16:46:55 --> DokumenControllerStaff::dokumenBersama(): User ID: 6, Role ID: 6, Nama Role: Staff
+WARNING - 2025-08-12 16:46:55 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Umum\dokumenBersama.php on line 224.
+ 1 APPPATH\Views\Umum\dokumenBersama.php(224): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Umum\\dokumenBersama.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Umum/dokumenBersama', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(869): view('Umum/dokumenBersama', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-12 16:46:55 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Umum\dokumenBersama.php on line 224.
+ 1 APPPATH\Views\Umum\dokumenBersama.php(224): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Umum\\dokumenBersama.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Umum/dokumenBersama', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(869): view('Umum/dokumenBersama', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-12 16:46:55 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Umum\dokumenBersama.php on line 224.
+ 1 APPPATH\Views\Umum\dokumenBersama.php(224): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Umum\\dokumenBersama.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Umum/dokumenBersama', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(869): view('Umum/dokumenBersama', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-12 16:46:55 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Umum\dokumenBersama.php on line 224.
+ 1 APPPATH\Views\Umum\dokumenBersama.php(224): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Umum\\dokumenBersama.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Umum/dokumenBersama', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(869): view('Umum/dokumenBersama', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-12 16:46:55 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Umum\dokumenBersama.php on line 224.
+ 1 APPPATH\Views\Umum\dokumenBersama.php(224): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Umum\\dokumenBersama.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Umum/dokumenBersama', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(869): view('Umum/dokumenBersama', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-12 16:46:55 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Umum\dokumenBersama.php on line 224.
+ 1 APPPATH\Views\Umum\dokumenBersama.php(224): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Umum\\dokumenBersama.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Umum/dokumenBersama', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(869): view('Umum/dokumenBersama', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-12 16:46:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-12 16:46:58 --> AuthFilter: User is logged in. Current role_id: 6
+DEBUG - 2025-08-12 16:46:58 --> AuthFilter: Allowed roles for this route: array (
+  0 => '2',
+  1 => '3',
+  2 => '4',
+  3 => '5',
+  4 => '6',
+)
+INFO - 2025-08-12 16:46:58 --> AuthFilter: User with role_id 6 is allowed. Proceeding.
+DEBUG - 2025-08-12 16:46:58 --> DEBUG Staff::viewSharedFolder: User ID: 6, Role: Staff, Attempting to view folder ID: 234
+DEBUG - 2025-08-12 16:46:58 --> Effective Shared Type for folder 234: read
+DEBUG - 2025-08-12 16:46:58 --> Folder 234 diakses karena role Staff ada di access_roles. Authorized.
+DEBUG - 2025-08-12 16:47:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-12 16:47:00 --> AuthFilter: User is logged in. Current role_id: 6
+DEBUG - 2025-08-12 16:47:00 --> AuthFilter: Allowed roles for this route: array (
+  0 => '2',
+  1 => '3',
+  2 => '4',
+  3 => '5',
+  4 => '6',
+)
+INFO - 2025-08-12 16:47:00 --> AuthFilter: User with role_id 6 is allowed. Proceeding.
+DEBUG - 2025-08-12 16:47:00 --> DokumenControllerStaff::dokumenBersama(): User ID: 6, Role ID: 6, Nama Role: Staff
+WARNING - 2025-08-12 16:47:00 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Umum\dokumenBersama.php on line 224.
+ 1 APPPATH\Views\Umum\dokumenBersama.php(224): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Umum\\dokumenBersama.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Umum/dokumenBersama', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(869): view('Umum/dokumenBersama', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-12 16:47:00 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Umum\dokumenBersama.php on line 224.
+ 1 APPPATH\Views\Umum\dokumenBersama.php(224): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Umum\\dokumenBersama.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Umum/dokumenBersama', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(869): view('Umum/dokumenBersama', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-12 16:47:00 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Umum\dokumenBersama.php on line 224.
+ 1 APPPATH\Views\Umum\dokumenBersama.php(224): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Umum\\dokumenBersama.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Umum/dokumenBersama', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(869): view('Umum/dokumenBersama', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-12 16:47:00 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Umum\dokumenBersama.php on line 224.
+ 1 APPPATH\Views\Umum\dokumenBersama.php(224): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Umum\\dokumenBersama.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Umum/dokumenBersama', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(869): view('Umum/dokumenBersama', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-12 16:47:00 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Umum\dokumenBersama.php on line 224.
+ 1 APPPATH\Views\Umum\dokumenBersama.php(224): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Umum\\dokumenBersama.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Umum/dokumenBersama', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(869): view('Umum/dokumenBersama', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+WARNING - 2025-08-12 16:47:00 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Views\Umum\dokumenBersama.php on line 224.
+ 1 APPPATH\Views\Umum\dokumenBersama.php(224): ucfirst(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\projectPegawai-master\\app\\Views\\Umum\\dokumenBersama.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('Umum/dokumenBersama', [], true)
+ 5 APPPATH\Controllers\DokumenControllerStaff.php(869): view('Umum/dokumenBersama', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DokumenControllerStaff->dokumenBersama()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DokumenControllerStaff))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\projectPegawai-master\\public\\index.php')
+DEBUG - 2025-08-12 16:47:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-12 16:47:02 --> AuthFilter: User is logged in. Current role_id: 6
+DEBUG - 2025-08-12 16:47:02 --> AuthFilter: Allowed roles for this route: array (
+  0 => '2',
+  1 => '3',
+  2 => '4',
+  3 => '5',
+  4 => '6',
+)
+INFO - 2025-08-12 16:47:02 --> AuthFilter: User with role_id 6 is allowed. Proceeding.
+DEBUG - 2025-08-12 16:47:02 --> DEBUG Staff::viewSharedFolder: User ID: 6, Role: Staff, Attempting to view folder ID: 72
+DEBUG - 2025-08-12 16:47:02 --> Effective Shared Type for folder 72: full
+DEBUG - 2025-08-12 16:47:02 --> Folder 72 diakses karena role Staff ada di access_roles. Authorized.
